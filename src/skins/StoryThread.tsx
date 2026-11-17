@@ -1,3 +1,4 @@
+import { Transcript } from "./Transcript";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowUp, ChevronLeft, Info, Paperclip, X } from "lucide-react";
 import { Avatar, Media } from "./shared";
@@ -234,7 +235,11 @@ export function StoryThread({
                             onPlay={() => onEvent("play", (asset || i).id)}
                           />
                         ))}
-                      <span>{i.body}</span>
+                      <span>
+                        {i.meta.transcript
+                          ? "▷ 语音 · " + i.meta.duration + " 秒"
+                          : i.body}
+                      </span>
                     </>
                   )}
                 </div>
@@ -255,60 +260,71 @@ export function StoryThread({
           );
         })}
       </div>
-      {inspect && (
-        <div className="archive-sheet" role="dialog" aria-label="消息详情">
-          <button
-            className="sheet-close"
-            aria-label="关闭详情"
-            onClick={() => setInspect(null)}
-          >
-            <X />
-          </button>
-          <strong>{inspect.sender}</strong>
-          <p>
-            发送 {inspect.meta.sentAt}
-            <br />
-            抵达 {inspect.meta.arrivedAt}
-          </p>
-          {getAsset(inspect) && (
+      {inspect?.meta.transcript ? (
+        <Transcript
+          key={inspect.id}
+          item={inspect}
+          mode="语音消息"
+          ui={state.ui?.[app]}
+          onUi={onUi}
+          close={() => setInspect(null)}
+        />
+      ) : (
+        inspect && (
+          <div className="archive-sheet" role="dialog" aria-label="消息详情">
             <button
-              onClick={() => {
-                openResource(inspect.meta.resource);
-                setInspect(null);
-              }}
+              className="sheet-close"
+              aria-label="关闭详情"
+              onClick={() => setInspect(null)}
             >
-              <Paperclip size={16} /> 查看原文件
+              <X />
             </button>
-          )}
-          <div>
-            {["❤️", "👍", "🙂"].map((e) => (
+            <strong>{inspect.sender}</strong>
+            <p>
+              发送 {inspect.meta.sentAt}
+              <br />
+              抵达 {inspect.meta.arrivedAt}
+            </p>
+            {getAsset(inspect) && (
               <button
-                key={e}
                 onClick={() => {
-                  onUi?.("reaction:" + inspect.id, e);
+                  openResource(inspect.meta.resource);
                   setInspect(null);
                 }}
               >
-                {e}
+                <Paperclip size={16} /> 查看原文件
               </button>
-            ))}
+            )}
+            <div>
+              {["❤️", "👍", "🙂"].map((e) => (
+                <button
+                  key={e}
+                  onClick={() => {
+                    onUi?.("reaction:" + inspect.id, e);
+                    setInspect(null);
+                  }}
+                >
+                  {e}
+                </button>
+              ))}
+            </div>
+            {inspect.outgoing && (
+              <button
+                onClick={() => {
+                  onUi?.(
+                    "removed:" + inspect.id,
+                    !state.ui?.[app]?.["removed:" + inspect.id],
+                  );
+                  setInspect(null);
+                }}
+              >
+                {state.ui?.[app]?.["removed:" + inspect.id]
+                  ? "恢复显示"
+                  : "从本机隐藏"}
+              </button>
+            )}
           </div>
-          {inspect.outgoing && (
-            <button
-              onClick={() => {
-                onUi?.(
-                  "removed:" + inspect.id,
-                  !state.ui?.[app]?.["removed:" + inspect.id],
-                );
-                setInspect(null);
-              }}
-            >
-              {state.ui?.[app]?.["removed:" + inspect.id]
-                ? "恢复显示"
-                : "从本机隐藏"}
-            </button>
-          )}
-        </div>
+        )
       )}
       {picker && (
         <div className="archive-options" aria-label="预设回复">
@@ -340,9 +356,9 @@ export function StoryThread({
           ) : choices.length ? (
             "选择回复"
           ) : kakao ? (
-            "KakaoTalk"
+            "聊天"
           ) : (
-            "iMessage"
+            "信息"
           )}
         </button>
         <button

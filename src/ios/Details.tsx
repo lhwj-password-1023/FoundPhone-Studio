@@ -31,10 +31,12 @@ export function NativeDetail({
   onUi,
   adjacent,
   openMessage,
+  requestCallback,
   writeNote,
 }: {
   app: string;
   item: Item;
+  requestCallback?: () => void;
   writeNote?: () => void;
   openMessage?: () => void;
   back: () => void;
@@ -183,6 +185,9 @@ export function NativeDetail({
             <span>{item.title.slice(0, 1)}</span>
             <h1>{item.title}</h1>
           </div>
+          {requestCallback && (
+            <button onClick={requestCallback}>请对方回电</button>
+          )}
           <div className="native-contact-actions">
             {[
               [MessageCircle, "信息"],

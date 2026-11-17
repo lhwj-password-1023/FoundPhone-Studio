@@ -111,6 +111,23 @@ export function validateLayout(raw: unknown, input: Work) {
     }
     layout.previewLayoutRevision = 2;
   }
+  if (
+    w.id === "nine-years" &&
+    layout.previewLayoutRevision < 3 &&
+    w.apps.some((a) => a.name === "录音机")
+  ) {
+    for (const app of layout.apps) {
+      const source = w.apps.find((a) => a.id === app.id);
+      if (source?.installed) {
+        app.name = source.name;
+        if (app.id === "music") {
+          app.installed = true;
+          app.visible = true;
+        }
+      }
+    }
+    layout.previewLayoutRevision = 3;
+  }
   const store = layout.apps.find((a) => a.id === "appstore");
   if (store) {
     store.installed = true;

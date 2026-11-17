@@ -1,3 +1,5 @@
+import { makeItem as makeCallRecord } from "./schema";
+import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
 import { routeForNotice } from "./story-engine/timeline";
 import { StatusGlyph } from "./ios/StatusGlyph";
@@ -264,6 +266,52 @@ function PhoneRuntime({
   }, [creator, ready, work.id, work.updatedAt]);
   const event = (event: string, target: string) => {
     if (!creator) update(dispatch(work, runtimeRef.current, event, target));
+  };
+  const endCall = () => {
+    const cur = runtimeRef.current,
+      call = cur.incomingCall;
+    if (!call) return;
+    const missed = call.status === "ringing";
+    const source = work.data.phone?.find((i) => i.id === call.target);
+    const spoken = source?.meta.transcript?.split("\n");
+    const selected = cur.ui?.phone?.["transcript:" + call.target + ":choice"];
+    if (spoken && typeof selected === "string" && source?.meta.choices) {
+      const response = JSON.parse(source.meta.choices)[selected];
+      if (typeof response === "string")
+        spoken[Number(source.meta.choiceAfter) + 1] = response;
+    }
+    const log = makeCallRecord({
+      ...source,
+      id: "call-log-" + (cur.messages.phone?.length || 0),
+      title: call.caller,
+      hidden: false,
+      read: !missed,
+      time: (cur.date || work.phone.date) + " " + cur.time,
+      folder: missed ? "未接" : "已接",
+      meta: {
+        ...(missed ? {} : source?.meta),
+        ...(!missed && spoken ? { transcript: spoken.join("\n") } : {}),
+        status: missed ? "未接" : "已接",
+      },
+    });
+    update(
+      dispatch(
+        work,
+        {
+          ...cur,
+          incomingCall: null,
+          notifications: cur.notifications.filter(
+            (n) => n !== call.caller + " 来电",
+          ),
+          messages: {
+            ...cur.messages,
+            phone: [log, ...(cur.messages.phone || [])],
+          },
+        },
+        missed ? "callDeclined" : "callEnded",
+        call.target || call.caller,
+      ),
+    );
   };
   const captureApp = () => {
     if (!app) return;
@@ -744,30 +792,30 @@ function PhoneRuntime({
                   const record = work.data.phone?.find(
                     (i) => i.id === s.incomingCall?.target,
                   );
-                  return record?.kind === "audio" && safeMedia(record.media) ? (
-                    <audio controls src={safeMedia(record.media)} />
-                  ) : (
-                    <p>这是一通虚构来电。</p>
-                  );
+                  if (record?.meta.transcript)
+                    return (
+                      <Transcript
+                        item={record}
+                        mode="电话"
+                        ui={s.ui?.phone}
+                        onUi={(k, v) => {
+                          const cur = runtimeRef.current;
+                          update({
+                            ...cur,
+                            ui: {
+                              ...cur.ui,
+                              phone: { ...cur.ui?.phone, [k]: v },
+                            },
+                          });
+                        }}
+                        close={endCall}
+                        live
+                      />
+                    );
+                  return <p>{record?.body || "暂时没有通话内容"}</p>;
                 })()}
               <div className="incoming-actions">
-                <button
-                  className="decline-call"
-                  onClick={() => {
-                    const call = runtimeRef.current.incomingCall;
-                    if (call)
-                      update(
-                        dispatch(
-                          work,
-                          { ...runtimeRef.current, incomingCall: null },
-                          call.status === "ringing"
-                            ? "callDeclined"
-                            : "callEnded",
-                          call.target || call.caller,
-                        ),
-                      );
-                  }}
-                >
+                <button className="decline-call" onClick={endCall}>
                   <PhoneIcon size={25} />
                   <span>
                     {s.incomingCall.status === "ringing" ? "拒接" : "挂断"}
@@ -1170,7 +1218,7 @@ function AppContent({
           <button aria-label="返回桌面首页" onClick={onBack}>
             <ChevronLeft />
           </button>
-          <strong>ChatGPT</strong>
+          <strong>{name}</strong>
         </header>
         <main>
           {ui?.answer ? (
@@ -1194,6 +1242,50 @@ function AppContent({
       </section>
     );
   }
+  if (
+    archive &&
+    detail?.meta.transcript &&
+    (!detail.password || unlocks.includes(detail.id))
+  )
+    return (
+      <Transcript
+        key={detail.id}
+        item={detail}
+        mode={
+          app.id === "music"
+            ? "录音"
+            : detail.folder === "语音信箱"
+              ? "语音信箱"
+              : "电话"
+        }
+        ui={ui}
+        onUi={onUi}
+        close={back}
+      />
+    );
+  if (archive && app.id === "music" && name === "录音机")
+    return (
+      <div className="catalog-skin">
+        <header className="app-nav">
+          <button onClick={back}>返回</button>
+          <strong>录音机</strong>
+        </header>
+        <div className="catalog-scroll">
+          <h1>所有录音</h1>
+          {shown.map((i) => (
+            <button className="catalog-row" key={i.id} onClick={() => read(i)}>
+              <span>
+                <strong>{i.title}</strong>
+                <small>
+                  {i.time} · {i.meta.duration} 秒
+                </small>
+              </span>
+              ▷
+            </button>
+          ))}
+        </div>
+      </div>
+    );
   if (Skin)
     return (
       <>
@@ -1242,6 +1334,17 @@ function AppContent({
           ) : nativeDetailApps.has(app.id) &&
             (!detail.password || unlocks.includes(detail.id)) ? (
             <NativeDetail
+              requestCallback={
+                archive &&
+                work.nodes.some(
+                  (n) =>
+                    n.event === "requestCallback" &&
+                    n.target === detail.id &&
+                    !state.completed.includes(n.id),
+                )
+                  ? () => onEvent("requestCallback", detail.id)
+                  : undefined
+              }
               writeNote={
                 archive && detail.meta.composeText && !detail.body
                   ? () => onEvent("writeNote", detail.id)

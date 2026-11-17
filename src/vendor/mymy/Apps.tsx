@@ -181,7 +181,7 @@ export function MymyKakao(p: SkinProps) {
               <Plus size={21} />
             </button>
             <input
-              aria-label="KKT消息"
+              aria-label="聊天消息"
               placeholder="输入消息"
               value={draft}
               maxLength={2000}
@@ -190,7 +190,7 @@ export function MymyKakao(p: SkinProps) {
             <Smile size={22} />
             <button
               className={draft.trim() ? "go" : ""}
-              aria-label="发送KKT消息"
+              aria-label="发送聊天消息"
               disabled={!draft.trim()}
             >
               ↑
@@ -225,7 +225,7 @@ export function MymyKakao(p: SkinProps) {
                     <Plus />
                   </button>
                 )}
-                <button aria-label="KKT设置" onClick={() => setMenu(!menu)}>
+                <button aria-label="聊天设置" onClick={() => setMenu(!menu)}>
                   <Settings size={21} />
                 </button>
               </span>
@@ -249,7 +249,7 @@ export function MymyKakao(p: SkinProps) {
             {query !== "" && (
               <input
                 className="mymy-search"
-                aria-label="搜索KKT"
+                aria-label="搜索聊天记录"
                 value={query.trimStart()}
                 onChange={(e) => setQuery(e.target.value || " ")}
                 placeholder="搜索"
@@ -353,7 +353,7 @@ export function MymyKakao(p: SkinProps) {
           </nav>
           {menu && (
             <div className="mymy-local-menu">
-              <strong>KakaoTalk</strong>
+              <strong>{p.name}</strong>
               <p>作品内聊天</p>
               <button onClick={() => setMenu(false)}>完成</button>
             </div>
@@ -487,13 +487,13 @@ export function MymyInstagram(p: SkinProps) {
       <div className="ig">
         <header className="igh">
           <button
-            aria-label={selected ? "返回Instagram动态" : "关闭当前App"}
+            aria-label={selected ? "返回动态" : "关闭当前App"}
             onClick={() => (selected ? setSelected(null) : p.onBack())}
           >
             <ArrowLeft />
           </button>
           <span className="igl2">
-            {selected ? "帖子" : tab === "主页" ? "Instagram" : tab}
+            {selected ? "帖子" : tab === "主页" ? p.name : tab}
           </span>
           <button aria-label="打开私信" onClick={() => setTab("私信")}>
             <Send />
@@ -575,7 +575,7 @@ export function MymyInstagram(p: SkinProps) {
             <>
               <input
                 className="mymy-search"
-                aria-label="搜索Instagram"
+                aria-label="搜索动态"
                 placeholder="搜索"
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
@@ -611,7 +611,7 @@ export function MymyInstagram(p: SkinProps) {
             aria-label="关闭评论"
             onClick={() => setSheet(null)}
           />
-          <section className="kzsh" role="dialog" aria-label="Instagram评论">
+          <section className="kzsh" role="dialog" aria-label="帖子评论">
             <div className="mymy-sheet-handle" />
             <header>
               <b>评论</b>
