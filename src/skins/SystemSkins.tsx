@@ -274,7 +274,7 @@ export function PhotosSkin(p: Props) {
     <div className="catalog-skin native-photos">
       <Header p={p} />
       <div className="catalog-scroll">
-        <h1>{album || tab}</h1>
+        <h1>{album || tab}</h1><p className="gallery-total">{list.length} 个项目</p>
         {p.archive && tab === "图库" && (
           <div className="gallery-period">
             {["年", "月", "日"].map((v) => (

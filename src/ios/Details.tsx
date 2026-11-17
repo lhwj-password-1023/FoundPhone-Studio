@@ -31,11 +31,15 @@ export function NativeDetail({
   onUi,
   adjacent,
   openMessage,
+  gallery,
+  openPhoto,
   requestCallback,
   writeNote,
 }: {
   app: string;
   item: Item;
+  gallery?: Item[];
+  openPhoto?: (item: Item) => void;
   requestCallback?: () => void;
   writeNote?: () => void;
   openMessage?: () => void;
@@ -44,6 +48,7 @@ export function NativeDetail({
   onUi?: (k: string, v: UiValue) => void;
   adjacent?: (direction: number) => void;
 }) {
+  const [chrome, setChrome] = useState(true);
   const [info, setInfo] = useState(false),
     [zoom, setZoom] = useState(false);
   const start = useRef(0);
@@ -75,13 +80,23 @@ export function NativeDetail({
   if (app === "notes")
     return <NoteDetail {...{ item, back, ui, onUi, writeNote }} />;
   return (
-    <div className={"native-detail native-detail-" + app}>
+    <div
+      className={
+        "native-detail native-detail-" +
+        app +
+        (app === "photos" && !chrome ? " photo-immersive" : "")
+      }
+    >
       <header className="app-nav">
         <button aria-label="返回" onClick={back}>
           <ChevronLeft size={24} />
           {name}
         </button>
-        <strong>{app === "photos" ? item.time.slice(0, 10) : ""}</strong>
+        <strong>
+          {app === "photos"
+            ? (item.meta.capturedAt || item.time).replace(" ", " · ")
+            : ""}
+        </strong>
         <button aria-label="更多操作" onClick={() => setCopied(!copied)}>
           <MoreHorizontal size={23} />
         </button>
@@ -124,6 +139,7 @@ export function NativeDetail({
               ) : (
                 <div
                   className={"archive-photo-zoom " + (zoom ? "zoomed" : "")}
+                  onClick={() => setChrome(!chrome)}
                   onDoubleClick={() => setZoom(!zoom)}
                 >
                   <img src={media} alt={item.title} />
@@ -138,6 +154,7 @@ export function NativeDetail({
           </div>
           {info && (
             <div className="archive-photo-info">
+              <h3>{item.title}</h3>
               {[
                 ["拍摄", "capturedAt"],
                 ["文件创建", "createdAt"],
@@ -155,6 +172,18 @@ export function NativeDetail({
               {item.body}
             </div>
           )}
+          <div className="photo-strip">
+            {gallery?.map((p) => (
+              <button
+                key={p.id}
+                aria-label={"切换到" + p.title}
+                aria-pressed={p.id === item.id}
+                onClick={() => openPhoto?.(p)}
+              >
+                <img src={safeMedia(p.media)} alt="" />
+              </button>
+            ))}
+          </div>
           <footer className="native-detail-toolbar">
             <button onClick={() => setInfo(!info)} aria-label="照片信息">
               ⓘ
@@ -176,7 +205,17 @@ export function NativeDetail({
             >
               <Heart fill={favorite ? "#007aff" : "none"} />
             </button>
-            <span>{copied ? "已复制" : item.title}</span>
+            <button
+              aria-label="删除照片"
+              disabled={!onUi}
+              onClick={() => {
+                onUi?.("trash:" + item.id, true);
+                back();
+              }}
+            >
+              删除
+            </button>
+            <span>{copied ? "已复制" : ""}</span>
           </footer>
         </>
       ) : app === "contacts" || app === "phone" ? (

@@ -1334,6 +1334,12 @@ function AppContent({
           ) : nativeDetailApps.has(app.id) &&
             (!detail.password || unlocks.includes(detail.id)) ? (
             <NativeDetail
+              gallery={
+                app.id === "photos"
+                  ? shown.filter((i) => !ui?.["trash:" + i.id])
+                  : undefined
+              }
+              openPhoto={read}
               requestCallback={
                 archive &&
                 work.nodes.some(

@@ -177,3 +177,143 @@
 .dark-phone .my-list {
   color-scheme: dark;
 }
+.ios18 .native-photos .photo-mosaic {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2px;
+  padding: 0;
+}
+.ios18 .native-photos .photo-mosaic button {
+  aspect-ratio: 1;
+  padding: 0;
+  border-radius: 0;
+}
+.ios18 .native-photos .photo-mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-total {
+  margin: 0 16px 12px;
+  font-weight: 600;
+  color: #888;
+}
+.ios18 .native-photos .catalog-scroll > h1 {
+  font-size: 38px;
+}
+.ios18 .native-photos .catalog-tabs {
+  margin: 4px 15px;
+  border-radius: 30px;
+  background: #ffffffc9;
+  backdrop-filter: blur(20px);
+}
+.ios18 .native-detail-photos {
+  background: white;
+  color: #171719;
+}
+.ios18 .native-detail-photos > .app-nav {
+  background: #ffffffb8;
+  z-index: 2;
+  height: 48px;
+}
+.ios18 .native-detail-photos .app-nav strong {
+  font-size: 13px;
+  border-radius: 24px;
+  background: #f2f2f7b0;
+  padding: 9px;
+}
+.photo-strip {
+  display: flex;
+  gap: 3px;
+  overflow: auto;
+  padding: 6px;
+  flex: none;
+  height: 42px;
+}
+.photo-strip button {
+  padding: 0;
+  flex: none;
+  width: 28px;
+}
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo-strip [aria-pressed="true"] {
+  outline: 2px solid #007aff;
+}
+.ios18 .native-detail-photos .native-detail-toolbar {
+  border: 0;
+  background: #fff;
+  gap: 8px;
+}
+.ios18 .native-detail-photos .native-detail-toolbar button {
+  border: 1px solid #8883;
+  border-radius: 24px;
+  padding: 10px;
+  color: inherit;
+}
+.archive-photo-info {
+  background: #f2f2f7;
+  color: #222;
+  border-radius: 23px;
+  margin: 8px 15px;
+  max-height: 40%;
+  overflow: auto;
+}
+.photo-immersive > .app-nav,
+.photo-immersive > .photo-strip,
+.photo-immersive > .native-detail-toolbar {
+  display: none !important;
+}
+.photo-immersive .native-photo-stage {
+  height: 100%;
+}
+.photo-immersive {
+  background: #000 !important;
+}
+.mymy-instagram .ig {
+  background: #10171e;
+  color: #f5f5f6;
+}
+.mymy-instagram .igh {
+  background: #10171eef;
+  border-bottom: 1px solid #ffffff18;
+}
+.mymy-instagram .igp {
+  background: transparent;
+  border-bottom: 1px solid #ffffff19;
+}
+.mymy-instagram .pg2 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+}
+.mymy-instagram .pg2 button {
+  padding: 0;
+  aspect-ratio: 1;
+}
+.mymy-instagram .pg2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mymy-instagram .carw img {
+  width: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+.mymy-instagram .pf {
+  padding: 18px 16px;
+}
+.mymy-instagram .pn {
+  margin: 6px 16px;
+}
+.mymy-instagram .ptab {
+  margin-top: 22px;
+  border-bottom: 1px solid #ffffff35;
+}
+.mymy-instagram .ptab .on {
+  border-bottom: 2px solid white;
+}
