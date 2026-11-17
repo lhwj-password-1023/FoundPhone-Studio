@@ -1,12 +1,12 @@
 {
   "scriptVersion": 1,
   "id": "nine-years",
-  "title": "九年时差",
+  "title": "时差",
   "description": "虚构同人故事。",
   "revision": 3,
   "timeline": {
     "years": 9,
-    "fiction": "《九年时差》 · 虚构同人故事",
+    "fiction": "《时差》 · 虚构同人故事",
     "birthdays": {
       "chan": "1997-10-03",
       "lee": "1998-10-25",

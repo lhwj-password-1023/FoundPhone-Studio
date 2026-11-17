@@ -11,8 +11,8 @@ export default defineConfig(({ command }) => ({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "捡手机",
-        short_name: "捡手机",
+        name: "时差",
+        short_name: "时差",
         display: "standalone",
         background_color: "#000000",
         theme_color: "#000000",
