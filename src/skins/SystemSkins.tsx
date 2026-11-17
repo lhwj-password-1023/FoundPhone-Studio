@@ -1,3 +1,14 @@
+import "./system-reference.css";
+import {
+  Voicemail,
+  Smartphone,
+  Navigation,
+  Flag,
+  Inbox,
+  AlarmClock,
+  Circle,
+  List,
+} from "lucide-react";
 import { DraftInput } from "./ProgressiveText";
 import { ArchiveBrowser } from "./ArchiveBrowser";
 export { WeatherSkin, HealthSkin } from "./CalibratedSystemApps";
@@ -48,22 +59,43 @@ export function PhoneSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "最近通话");
   const [digits, setDigits] = useState(""),
     [call, setCall] = useState("");
+  const [missed, setMissed] = useState(false);
   const list =
     tab === "通讯录"
       ? (p.contacts || []).filter((i) => i.title.includes(q))
-      : tab === "未接"
-        ? items.filter((i) => i.meta.status === "未接")
-        : tab === "收藏"
-          ? items.filter((i) => i.favorite)
-          : items;
+      : tab === "语音信箱"
+        ? items.filter((i) => i.folder === "语音信箱")
+        : tab === "最近通话" && missed
+          ? items.filter((i) => i.meta.status === "未接")
+          : tab === "收藏"
+            ? items.filter((i) => i.favorite)
+            : items.filter((i) => i.folder !== "语音信箱");
   return (
     <div className="catalog-skin native-phone">
       <Header p={p} />
       <div className="catalog-scroll">
-        <h1>{tab}</h1>
+        {tab === "最近通话" && (
+          <div className="call-filter">
+            {["全部", "未接"].map((v, i) => (
+              <button
+                key={v}
+                aria-pressed={missed === !!i}
+                onClick={() => setMissed(!!i)}
+              >
+                {v}
+              </button>
+            ))}
+          </div>
+        )}
+        {tab !== "拨号键盘" && <h1>{tab}</h1>}
+        {tab === "语音信箱" && (
+          <div className="carrier-row">
+            运营商语音信箱 <small>未设置</small>
+          </div>
+        )}
         {tab === "拨号键盘" ? (
           <div className="dialer">
-            <output>{digits || "输入号码"}</output>
+            <output>{digits}</output>
             <div>
               {["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"].map(
                 (k) => (
@@ -105,6 +137,8 @@ export function PhoneSkin(p: Props) {
               删除
             </button>
           </div>
+        ) : tab === "通讯录" ? (
+          <ContactDirectory items={list} onItem={p.onItem} q={q} setQ={setQ} />
         ) : (
           <>
             <SearchBox value={q} set={setQ} />
@@ -114,7 +148,7 @@ export function PhoneSkin(p: Props) {
                 key={i.id}
                 onClick={() => p.onItem(i)}
               >
-                <Phone size={17} />
+                <Avatar name={i.title} />
                 <span>
                   <strong>{i.title}</strong>
                   <small>
@@ -130,10 +164,10 @@ export function PhoneSkin(p: Props) {
         )}
       </div>
       <Tabs
-        tabs={["收藏", "最近通话", "未接", "通讯录", "拨号键盘"]}
+        tabs={["收藏", "最近通话", "通讯录", "拨号键盘", "语音信箱"]}
         value={tab}
         set={setTab}
-        icons={[<Star />, <Clock />, <Phone />, <Users />, <Grid />]}
+        icons={[<Star />, <Clock />, <Users />, <Grid />, <Voicemail />]}
       />
       {call && (
         <div className="virtual-call">
@@ -152,44 +186,68 @@ export function PhoneSkin(p: Props) {
     </div>
   );
 }
+function ContactDirectory({
+  items,
+  onItem,
+  q,
+  setQ,
+}: {
+  items: Item[];
+  onItem: Props["onItem"];
+  q: string;
+  setQ: (s: string) => void;
+}) {
+  const groups = new Map<string, Item[]>();
+  for (const item of [...items].sort((a, b) =>
+    a.title.localeCompare(b.title, "zh-CN"),
+  )) {
+    const initial = (item.meta.initial || item.title).slice(0, 1).toUpperCase();
+    groups.set(initial, [...(groups.get(initial) || []), item]);
+  }
+  return (
+    <>
+      <SearchBox value={q} set={setQ} />
+      {[...groups].map(([letter, rows]) => (
+        <section key={letter} id={"contact-" + letter}>
+          <h4 className="native-section">{letter}</h4>
+          {rows.map((i) => (
+            <button
+              className="directory-row"
+              key={i.id}
+              onClick={() => onItem(i)}
+            >
+              <Avatar name={i.title} src={i.avatar} />
+              {i.title}
+            </button>
+          ))}
+        </section>
+      ))}
+      <aside className="contact-index">
+        {[...groups.keys()].map((l) => (
+          <button
+            key={l}
+            onClick={() =>
+              document
+                .getElementById("contact-" + l)
+                ?.scrollIntoView({ block: "nearest" })
+            }
+          >
+            {l}
+          </button>
+        ))}
+      </aside>
+      <Empty items={items} />
+    </>
+  );
+}
 export function ContactsSkin(p: Props) {
-  const { q, setQ, items } = useContent(p, "所有联系人");
+  const { items, q, setQ } = useContent(p, "通讯录");
   return (
     <div className="catalog-skin native-contacts">
       <Header p={p} />
       <div className="catalog-scroll">
         <h1>通讯录</h1>
-        <SearchBox value={q} set={setQ} />
-        <button
-          className="contact-self"
-          onClick={() => {
-            if (items[0]) p.onItem(items[0]);
-            else if (p.creator) p.onAdd();
-          }}
-        >
-          <Avatar name={p.owner ?? "我"} />
-          <span>
-            <strong>{p.owner ?? "我的名片"}</strong>
-            <small>我的名片</small>
-          </span>
-        </button>
-        {groupItems(items, "所有联系人").map((g) => (
-          <section key={g}>
-            <h4 className="native-section">{g}</h4>
-            {items
-              .filter((i) => (i.folder || "所有联系人") === g)
-              .sort((a, b) => a.title.localeCompare(b.title, "zh-CN"))
-              .map((i) => (
-                <Row
-                  key={i.id}
-                  item={i}
-                  onItem={p.onItem}
-                  leading={<Avatar name={i.title} />}
-                />
-              ))}
-          </section>
-        ))}
-        <Empty items={items} />
+        <ContactDirectory {...{ items, q, setQ, onItem: p.onItem }} />
       </div>
     </div>
   );
@@ -630,51 +688,83 @@ export function ClockSkin(p: Props) {
 export function RemindersSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "全部");
   const [checked, setChecked] = useSkinState<string[]>(p, "checked", []);
-  const list =
-    tab === "已完成"
-      ? items.filter((i) => checked.includes(i.id))
-      : items.filter((i) => !checked.includes(i.id));
+  const [detail, show] = useState(false);
+  const categories = ["今天", "计划", "全部", "旗标", "紧急", "已完成"];
+  const icons = [Calendar, Clock, Inbox, Flag, AlarmClock, CheckCircle];
+  function matches(i: Item, t: string) {
+    if (checked.includes(i.id)) return t === "已完成";
+    const due = i.meta.due || i.time;
+    if (t === "今天") return !!due && due.slice(0, 10) === p.virtualDate;
+    if (t === "计划") return !!due;
+    if (t === "旗标") return i.favorite || i.meta.flagged === "true";
+    if (t === "紧急") return i.meta.urgent === "true";
+    return t === "全部" || t === "待办清单";
+  }
+  const list = items.filter((i) => matches(i, tab));
+  const enter = (t: string) => {
+    setTab(t);
+    show(true);
+  };
   return (
-    <div className="catalog-skin native-reminders">
-      <Header p={p} />
+    <div
+      className={
+        "catalog-skin native-reminders " + (detail ? "rem-detail" : "rem-home")
+      }
+    >
+      <Header p={{ ...p, onBack: detail ? () => show(false) : p.onBack }} />
       <div className="catalog-scroll">
         <SearchBox value={q} set={setQ} />
-        <div className="reminder-categories">
-          {["全部", "已完成"].map((t) => (
-            <button key={t} onClick={() => setTab(t)}>
-              <Calendar size={22} />
-              <strong>
-                {t === "全部" ? items.length - checked.length : checked.length}
-              </strong>
-              <span>{t}</span>
+        {!detail ? (
+          <>
+            <div className="reminder-categories">
+              {categories.map((t, n) => {
+                const Icon = icons[n];
+                return (
+                  <button key={t} onClick={() => enter(t)}>
+                    <Icon />
+                    <strong>{items.filter((i) => matches(i, t)).length}</strong>
+                    <span>{t}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <h2>我的列表</h2>
+            <button className="my-list" onClick={() => enter("待办清单")}>
+              <List />
+              待办清单{" "}
+              <small>{items.filter((i) => matches(i, "全部")).length} ›</small>
             </button>
-          ))}
-        </div>
-        <h1>{tab}</h1>
-        {list.map((i) => (
-          <div className="reminder-row" key={i.id}>
-            <button
-              aria-label={`完成${i.title}`}
-              role="checkbox"
-              aria-checked={checked.includes(i.id)}
-              onClick={() =>
-                setChecked(
-                  checked.includes(i.id)
-                    ? checked.filter((x) => x !== i.id)
-                    : [...checked, i.id],
-                )
-              }
-            >
-              <CheckCircle size={21} />
-            </button>
-            <button onClick={() => p.onItem(i)}>
-              <strong>{i.title}</strong>
-              <small>
-                {i.time} {i.folder}
-              </small>
-            </button>
-          </div>
-        ))}
+          </>
+        ) : (
+          <>
+            <button onClick={() => show(false)}>‹ 我的列表</button>
+            <h1>{tab}</h1>
+            {list.map((i) => (
+              <div className="reminder-row" key={i.id}>
+                <button
+                  aria-label={`完成${i.title}`}
+                  role="checkbox"
+                  aria-checked={checked.includes(i.id)}
+                  onClick={() =>
+                    setChecked(
+                      checked.includes(i.id)
+                        ? checked.filter((x) => x !== i.id)
+                        : [...checked, i.id],
+                    )
+                  }
+                >
+                  <CheckCircle size={21} />
+                </button>
+                <button onClick={() => p.onItem(i)}>
+                  <strong>{i.title}</strong>
+                  <small>
+                    {i.time} {i.folder}
+                  </small>
+                </button>
+              </div>
+            ))}
+          </>
+        )}
         {p.archive ? (
           <DraftInput p={p} label="提醒事项草稿" />
         ) : (
@@ -685,25 +775,46 @@ export function RemindersSkin(p: Props) {
   );
 }
 export function FilesSkin(p: Props) {
-  const { tab, setTab, q, setQ, items } = useContent(p, "最近项目");
+  const { tab, setTab, q, setQ, items } = useContent(p, "浏览");
   const [folder, setFolder] = useState("");
   const list = folder
     ? items.filter((i) => (i.folder || "我的iPhone") === folder)
-    : items;
+    : tab === "共享"
+      ? items.filter((i) => i.meta.shared === "true")
+      : items;
   return (
     <div className="catalog-skin native-files">
       <Header p={p} />
       <div className="catalog-scroll">
-        <h1>{folder || tab}</h1>
+        {folder && <button onClick={() => setFolder("")}>‹ iCloud 云盘</button>}
+        <h1>{folder || (tab === "浏览" ? "iCloud 云盘" : tab)}</h1>
         <SearchBox value={q} set={setQ} />
         {tab === "浏览" && !folder ? (
           <div className="file-folders">
-            {groupItems(items, "我的iPhone").map((g) => (
-              <button key={g} onClick={() => setFolder(g)}>
-                <Folder size={45} />
-                <strong>{g}</strong>
-              </button>
-            ))}
+            {[
+              ...new Set([
+                "文稿",
+                "下载",
+                "桌面",
+                ...groupItems(items, "我的iPhone"),
+              ]),
+            ]
+              .filter(
+                (g) => !q || g.includes(q) || items.some((i) => i.folder === g),
+              )
+              .map((g) => (
+                <button key={g} onClick={() => setFolder(g)}>
+                  <Folder size={64} fill="#63bff0" stroke="#49aada" />
+                  <strong>{g}</strong>
+                  <small>
+                    {
+                      items.filter((i) => (i.folder || "我的iPhone") === g)
+                        .length
+                    }{" "}
+                    项
+                  </small>
+                </button>
+              ))}
           </div>
         ) : (
           <div className="file-grid">
@@ -732,16 +843,16 @@ export function FilesSkin(p: Props) {
             ))}
           </div>
         )}
-        <Empty items={list} />
+        {(folder || tab !== "浏览") && <Empty items={list} />}
       </div>
       <Tabs
-        tabs={["最近项目", "浏览"]}
+        tabs={["最近项目", "共享", "浏览"]}
         value={tab}
         set={(t) => {
           setTab(t);
           setFolder("");
         }}
-        icons={[<Clock />, <Folder />]}
+        icons={[<Clock />, <Users />, <Folder />]}
       />
     </div>
   );
@@ -766,6 +877,10 @@ export function MusicSkin(p: Props) {
               >
                 <Music size={51} />
                 <strong>{g}</strong>
+                <small>
+                  {items.filter((i) => (i.folder || "我的iPhone") === g).length}{" "}
+                  项
+                </small>
               </button>
             ))}
           </div>
@@ -865,7 +980,7 @@ function LocationMap({
           }}
           onClick={() => onItem(i)}
         >
-          {find ? <Avatar name={i.title} /> : <MapPin size={24} />}
+          {find ? <Smartphone size={22} /> : <MapPin size={24} />}
         </button>
       ))}
     </div>
@@ -930,7 +1045,7 @@ export function WalletSkin(p: Props) {
 export function FindSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "设备");
   const list = items.filter((i) =>
-    tab === "设备" ? i.folder !== "人物" : i.folder === "人物",
+    tab === "设备" ? !["人物", "物品"].includes(i.folder) : i.folder === tab,
   );
   return (
     <div className="catalog-skin native-find">
@@ -938,12 +1053,15 @@ export function FindSkin(p: Props) {
       <LocationMap items={list} onItem={p.onItem} find />
       <div className="find-sheet">
         <h2>{tab}</h2>
+        {tab === "我" && <p>{p.owner} · 此设备</p>}
         {list.map((i) => (
           <Row
             key={i.id}
             item={i}
             onItem={p.onItem}
-            leading={<Avatar name={i.title} />}
+            leading={
+              tab === "设备" ? <Smartphone /> : <Avatar name={i.title} />
+            }
           >
             {meta(i, "status", "位置记录")}
           </Row>
@@ -951,10 +1069,10 @@ export function FindSkin(p: Props) {
         <Empty items={list} />
       </div>
       <Tabs
-        tabs={["人物", "设备"]}
+        tabs={["人物", "设备", "物品", "我"]}
         value={tab}
         set={setTab}
-        icons={[<Users />, <MapPin />]}
+        icons={[<Users />, <Smartphone />, <Circle />, <Navigation />]}
       />
     </div>
   );

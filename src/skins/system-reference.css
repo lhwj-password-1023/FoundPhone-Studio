@@ -1,0 +1,179 @@
+.ios18 :is(.native-phone, .native-files, .native-find) nav.catalog-tabs {
+  margin: 5px 14px;
+  border: 1px solid #8884;
+  border-radius: 32px;
+  min-height: 56px;
+  background: color-mix(in srgb, Canvas 86%, transparent);
+  backdrop-filter: blur(16px);
+  padding: 3px 6px;
+}
+.ios18
+  :is(.native-phone, .native-files, .native-find)
+  nav.catalog-tabs
+  .selected {
+  background: #8882;
+  border-radius: 28px;
+}
+.call-filter {
+  display: flex;
+  justify-content: center;
+  margin: 6px auto;
+  width: fit-content;
+  border: 1px solid #8884;
+  border-radius: 30px;
+  padding: 3px;
+}
+.call-filter button,
+.carrier-row {
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+.call-filter [aria-pressed="true"],
+.carrier-row {
+  background: #8882;
+}
+.carrier-row,
+.my-list,
+.directory-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.carrier-row small,
+.my-list small {
+  margin-left: auto;
+  color: #888;
+}
+.ios18 .native-phone .dialer {
+  padding-top: clamp(25px, 9vh, 96px);
+}
+.ios18 .native-phone .dialer > div button {
+  width: 70px;
+  height: 70px;
+  font-size: 34px;
+  background: linear-gradient(145deg, #8881, transparent);
+  border: 1px solid #8884;
+}
+.ios18 .directory-row {
+  width: 100%;
+  justify-content: flex-start;
+  min-height: 62px;
+  border-bottom: 1px solid #8883;
+  padding: 8px 18px;
+}
+.contact-index {
+  position: absolute;
+  right: 3px;
+  top: 30%;
+  display: grid;
+  max-height: 50%;
+  overflow: auto;
+  color: #007aff;
+}
+.ios18 .native-reminders.rem-home {
+  background: var(--ios-bg, #f2f2f7);
+}
+.native-reminders .reminder-categories > button {
+  border-radius: 17px;
+  color: white;
+  min-height: 78px;
+  background: #479fda;
+}
+.native-reminders .reminder-categories > button:nth-child(2) {
+  background: #df7177;
+}
+.native-reminders .reminder-categories > button:nth-child(3) {
+  background: #414142;
+}
+.native-reminders .reminder-categories > button:nth-child(4) {
+  background: #e8a965;
+}
+.native-reminders .reminder-categories > button:nth-child(5) {
+  background: #dc658d;
+}
+.native-reminders .reminder-categories > button:nth-child(6) {
+  background: #879096;
+}
+.native-reminders .reminder-categories :is(span, strong) {
+  color: white;
+}
+.native-reminders .reminder-categories span {
+  font-size: 16px;
+}
+.native-reminders h2 {
+  margin: 25px 20px 10px;
+}
+.native-reminders .my-list {
+  border-radius: 20px;
+  background: Canvas;
+  color: CanvasText;
+  margin: 0 14px;
+  width: calc(100% - 28px);
+  padding: 17px;
+  justify-content: flex-start;
+}
+.native-reminders.rem-detail h1 {
+  color: #007aff;
+}
+.ios18 .native-files .file-folders,
+.ios18 .native-files .file-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 5px;
+  padding: 16px;
+}
+.ios18 .native-files .file-folders button {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  color: inherit;
+  padding: 6px;
+  text-align: center;
+}
+.file-folders small {
+  color: #888;
+}
+.ios18 .native-find {
+  position: relative;
+  overflow: hidden;
+}
+.ios18 .native-find .find-map {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+.native-find .find-map > svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ios18 .native-find .find-sheet {
+  position: absolute;
+  inset: 53% 8px 0;
+  border-radius: 30px;
+  padding: 16px 18px 74px;
+  overflow: auto;
+  background: color-mix(in srgb, Canvas 87%, transparent);
+  color: CanvasText;
+  backdrop-filter: blur(16px);
+}
+.find-sheet:before {
+  content: "";
+  display: block;
+  margin: -8px auto 12px;
+  width: 50px;
+  height: 4px;
+  background: #8886;
+  border-radius: 4px;
+}
+.ios18 .native-find nav.catalog-tabs {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.dark-phone .rem-home,
+.dark-phone .find-sheet,
+.dark-phone .my-list {
+  color-scheme: dark;
+}
