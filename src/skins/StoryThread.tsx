@@ -279,6 +279,9 @@ export function StoryThread({
             >
               <X />
             </button>
+            {inspect.kind === "image" && inspect.media && (
+              <div className="attachment-preview"><Media item={inspect} /></div>
+            )}
             <strong>{inspect.sender}</strong>
             <p>
               发送 {inspect.meta.sentAt}

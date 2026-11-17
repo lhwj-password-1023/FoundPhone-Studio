@@ -340,3 +340,5 @@
   vertical-align: -0.12em;
   background: currentColor;
 }
+
+.archive-sheet .attachment-preview img { display: block; width: 100%; max-height: 40vh; object-fit: contain; }
