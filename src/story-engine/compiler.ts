@@ -1,3 +1,4 @@
+import { validateTimeline } from "./timeline";
 import { z } from "zod";
 import {
   workSchema,
@@ -24,6 +25,7 @@ const event = nodeSchema
   .strict();
 export const storySchema = z
   .object({
+    timeline: workSchema.shape.timeline,
     scriptVersion: z.literal(1),
     id,
     title: z.string().min(1),
@@ -90,7 +92,7 @@ export const storySchema = z
               password: z.string().optional(),
             }),
           ),
-          ending: z.string(),
+          ending: z.string().optional(),
           expectUnlocked: z.array(z.string()).default([]),
         }),
       )
@@ -206,6 +208,7 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
           outgoing: senderId === "owner" || m.outgoing,
           meta: {
             ...m.meta,
+            ...(s.timeline && senderId ? { senderId } : {}),
             conversationId: chat.id,
             participants: chat.participants.join(","),
           },
@@ -246,6 +249,13 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
     n.actions.forEach((a, j) => {
       if (["unlock", "hide"].includes(a.type) && !itemIds.has(a.key))
         fail(`events.${i}.actions.${j}.key`, "不存在的内容");
+      if (
+        s.timeline &&
+        a.type === "notification" &&
+        a.key &&
+        !itemIds.has(a.key)
+      )
+        fail(`events.${i}.actions.${j}.key`, "通知目标不存在");
       if (a.type === "message" && !installed.has(a.key))
         fail(`events.${i}.actions.${j}.key`, "消息 App 未安装");
       if (a.type === "choice" && !nodeIds.has(a.key))
@@ -263,6 +273,7 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
   const errors = validateGraph(nodes);
   if (errors.length) fail("events", errors.join("; "));
   const work = validateWork({
+    timeline: s.timeline,
     formatVersion: 1,
     id: s.id,
     title: s.title,
@@ -310,5 +321,6 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
     variables: s.variables,
     mode: nodes.length ? "mixed" : "explore",
   });
+  validateTimeline(work);
   return { story: s, work };
 }

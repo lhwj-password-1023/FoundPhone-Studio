@@ -99,7 +99,13 @@ function ChatRows({
               <strong>{name}</strong>
               <p>{last.body}</p>
             </span>
-            <time>{last.time.slice(-5)}</time>
+            <time>
+              {last.time.slice(-5)}{" "}
+              {p.archive &&
+                items.some(
+                  (i) => i.title === name && !i.read && !i.outgoing,
+                ) && <b aria-label="未读">●</b>}
+            </time>
           </button>
         );
       })}
@@ -137,7 +143,7 @@ export function MessagesSkin(p: Props) {
           <SearchBox value={q} set={setQ} />
           <ChatRows
             p={p}
-            items={unread ? items.filter((i) => !i.read) : items}
+            items={unread ? items.filter((i) => !i.read && !i.outgoing) : items}
           />
         </div>
       )}

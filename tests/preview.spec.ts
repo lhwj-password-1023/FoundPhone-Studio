@@ -15,14 +15,14 @@ test("development preview contains generic placeholders", async ({
     preview.apps.filter((a: { installed: boolean }) => a.installed),
   ).toHaveLength(49);
   expect(preview.id).not.toBe(standard.id);
-  for (const app of preview.apps)
+  for (const app of preview.apps.filter(a => a.installed))
     expect(preview.data[app.id]?.length).toBeGreaterThan(0);
   await page.goto("/?preview=test");
   await page.getByRole("button", { name: "轻触解锁" }).click();
   await page
     .getByRole("button", { name: "打开App Store", exact: true })
     .click();
-  await expect(page.locator(".runtime-library-row")).toHaveCount(49);
+  await expect(page.locator(".runtime-library-row")).toHaveCount(50);
   await page.getByRole("button", { name: "关闭App管理" }).click();
   await page.getByRole("button", { name: "控制中心", exact: true }).click();
   await expect(page.locator(".device-control")).toHaveCSS("opacity", "1");

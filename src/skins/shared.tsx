@@ -106,18 +106,21 @@ export function Avatar({
 export function Media({
   item,
   className = "",
+  onPlay,
 }: {
   item: Item;
   className?: string;
+  onPlay?: () => void;
 }) {
   const src = safeMedia(item.media);
   return src ? (
     item.kind === "audio" ? (
-      <audio className={className} controls src={src} />
+      <audio onPlay={onPlay} className={className} controls src={src} />
     ) : item.kind === "video" ? (
       <video
         className={className}
         controls
+        onPlay={onPlay}
         playsInline
         src={src}
         onClick={(e) => e.stopPropagation()}
@@ -182,10 +185,15 @@ export function useContent(p: Props, first: string) {
   const items = p.items.filter((i) =>
     (
       i.title +
-      i.body +
+      (i.password ? "" : i.body) +
       i.sender +
       i.folder +
-      Object.values(i.meta ?? {}).join(" ")
+      (i.password
+        ? ""
+        : Object.entries(i.meta ?? {})
+            .filter(([key]) => key !== "composeText")
+            .map(([, value]) => value)
+            .join(" "))
     )
       .toLowerCase()
       .includes(q.toLowerCase()),

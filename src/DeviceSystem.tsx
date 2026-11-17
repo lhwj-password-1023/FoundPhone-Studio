@@ -66,6 +66,7 @@ export function DeviceLock({
   pinOpen,
   setPinOpen,
   error,
+  onOpenNotice,
   onUnlock,
   onCamera,
   onLight,
@@ -77,6 +78,7 @@ export function DeviceLock({
   pinOpen: boolean;
   setPinOpen: (v: boolean) => void;
   error: string;
+  onOpenNotice?: (notice: string) => void;
   onUnlock: (v: string) => void;
   onCamera: () => void;
   onLight: () => void;
@@ -130,11 +132,15 @@ export function DeviceLock({
                 compact
                 notices={notices}
                 apps={work.apps}
-                onOpen={open}
+                work={work}
+                onOpen={onOpenNotice || open}
                 onDismiss={onDismiss}
               />
             )}
           </div>
+          {work.timeline && (
+            <small className="fiction-lock">{work.timeline.fiction}</small>
+          )}
           <UnlockHandle onUnlock={open} />
 
           <div className="lock-tools">
@@ -272,11 +278,11 @@ export function ControlCenter({
         <div>
           <span>
             <Signal size={18} />
-            <small>主号</small> 中国移动 <Wifi size={17} />
+            <small>主号</small> {network} <Wifi size={17} />
           </span>
           <span>
             <Signal size={18} />
-            <small>副号</small> 中国电信
+            <small>副号</small> 未启用
           </span>
         </div>
         <span>

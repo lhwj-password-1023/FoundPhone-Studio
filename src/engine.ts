@@ -44,7 +44,16 @@ function apply(a: Action, s: Runtime, w: Work) {
       if (!s.hidden.includes(a.key)) s.hidden.push(a.key);
       break;
     case "notification":
-      s.notifications.push(String(a.value));
+      if (
+        a.key &&
+        Object.values(w.data).some((items) =>
+          items.some((i) => i.id === a.key && visible(i, s)),
+        )
+      ) {
+        const notice = "@item/" + a.key;
+        if (!s.notifications.includes(notice) && !s.read.includes(a.key))
+          s.notifications.push(notice);
+      } else if (!w.timeline || !a.key) s.notifications.push(String(a.value));
       break;
     case "call":
       s.notifications.push(`${String(a.value)} 来电`);
@@ -157,6 +166,11 @@ function runQueue(
           });
     } else queue.push(...n.next);
   }
+  if (w.timeline && s.endings.length) {
+    s.scheduled = [];
+    s.choices = [];
+    s.notifications = [];
+  }
   s.trace = s.trace.slice(-100);
   return s;
 }
@@ -167,10 +181,41 @@ export function dispatch(
   target = "",
 ): Runtime {
   const s = structuredClone(previous);
-  if (event === "choose") s.choices = [];
+  if (event === "choose") {
+    const records = Object.values(w.data).flat();
+    const group =
+      w.timeline &&
+      records.find((i) => i.meta.reply === target)?.meta.conversationId;
+    s.choices = group
+      ? s.choices.filter(
+          (c) =>
+            !records.some(
+              (i) =>
+                i.meta.conversationId === group && i.meta.reply === c.target,
+            ),
+        )
+      : [];
+  }
   if (event === "openApp" && !s.visited.includes(target))
     s.visited.push(target);
-  if (event === "read" && !s.read.includes(target)) s.read.push(target);
+  if (event === "read") {
+    const item =
+      w.timeline &&
+      Object.values(w.data)
+        .flat()
+        .find((i) => i.id === target);
+    if (item && !visible(item, s)) return previous;
+    if (!s.read.includes(target)) {
+      s.read.push(target);
+      if (w.timeline)
+        (s.readAt ??= {})[target] = {
+          device: s.date + " " + s.time,
+          elapsedMs: s.elapsedMs ?? 0,
+        };
+    }
+    s.notifications = s.notifications.filter((n) => n !== "@item/" + target);
+  }
+  if (w.timeline && s.endings.length) return s;
   if (w.mode === "explore") return s;
   const queue = w.nodes
     .filter(
@@ -199,13 +244,15 @@ export function advance(
     s.scheduled.sort((a, b) => a.due - b.due);
     const due =
       w.mode !== "explore" && resumes < 200 ? s.scheduled[0] : undefined;
-    const clockAt = s.elapsedMs + 60000 - s.clockRemainderMs;
+    const clockAt = w.timeline
+      ? Infinity
+      : s.elapsedMs + 60000 - s.clockRemainderMs;
     const next = Math.min(
       end,
       clockAt,
       due ? Math.max(s.elapsedMs, due.due) : Infinity,
     );
-    s.clockRemainderMs += next - s.elapsedMs;
+    if (!w.timeline) s.clockRemainderMs += next - s.elapsedMs;
     s.elapsedMs = next;
     if (s.clockRemainderMs >= 60000) {
       s.clockRemainderMs -= 60000;
@@ -279,10 +326,18 @@ export function validateGraph(nodes: StoryNode[]) {
   return errors;
 }
 export function visible(
-  item: { id: string; hidden: boolean; unlock: string },
+  item: {
+    id: string;
+    hidden: boolean;
+    unlock: string;
+    meta?: Record<string, string>;
+  },
   s: Runtime,
 ) {
   return (
+    (!item.meta?.requires || s.variables[item.meta.requires] === true) &&
+    (!item.meta?.stage ||
+      Number(s.variables.stage) >= Number(item.meta.stage)) &&
     !s.hidden.includes(item.id) &&
     (!item.hidden || s.unlocked.includes(item.id)) &&
     (!item.unlock ||

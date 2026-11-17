@@ -2,8 +2,26 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { X } from "lucide-react";
 import { AppArtwork } from "./AppArtwork";
+import { routeForNotice } from "./story-engine/timeline";
 import type { Work } from "./schema";
-export function notificationContent(text: string, apps: Work["apps"]) {
+export function notificationContent(
+  text: string,
+  apps: Work["apps"],
+  work?: Work,
+) {
+  const target = work && routeForNotice(text, work);
+  if (target)
+    return {
+      appId: target.app,
+      title: target.item.meta.conversationId
+        ? target.item.title
+        : apps.find((a) => a.id === target.app)?.name || target.app,
+      body: target.item.password
+        ? "已锁定的内容"
+        : target.item.meta.conversationId
+          ? target.item.body
+          : target.item.title,
+    };
   const separator = text.search(/[:：]/);
   const sender = separator > 0 ? text.slice(0, separator) : "信息";
   const app = apps.find((a) => a.name === sender);
@@ -18,11 +36,13 @@ export function SystemNotifications({
   apps,
   onOpen,
   onDismiss,
+  work,
   compact = false,
 }: {
   notices: string[];
   apps: Work["apps"];
-  onOpen: () => void;
+  work?: Work;
+  onOpen: (notice: string) => void;
   onDismiss: (index: number) => void;
   compact?: boolean;
 }) {
@@ -38,7 +58,7 @@ export function SystemNotifications({
     >
       <div className="notice-cards">
         {shown.map(({ text, index }) => {
-          const n = notificationContent(text, apps);
+          const n = notificationContent(text, apps, work);
           return (
             <motion.div
               layout
@@ -53,7 +73,7 @@ export function SystemNotifications({
                 if (info.offset.x < -80) onDismiss(index);
               }}
             >
-              <button className="notice-open" onClick={onOpen}>
+              <button className="notice-open" onClick={() => onOpen(text)}>
                 <span className="notice-app-art">
                   <AppArtwork id={n.appId} />
                 </span>

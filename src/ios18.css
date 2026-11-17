@@ -953,3 +953,62 @@
   font-size: 12px;
 }
 
+.gpt-guide {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 8px 18px 16px;
+  background: white;
+  color: #202124;
+}
+.gpt-guide header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 19px;
+}
+.gpt-guide main {
+  flex: 1;
+  overflow: auto;
+  padding: 36px 8px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.gpt-guide small {
+  color: #777;
+}
+.gpt-guide .gpt-ask {
+  border-radius: 24px;
+  min-height: 48px;
+  background: #eeeef1;
+  color: #161618;
+}
+.dark-phone .gpt-guide {
+  background: #171719;
+  color: #eee;
+}
+.gpt-guide .gpt-question {
+  margin-left: auto;
+  width: fit-content;
+  border-radius: 20px;
+  background: #8882;
+  padding: 10px 15px;
+}
+.personal-compose {
+  padding: 8px 14px;
+  text-align: left;
+  flex: 1;
+}
+.personal-compose textarea {
+  display: block;
+  width: 100%;
+  min-height: 72px;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+}
+.personal-compose button {
+  padding: 8px;
+  color: var(--ios-blue, #007aff);
+}

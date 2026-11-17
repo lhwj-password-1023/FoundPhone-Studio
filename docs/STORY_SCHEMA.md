@@ -12,7 +12,7 @@
 |content|按 App ID 保存 Item 数组；记录id/title/body/time、hidden、password、unlock、folder、meta等|
 |variables|字符串/数字/布尔初值|
 |events|节点id/label/type/event/target、conditions、actions、next、delayMs；参见原 WORK_FORMAT|
-|tests|name、steps、ending、expectUnlocked；所有ending节点至少一个通过的实际引擎路径|
+|tests|name、steps、ending、expectUnlocked；未完章节可省略 ending，并用非空 expectUnlocked 检查场景终点；所有ending节点至少一个通过的实际引擎路径|
 
 各ID全局唯一且稳定；不要使用随机UUID。默认值由编译器补齐，未知字段拒绝，不会执行脚本。时间线使用 time 事件、delay节点及 date/time动作；来电使用call动作，接听callAnswered。条件使用变量以及 read:/visited:/unlocked:/completed:/clue:/ui: 等原引擎作用域。unlock动作解锁隐藏内容；password是内容密码，测试read前必须提供正确password。玩家选择用choice节点的next或choice动作关联目标节点。商店/账单/社交/通话/日历使用对应 App 的content与meta字段，详见APP_DEVELOPMENT.md。
 

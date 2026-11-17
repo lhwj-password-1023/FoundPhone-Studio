@@ -1,0 +1,342 @@
+.archive-chat {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--chat-bg, #fff);
+  color: var(--chat-ink, #17171a);
+  font:
+    16px/1.42 -apple-system,
+    BlinkMacSystemFont,
+    "PingFang SC",
+    "Apple SD Gothic Neo",
+    sans-serif;
+  padding-top: 0;
+  box-sizing: border-box;
+}
+.archive-chat header,
+.archive-chat footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 8px 15px;
+  flex: none;
+}
+.archive-chat header {
+  border-bottom: 1px solid #8883;
+  background: var(--chat-bar, #f7f7fa);
+}
+.archive-chat header > div {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+}
+.archive-chat header strong {
+  font-size: 13px;
+}
+.archive-chat button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.archive-chat header button {
+  color: #1674dc;
+  padding: 8px;
+}
+.archive-log {
+  overflow: auto;
+  overscroll-behavior: contain;
+  flex: 1;
+  padding: 10px 15px;
+  min-height: 0;
+}
+.archive-date {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #797982;
+  margin: 12px 0;
+}
+.archive-log article {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 8px 0;
+}
+.archive-log article.mine {
+  align-items: flex-end;
+}
+.archive-bubble {
+  cursor: pointer;
+  user-select: none;
+  max-width: 79%;
+  padding: 9px 13px;
+  border-radius: 19px;
+  background: var(--chat-peer, #e9e9ed);
+  white-space: pre-wrap;
+}
+.archive-bubble img,
+.archive-bubble video {
+  max-width: 100%;
+  max-height: 155px;
+  display: block;
+  border-radius: 9px;
+}
+.archive-bubble audio {
+  max-width: 100%;
+}
+.mine .archive-bubble {
+  background: #1674df;
+  color: white;
+}
+.archive-log article > small,
+.peer-typing {
+  font-size: 11px;
+  color: var(--chat-muted, #666973);
+  margin: 2px 6px;
+}
+.archive-chat footer {
+  border-top: 1px solid #8882;
+  padding-bottom: 8px;
+  background: var(--chat-bar, #fafafa);
+}
+.archive-chat .archive-input {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  border: 1px solid #92929880 !important;
+  text-align: left;
+  border-radius: 20px;
+  padding: 9px 14px;
+  flex: 1;
+  font-size: 14px;
+}
+.archive-send {
+  display: grid;
+  place-items: center;
+  background: #1674df !important;
+  color: white !important;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+}
+.archive-chat button:disabled {
+  opacity: 0.52;
+  cursor: default;
+}
+.archive-options,
+.archive-sheet {
+  padding: 12px 16px;
+  display: grid;
+  gap: 6px;
+  background: var(--chat-bar, #f3f3f7);
+}
+.archive-options button,
+.archive-sheet button {
+  background: var(--chat-bg, white);
+  border-radius: 13px;
+  padding: 10px;
+  text-align: left;
+}
+.archive-sheet {
+  position: absolute;
+  z-index: 3;
+  bottom: 90px;
+  left: 10px;
+  right: 10px;
+  border-radius: 16px;
+  box-shadow: 0 7px 36px #0003;
+}
+.archive-sheet p {
+  margin: 0;
+  font-size: 14px;
+}
+.archive-sheet .sheet-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+.archive-kakao {
+  --chat-bg: #b2c7d9;
+  --chat-bar: #b2c7d9;
+  --chat-peer: white;
+  --chat-ink: #202326;
+}
+.archive-kakao header > div {
+  display: flex;
+}
+.archive-kakao header button {
+  color: #263746;
+}
+.archive-kakao .archive-bubble {
+  border-radius: 10px;
+}
+.archive-kakao .mine .archive-bubble,
+.archive-kakao .archive-send {
+  background: #ffe457 !important;
+  color: #302a1b !important;
+}
+.archive-kakao footer {
+  background: #f8f9fa;
+  color: #222;
+}
+.dark-phone .archive-sms {
+  --chat-bg: #101014;
+  --chat-ink: #eee;
+  --chat-peer: #323238;
+  --chat-bar: #202026;
+  --chat-muted: #bbb;
+}
+.app-icon-wrap {
+  position: relative;
+}
+.story-badge {
+  position: absolute;
+  top: -5px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 12px;
+  background: #d8373e;
+  color: white;
+  font:
+    600 12px/18px -apple-system,
+    sans-serif;
+  text-align: center;
+  z-index: 3;
+}
+.fiction-lock {
+  position: absolute;
+  bottom: 112px;
+  align-self: center;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: white;
+  text-shadow: 0 1px 5px #333;
+  pointer-events: none;
+}
+.story-settings-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 7px;
+  background: #eeeef2;
+  color: #333;
+}
+.story-settings-actions button {
+  border: 0;
+  background: transparent;
+  color: #1764aa;
+}
+.archive-photo-info {
+  font-size: 13px;
+  line-height: 1.8;
+  padding: 12px 20px;
+}
+.archive-photo-zoom {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+.archive-photo-zoom img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.archive-photo-zoom.zoomed img {
+  min-width: 190%;
+  height: 165%;
+}
+.story-lock-button {
+  position: absolute;
+  right: -6px;
+  top: 24%;
+  width: 9px;
+  height: 55px;
+  z-index: 5;
+  cursor: pointer;
+  background: #666;
+  border-radius: 3px;
+}
+.story-badge:empty {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone-shell *,
+  .phone-shell *::after,
+  .phone-shell *::before {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.ios18 .wallpaper-photo-window {
+  background-image:
+    linear-gradient(180deg, #16273744, #09162288), var(--story-wallpaper);
+  background-size: cover;
+  background-position: 55% center;
+}
+.wallpaper-photo-window .wallpaper-orb {
+  display: none;
+}
+.archive-browser footer,
+.browser-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+}
+.archive-browser button {
+  border: 0;
+  border-radius: 9px;
+  padding: 7px;
+  background: transparent;
+  color: inherit;
+}
+.archive-browser footer button:disabled {
+  opacity: 0.3;
+}
+.archive-browser.reader-on article {
+  font:
+    19px/1.8 Georgia,
+    serif;
+  background: #fcf7e9;
+}
+.archive-browser .native-reader p {
+  white-space: pre-line;
+}
+.archive-browser .safari-address {
+  position: static;
+}
+.archive-chat header .catalog-avatar {
+  width: 34px;
+  height: 34px;
+}
+.archive-browser .native-reader > button {
+  color: #1266ad;
+}
+.dark-phone .catalog-skin[class*="native-"],
+.dark-phone .native-detail,
+.dark-phone .native-note-paper {
+  background: #19191c;
+  color: #f1f1f3;
+}
+
+.archive-chat .archive-input:has(.compose-in-progress) {
+  opacity: 1;
+}
+.compose-in-progress::after {
+  content: "";
+  display: inline-block;
+  height: 1em;
+  width: 2px;
+  margin-left: 2px;
+  vertical-align: -0.12em;
+  background: currentColor;
+}

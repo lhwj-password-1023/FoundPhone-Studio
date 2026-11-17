@@ -1,8 +1,14 @@
+# 九年时差
+
+本 Fork 默认播放《九年时差》虚构同人故事。点锁屏通知进入会话，轻触输入框选择预设回复，再点发送。原有完整测试桌面可通过 `?preview=test` 进入。故事的维护入口在 [stories/nine-years](stories/nine-years/README.md)。
+
+## 原框架使用说明
+
 # 捡手机 · FoundPhone Studio
 
 《捡手机》是一个可以通过 AI 添加剧情的交互式虚拟手机框架。你不需要重新制作手机界面，只需要准备人物设定、聊天记录和剧情要求，让 AI 填入故事数据。
 
-默认打开完整 App 测试预览：49 个 App 已安装，内页只有中性的测试文字，不含剧情或真实账号。桌面底部为四个 App。`/?preview=test` 也可进入相同测试版本；纯空白入口为 `/?template=blank`。
+原框架的测试入口打开完整 App 测试预览：49 个 App 已安装，内页只有中性的测试文字，不含剧情或真实账号。桌面底部为四个 App。`/?preview=test` 也可进入相同测试版本；纯空白入口为 `/?template=blank`。
 
 ## 可以做什么
 
@@ -51,7 +57,7 @@ npm run preview
 
 上传 `dist/` 的内容即可部署。不能直接双击 HTML 文件运行。
 
-默认故事位于 `stories/template/story.json`；纯空白手机位于 `stories/blank/story.json`，可用 `/?template=blank` 查看。你可以替换演示数据，也可以通过环境变量 `STORY_FILE` 选择其他作品。故事数据与界面代码分离，作品运行时不需要 AI 在线。
+本 Fork 的故事位于 `stories/nine-years/story.json`，原模板位于 `stories/template/story.json`；纯空白手机位于 `stories/blank/story.json`，可用 `/?template=blank` 查看。你可以替换演示数据，也可以通过环境变量 `STORY_FILE` 选择其他作品。故事数据与界面代码分离，作品运行时不需要 AI 在线。
 
 ## 演示与截图
 

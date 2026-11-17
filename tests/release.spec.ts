@@ -1,9 +1,11 @@
 import { test, expect } from "@playwright/test";
-test("published default matches full test preview, four dock apps and updated status bar", async ({
+test("original full test preview, four dock apps and updated status bar", async ({
   page,
   request,
 }) => {
-  const work = await (await request.get("/work.json")).json();
+  const story = await (await request.get("/work.json")).json();
+  expect(story.id).toBe("nine-years");
+  const work = await (await request.get("/test-work.json")).json();
   const preview = await (await request.get("/test-work.json")).json();
   expect(work.id).toBe("ui-test-phone-v2");
   expect(work.apps).toEqual(preview.apps);
@@ -20,7 +22,7 @@ test("published default matches full test preview, four dock apps and updated st
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.setViewportSize({ width: 393, height: 852 });
-  await page.goto("/");
+  await page.goto("/?preview=test");
   await page.getByRole("button", { name: "轻触解锁" }).waitFor();
   await page
     .locator(".phone-screen")
@@ -42,11 +44,9 @@ test("published default matches full test preview, four dock apps and updated st
     .getByRole("button", { name: "打开App Store", exact: true })
     .click();
   await page.getByPlaceholder("搜索全部App").fill("X");
-  const x = page
-    .locator(".runtime-library-row")
-    .filter({
-      has: page.locator(".library-app-title strong", { hasText: /^X$/ }),
-    });
+  const x = page.locator(".runtime-library-row").filter({
+    has: page.locator(".library-app-title strong", { hasText: /^X$/ }),
+  });
   await expect(x.locator("[data-original-icon=twitter] img")).toHaveAttribute(
     "src",
     /twitter\.svg$/,

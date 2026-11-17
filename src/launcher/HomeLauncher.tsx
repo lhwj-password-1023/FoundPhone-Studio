@@ -75,7 +75,14 @@ function WidgetFace({
             }).format(date)}
           </span>
           <b className="widget-day">{date.getUTCDate()}</b>
-          <small>{work.data.calendar?.[0]?.title || "今天没有日程"}</small>
+          <small>
+            {work.data.calendar?.find(
+              (i) =>
+                !i.hidden &&
+                !i.password &&
+                i.time.startsWith(work.phone.date || ""),
+            )?.title || "今天没有日程"}
+          </small>
         </>
       ) : widget.type === "clock" ? (
         <>

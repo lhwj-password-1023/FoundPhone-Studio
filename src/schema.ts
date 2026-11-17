@@ -86,6 +86,13 @@ export const nodeSchema = z.object({
 });
 export type StoryNode = z.infer<typeof nodeSchema>;
 export const workSchema = z.object({
+  timeline: z
+    .object({
+      years: z.number().int().positive(),
+      fiction: z.string(),
+      birthdays: z.record(z.string(), z.string()).optional(),
+    })
+    .optional(),
   formatVersion: z.literal(1),
   id: z.string(),
   title: z.string().min(1).max(200),
@@ -131,6 +138,7 @@ export const workSchema = z.object({
 export type Work = z.infer<typeof workSchema>;
 export type UiValue = string | number | boolean | string[];
 export type Runtime = {
+  readAt?: Record<string, { device: string; elapsedMs: number }>;
   date?: string;
   elapsedMs?: number;
   clockRemainderMs?: number;

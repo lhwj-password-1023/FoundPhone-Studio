@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   ChevronLeft,
   MoreHorizontal,
@@ -10,10 +10,10 @@ import {
   Folder,
   Search,
   Copy,
-  Check,
 } from "lucide-react";
+import { NoteDetail } from "./Notes";
 import { RichText } from "../RichText";
-import { safeMedia, type Item } from "../schema";
+import { safeMedia, type UiValue, type Item } from "../schema";
 export const nativeDetailApps = new Set([
   "notes",
   "photos",
@@ -27,29 +27,41 @@ export function NativeDetail({
   app,
   item,
   back,
+  ui,
+  onUi,
+  adjacent,
+  openMessage,
+  writeNote,
 }: {
   app: string;
   item: Item;
+  writeNote?: () => void;
+  openMessage?: () => void;
   back: () => void;
+  ui?: Record<string, UiValue>;
+  onUi?: (k: string, v: UiValue) => void;
+  adjacent?: (direction: number) => void;
 }) {
-  const [favorite, setFavorite] = useState(item.favorite),
+  const [info, setInfo] = useState(false),
+    [zoom, setZoom] = useState(false);
+  const start = useRef(0);
+  const [localFavorite, setFavorite] = useState(item.favorite),
     [copied, setCopied] = useState(false),
     [call, setCall] = useState(false);
+  const favorite = ui?.["favorite:" + item.id] ?? localFavorite;
   const media = safeMedia(item.media),
     name =
-      app === "notes"
-        ? "备忘录"
-        : app === "contacts"
-          ? "通讯录"
-          : app === "photos"
-            ? "所有照片"
-            : app === "phone"
-              ? "最近通话"
-              : app === "calendar"
-                ? "日历"
-                : app === "files"
-                  ? "浏览"
-                  : "书签";
+      app === "contacts"
+        ? "通讯录"
+        : app === "photos"
+          ? "所有照片"
+          : app === "phone"
+            ? "最近通话"
+            : app === "calendar"
+              ? "日历"
+              : app === "files"
+                ? "浏览"
+                : "书签";
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(item.body);
@@ -58,6 +70,8 @@ export function NativeDetail({
       setCopied(false);
     }
   };
+  if (app === "notes")
+    return <NoteDetail {...{ item, back, ui, onUi, writeNote }} />;
   return (
     <div className={"native-detail native-detail-" + app}>
       <header className="app-nav">
@@ -72,6 +86,17 @@ export function NativeDetail({
       </header>
       {copied && (
         <div className="native-action-sheet">
+          {onUi && app === "photos" && (
+            <button
+              onClick={() => {
+                onUi("trash:" + item.id, !ui?.["trash:" + item.id]);
+                setCopied(false);
+                back();
+              }}
+            >
+              {ui?.["trash:" + item.id] ? "恢复" : "移至最近删除"}
+            </button>
+          )}
           <button onClick={copy}>
             <Copy size={18} />
             复制文字
@@ -81,9 +106,27 @@ export function NativeDetail({
       )}
       {app === "photos" ? (
         <>
-          <div className="native-photo-stage">
+          <div
+            className="native-photo-stage"
+            onTouchStart={(e) => {
+              start.current = e.touches[0].clientX;
+            }}
+            onTouchEnd={(e) => {
+              const dx = e.changedTouches[0].clientX - start.current;
+              if (!zoom && Math.abs(dx) > 50) adjacent?.(dx < 0 ? 1 : -1);
+            }}
+          >
             {media ? (
-              <img src={media} alt={item.title} />
+              item.kind === "video" ? (
+                <video controls playsInline src={media} />
+              ) : (
+                <div
+                  className={"archive-photo-zoom " + (zoom ? "zoomed" : "")}
+                  onDoubleClick={() => setZoom(!zoom)}
+                >
+                  <img src={media} alt={item.title} />
+                </div>
+              )
             ) : (
               <div className="native-photo-caption">
                 <h2>{item.title}</h2>
@@ -91,13 +134,43 @@ export function NativeDetail({
               </div>
             )}
           </div>
+          {info && (
+            <div className="archive-photo-info">
+              {[
+                ["拍摄", "capturedAt"],
+                ["文件创建", "createdAt"],
+                ["导入", "importedAt"],
+                ["地点", "location"],
+                ["设备", "device"],
+              ].map(
+                ([label, key]) =>
+                  item.meta[key] && (
+                    <div key={key}>
+                      {label} {item.meta[key]}
+                    </div>
+                  ),
+              )}
+              {item.body}
+            </div>
+          )}
           <footer className="native-detail-toolbar">
+            <button onClick={() => setInfo(!info)} aria-label="照片信息">
+              ⓘ
+            </button>
+            {media && (
+              <button onClick={() => setZoom(!zoom)} aria-label="缩放照片">
+                {zoom ? "−" : "＋"}
+              </button>
+            )}
             <button aria-label="分享照片说明" onClick={copy}>
               <Share />
             </button>
             <button
               aria-label="收藏照片"
-              onClick={() => setFavorite(!favorite)}
+              onClick={() => {
+                setFavorite(!favorite);
+                onUi?.("favorite:" + item.id, !favorite);
+              }}
             >
               <Heart fill={favorite ? "#007aff" : "none"} />
             </button>
@@ -118,7 +191,18 @@ export function NativeDetail({
             ].map(([Icon, label]) => {
               const Glyph = Icon as typeof Phone;
               return (
-                <button key={String(label)} onClick={() => setCall(true)}>
+                <button
+                  key={String(label)}
+                  disabled={
+                    !!ui &&
+                    (label === "视频" || (label === "信息" && !openMessage))
+                  }
+                  onClick={() =>
+                    label === "信息" && openMessage
+                      ? openMessage()
+                      : setCall(true)
+                  }
+                >
                   <Glyph size={23} />
                   {String(label)}
                 </button>
@@ -127,7 +211,9 @@ export function NativeDetail({
           </div>
           <div className="native-detail-group">
             <small>手机</small>
-            <p className="native-blue">{item.meta.phone || "未设置号码"}</p>
+            <p className="native-blue">
+              {item.meta.phone || item.meta.number || "未设置号码"}
+            </p>
           </div>
           <div className="native-detail-group">
             <small>备注</small>
@@ -135,28 +221,13 @@ export function NativeDetail({
           </div>
           {call && (
             <div className="native-detail-group">
-              <p>作品内模拟 · {item.title}</p>
+              <p>
+                {item.meta.outcome || "暂时无法接通"} · {item.title}
+              </p>
               <button onClick={() => setCall(false)}>结束</button>
             </div>
           )}
         </div>
-      ) : app === "notes" ? (
-        <>
-          <div className="native-detail-scroll native-note-paper">
-            <time>{item.time}</time>
-            <h1>{item.title}</h1>
-            <RichText value={item.richText} fallback={item.body} />
-          </div>
-          <footer className="native-detail-toolbar">
-            <button aria-label="返回文件夹" onClick={back}>
-              <Folder />
-            </button>
-            <span />
-            <button aria-label="复制备忘录" onClick={copy}>
-              {copied ? <Check /> : <Share />}
-            </button>
-          </footer>
-        </>
       ) : app === "calendar" ? (
         <div className="native-detail-scroll native-event-paper">
           <h1>{item.title}</h1>

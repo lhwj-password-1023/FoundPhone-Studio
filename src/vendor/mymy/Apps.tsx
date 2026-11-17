@@ -67,6 +67,7 @@ export function MymyKakao(p: SkinProps) {
     [draft, setDraft] = useState(""),
     [query, setQuery] = useState(""),
     [menu, setMenu] = useState(false);
+  const [profile, setProfile] = useState<Item | null>(null);
   const list = grouped(p.items),
     messages = [
       ...p.items.filter((i) => i.title === p.thread),
@@ -259,32 +260,81 @@ export function MymyKakao(p: SkinProps) {
             <div className="kzksec">
               {tab === "好友" ? "好友" : "全部聊天"} {list.length}
             </div>
-            {list
-              .filter((g) => g.title.includes(query.trim()))
-              .map((g) => {
-                const last = g.items.at(-1)!;
-                return (
-                  <button
-                    className="kzkr kzkcr"
-                    key={g.title}
-                    onClick={() => p.onThread(g.title)}
-                  >
-                    <Avatar name={last.sender || g.title} src={last.avatar} />
-                    <span className="kzkn">
-                      <b>{g.title}</b>
-                      <small>{tab === "好友" ? last.sender : last.body}</small>
-                    </span>
-                    <span className="kzkmt">
-                      {last.time.slice(-5)}
-                      {last.meta.unread && (
-                        <i className="kzkbd">{last.meta.unread}</i>
-                      )}
-                    </span>
-                  </button>
-                );
-              })}
+            {p.archive && tab === "好友"
+              ? p.contacts
+                  ?.filter((i) => i.title.includes(query.trim()))
+                  .map((i) => (
+                    <button
+                      key={i.id}
+                      className="kzkr"
+                      onClick={() => setProfile(i)}
+                    >
+                      <Avatar name={i.title} />
+                      {i.title}
+                    </button>
+                  ))
+              : list
+                  .filter(
+                    (g) =>
+                      g.title.includes(query.trim()) ||
+                      g.items.some((i) => i.body.includes(query.trim())),
+                  )
+                  .map((g) => {
+                    const last = g.items.at(-1)!;
+                    return (
+                      <button
+                        className="kzkr kzkcr"
+                        key={g.title}
+                        onClick={() => p.onThread(g.title)}
+                      >
+                        <Avatar
+                          name={last.sender || g.title}
+                          src={last.avatar}
+                        />
+                        <span className="kzkn">
+                          <b>{g.title}</b>
+                          <small>
+                            {tab === "好友" ? last.sender : last.body}
+                          </small>
+                        </span>
+                        <span className="kzkmt">
+                          {last.time.slice(-5)}
+                          {p.archive &&
+                            g.items.some((i) => !i.read && !i.outgoing) && (
+                              <i className="kzkbd">
+                                {
+                                  g.items.filter((i) => !i.read && !i.outgoing)
+                                    .length
+                                }
+                              </i>
+                            )}
+                          {last.meta.unread && (
+                            <i className="kzkbd">{last.meta.unread}</i>
+                          )}
+                        </span>
+                      </button>
+                    );
+                  })}
             {!list.length && <Blank />}
           </div>
+          {profile && (
+            <div className="mymy-local-menu">
+              <Avatar name={profile.title} />
+              <strong>{profile.title}</strong>
+              <p>{profile.body}</p>
+              {list.some((g) => g.title === profile.title) && (
+                <button
+                  onClick={() => {
+                    p.onThread(profile.title);
+                    setProfile(null);
+                  }}
+                >
+                  聊天
+                </button>
+              )}
+              <button onClick={() => setProfile(null)}>完成</button>
+            </div>
+          )}
           <nav className="kzknv">
             {[Users, MessageCircle, Compass, Grid, MoreHorizontal].map(
               (Icon, i) => (

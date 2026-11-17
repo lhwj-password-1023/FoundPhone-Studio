@@ -50,12 +50,18 @@ export function NativeSettings({
   items,
   creator,
   onItem,
+  appearance,
+  setAppearance,
+  onRestart,
   onSettings,
 }: {
   work: Work;
   items: Item[];
   creator: boolean;
   onItem: (i: Item) => void;
+  appearance?: string;
+  setAppearance?: (value: string) => void;
+  onRestart?: () => void;
   onSettings?: () => void;
 }) {
   const nav = useNavigation(),
@@ -82,11 +88,25 @@ export function NativeSettings({
       case "通用":
         return (
           <div className="settings-group">
+            {setAppearance &&
+              toggle("深色模式", appearance === "dark", (v) =>
+                setAppearance(v ? "dark" : "light"),
+              )}
+            {onRestart &&
+              row("重新开始故事", "", () => nav.push("重新开始故事"))}
             {row("关于本机", "", () => nav.push("关于本机"))}
             {row("软件更新", "iOS 18.0", () => nav.push("软件更新"))}
             {row("iPhone 储存空间", "", () => nav.push("iPhone 储存空间"))}
             {row("日期与时间", "", () => nav.push("日期与时间"))}
             {row("语言与地区", "简体中文", () => nav.push("语言与地区"))}
+          </div>
+        );
+      case "重新开始故事":
+        return (
+          <div className="settings-group">
+            <p>清除本故事的阅读记录、回复和密码解锁进度？</p>
+            {row("清除并重新开始", "", onRestart)}
+            {row("取消", "", () => nav.push("通用"))}
           </div>
         );
       case "关于本机":
@@ -154,7 +174,10 @@ export function NativeSettings({
           <div className="settings-group">
             {row("日期", work.phone.date || "2026-09-01")}
             {row("时间", work.phone.time)}
-            {row("时区", "中国标准时间")}
+            {row(
+              "时区",
+              work.timeline ? "首尔 · 韩国标准时间" : "中国标准时间",
+            )}
           </div>
         );
       case "iPhone 储存空间":

@@ -1,3 +1,5 @@
+import { StoryThread } from "./skins/StoryThread";
+import { routeForNotice } from "./story-engine/timeline";
 import { StatusGlyph } from "./ios/StatusGlyph";
 import { SocialDetail, socialDetailApps } from "./skins/SocialDetails";
 import { NativeCalculator } from "./ios/Calculator";
@@ -67,6 +69,7 @@ import { db } from "./persistence";
 export function AppIcon({
   id,
   name,
+  badge = 0,
   small = false,
   custom = "",
   date,
@@ -74,6 +77,7 @@ export function AppIcon({
 }: {
   id: string;
   name?: string;
+  badge?: number;
   small?: boolean;
   custom?: string;
   date?: string;
@@ -90,12 +94,19 @@ export function AppIcon({
           ) : (
             <span>{custom.slice(0, 2)}</span>
           )
+        ) : id === "gpt" ? (
+          <img
+            src="./chatgpt.png"
+            alt=""
+            style={{ width: "100%", height: "100%", background: "white" }}
+          />
         ) : hasNativeArtwork(id) ? (
           <AppArtwork id={id} date={date} time={time} />
         ) : (
           <Icon size={small ? 21 : 28} strokeWidth={1.65} />
         )}
       </span>
+      {badge > 0 && <b className="story-badge">{badge}</b>}
       {name && <span className="app-name">{name}</span>}
     </span>
   );
@@ -141,13 +152,14 @@ function PhoneRuntime({
   const [recent, setRecent] = useState<string[]>([]);
   const appSnapshots = useRef(new Map<string, HTMLElement>());
   const [banner, setBanner] = useState("");
-  const noticesSeen = useRef(0);
+  const lastNotices = useRef<string[]>([]);
   const [contextApp, setContextApp] = useState("");
   const [deviceScale, setDeviceScale] = useState(0.84);
   const shell = useRef<HTMLDivElement>(null);
   const gesture = useRef({ x: 0, y: 0, time: 0, zone: "" });
   const [launchOrigin, setLaunchOrigin] = useState(screenOrigin);
 
+  const pendingNotice = useRef("");
   const beginUnlock = () => {
     setPinError("");
     setQuickCamera(false);
@@ -163,6 +175,8 @@ function PhoneRuntime({
   const [panel, setPanel] = useState("");
   const [own, setOwn] = useState(() => initialRuntime(work));
   const [ready, setReady] = useState(creator || !!external);
+  const freshTest =
+    new URLSearchParams(location.search).get("play") === "fresh";
   const [loadError, setLoadError] = useState("");
   useEffect(() => {
     const el = shell.current;
@@ -199,6 +213,11 @@ function PhoneRuntime({
   useEffect(() => {
     let active = true;
     if (creator || external) return;
+    if (freshTest) {
+      setOwn(dispatch(work, initialRuntime(work), "start"));
+      setReady(true);
+      return;
+    }
     void db.saves
       .get(work.id)
       .then((saved) => {
@@ -219,13 +238,13 @@ function PhoneRuntime({
     return () => {
       active = false;
     };
-  }, [work.id, work.updatedAt, creator, external]);
+  }, [work.id, work.updatedAt, creator, external, freshTest]);
   useEffect(() => {
-    if (!creator && !external && ready)
+    if (!freshTest && !creator && !external && ready)
       void db.saves
         .put({ id: work.id, state: own })
         .catch(() => setLoadError("存档失败，请检查浏览器存储权限。"));
-  }, [own, creator, work.id, external, ready]);
+  }, [own, creator, work.id, external, ready, freshTest]);
   useEffect(() => {
     if (creator || !ready) return;
     const interval = setInterval(() => {
@@ -277,11 +296,67 @@ function PhoneRuntime({
   };
   const installedApps = work.apps.filter((a) => a.installed);
   const apps = installedApps.filter((a) => a.visible);
+  const goToRecord = (appId: string, item?: Item) => {
+    open(appId);
+    if (!item || !visible(item, runtimeRef.current)) return;
+    const current = runtimeRef.current;
+    const route: Record<string, UiValue> = item.meta.conversationId
+      ? {
+          thread: item.title,
+          detail: "",
+          ["anchor:" + item.title]: item.id,
+          routeVisit: Number(current.ui?.[appId]?.routeVisit || 0) + 1,
+        }
+      : { thread: "", detail: item.id };
+    const next = {
+      ...current,
+      ui: { ...current.ui, [appId]: { ...current.ui?.[appId], ...route } },
+    };
+    update(
+      item.meta.conversationId || item.password
+        ? next
+        : dispatch(work, next, "read", item.id),
+    );
+  };
+  const followNotice = (notice: string) => {
+    const route = routeForNotice(notice, work);
+    goToRecord(
+      route?.app || notificationContent(notice, work.apps).appId,
+      route?.item,
+    );
+  };
+  const openNotice = (notice: string) => {
+    setPanel("");
+    setBanner("");
+    if (locked) {
+      pendingNotice.current = notice;
+      beginUnlock();
+    } else followNotice(notice);
+  };
+  const home = () => {
+    setApp("");
+    event("home", "");
+  };
+  const restart = () => {
+    update(dispatch(work, initialRuntime(work), "start"));
+    appSnapshots.current.clear();
+    setRecent([]);
+    pendingNotice.current = "";
+    setBanner("");
+    setPanel("");
+    setApp("");
+    setLocked(true);
+  };
   const unlock = (pin = "") => {
     if (!work.phone.passcode || pin === work.phone.passcode) {
       setLocked(false);
       setPinOpen(false);
       event("password", pin);
+      event("unlock", "");
+      if (pendingNotice.current) {
+        followNotice(pendingNotice.current);
+        pendingNotice.current = "";
+      }
     } else {
       setPinError("密码不正确");
       setPinOpen(true);
@@ -293,15 +368,16 @@ function PhoneRuntime({
   const displayTime = creator ? work.phone.time : s.time || work.phone.time;
   const plugin = getApp(app);
   useEffect(() => {
-    const count = s.notifications.length;
-    if (!locked && work.phone.notifications && count > noticesSeen.current) {
-      setBanner(s.notifications.at(-1) || "");
-      const timer = setTimeout(() => setBanner(""), 4500);
-      noticesSeen.current = count;
-      return () => clearTimeout(timer);
-    }
-    noticesSeen.current = count;
-  }, [s.notifications.length, locked, work.phone.notifications]);
+    const latest = s.notifications.at(-1);
+    const added = latest && !lastNotices.current.includes(latest);
+    lastNotices.current = s.notifications;
+    if (!locked && added && work.phone.notifications) setBanner(latest);
+  }, [s.notifications, locked, work.phone.notifications]);
+  useEffect(() => {
+    if (!banner) return;
+    const timer = setTimeout(() => setBanner(""), 4500);
+    return () => clearTimeout(timer);
+  }, [banner]);
   const dismissNotice = (index: number) =>
     update({
       ...runtimeRef.current,
@@ -313,9 +389,33 @@ function PhoneRuntime({
   return (
     <div
       ref={shell}
-      style={{ "--phone-scale": deviceScale } as CSSProperties}
-      className={`phone-shell ios18 ${work.phone.theme === "dark" ? "dark-phone" : ""}`}
+      style={
+        {
+          "--phone-scale": deviceScale,
+          "--story-wallpaper": work.phone.wallpaper.startsWith("photo-")
+            ? 'url("' +
+              safeMedia(
+                work.data.photos?.find(
+                  (i) => i.id === work.phone.wallpaper.slice(6) && !i.hidden,
+                )?.media || "",
+              ) +
+              '")'
+            : undefined,
+        } as CSSProperties
+      }
+      className={`phone-shell ios18 ${(s.ui?.settings?.appearance || work.phone.theme) === "dark" ? "dark-phone" : ""}`}
     >
+      {work.timeline && !locked && (
+        <button
+          className="story-lock-button"
+          aria-label="锁定手机"
+          onClick={() => {
+            setLocked(true);
+            setBanner("");
+            setPanel("");
+          }}
+        />
+      )}
       <KeyboardContext.Provider value={setKeyboard}>
         <div
           className={`phone-screen wallpaper-${work.phone.wallpaper} ${locked ? "is-locked" : ""} ${app ? "in-app" : ""} ${keyboard ? "keyboard-open" : ""}`}
@@ -367,7 +467,7 @@ function PhoneRuntime({
                 captureApp();
                 setPanel("switcher");
               } else {
-                setApp("");
+                home();
                 setPanel("");
                 setFolder("");
               }
@@ -427,6 +527,7 @@ function PhoneRuntime({
                 pinOpen={pinOpen}
                 setPinOpen={setPinOpen}
                 error={pinError}
+                onOpenNotice={openNotice}
                 onUnlock={unlock}
                 onLight={() => setPanel("light")}
                 onCamera={() => {
@@ -452,10 +553,19 @@ function PhoneRuntime({
                   ]}
                   creator={creator}
                   state={s}
+                  onChoose={(id) =>
+                    update(choose(work, runtimeRef.current, id))
+                  }
+                  goToRecord={(id) => {
+                    const found = routeForNotice("@item/" + id, work);
+                    if (found) goToRecord(found.app, found.item);
+                  }}
+                  onEvent={event}
+                  onRestart={restart}
                   onRead={(id) => event("read", id)}
                   onEdit={(item) => onEdit?.(app, item)}
                   onAdd={() => onAdd?.(app)}
-                  onBack={() => setApp("")}
+                  onBack={home}
                   onSettings={onSettings}
                   onUi={(key, value) => {
                     const current = runtimeRef.current;
@@ -483,8 +593,12 @@ function PhoneRuntime({
                   "home-" + homeRequest + (app === "appstore" ? "store" : "")
                 }
                 storeOpen={app === "appstore"}
-                closeStore={() => setApp("")}
-                work={work}
+                closeStore={home}
+                work={
+                  s.date && s.date !== work.phone.date
+                    ? { ...work, phone: { ...work.phone, date: s.date } }
+                    : work
+                }
                 layout={deviceLayout.layout}
                 change={deviceLayout.change}
                 importLayout={deviceLayout.importLayout}
@@ -499,6 +613,17 @@ function PhoneRuntime({
                     id={a.id}
                     name={small ? undefined : a.name}
                     small={small}
+                    badge={
+                      work.timeline && ["messages", "kakao"].includes(a.id)
+                        ? (work.data[a.id] || []).filter(
+                            (i) =>
+                              !i.outgoing &&
+                              !i.read &&
+                              !s.read.includes(i.id) &&
+                              visible(i, s),
+                          ).length
+                        : 0
+                    }
                     custom={a.icon}
                     date={s.date || work.phone.date}
                     time={s.time}
@@ -555,12 +680,8 @@ function PhoneRuntime({
                     <SystemNotifications
                       notices={s.notifications}
                       apps={work.apps}
-                      onOpen={() => {
-                        setPanel("");
-                        if (locked) beginUnlock();
-                        else if (installedApps.some((a) => a.id === "messages"))
-                          open("messages");
-                      }}
+                      work={work}
+                      onOpen={openNotice}
                       onDismiss={dismissNotice}
                     />
                   ) : (
@@ -577,7 +698,7 @@ function PhoneRuntime({
               )}
             </div>
           )}
-          {!creator && s.choices.length > 0 && !locked && (
+          {!creator && !work.timeline && s.choices.length > 0 && !locked && (
             <div className="story-overlay">
               <span className="eyebrow">故事来到一个岔路口</span>
               <h3>你会如何选择？</h3>
@@ -592,7 +713,7 @@ function PhoneRuntime({
               ))}
             </div>
           )}
-          {!creator && s.endings.length > 0 && !locked && (
+          {!creator && !work.timeline && s.endings.length > 0 && !locked && (
             <div className="story-overlay ending">
               <span className="eyebrow">ENDING · {s.endings.length}</span>
               <h2>故事在这里停泊。</h2>
@@ -678,21 +799,23 @@ function PhoneRuntime({
               </div>
             </div>
           )}
-          {banner && !locked && (
+          {banner && s.notifications.includes(banner) && !locked && (
             <button
               className="device-banner"
               onClick={() => {
                 setBanner("");
-                setPanel("notification");
+                openNotice(banner);
               }}
             >
               <AppIcon
-                id={notificationContent(banner, work.apps).appId}
+                id={notificationContent(banner, work.apps, work).appId}
                 small
               />
               <span>
-                <strong>{notificationContent(banner, work.apps).title}</strong>
-                <span>{notificationContent(banner, work.apps).body}</span>
+                <strong>
+                  {notificationContent(banner, work.apps, work).title}
+                </strong>
+                <span>{notificationContent(banner, work.apps, work).body}</span>
               </span>
             </button>
           )}
@@ -785,7 +908,7 @@ function PhoneRuntime({
               captureApp();
               setHomeRequest((n) => n + 1);
               setKeyboard(false);
-              setApp("");
+              home();
               setFolder("");
               setPanel("");
             }}
@@ -855,6 +978,10 @@ function Media({ item }: { item: Item }) {
   );
 }
 function AppContent({
+  onChoose,
+  onEvent,
+  goToRecord,
+  onRestart,
   app,
   name,
   items,
@@ -868,6 +995,10 @@ function AppContent({
   onUi,
   work,
 }: {
+  onChoose: (id: string) => void;
+  onEvent: (event: string, target: string) => void;
+  goToRecord: (id: string) => void;
+  onRestart: () => void;
   app: AppPlugin;
   name: string;
   items: Item[];
@@ -881,12 +1012,35 @@ function AppContent({
   onUi?: (key: string, value: UiValue) => void;
   work: Work;
 }) {
-  const [detail, setDetail] = useState<Item | null>(null);
-  const [thread, setThread] = useState("");
+  const archive = !!work.timeline && !creator;
+  const ui = state.ui?.[app.id];
+  if (archive && app.id === "notes") {
+    items = items.map((item) =>
+      item.meta.writtenFlag && state.variables[item.meta.writtenFlag] === true
+        ? { ...item, body: item.meta.composeText }
+        : item,
+    );
+  }
+  const [localDetail, setLocalDetail] = useState<Item | null>(null);
+  const [localThread, setLocalThread] = useState("");
+  const detail = archive
+    ? [...items, ...(app.id === "phone" ? work.data.contacts || [] : [])].find(
+        (i) => i.id === ui?.detail && visible(i, state),
+      ) || null
+    : localDetail;
+  const thread = archive ? String(ui?.thread || "") : localThread;
+  const setThread = (v: string) =>
+    archive ? onUi?.("thread", v) : setLocalThread(v);
+  const setDetail = (v: Item | null) =>
+    archive ? onUi?.("detail", v?.id || "") : setLocalDetail(v);
   const [tab, setTab] = useState(app.tabs[0]);
   const [q, setQ] = useState("");
   const [pw, setPw] = useState("");
-  const [unlocks, setUnlocks] = useState<string[]>([]);
+  const [localUnlocks, setLocalUnlocks] = useState<string[]>([]);
+  const unlocks =
+    archive && Array.isArray(ui?.passwords) ? ui.passwords : localUnlocks;
+  const setUnlocks = (ids: string[]) =>
+    archive ? onUi?.("passwords", ids) : setLocalUnlocks(ids);
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
   const shown = items
@@ -905,6 +1059,8 @@ function AppContent({
       onEdit(i);
       return;
     }
+    setPw("");
+    setPwError("");
     setDetail(i);
     if (!i.password || unlocks.includes(i.id)) onRead(i.id);
   };
@@ -926,6 +1082,7 @@ function AppContent({
         <div className="locked-note">
           <LockKeyhole size={36} />
           <h3>这条内容已锁定</h3>
+          <p>{detail.meta.hint}</p>
           <input
             type="password"
             placeholder="内容密码"
@@ -936,6 +1093,7 @@ function AppContent({
             onClick={() => {
               if (pw === detail.password) {
                 setUnlocks([...unlocks, detail.id]);
+                onEvent("password", detail.id);
                 onRead(detail.id);
                 setPwError("");
               } else setPwError("密码不正确");
@@ -980,6 +1138,62 @@ function AppContent({
       )}
     </div>
   ) : null;
+  if (archive && thread && ["kakao", "messages"].includes(app.id))
+    return (
+      <StoryThread
+        key={app.id + thread + String(ui?.routeVisit || "")}
+        app={app.id}
+        work={work}
+        state={state}
+        thread={thread}
+        items={shown}
+        read={onRead}
+        send={onChoose}
+        onEvent={onEvent}
+        back={() => setThread("")}
+        onUi={onUi}
+        openResource={goToRecord}
+      />
+    );
+  if (app.id === "gpt" && !creator) {
+    const hint = items.find(
+      ({ meta }) =>
+        (meta.flag && state.variables[meta.flag] === true) ||
+        (meta.unlocked && state.unlocked.includes(meta.unlocked)) ||
+        (meta.choice && state.choices.length > 0) ||
+        (meta.read && state.read.includes(meta.read)) ||
+        meta.default === "yes",
+    );
+    return (
+      <section className="gpt-guide">
+        <header>
+          <button aria-label="返回桌面首页" onClick={onBack}>
+            <ChevronLeft />
+          </button>
+          <strong>ChatGPT</strong>
+        </header>
+        <main>
+          {ui?.answer ? (
+            <>
+              <p className="gpt-question">下一步该点哪里？</p>
+              <small>剧情提示</small>
+              <p role="status">{String(ui.answer)}</p>
+            </>
+          ) : (
+            <h2>需要一点提示吗？</h2>
+          )}
+        </main>
+        <button
+          className="gpt-ask"
+          onClick={() =>
+            onUi?.("answer", hint?.body || "当前没有新的剧情提示。")
+          }
+        >
+          下一步该点哪里？ ↑
+        </button>
+      </section>
+    );
+  }
   if (Skin)
     return (
       <>
@@ -989,10 +1203,21 @@ function AppContent({
               appId={app.id}
               owner={work.phone.owner}
               virtualTime={state.time}
+              archive={archive}
+              virtualDate={state.date || work.phone.date}
+              onEvent={onEvent}
+              contacts={work.data.contacts?.filter((i) => visible(i, state))}
               ui={state.ui?.[app.id]}
               onUi={creator ? undefined : onUi}
               name={name}
-              items={shown}
+              items={shown.map((i) => ({
+                ...i,
+                read: i.read || state.read.includes(i.id),
+                favorite:
+                  typeof ui?.["favorite:" + i.id] === "boolean"
+                    ? !!ui["favorite:" + i.id]
+                    : i.favorite,
+              }))}
               creator={creator}
               onRead={onRead}
               onItem={read}
@@ -1016,7 +1241,40 @@ function AppContent({
             />
           ) : nativeDetailApps.has(app.id) &&
             (!detail.password || unlocks.includes(detail.id)) ? (
-            <NativeDetail app={app.id} item={detail} back={back} />
+            <NativeDetail
+              writeNote={
+                archive && detail.meta.composeText && !detail.body
+                  ? () => onEvent("writeNote", detail.id)
+                  : undefined
+              }
+              openMessage={
+                work.data.messages?.some(
+                  (i) => i.title === detail.title && visible(i, state),
+                )
+                  ? () =>
+                      goToRecord(
+                        work.data.messages.find(
+                          (i) => i.title === detail.title && visible(i, state),
+                        )!.id,
+                      )
+                  : undefined
+              }
+              key={detail.id}
+              app={app.id}
+              item={detail}
+              back={back}
+              ui={ui}
+              onUi={onUi}
+              adjacent={
+                app.id === "photos"
+                  ? (dir) => {
+                      const i = shown.findIndex((x) => x.id === detail.id);
+                      const next = shown[i + dir];
+                      if (next) read(next);
+                    }
+                  : undefined
+              }
+            />
           ) : (
             <>
               <div className="app-nav">
@@ -1056,13 +1314,29 @@ function AppContent({
         </button>
       </div>
       {app.id === "settings" && !detail ? (
-        <NativeSettings
-          work={work}
-          items={items}
-          creator={creator}
-          onItem={read}
-          onSettings={onSettings}
-        />
+        <>
+          <NativeSettings
+            onRestart={archive ? onRestart : undefined}
+            appearance={String(
+              state.ui?.settings?.appearance || work.phone.theme,
+            )}
+            setAppearance={
+              archive ? (value) => onUi?.("appearance", value) : undefined
+            }
+            work={{
+              ...work,
+              phone: {
+                ...work.phone,
+                time: state.time,
+                date: state.date || work.phone.date,
+              },
+            }}
+            items={shown}
+            creator={creator}
+            onItem={read}
+            onSettings={onSettings}
+          />
+        </>
       ) : app.id === "calculator" && !detail ? (
         <NativeCalculator
           items={shown}
@@ -1074,7 +1348,7 @@ function AppContent({
         detailView
       ) : app.engine === "messaging" && thread ? (
         <div className="chat-content">
-          <div className="chat-time">2026 年 9 月 1 日</div>
+          <div className="chat-time">{state.date || work.phone.date}</div>
           {shown
             .filter((i) => i.title === thread)
             .map((i) => (

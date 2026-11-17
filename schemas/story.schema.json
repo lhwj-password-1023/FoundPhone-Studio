@@ -2,6 +2,33 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
+    "timeline": {
+      "type": "object",
+      "properties": {
+        "years": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "fiction": {
+          "type": "string"
+        },
+        "birthdays": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "years",
+        "fiction"
+      ],
+      "additionalProperties": false
+    },
     "scriptVersion": {
       "type": "number",
       "const": 1
@@ -643,7 +670,6 @@
         "required": [
           "name",
           "steps",
-          "ending",
           "expectUnlocked"
         ],
         "additionalProperties": false

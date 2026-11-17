@@ -214,3 +214,12 @@
   background: none;
   color: #007aff;
 }
+
+.native-note-paper .note-write-action {
+  border: 0;
+  border-radius: 12px;
+  padding: 9px 14px;
+  background: #f6e9b7;
+  color: #644900;
+  font: inherit;
+}

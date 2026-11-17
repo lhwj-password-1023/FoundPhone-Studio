@@ -1,3 +1,5 @@
+import { DraftInput } from "./ProgressiveText";
+import { ArchiveBrowser } from "./ArchiveBrowser";
 export { WeatherSkin, HealthSkin } from "./CalibratedSystemApps";
 import { AudioPlayer, useTrack } from "../audio";
 import { useSkinState } from "../skinState";
@@ -46,7 +48,14 @@ export function PhoneSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "最近通话");
   const [digits, setDigits] = useState(""),
     [call, setCall] = useState("");
-  const list = tab === "收藏" ? items.filter((i) => i.favorite) : items;
+  const list =
+    tab === "通讯录"
+      ? (p.contacts || []).filter((i) => i.title.includes(q))
+      : tab === "未接"
+        ? items.filter((i) => i.meta.status === "未接")
+        : tab === "收藏"
+          ? items.filter((i) => i.favorite)
+          : items;
   return (
     <div className="catalog-skin native-phone">
       <Header p={p} />
@@ -121,17 +130,20 @@ export function PhoneSkin(p: Props) {
         )}
       </div>
       <Tabs
-        tabs={["收藏", "最近通话", "通讯录", "拨号键盘"]}
+        tabs={["收藏", "最近通话", "未接", "通讯录", "拨号键盘"]}
         value={tab}
         set={setTab}
-        icons={[<Star />, <Clock />, <Users />, <Grid />]}
+        icons={[<Star />, <Clock />, <Phone />, <Users />, <Grid />]}
       />
       {call && (
         <div className="virtual-call">
           <small>虚拟通话</small>
           <Avatar name={call} />
           <h2>{call}</h2>
-          <p>这是作品内的通话模拟</p>
+          <p>
+            {items.find((i) => i.meta.number === call)?.meta.outcome ||
+              "暂时无法接通"}
+          </p>
           <button aria-label="挂断" onClick={() => setCall("")}>
             <Phone />
           </button>
@@ -184,24 +196,62 @@ export function ContactsSkin(p: Props) {
 }
 export function PhotosSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "图库");
-  const [album, setAlbum] = useState("");
-  const list =
-    tab === "收藏"
-      ? items.filter((i) => i.favorite)
-      : album
-        ? items.filter((i) => (i.folder || "未分类") === album)
-        : items;
+  const [album, setAlbum] = useSkinState<string>(p, "album", "");
+  const [period, setPeriod] = useSkinState<string>(p, "photoPeriod", "日");
+  const [group, setGroup] = useSkinState<string>(p, "photoGroup", "");
+  const stamp = (i: Item) =>
+    (i.meta.capturedAt || i.time).slice(
+      0,
+      period === "年" ? 4 : period === "月" ? 7 : 10,
+    );
+  const inTrash = (i: Item) => p.ui?.["trash:" + i.id] === true;
+  const eligible = items.filter((i) => inTrash(i) === (tab === "最近删除"));
+  const list = eligible.filter(
+    (i) =>
+      (tab !== "收藏" || i.favorite) &&
+      (!album || (i.folder || "未分类") === album) &&
+      (!group || stamp(i) === group),
+  );
   return (
     <div className="catalog-skin native-photos">
       <Header p={p} />
       <div className="catalog-scroll">
         <h1>{album || tab}</h1>
+        {p.archive && tab === "图库" && (
+          <div className="gallery-period">
+            {["年", "月", "日"].map((v) => (
+              <button
+                key={v}
+                aria-pressed={period === v}
+                onClick={() => {
+                  setPeriod(v);
+                  setGroup("");
+                }}
+              >
+                {v}
+              </button>
+            ))}
+            <select
+              aria-label="图库日期"
+              value={group}
+              onChange={(e) => setGroup(e.target.value)}
+            >
+              <option value="">全部</option>
+              {[...new Set(eligible.map(stamp))]
+                .sort()
+                .reverse()
+                .map((k) => (
+                  <option key={k}>{k}</option>
+                ))}
+            </select>
+          </div>
+        )}
         {tab === "相簿" && !album ? (
           <div className="album-grid">
-            {groupItems(items, "未分类").map((g) => (
+            {groupItems(eligible, "未分类").map((g) => (
               <button key={g} onClick={() => setAlbum(g)}>
                 <Media
-                  item={items.find((i) => (i.folder || "未分类") === g)!}
+                  item={eligible.find((i) => (i.folder || "未分类") === g)!}
                 />
                 <strong>{g}</strong>
                 <small>
@@ -231,11 +281,16 @@ export function PhotosSkin(p: Props) {
         <Empty items={list} />
       </div>
       <Tabs
-        tabs={["图库", "相簿", "收藏"]}
+        tabs={
+          p.archive
+            ? ["图库", "相簿", "收藏", "最近删除"]
+            : ["图库", "相簿", "收藏"]
+        }
         value={tab}
         set={(t) => {
           setTab(t);
           setAlbum("");
+          setGroup("");
         }}
         icons={[<Image />, <Folder />, <Heart />]}
       />
@@ -257,7 +312,11 @@ export function CameraSkin(p: Props) {
         <span>{mode === "视频" ? "HD · 30" : "4:3"}</span>
       </div>
       <div className="camera-view">
-        {frame ? <Media item={frame} /> : <p>未设置取景画面</p>}
+        {frame ? (
+          <Media item={frame} />
+        ) : (
+          <p>{p.creator ? "未设置取景画面" : "取景器未连接"}</p>
+        )}
         <div className="camera-grid" />
       </div>
       <div className="camera-mode">
@@ -298,11 +357,16 @@ export function CameraSkin(p: Props) {
           <Camera size={24} />
         </button>
       </div>
-      <small className="camera-caption">作者设置的虚构取景内容</small>
+      {p.creator && (
+        <small className="camera-caption">作者设置的虚构取景内容</small>
+      )}
     </div>
   );
 }
 export function SafariSkin(p: Props) {
+  return p.archive ? <ArchiveBrowser {...p} /> : <SafariBookmarks {...p} />;
+}
+function SafariBookmarks(p: Props) {
   const [q, setQ] = useState(""),
     [tab, setTab] = useState("书签");
   const items = p.items
@@ -356,62 +420,12 @@ export function SafariSkin(p: Props) {
     </div>
   );
 }
-export function NotesSkin(p: Props) {
-  const { q, setQ, items } = useContent(p, "备忘录");
-  const [folder, setFolder] = useState<string | null>(null);
-  const list = folder
-    ? items.filter((i) => (i.folder || "备忘录") === folder)
-    : items;
-  return (
-    <div className="catalog-skin native-notes">
-      <Header p={p} />
-      <div className="catalog-scroll">
-        <button className="notes-back" onClick={() => setFolder(null)}>
-          <Folder size={17} />
-          文件夹
-        </button>
-        <h1>{folder || "所有备忘录"}</h1>
-        <SearchBox value={q} set={setQ} />
-        {!folder && (
-          <div className="note-folders">
-            {groupItems(items, "备忘录").map((g) => (
-              <button key={g} onClick={() => setFolder(g)}>
-                <Folder size={17} />
-                {g}
-                <small>
-                  {items.filter((i) => (i.folder || "备忘录") === g).length}
-                </small>
-              </button>
-            ))}
-          </div>
-        )}
-        <div className="notes-list">
-          {list.map((i) => (
-            <button key={i.id} onClick={() => p.onItem(i)}>
-              <strong>
-                {i.password && <LockKeyhole size={12} />} {i.title}
-              </strong>
-              <p>
-                <time>{i.time.slice(5, 10)}</time>{" "}
-                {i.password ? "已锁定的备忘录" : i.body.split("\n")[0]}
-              </p>
-              <small>{i.folder}</small>
-            </button>
-          ))}
-        </div>
-        <Empty items={list} />
-      </div>
-      <div className="notes-footer">
-        <span>{list.length} 则备忘录</span>
-        <Add p={p} label="新建备忘录" />
-      </div>
-    </div>
-  );
-}
+export { NotesSkin } from "../ios/Notes";
 export function CalendarSkin(p: Props) {
-  const [month, setMonth] = useState(8),
-    [year, setYear] = useState(2026),
-    [day, setDay] = useState(1);
+  const [y, m, d] = (p.virtualDate || "2026-09-01").split("-").map(Number);
+  const [month, setMonth] = useState(m - 1),
+    [year, setYear] = useState(y),
+    [day, setDay] = useState(d);
   const prefix = `${year}-${String(month + 1).padStart(2, "0")}`;
   const list = p.items.filter((i) =>
     i.time.startsWith(`${prefix}-${String(day).padStart(2, "0")}`),
@@ -528,7 +542,11 @@ export function MailSkin(p: Props) {
       </div>
       <footer className="mail-footer">
         <span>{list.length} 封邮件</span>
-        <Add p={p} label="写邮件" />
+        {p.archive ? (
+          <DraftInput p={p} label="写邮件" />
+        ) : (
+          <Add p={p} label="写邮件" />
+        )}
       </footer>
     </div>
   );
@@ -652,12 +670,16 @@ export function RemindersSkin(p: Props) {
             <button onClick={() => p.onItem(i)}>
               <strong>{i.title}</strong>
               <small>
-                {i.time} · {i.folder}
+                {i.time} {i.folder}
               </small>
             </button>
           </div>
         ))}
-        <Add p={p} label="新提醒事项" />
+        {p.archive ? (
+          <DraftInput p={p} label="提醒事项草稿" />
+        ) : (
+          <Add p={p} label="新提醒事项" />
+        )}
       </div>
     </div>
   );

@@ -37,7 +37,11 @@ export type SkinProps = {
   onUi?: (key: string, value: UiValue) => void;
   appId?: string;
   owner?: string;
+  archive?: boolean;
   virtualTime?: string;
+  virtualDate?: string;
+  contacts?: Item[];
+  onEvent?: (event: string, target: string) => void;
   name: string;
   items: Item[];
   creator: boolean;

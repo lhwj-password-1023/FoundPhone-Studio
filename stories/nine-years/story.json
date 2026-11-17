@@ -1,0 +1,862 @@
+{
+  "scriptVersion": 1,
+  "id": "nine-years",
+  "title": "九年时差",
+  "description": "虚构同人故事。",
+  "revision": 3,
+  "timeline": {
+    "years": 9,
+    "fiction": "《九年时差》 · 虚构同人故事"
+  },
+  "phone": {
+    "owner": "金昇玟",
+    "date": "2026-11-20",
+    "time": "21:33",
+    "battery": 64,
+    "wallpaper": "night",
+    "network": "SKT"
+  },
+  "installedApps": [
+    "kakao",
+    "gpt",
+    "camera",
+    "find",
+    "weather",
+    "health",
+    "instagram",
+    "spotify",
+    "photos",
+    "notes",
+    "calendar",
+    "contacts",
+    "files",
+    "clock",
+    "reminders",
+    "mail",
+    "settings",
+    "appstore",
+    "phone",
+    "messages",
+    "safari"
+  ],
+  "contacts": [],
+  "chats": [
+    {
+      "id": "treehole-thread",
+      "app": "messages",
+      "title": "陌生号码",
+      "participants": [
+        "owner"
+      ],
+      "messages": [
+        {
+          "id": "opening",
+          "body": "请问，真的什么都可以对你倾诉吗？",
+          "time": "2026-11-20 21:33",
+          "hidden": false,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:33",
+            "arrivedAt": "2026-11-20 21:33"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "newspaper",
+          "body": "在报纸上看到，说是可以把这里当成树洞诶",
+          "time": "2026-11-20 21:33",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:33",
+            "arrivedAt": "2026-11-20 21:33"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "who-text",
+          "senderId": "owner",
+          "body": "你是？",
+          "time": "2026-11-20 21:33",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:33",
+            "arrivedAt": "2017-11-20 21:33",
+            "reply": "who"
+          }
+        },
+        {
+          "id": "wrong-number-text",
+          "senderId": "owner",
+          "body": "是不是发错了。",
+          "time": "2026-11-20 21:33",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:33",
+            "arrivedAt": "2017-11-20 21:33",
+            "reply": "wrong-number"
+          }
+        },
+        {
+          "id": "sorry",
+          "body": "啊，抱歉，不是这里吗",
+          "time": "2026-11-20 21:34",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:34",
+            "arrivedAt": "2026-11-20 21:34"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "fine-text",
+          "senderId": "owner",
+          "body": "没关系",
+          "time": "2026-11-20 21:34",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:34",
+            "arrivedAt": "2017-11-20 21:34",
+            "reply": "fine"
+          }
+        },
+        {
+          "id": "again",
+          "body": "请问，真的什么都可以对你倾诉吗？",
+          "time": "2026-11-20 21:36",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:36",
+            "arrivedAt": "2026-11-20 21:36"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "number-check",
+          "body": "诶？还是这里，号码没错啊",
+          "time": "2026-11-20 21:36",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:36",
+            "arrivedAt": "2026-11-20 21:36"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "who-really-text",
+          "senderId": "owner",
+          "body": "你到底是？",
+          "time": "2026-11-20 21:36",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:36",
+            "arrivedAt": "2017-11-20 21:36",
+            "reply": "who-really"
+          }
+        },
+        {
+          "id": "explain",
+          "body": "对不起，我在报纸上看到这个树洞号码，据说倾诉后可以得到帮助",
+          "time": "2026-11-20 21:37",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:37",
+            "arrivedAt": "2026-11-20 21:37"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "leave",
+          "body": "看来对方留错电话了TT 不会再打扰了",
+          "time": "2026-11-20 21:37",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:37",
+            "arrivedAt": "2026-11-20 21:37"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "treehole-text",
+          "senderId": "owner",
+          "body": "请问，真的有那样的树洞吗？",
+          "time": "2026-11-20 21:41",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:41",
+            "arrivedAt": "2017-11-20 21:41",
+            "reply": "treehole"
+          }
+        },
+        {
+          "id": "try-too-text",
+          "senderId": "owner",
+          "body": "我也想试着联系看看",
+          "time": "2026-11-20 21:41",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:41",
+            "arrivedAt": "2017-11-20 21:41",
+            "reply": "try-too"
+          }
+        }
+      ]
+    }
+  ],
+  "content": {
+    "notes": [
+      {
+        "id": "evening-note",
+        "title": "十一月二十日晚",
+        "body": "",
+        "hidden": true,
+        "folder": "在我的 iPhone 上",
+        "kind": "note",
+        "time": "2026-11-20 21:40",
+        "meta": {
+          "composeText": "今天路过我们之前常去的那家咖啡店，听见邻桌在讲一件好笑的事。我一路都在想，等回去要怎么讲给你听，但刚才打开手机又不知道往哪里发。今天真的很想你。",
+          "writtenFlag": "noteWritten"
+        }
+      }
+    ],
+    "find": [
+      {
+        "id": "this-iphone",
+        "title": "金昇玟的 iPhone",
+        "folder": "设备",
+        "body": "此设备",
+        "meta": {
+          "status": "此设备"
+        }
+      }
+    ],
+    "gpt": [
+      {
+        "id": "guide-0",
+        "title": "下一步",
+        "body": "第一场已经读完了。可以回桌面翻看已经留下的记录。",
+        "meta": {
+          "flag": "sceneOneComplete"
+        },
+        "hidden": true
+      },
+      {
+        "id": "guide-1",
+        "title": "下一步",
+        "body": "回到信息里的陌生号码会话，点输入框，选一句回复，再点发送。",
+        "meta": {
+          "flag": "noteWritten"
+        },
+        "hidden": true
+      },
+      {
+        "id": "guide-2",
+        "title": "下一步",
+        "body": "打开备忘录里的「十一月二十日晚」，写下备忘录，点右上角的「完成」。如果移到了最近删除，先恢复它。",
+        "meta": {
+          "unlocked": "evening-note"
+        },
+        "hidden": true
+      },
+      {
+        "id": "guide-3",
+        "title": "下一步",
+        "body": "打开信息里的陌生号码会话，点底部输入框选择回复，再点向上箭头发送。",
+        "meta": {
+          "choice": "yes"
+        },
+        "hidden": true
+      },
+      {
+        "id": "guide-4",
+        "title": "下一步",
+        "body": "回到陌生号码的对话，滑到最新一条，停留片刻等对方回复。",
+        "meta": {
+          "read": "opening"
+        },
+        "hidden": true
+      },
+      {
+        "id": "guide-5",
+        "title": "下一步",
+        "body": "打开「信息」，点进「陌生号码」，读第一条消息。",
+        "meta": {
+          "default": "yes"
+        },
+        "hidden": true
+      }
+    ]
+  },
+  "variables": {
+    "ownerKnowsLoss": true,
+    "readerKnowsLoss": false,
+    "noteWritten": false,
+    "sceneOneComplete": false
+  },
+  "events": [
+    {
+      "id": "start",
+      "label": "陌生号码",
+      "type": "start",
+      "actions": [
+        {
+          "type": "notification",
+          "key": "opening",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "read-opening",
+      "label": "已读",
+      "event": "read",
+      "target": "opening",
+      "next": [
+        "deliver-newspaper"
+      ]
+    },
+    {
+      "id": "deliver-newspaper",
+      "label": "消息抵达",
+      "type": "delay",
+      "delayMs": 2800,
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:33"
+        },
+        {
+          "type": "unlock",
+          "key": "newspaper",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "newspaper",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "first-replies",
+      "label": "回复",
+      "type": "choice",
+      "event": "read",
+      "target": "newspaper",
+      "next": [
+        "who",
+        "wrong-number"
+      ]
+    },
+    {
+      "id": "who",
+      "label": "你是？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:33"
+        },
+        {
+          "type": "unlock",
+          "key": "who-text",
+          "value": ""
+        }
+      ],
+      "next": [
+        "deliver-sorry"
+      ]
+    },
+    {
+      "id": "wrong-number",
+      "label": "是不是发错了。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:33"
+        },
+        {
+          "type": "unlock",
+          "key": "wrong-number-text",
+          "value": ""
+        }
+      ],
+      "next": [
+        "deliver-sorry"
+      ]
+    },
+    {
+      "id": "deliver-sorry",
+      "label": "消息抵达",
+      "type": "delay",
+      "delayMs": 2000,
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:34"
+        },
+        {
+          "type": "unlock",
+          "key": "sorry",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "sorry",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "allow-fine",
+      "label": "回复",
+      "type": "choice",
+      "event": "read",
+      "target": "sorry",
+      "next": [
+        "fine"
+      ]
+    },
+    {
+      "id": "fine",
+      "label": "没关系",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:34"
+        },
+        {
+          "type": "unlock",
+          "key": "fine-text",
+          "value": ""
+        }
+      ],
+      "next": [
+        "deliver-again"
+      ]
+    },
+    {
+      "id": "deliver-again",
+      "label": "消息抵达",
+      "type": "delay",
+      "delayMs": 5000,
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:36"
+        },
+        {
+          "type": "unlock",
+          "key": "again",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "again",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "read-again",
+      "label": "已读",
+      "event": "read",
+      "target": "again",
+      "next": [
+        "deliver-number-check"
+      ]
+    },
+    {
+      "id": "deliver-number-check",
+      "label": "消息抵达",
+      "type": "delay",
+      "delayMs": 2400,
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:36"
+        },
+        {
+          "type": "unlock",
+          "key": "number-check",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "number-check",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "ask-who",
+      "label": "回复",
+      "type": "choice",
+      "event": "read",
+      "target": "number-check",
+      "next": [
+        "who-really"
+      ]
+    },
+    {
+      "id": "who-really",
+      "label": "你到底是？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:36"
+        },
+        {
+          "type": "unlock",
+          "key": "who-really-text",
+          "value": ""
+        }
+      ],
+      "next": [
+        "deliver-explain"
+      ]
+    },
+    {
+      "id": "deliver-explain",
+      "label": "消息抵达",
+      "type": "delay",
+      "delayMs": 3900,
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:37"
+        },
+        {
+          "type": "unlock",
+          "key": "explain",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "explain",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "read-explain",
+      "label": "已读",
+      "event": "read",
+      "target": "explain",
+      "next": [
+        "deliver-leave"
+      ]
+    },
+    {
+      "id": "deliver-leave",
+      "label": "消息抵达",
+      "type": "delay",
+      "delayMs": 3000,
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:37"
+        },
+        {
+          "type": "unlock",
+          "key": "leave",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "leave",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "allow-note",
+      "label": "搁下手机",
+      "event": "read",
+      "target": "leave",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "evening-note",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "finish-note",
+      "label": "回复",
+      "type": "choice",
+      "event": "writeNote",
+      "target": "evening-note",
+      "next": [
+        "treehole"
+      ],
+      "conditions": [
+        {
+          "key": "unlocked:evening-note",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "variable",
+          "key": "noteWritten",
+          "value": true
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:40"
+        }
+      ]
+    },
+    {
+      "id": "treehole",
+      "label": "请问，真的有那样的树洞吗？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:41"
+        },
+        {
+          "type": "unlock",
+          "key": "treehole-text",
+          "value": ""
+        }
+      ],
+      "next": [
+        "next-line"
+      ]
+    },
+    {
+      "id": "next-line",
+      "label": "接着说",
+      "type": "choice",
+      "next": [
+        "try-too"
+      ]
+    },
+    {
+      "id": "try-too",
+      "label": "我也想试着联系看看",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:41"
+        },
+        {
+          "type": "unlock",
+          "key": "try-too-text",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "sceneOneComplete",
+          "value": true
+        }
+      ],
+      "next": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "首句 · 你是？",
+      "steps": [
+        {
+          "event": "read",
+          "target": "opening"
+        },
+        {
+          "advanceMs": 2800
+        },
+        {
+          "event": "read",
+          "target": "newspaper"
+        },
+        {
+          "choose": "who"
+        },
+        {
+          "advanceMs": 2000
+        },
+        {
+          "event": "read",
+          "target": "sorry"
+        },
+        {
+          "choose": "fine"
+        },
+        {
+          "advanceMs": 5000
+        },
+        {
+          "event": "read",
+          "target": "again"
+        },
+        {
+          "advanceMs": 2400
+        },
+        {
+          "event": "read",
+          "target": "number-check"
+        },
+        {
+          "choose": "who-really"
+        },
+        {
+          "advanceMs": 3900
+        },
+        {
+          "event": "read",
+          "target": "explain"
+        },
+        {
+          "advanceMs": 3000
+        },
+        {
+          "event": "read",
+          "target": "leave"
+        },
+        {
+          "event": "openApp",
+          "target": "notes"
+        },
+        {
+          "event": "read",
+          "target": "evening-note"
+        },
+        {
+          "event": "writeNote",
+          "target": "evening-note"
+        },
+        {
+          "event": "openApp",
+          "target": "messages"
+        },
+        {
+          "choose": "treehole"
+        },
+        {
+          "choose": "try-too"
+        }
+      ],
+      "expectUnlocked": [
+        "try-too-text"
+      ]
+    },
+    {
+      "name": "首句 · 是不是发错了。",
+      "steps": [
+        {
+          "event": "read",
+          "target": "opening"
+        },
+        {
+          "advanceMs": 2800
+        },
+        {
+          "event": "read",
+          "target": "newspaper"
+        },
+        {
+          "choose": "wrong-number"
+        },
+        {
+          "advanceMs": 2000
+        },
+        {
+          "event": "read",
+          "target": "sorry"
+        },
+        {
+          "choose": "fine"
+        },
+        {
+          "advanceMs": 5000
+        },
+        {
+          "event": "read",
+          "target": "again"
+        },
+        {
+          "advanceMs": 2400
+        },
+        {
+          "event": "read",
+          "target": "number-check"
+        },
+        {
+          "choose": "who-really"
+        },
+        {
+          "advanceMs": 3900
+        },
+        {
+          "event": "read",
+          "target": "explain"
+        },
+        {
+          "advanceMs": 3000
+        },
+        {
+          "event": "read",
+          "target": "leave"
+        },
+        {
+          "event": "openApp",
+          "target": "notes"
+        },
+        {
+          "event": "read",
+          "target": "evening-note"
+        },
+        {
+          "event": "writeNote",
+          "target": "evening-note"
+        },
+        {
+          "event": "openApp",
+          "target": "messages"
+        },
+        {
+          "choose": "treehole"
+        },
+        {
+          "choose": "try-too"
+        }
+      ],
+      "expectUnlocked": [
+        "try-too-text"
+      ]
+    }
+  ]
+}

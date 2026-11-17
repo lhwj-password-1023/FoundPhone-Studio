@@ -88,6 +88,29 @@ export function validateLayout(raw: unknown, input: Work) {
   layout.apps.push(
     ...w.apps.filter((a) => !layout.apps.some((b) => b.id === a.id)),
   );
+  if (
+    w.id === "nine-years" &&
+    layout.previewLayoutRevision < 2 &&
+    w.apps.some((a) => a.id === "gpt" && a.installed)
+  ) {
+    for (const app of layout.apps) {
+      if (
+        [
+          "gpt",
+          "camera",
+          "find",
+          "weather",
+          "health",
+          "instagram",
+          "spotify",
+        ].includes(app.id)
+      ) {
+        app.installed = true;
+        app.visible = true;
+      }
+    }
+    layout.previewLayoutRevision = 2;
+  }
   const store = layout.apps.find((a) => a.id === "appstore");
   if (store) {
     store.installed = true;
