@@ -338,3 +338,12 @@
   padding: 15px;
   color: #ccc;
 }
+.sx-scroll {
+  scrollbar-width: none;
+}
+.sx-scroll::-webkit-scrollbar {
+  display: none;
+}
+.phone-shell .phone-screen:has(.story-x) .app-screen {
+  background: #000;
+}
