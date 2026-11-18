@@ -15,7 +15,7 @@ function StoryPlayer() {
         ? "./test-work.json"
         : new URLSearchParams(location.search).get("template") === "blank"
           ? "./blank-work.json"
-          : "./work.json?release=9",
+          : "./work.json?release=10",
       { signal: abort.signal, cache: "no-store" },
     )
       .then((r) => {
