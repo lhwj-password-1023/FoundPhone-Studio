@@ -76,6 +76,12 @@ export function validateLayout(raw: unknown, input: Work) {
   const layout = layoutSchema.parse(raw);
   if (layout.workId !== w.id) throw Error("布局属于其他作品");
   const known = new Set(w.apps.map((a) => a.id));
+  if (w.id === "nine-years") {
+    layout.apps = layout.apps.filter((app) => !["news", "instagram"].includes(app.id));
+    layout.order = layout.order.filter((id) => !["news", "instagram"].includes(id));
+    delete layout.positions.news;
+    delete layout.positions.instagram;
+  }
   if (layout.apps.some((a) => !known.has(a.id))) throw Error("布局含未注册App");
   if (new Set(layout.apps.map((a) => a.id)).size !== layout.apps.length)
     throw Error("App ID重复");

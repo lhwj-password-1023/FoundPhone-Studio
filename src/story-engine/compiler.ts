@@ -334,7 +334,7 @@ export function compileStory(
       notifications: true,
       ...s.phone,
     },
-    apps: [...registry]
+    apps: [...registry].filter((app) => s.id !== "nine-years" || !["news", "instagram"].includes(app.id))
       .sort((a, b) => {
         const ids = s.installedApps.map((x) =>
           typeof x === "string" ? x : x.id,
