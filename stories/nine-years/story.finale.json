@@ -1,5 +1,5 @@
 {
-  "revision": 11,
+  "revision": 12,
   "removedApps": [
     "instagram",
     "news"
@@ -5303,6 +5303,16 @@
       "type": "action",
       "event": "resumeRevision",
       "target": "10",
+      "actions": [],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "chat-resume-11",
+      "label": "chat-resume-11",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "11",
       "actions": [],
       "next": [],
       "conditions": []

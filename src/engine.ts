@@ -1,5 +1,49 @@
-import type { Action, Condition, Runtime, StoryNode, Work } from "./schema";
+import type { Action, Condition, Item, Runtime, StoryNode, Work } from "./schema";
 import { makeItem } from "./schema";
+
+function storyChatRecord(work: Work, id: string): { app: string; item: Item } | undefined {
+  for (const app of ["messages", "kakao"]) {
+    const item = work.data[app]?.find((record) => record.id === id);
+    if (item) return { app, item };
+  }
+}
+function livePeerRecord(work: Work, node: StoryNode) {
+  for (const action of node.actions) {
+    if (action.type !== "unlock" || !/^(s4-|f-)/.test(action.key)) continue;
+    const record = storyChatRecord(work, action.key);
+    if (record && !record.item.outgoing) return record.item;
+  }
+}
+function replyDelay(item: Item) {
+  const length = item.body.length;
+  const base = length <= 8 ? 700 : length <= 25 ? 1400 : length <= 60 ? 2400 : 3500;
+  const jitter = [...item.id].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 350;
+  return base + jitter;
+}
+function frozenMessageTime(work: Work, state: Runtime, app: string, item: Item) {
+  const received = { ...state.messageReceivedAt };
+  const sent = { ...state.messageSentAt };
+  if (received[item.id]) return;
+  const base = Date.parse(`${state.date || work.phone.date}T${state.time}:00Z`);
+  const records = [...(work.data[app] || []), ...(state.messages[app] || [])];
+  const earlier = records.filter((record) => record.title === item.title)
+    .map((record) => received[record.id])
+    .filter((stamp): stamp is string => !!stamp)
+    .map((stamp) => Date.parse(stamp.replace(" ", "T") + "Z"))
+    .filter(Number.isFinite);
+  const previous = Math.max(0, ...earlier);
+  const gap = 12 + Math.min(25, Math.floor(item.body.length / 2));
+  const stamp = new Date(Math.max(base, previous + gap * 1000)).toISOString().replace("T", " ").slice(0, 19);
+  received[item.id] = stamp;
+  if (item.outgoing || app === "kakao" || !state.peerDate) sent[item.id] = stamp;
+  else sent[item.id] = `${state.peerDate} ${state.peerTime || state.time}:${stamp.slice(-2)}`;
+  state.messageReceivedAt = received;
+  state.messageSentAt = sent;
+  if (stamp.slice(0, 16) > `${state.date || work.phone.date} ${state.time}`) {
+    state.date = stamp.slice(0, 10);
+    state.time = stamp.slice(11, 16);
+  }
+}
 export function testCondition(c: Condition, s: Runtime): boolean {
   const [scope, ...rest] = c.key.split(":");
   const key = rest.join(":");
@@ -132,16 +176,20 @@ function runQueue(
           ? !conditions.every(Boolean)
           : conditions.every(Boolean);
     if (!pass) continue;
-    if (n.type === "delay" && !resuming.has(id)) {
+    const peer = livePeerRecord(w, n);
+    if ((n.type === "delay" || peer) && !resuming.has(id)) {
       s.scheduled ??= [];
+      const duration = peer ? Math.max(n.delayMs ?? 0, replyDelay(peer)) : (n.delayMs ?? 1000);
       if (!s.scheduled.some((t) => t.nodeId === id))
         s.scheduled.push({
           nodeId: id,
-          due: (s.elapsedMs ?? 0) + (n.delayMs ?? 1000),
+          due: (s.elapsedMs ?? 0) + duration,
         });
-      s.trace.push(`delay:${n.delayMs ?? 1000}ms → ${n.label}`);
+      s.trace.push(`delay:${duration}ms → ${n.label}`);
       continue;
     }
+    const beforeStamp = `${s.date || w.phone.date} ${s.time}`;
+    const newlyUnlocked = n.actions.filter((action) => action.type === "unlock" && !s.unlocked.includes(action.key));
     if (!s.completed.includes(id)) s.completed.push(id);
     s.trace.push(`${event}:${target} → ${n.label}`);
     for (const a of n.actions) {
@@ -169,6 +217,16 @@ function runQueue(
             )
             .map((n) => n.id),
         );
+    }
+    // Authored date/time actions may repeat a minute; never move this phone's clock backward.
+    if (w.timeline && `${s.date || w.phone.date} ${s.time}` < beforeStamp) {
+      s.date = beforeStamp.slice(0, 10);
+      s.time = beforeStamp.slice(11, 16);
+    }
+    for (const action of newlyUnlocked) {
+      if (!/^(s4-|f-)/.test(action.key)) continue;
+      const record = storyChatRecord(w, action.key);
+      if (record) frozenMessageTime(w, s, record.app, record.item);
     }
     if (
       n.type === "ending" &&

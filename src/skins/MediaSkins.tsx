@@ -1,4 +1,4 @@
-import { BONUS_TRACKS, type BonusUnlocks } from "../bonus";
+import { BONUS_HINTS, BONUS_TRACKS, type BonusId, type BonusUnlocks } from "../bonus";
 import { AudioPlayer, useTrack } from "../audio";
 import { useSkinState } from "../skinState";
 import {
@@ -17,7 +17,7 @@ import {
   Users,
   Video,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { safeMedia, type Item } from "../schema";
 import {
   Avatar,
@@ -65,13 +65,34 @@ export function SpotifySkin(p: Props) {
   const bonusUnlocks = (p.storyState?.ui?.bonusUnlocks || {}) as BonusUnlocks;
   const [playlist, setPlaylist] = useState(""),
     [track, setTrack] = useTrack(p, items);
+  const [hint, setHint] = useState("");
+  const [bonusDetail, setBonusDetail] = useState<BonusId | "">("");
+  const hintCounts = useRef<Record<string, number>>({});
+  const scroll = useRef<HTMLDivElement>(null);
+  const focusId = String(p.ui?.bonusFocus || "");
+  useEffect(() => { if (focusId) setPlaylist("bonus"); }, [focusId]);
+  useEffect(() => {
+    if (!focusId || playlist !== "bonus") return;
+    const frame = requestAnimationFrame(() => {
+      scroll.current?.querySelector(`[data-bonus-id="${focusId}"]`)?.scrollIntoView({ block: "center" });
+      p.onUi?.("bonusFocus", "");
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [focusId, playlist, p.onUi]);
+  const openBonus = (id: BonusId) => {
+    if (bonusUnlocks[id]) { setBonusDetail(id); return; }
+    const previous = Math.max(Number(p.ui?.["hint:" + id] || 0), hintCounts.current[id] || 0);
+    hintCounts.current[id] = previous + 1;
+    p.onUi?.("hint:" + id, previous + 1);
+    setHint(BONUS_HINTS[id][previous === 0 ? 0 : 1]);
+  };
   const list = playlist
     ? items.filter((i) => (i.folder || "我的音乐") === playlist)
     : items;
   return (
     <div className="catalog-skin spotify-ui">
       <Header p={p} />
-      <div className="catalog-scroll">
+      <div className="catalog-scroll" ref={scroll}>
         <div className="spotify-heading">
           <Avatar name={p.owner ?? "我"} />
           <button
@@ -109,9 +130,12 @@ export function SpotifySkin(p: Props) {
           <div className="bonus-cover">bonus</div><p>{BONUS_TRACKS.filter(t => bonusUnlocks[t.id]).length} / 10 已解锁</p>
           {BONUS_TRACKS.map((song, n) => {
             const unlocked = Boolean(bonusUnlocks[song.id]);
-            return <div key={song.id} className="bonus-track">
-              <span>{n + 1}</span><div className="bonus-art" aria-label={unlocked ? song.album + ' 官方封面' : '未解锁封面'}>{unlocked && <img src={`${import.meta.env.BASE_URL}bonus-covers/${song.id}.jpg`} alt={song.album + '封面'} onError={e => {e.currentTarget.style.display = 'none'}} />}</div>
-              <div><strong>{unlocked ? song.title : '???'}</strong><small>{unlocked ? song.artist : '???'}</small></div>
+            return <div key={song.id} className="bonus-track" data-bonus-id={song.id}>
+              <span>{n + 1}</span>
+              <button className="bonus-track-target" aria-label={unlocked ? `查看${song.title}` : `第${n + 1}首隐藏歌曲线索`} onClick={() => openBonus(song.id)}>
+                <div className="bonus-art" aria-label={unlocked ? song.album + ' 官方封面' : '未解锁封面'}>{unlocked && <img src={`${import.meta.env.BASE_URL}bonus-covers/${song.id}.jpg`} alt={song.album + '封面'} onError={e => {e.currentTarget.style.display = 'none'}} />}</div>
+                <div><strong>{unlocked ? song.title : '???'}</strong><small>{unlocked ? song.artist : '???'}</small></div>
+              </button>
               {unlocked && <a href={song.url} target="_blank" rel="noopener noreferrer" aria-label={'在 Spotify 查找' + song.title}><Play size={17}/></a>}
               {!unlocked && <span aria-label="未解锁">🔒</span>}
             </div>;
@@ -150,6 +174,21 @@ export function SpotifySkin(p: Props) {
           }
         />
       )}
+      {hint && <div className="bonus-modal-backdrop" onClick={() => setHint("")}>
+        <div className="bonus-modal" role="dialog" aria-label="隐藏歌曲线索" onClick={(event) => event.stopPropagation()}>
+          <h2>隐藏歌曲线索</h2><p>{hint}</p><button onClick={() => setHint("")}>知道了</button>
+        </div>
+      </div>}
+      {bonusDetail && <div className="bonus-modal-backdrop" onClick={() => setBonusDetail("")}>
+        <div className="bonus-modal" role="dialog" aria-label="歌曲详情" onClick={(event) => event.stopPropagation()}>
+          {(() => { const song = BONUS_TRACKS.find((entry) => entry.id === bonusDetail)!; return <>
+            <img className="bonus-detail-art" src={`${import.meta.env.BASE_URL}bonus-covers/${song.id}.jpg`} alt={song.album + '封面'} />
+            <h2>{song.title}</h2><p>{song.artist} · {song.album}</p>
+            <a href={song.url} target="_blank" rel="noopener noreferrer">在 Spotify 查看</a>
+          </>; })()}
+          <button onClick={() => setBonusDetail("")}>完成</button>
+        </div>
+      </div>}
       <Tabs
         tabs={["首页", "搜索", "音乐库"]}
         value={tab}

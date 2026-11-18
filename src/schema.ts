@@ -173,6 +173,7 @@ export type Runtime = {
   messageOrder?: Record<string, string[]>;
   messageOrderVersion?: number;
   messageReceivedAt?: Record<string, string>;
+  messageSentAt?: Record<string, string>;
   peerDate?: string;
   peerTime?: string;
   readAt?: Record<string, { device: string; elapsedMs: number }>;
@@ -208,6 +209,7 @@ export function initialRuntime(w: Work): Runtime {
     messageOrder: {},
     messageOrderVersion: 2,
     messageReceivedAt: {},
+    messageSentAt: {},
     date: w.phone.date,
     elapsedMs: 0,
     clockRemainderMs: 0,

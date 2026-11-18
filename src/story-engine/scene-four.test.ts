@@ -8,6 +8,7 @@ import { compileStory } from "./compiler";
 import { initialRuntime } from "../schema";
 import { advance, choose, dispatch, visible } from "../engine";
 import { addSceneFourMemory, advanceSceneFour, shareSceneFourNews } from "./scene-four-runtime";
+import { messageFields } from "../messageOrder";
 
 const { work, story } = compileStory(applyStoryOverlay(applyStoryOverlay(manuscript, three), four), extras);
 function afterThird() {
@@ -28,7 +29,7 @@ test("第四场按操作跨 App 推进，保留双时间线和新闻选择", () 
   state = dispatch(work, state, "saveContact", "s4-lee");
   for (let turns = 0; turns < 350 && state.variables.sceneFourStage16 !== true; turns++) {
     const before = JSON.stringify([state.completed, state.scheduled, state.choices, state.read, state.variables]);
-    if (state.scheduled?.length) state = advance(work, state, 2500);
+    if (state.scheduled?.length) state = advance(work, state, 5000);
     else if (state.choices.length) state = choose(work, state, state.choices[0].target);
     else {
       const unread = Object.values(work.data).flat().find((item) => item.id.startsWith("s4-") && !item.outgoing && visible(item, state) && !state.read.includes(item.id) && item.id !== "s4-note" && !item.id.startsWith("s4-news-"));
@@ -62,6 +63,16 @@ test("第四场按操作跨 App 推进，保留双时间线和新闻选择", () 
   expect(shareSceneFourNews(work, state, "s4-news-eclipse")).toBe(state);
   expect(state.unlocked).toContain("s4-failed-text");
   expect(state.unlocked.filter((id) => id === "s4-failed-text")).toHaveLength(1);
+  const replies = ["s4-recontact-a", "s4-recontact-b", "s4-recontact-c", "s4-recontact-d"];
+  const received = replies.map((id) => state.messageReceivedAt?.[id]);
+  expect(received.every(Boolean)).toBe(true);
+  expect(received).toEqual([...received].sort());
+  expect(new Set(received).size).toBe(replies.length);
+  const restored = JSON.parse(JSON.stringify(state));
+  const fields = messageFields("messages", work.data.messages.find((item) => item.id === "s4-recontact-a")!, restored);
+  expect(fields.receivedAt).toBe(received[0]);
+  expect(fields.sentAt).toMatch(/^2018-02-21 /);
+  expect(messageFields("messages", work.data.messages.find((item) => item.id === "s4-recontact-a")!, { ...restored, date: "2026-12-01", time: "23:55" }).receivedAt).toBe(received[0]);
 });
 
 test("第五版存档进入第四场时保留第三场记录", () => {

@@ -77,10 +77,10 @@ export function validateLayout(raw: unknown, input: Work) {
   if (layout.workId !== w.id) throw Error("布局属于其他作品");
   const known = new Set(w.apps.map((a) => a.id));
   if (w.id === "nine-years") {
-    layout.apps = layout.apps.filter((app) => !["news", "instagram"].includes(app.id));
-    layout.order = layout.order.filter((id) => !["news", "instagram"].includes(id));
-    delete layout.positions.news;
-    delete layout.positions.instagram;
+    const removed = ["news", "instagram", "mail", "files"];
+    layout.apps = layout.apps.filter((app) => !removed.includes(app.id));
+    layout.order = layout.order.filter((id) => !removed.includes(id));
+    for (const id of removed) delete layout.positions[id];
   }
   if (layout.apps.some((a) => !known.has(a.id))) throw Error("布局含未注册App");
   if (new Set(layout.apps.map((a) => a.id)).size !== layout.apps.length)
@@ -94,6 +94,11 @@ export function validateLayout(raw: unknown, input: Work) {
   layout.apps.push(
     ...w.apps.filter((a) => !layout.apps.some((b) => b.id === a.id)),
   );
+  if (w.id === "nine-years") {
+    const spotify = layout.apps.find((app) => app.id === "spotify");
+    const current = w.apps.find((app) => app.id === "spotify");
+    if (spotify && current) spotify.name = current.name;
+  }
   if (
     w.id === "nine-years" &&
     layout.previewLayoutRevision < 2 &&

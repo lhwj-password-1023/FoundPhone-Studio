@@ -8,7 +8,7 @@ import { replyOptions } from "../story-engine/timeline";
 import { blockedMessage } from "../story-engine/guidance";
 import { pendingPeerReply } from "../story-engine/peerReply";
 import { useSimulatedTyping } from "./useSimulatedTyping";
-import { orderMessages } from "../messageOrder";
+import { messageFields, orderMessages } from "../messageOrder";
 import type { Item, Runtime, UiValue, Work } from "../schema";
 import "./story-thread.css";
 
@@ -44,6 +44,7 @@ export function StoryThread({
   const kakao = app === "kakao";
   // Content is appended when it arrives; authored timestamps may belong to another timeline.
   const list = orderMessages(app, items.filter((i) => i.title === thread), state);
+  const receivedAt = (item: Item) => messageFields(app, item, state).receivedAt;
   const displayName = !kakao && thread === "陌生号码" ? String(state.ui?.messages?.contactAlias || thread) : thread;
   const choices = state.endings.length
     ? []
@@ -89,7 +90,7 @@ export function StoryThread({
     setPicker(false);
   };
   const compose = (source: "field" | "arrow") => {
-    if (!kakao && pendingPeerReply(work, state, app, thread)) { setPrompt("waiting"); return; }
+    if (pendingPeerReply(work, state, app, thread)) { setPrompt("waiting"); return; }
     if (typing.active) {
       if (!typing.done) { if (source === "field") typing.reveal(); return; }
       if (source === "field") return;
@@ -215,8 +216,8 @@ export function StoryThread({
           return (
             <div key={i.id}>
               {(n === 0 ||
-                list[n - 1].time.slice(0, 10) !== i.time.slice(0, 10)) && (
-                <time className="archive-date">{i.time.slice(0, 10)}</time>
+                receivedAt(list[n - 1]).slice(0, 10) !== receivedAt(i).slice(0, 10)) && (
+                <time className="archive-date">{receivedAt(i).slice(0, 10)}</time>
               )}
               <article
                 data-record={i.id}
@@ -276,7 +277,7 @@ export function StoryThread({
                   )}
                 </div>
                 <small>
-                  {i.time.slice(-5)}{" "}
+                  {receivedAt(i).slice(11, /^(s4-|f-)/.test(i.id) && receivedAt(i).length >= 19 ? 19 : 16)}{" "}
                   {i.outgoing &&
                     (i.meta.failed === "true" ? "未送达" : kakao
                       ? !state.variables.storyFinalComplete && (i.meta.unread === "true" || n === list.length - 1)

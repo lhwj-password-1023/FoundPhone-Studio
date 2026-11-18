@@ -1,4 +1,4 @@
-import { unlockBonus, type BonusId, type BonusUnlocks } from "./bonus";
+import { unlockBonus, unlockBonusInRuntime, type BonusId, type BonusUnlocks } from "./bonus";
 import { ActorProvider } from "./ActorContext";
 import { Mic } from "lucide-react";
 import { makeItem as makeCallRecord } from "./schema";
@@ -328,7 +328,7 @@ function PhoneRuntime({
   }, [creator, ready, work.id, work.updatedAt]);
   const event = (event: string, target: string) => {
     if (creator) return;
-    const current = runtimeRef.current;
+    let current = runtimeRef.current;
     const bonus: Record<string, BonusId> = {
       'openApp:weather': 'raining-stars', 'openApp:timemachine': 'back-door',
       'openApp:time-machine': 'back-door', 'settings:general': 'back-then',
@@ -337,12 +337,8 @@ function PhoneRuntime({
     };
     const bonusId = bonus[event + ':' + target];
     if (bonusId) {
-      const previous = (current.ui?.bonusUnlocks || {}) as BonusUnlocks;
-      const unlocked = unlockBonus(previous, bonusId, `${current.date || work.phone.date} ${current.time}`);
-      if (unlocked !== previous) {
-        update({ ...current, ui: { ...current.ui, bonusUnlocks: unlocked } });
-        setBanner(`Spotify · bonus 已解锁 ${bonusId === 'raining-stars' ? 'Raining stars' : bonusId === 'back-door' ? 'Back Door' : bonusId === 'this-that' ? 'This & That' : bonusId === 'just-a-little' ? 'just a little' : bonusId === 'as-we-are' ? 'As We Are' : bonusId === 'astronaut' ? 'Astronaut' : 'Back Then'}`);
-      }
+      const next = unlockBonusInRuntime(current, work, bonusId);
+      if (next !== current) { update(next); current = next; }
     }
     const currentAfterBonus = runtimeRef.current;
     if (event === 'settings' && (target === 'airplane-on' || target === 'airplane-off')) {
@@ -360,10 +356,8 @@ function PhoneRuntime({
     if (event === "storyTransfer") { update(makeStoryTransfer(work, current, target)); return; }
     if (event === "storyShutter") {
       const completed = takeFinalPhoto(work, current, finalSelfie);
-      const finished = completed.variables.storyFinalComplete === true;
-      const previous = (completed.ui?.bonusUnlocks || {}) as BonusUnlocks;
-      const unlocked = finished ? unlockBonus(previous, 'cinema', `${completed.date || work.phone.date} ${completed.time}`) : previous;
-      update({ ...completed, ui: { ...completed.ui, bonusUnlocks: unlocked } });
+      update(completed.variables.storyFinalComplete === true
+        ? unlockBonusInRuntime(completed, work, 'cinema') : completed);
       return;
     }
     if (event === "storyReconnect") { update(reconnectTo2010(work, current)); return; }
@@ -532,6 +526,17 @@ function PhoneRuntime({
     );
   };
   const followNotice = (notice: string) => {
+    const bonusRoute = runtimeRef.current.notificationRoutes?.[notice];
+    if (bonusRoute?.notificationType === 'bonus' && bonusRoute.appId === 'spotify') {
+      open('spotify');
+      const current = runtimeRef.current;
+      update({ ...current,
+        ui: { ...current.ui, spotify: { ...current.ui?.spotify, bonusFocus: bonusRoute.targetId } },
+        notifications: current.notifications.filter((entry) => entry !== notice),
+        notificationRoutes: { ...current.notificationRoutes, [notice]: { ...bonusRoute, readStatus: 'read' } },
+      });
+      return;
+    }
     if (notice === "时空通信已修复，收到新的消息。") {
       open("messages");
       const current = runtimeRef.current;

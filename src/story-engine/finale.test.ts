@@ -144,11 +144,11 @@ test("旧版终场存档转入龙馥消息，逐条送达后才能拍摄", () =>
   }, "resumeRevision", "9");
   expect(state.scheduled?.some((entry) => entry.nodeId === "f-deliver-f-rescue-felix-1")).toBe(true);
   expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-1")!, state)).toBe(false);
-  state = advance(work, state, 1200);
+  state = advance(work, state, 2000);
   expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-1")!, state)).toBe(true);
   expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-2")!, state)).toBe(false);
   expect(takeFinalPhoto(work, state, "data:image/jpeg;base64,AA==")).toBe(state);
-  state = advance(work, state, 2000);
+  state = advance(work, state, 5000);
   expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-2")!, state)).toBe(true);
   state = dispatch(work, state, "read", "f-rescue-felix-1");
   state = dispatch(work, state, "read", "f-rescue-felix-2");
@@ -173,6 +173,7 @@ test("另一回复分支记录选择并在日常通信前合流", () => {
   expect(state.choices.some((choice)=>choice.target==="f-branch-b1")).toBe(true);
   state=choose(work,state,"f-branch-b1");
   expect(state.variables.finalBranch).toBe("B");
+  while (state.scheduled?.length) state=advance(work,state,5000);
   state=dispatch(work,state,"read","f-branch-B-answer");
   expect(state.variables.finalPhase).toBe(2);
 });

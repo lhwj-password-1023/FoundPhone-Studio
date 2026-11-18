@@ -117,3 +117,17 @@ it("migrates preview folders once while preserving custom folders and widgets", 
     validateLayout(migrated, w).apps.find((a) => a.id === "wechat")!.folder,
   ).toBe("作者新建文件夹");
 });
+
+it("refreshes Spotify's saved name without moving it", () => {
+  const w = work();
+  w.id = "nine-years";
+  w.apps.find((app) => app.id === "spotify")!.name = "Spotify";
+  const old = defaultLayout(w);
+  old.apps.find((app) => app.id === "spotify")!.name = "音乐流";
+  old.order = ["spotify", "photos"];
+  old.positions.spotify = { page: 0, x: 1, y: 2 };
+  const migrated = validateLayout(old, w);
+  expect(migrated.apps.find((app) => app.id === "spotify")!.name).toBe("Spotify");
+  expect(migrated.order).toEqual(["spotify", "photos"]);
+  expect(migrated.positions.spotify).toEqual({ page: 0, x: 1, y: 2 });
+});

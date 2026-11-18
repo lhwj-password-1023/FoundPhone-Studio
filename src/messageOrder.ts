@@ -35,7 +35,6 @@ export function reconcileMessageOrder(work: Work, state: Runtime): Runtime {
   const order = migrating ? migrateOrder(work, state) : structuredClone(state.messageOrder || {});
   const received = { ...(state.messageReceivedAt || {}) };
   let changed = migrating || !state.messageOrder || !state.messageReceivedAt;
-  const stamp = `${state.date || work.phone.date} ${state.time}`;
   for (const app of chatApps) {
     const authored = work.data[app] || [];
     const runtime = state.messages[app] || [];
@@ -51,7 +50,8 @@ export function reconcileMessageOrder(work: Work, state: Runtime): Runtime {
       if (existing.has(item.id)) continue;
       const key = conversationKey(app, item);
       (order[key] ??= []).push(item.id);
-      received[item.id] = item.meta.arrivedAt || item.meta.receivedAt || stamp;
+      // Migration fallback is authored history, never the time of this render.
+      received[item.id] = item.meta.arrivedAt || item.meta.receivedAt || item.time;
       existing.add(item.id);
       changed = true;
     }
@@ -88,7 +88,7 @@ export function messageFields(app: string, item: Item, state: Runtime) {
     messageId: item.id,
     conversationId: key,
     senderId: item.meta.senderId || item.sender,
-    sentAt: item.meta.sentAt || item.time,
+    sentAt: state.messageSentAt?.[item.id] || item.meta.sentAt || item.time,
     receivedAt: state.messageReceivedAt?.[item.id] || item.meta.arrivedAt || item.time,
     displayOrder: (state.messageOrder?.[key] || []).indexOf(item.id) + 1,
     timelineId: item.meta.timelineId || item.meta.timeline || (item.meta.sentAt || item.time).slice(0, 4),

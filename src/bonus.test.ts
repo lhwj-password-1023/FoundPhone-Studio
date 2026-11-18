@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { BONUS_TRACKS, unlockBonus, type BonusUnlocks } from './bonus';
+import { BONUS_HINTS, BONUS_TRACKS, unlockBonus, unlockBonusInRuntime, type BonusUnlocks } from './bonus';
+import { initialRuntime, type Work } from './schema';
 describe('independent bonus collection', () => {
   it('keeps stable positions and unlocks CEREMONY after all first nine in any order', () => {
     let state: BonusUnlocks = {};
@@ -11,5 +12,16 @@ describe('independent bonus collection', () => {
     const first = unlockBonus({}, 'raining-stars', 'a');
     expect(unlockBonus(first, 'raining-stars', 'b')).toBe(first);
     expect(first.ceremony).toBeUndefined();
+  });
+  it('sends one routed notification per song including automatic CEREMONY', () => {
+    const work = { id: 'nine-years', updatedAt: 12, phone: { date: '2026-11-20', time: '21:33' }, variables: {} } as Work;
+    let state = initialRuntime(work);
+    for (const track of BONUS_TRACKS.slice(0, 9).reverse())
+      state = unlockBonusInRuntime(state, work, track.id);
+    expect(state.notifications).toHaveLength(10);
+    expect(state.notifications.at(-1)).toContain('CEREMONY');
+    expect(state.notificationRoutes?.[state.notifications[0]]).toMatchObject({ appId: 'spotify', targetPage: 'playlist', targetId: 'raining-stars' });
+    expect(unlockBonusInRuntime(state, work, 'raining-stars')).toBe(state);
+    expect(BONUS_HINTS['back-door'][0]).not.toContain('Back Door');
   });
 });
