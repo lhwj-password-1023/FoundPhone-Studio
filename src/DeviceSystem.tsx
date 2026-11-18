@@ -114,6 +114,7 @@ export function DeviceLock({
   return (
     <motion.div
       className={"lock-screen device-lock " + (pinOpen ? "pin-open" : "")}
+      style={work.id === "nine-years" && work.cover ? { backgroundImage: `linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.05) 45%,rgba(0,0,0,.4)),url(${work.cover})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ y: -852, opacity: 0 }}
@@ -148,7 +149,7 @@ export function DeviceLock({
             )}
           </div>
           {work.timeline && (
-            <small className="fiction-lock">{work.timeline.fiction}</small>
+            <small className="fiction-lock">{work.id === "nine-years" ? "虚构同人故事" : work.timeline.fiction}</small>
           )}
           <UnlockHandle onUnlock={open} />
 

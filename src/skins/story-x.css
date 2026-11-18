@@ -354,3 +354,6 @@
 .sx-story-compose button:disabled{opacity:.45}
 .sx-story-compose img,.sx-photo-picker img{display:block;max-width:160px;max-height:270px;object-fit:contain}
 .sx-photo-picker{position:absolute;inset:75px 10px auto;z-index:40;background:#fff;color:#17202b;border-radius:16px;padding:18px;box-shadow:0 10px 35px #0008}
+.sx-dm-search { margin:16px; min-height:44px; border-radius:15px; background:#171717; color:#71767b; display:flex; align-items:center; gap:10px; padding:0 15px; }
+.story-x .sx-person { min-height:72px; padding:10px 16px; }
+.story-x .sx-person small { color:#71767b; }

@@ -21,7 +21,7 @@ export function TimeMachine({ state, phoneDate, onBack, onAdvance, onReconnect }
     26: {target:"camp-day",label:"推进至露营当天",timeline:"金昇玟 · 2030 年"},
     28: {target:"rescue-72h",label:"向前推进 72 小时",timeline:"金昇玟 · 2030 年"},
   };
-  const finalOption = finalPhase === 28 && !["f-alert-weather","f-alert-mom","f-alert-chan","f-alert-han","f-alert-news"].every((id) => state.read.includes(id)) ? null : finalOptions[finalPhase];
+  const finalOption = finalOptions[finalPhase];
   const option = finalOption || (state.variables.sceneFourStage14 === true && state.variables.sceneFourStage15 !== true
     ? { target: "three-months", label: "向前推进三个月", timeline: "2017 年 · 李旻浩" }
     : state.variables.sceneFourStage9 === true && state.variables.sceneFourStage10 !== true

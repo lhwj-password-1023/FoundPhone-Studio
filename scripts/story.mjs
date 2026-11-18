@@ -118,6 +118,9 @@ try {
     if (error.code !== "ENOENT") throw error;
   }
   const { story, work } = compileStory(raw, extras);
+  if (raw.id === "nine-years") {
+    work.cover = "./story-images/reference-3.webp";
+  }
   try {
     const input = JSON.parse(await readFile(file.replace(/\.(?:json|md)$/i, "") + ".guidance.json", "utf8"));
     try { input.push(...JSON.parse(await readFile(file.replace(/\.(?:json|md)$/i, "") + ".finale.guidance.json", "utf8"))); } catch (error) { if (error.code !== "ENOENT") throw error; }

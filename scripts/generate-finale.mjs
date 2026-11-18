@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises';
 
 // Source for the continuation overlay. Every dialogue beat is a separate record
 // and a separate player send or read event.
-const out = { revision: 7, installedApps: ['news'], variables: { finalPhase: 0, finalBranch: '', storyConnection: '2017', storyTransferAmount: '', storyFinalComplete: false }, content: { messages: [], kakao: [], calendar: [], safari: [], notes: [], news: [], weather: [] }, events: [], tests: [] };
+const out = { revision: 8, installedApps: ['news'], variables: { finalPhase: 0, finalBranch: '', storyConnection: '2017', storyTransferAmount: '', storyFinalComplete: false }, content: { messages: [], kakao: [], calendar: [], reminders: [], safari: [], notes: [], news: [], weather: [] }, events: [], tests: [] };
 const C = (key, value = true, op = 'eq') => ({ key, op, value });
 const A = (type, key, value = '') => ({ type, key, value });
 const N = (id, event, target, actions = [], next = [], conditions = [], type = 'action') => out.events.push({ id, label: id, type, event, target, actions, next, conditions });
@@ -84,8 +84,8 @@ checkpoint('f-week-2',6,'storyTimeAdvance','week-2');
 lines('messages',[
   ['旻浩哥','刚练完，好饿。'],['金昇玟','去便利店第二排买个焦糖布丁。'],['旻浩哥','这么精确'],['金昇玟','你肯定喜欢。'],['旻浩哥','但我还没吃过呢。'],['旻浩哥','买了。'],['旻浩哥','确实挺好吃。'],['旻浩哥','以后要是见面，你得请我吃十个。'],['金昇玟','十个不会腻吗。'],['旻浩哥','那分你一个吧'],['金昇玟','……'],
 ]);
-checkpoint('f-clue-2',8,'read','f-clue-calendar',[A('unlock','f-clue-calendar')]);
-out.content.calendar.push({id:'f-clue-calendar',title:'取消的周末约会',body:'李旻浩 · 原本约好一起吃饭。备注：最近的压力和睡眠情况，下次就诊时记得告诉医生。',time:'2026-09-12 15:00',hidden:true});
+checkpoint('f-clue-2',8,'deleteReminder','f-clue-reminder',[A('unlock','f-clue-reminder')]);
+out.content.reminders.push({id:'f-clue-reminder',title:'取消的周末约会',body:'李旻浩 · 原本约好一起吃饭。备注：最近的压力和睡眠情况，下次就诊时记得告诉医生。',time:'2026-09-12 15:00',folder:'待办清单',hidden:true,meta:{due:'2026-09-12 15:00'}});
 previous='f-clue-2';checkpoint('f-week-3',9,'storyTimeAdvance','week-3');
 lines('messages',[
   ['旻浩哥','今天怎么一直没消息？'],['金昇玟','有工作。'],['旻浩哥','哦。'],['旻浩哥','我还以为你失踪了。'],['金昇玟','你很想我？'],['旻浩哥','少自恋。'],['旻浩哥','不过下次忙的话提前说一声。'],['金昇玟','好。'],
@@ -97,7 +97,7 @@ lines('messages',[
   ['旻浩哥','所以我们真的不能见面吗？'],['金昇玟','现在不行。'],['旻浩哥','那以后呢？'],['金昇玟','也许吧。'],['旻浩哥','你每次都这么说。'],['旻浩哥','2026年很远吗？'],['金昇玟','很远。'],['旻浩哥','那我慢慢走过去不就好了。'],
 ]);
 checkpoint('f-clue-4',14,'read','f-clue-news',[A('unlock','f-clue-news')]);
-out.content.safari.push({id:'f-clue-news',title:'关于李旻浩的公开报道（架空同人剧情）',body:'这是一篇故事内虚构报道：李旻浩于2026年自杀离世。亲友回忆他长期承受复杂的工作与心理压力，无法把这一结果归因于某个单一决定。报道不涉及方法与过程。',time:'2026-10-20 10:00',hidden:true,meta:{source:'故事内虚构新闻'}});
+out.content.safari.push({id:'f-clue-news',title:'关于李旻浩的公开报道',body:'李旻浩于2026年自杀离世。亲友回忆他长期承受复杂的工作与心理压力，无法把这一结果归因于某个单一决定。',time:'2026-10-20 10:00',hidden:true,meta:{source:'文化观察'}});
 previous='f-clue-4';checkpoint('f-week-5',15,'storyTimeAdvance','week-5');
 lines('messages',[
   ['旻浩哥','今天又下雨了，练习室的窗户一直响。'],['金昇玟','记得带伞。'],['旻浩哥','已经带了，你的提醒晚了一步。'],['旻浩哥','还有，我提交选秀报名表了。'],
@@ -146,7 +146,6 @@ for(const [id,app,title,body] of [
 }
 out.events.find(n=>n.id===previous).actions.push(A('variable','finalPhase',28));
 previous='';gate('f-rescue-time','storyTimeAdvance','rescue-72h',29);
-out.events.at(-1).conditions.push(...['f-alert-weather','f-alert-mom','f-alert-chan','f-alert-han','f-alert-news'].map(id=>C(`read:${id}`)));
 for(const [id,app,title,body] of [
   ['f-rescue-mom','kakao','妈妈','太好了……接到医院电话说你被一位好心人救出来了，醒了就好好休息，妈妈马上赶过去！'],
   ['f-rescue-chan','kakao','方灿','谢天谢地你们被救出来了！医生说没有生命危险，你先安心养伤，别的事都别想！'],
@@ -159,6 +158,8 @@ for(const [id,app,title,body] of [
 previous='';for(const id of ['f-rescue-mom','f-rescue-chan','f-rescue-news']) N('f-rescue-read-'+id,'read',id,[A('variable','finalPhase',30)],[],[C('finalPhase',29),...['f-rescue-mom','f-rescue-chan','f-rescue-news'].map(key=>C(`read:${key}`))]);
 N('f-final-photo','storyShutter','final',[A('variable','finalPhase',31),A('variable','storyFinalComplete',true)],[],[C('finalPhase',30)]);
 N('f-resume','resumeRevision','6',[],['f-start'],[C('sceneFourStage16')]);
+N('f-resume-7','resumeRevision','7',[],[],[]);
+N('f-resume-7-reminder','resumeRevision','7',[A('unlock','f-clue-reminder')],[],[C('finalPhase',8)]);
 
 await writeFile('stories/nine-years/story.finale.json',JSON.stringify(out,null,2)+'\n');
 const hints = {
@@ -169,7 +170,7 @@ const hints = {
   4:['kakao','打开 KakaoTalk →「方灿」，阅读关于旻浩的消息。'],
   6:['timemachine','打开「时光机器」，将李旻浩的通信时间再推进一周，然后返回信息。'],
   7:['messages','打开「信息」→「旻浩哥」，完成便利店布丁的对话。'],
-  8:['calendar','打开「日历」，翻到 2026 年 9 月，点开「取消的周末约会」。'],
+  8:['reminders','打开「提醒事项」，点开已逾期的「取消的周末约会」，然后删除这条提醒。'],
   9:['timemachine','打开「时光机器」，将李旻浩的通信时间再推进一周，然后返回信息。'],
   10:['messages','打开「信息」→「旻浩哥」，完成彼此习惯联系的对话。'],
   11:['kakao','打开 KakaoTalk →「李龙馥」，阅读关于旻浩的消息。'],
@@ -184,7 +185,7 @@ const hints = {
   20:['messages','在「信息」→「旻浩哥」点击「转账/汇款」，用屏幕数字键选任意四位数，确认附言后转账。记住金额。'],
   21:['messages','返回「信息」→「旻浩哥」，读完少年旻浩的回复并发送鼓励的话。'],
   22:['notes','打开「备忘录」→《给昇玟》，点击密码框自动填入刚才的四位金额，再点解锁。'],
-  23:['notes','在「备忘录」完整阅读《给昇玟》，滑到结尾并确认。'],
+  23:['notes','在「备忘录」打开《给昇玟》即可完成阅读。'],
   24:['timemachine','打开「时光机器」，将金昇玟的时间推进至几年后的秋天。日历会同步更新。'],
   25:['kakao','打开 KakaoTalk →「李龙馥」，阅读露营邀请并发送预设回复。'],
   26:['timemachine','打开「时光机器」，将金昇玟的时间推进至露营当天。'],

@@ -43,6 +43,7 @@ export type SkinProps = {
   virtualTime?: string;
   virtualDate?: string;
   contacts?: Item[];
+  gallery?: Item[];
   onEvent?: (event: string, target: string) => void;
   name: string;
   items: Item[];

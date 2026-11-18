@@ -317,3 +317,20 @@
 .mymy-instagram .ptab .on {
   border-bottom: 2px solid white;
 }
+/* iOS-style contacts directory and alphabetical rail. */
+.ios18 .native-contacts { background:#fff; color:#151515; position:relative; }
+.ios18 .native-contacts .catalog-scroll { padding-bottom:76px; }
+.ios18 .native-contacts h1 { font-size:32px; font-weight:750; padding:18px 20px 8px; margin:0; }
+.ios18 .native-contacts .directory-row { min-height:72px; margin-left:16px; width:calc(100% - 38px); padding:8px 8px 8px 0; border-bottom:1px solid #e5e5e8; font-size:17px; }
+.ios18 .native-contacts .directory-row .avatar { width:46px; height:46px; background:linear-gradient(145deg,#b6d0e8,#7787b8); color:#fff; }
+.ios18 .native-contacts .native-section { margin:14px 20px 2px; color:#8b8b90; border-bottom:1px solid #e5e5e8; }
+.ios18 .native-contacts .contact-index { right:3px; top:18%; gap:1px; max-height:70%; }
+.ios18 .native-contacts .contact-index button { color:#007aff; min-height:17px; font-size:11px; }
+.ios18 .voice-memos { background:#fff; color:#111; position:relative; }
+.ios18 .voice-memos .catalog-scroll { padding:0 18px 100px; }
+.ios18 .voice-memos h1 { font-size:36px; margin:22px 0 14px; }
+.ios18 .voice-memos .catalog-row { width:100%; min-height:76px; padding:12px 0; border-top:1px solid #dedee2; background:none; color:#111; text-align:left; }
+.ios18 .voice-memos .catalog-row small { display:block; color:#8b8b90; }
+.ios18 .voice-memos .catalog-row small span { float:right; }
+.ios18 .voice-record-control { position:absolute; bottom:18px; left:0; right:0; display:flex; justify-content:center; pointer-events:none; }
+.ios18 .voice-record-control button { pointer-events:auto; display:grid; place-items:center; width:70px; height:70px; border:6px solid #fff; outline:1px solid #dedee2; border-radius:50%; background:#ff383e; color:#fff; }

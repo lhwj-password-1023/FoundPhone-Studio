@@ -1,4 +1,5 @@
 import { ActorProvider } from "./ActorContext";
+import { Mic } from "lucide-react";
 import { makeItem as makeCallRecord } from "./schema";
 async function captureVisibleApp(): Promise<string> {
   const source = document.querySelector<HTMLElement>(".app-screen");
@@ -338,8 +339,9 @@ function PhoneRuntime({
     if (event === "shareNews") {
       const next = shareSceneFourNews(work, current, target);
       if (next === current) return;
-      update({ ...next, ui: { ...next.ui, messages: { ...next.ui?.messages, thread: "陌生号码" } } });
+      update(next);
       open("messages");
+      update({ ...runtimeRef.current, ui: { ...runtimeRef.current.ui, messages: { ...runtimeRef.current.ui?.messages, thread: "陌生号码" } } });
       return;
     }
     if (event === "read" && target === "s4-memory-c" && current.variables.sceneFourStage13 === true) {
@@ -451,6 +453,11 @@ function PhoneRuntime({
   };
   const open = (id: string) => {
     if (!work.apps.some((a) => a.id === id && a.installed)) return;
+    if (id !== app) {
+      const current = runtimeRef.current;
+      const appUi = current.ui?.[id] || {};
+      update({ ...current, ui: { ...current.ui, [id]: { ...appUi, ...(id === "health" ? { tab: "摘要" } : {}), thread: "", detail: "", xTab: "首页", xDetail: "", xProfile: "", xDm: "", mymyTab: "聊天", browserTabs: "", browserActive: 0, album: "", photoGroup: "" } } });
+    }
     setApp(id);
     setKeyboard(false);
     setRecent((v) => [id, ...v.filter((a) => a !== id)].slice(0, 8));
@@ -474,6 +481,10 @@ function PhoneRuntime({
   const goToRecord = (appId: string, item?: Item) => {
     open(appId);
     if (!item || !visible(item, runtimeRef.current)) return;
+    if (["weather", "news", "reminders", "safari"].includes(appId)) {
+      update(dispatch(work, runtimeRef.current, "read", item.id));
+      return;
+    }
     const current = runtimeRef.current;
     const route: Record<string, UiValue> = item.meta.conversationId
       ? {
@@ -1299,7 +1310,7 @@ function AppContentView({
               if (entered === expected && (!detail.meta.dynamicPassword || Number(state.variables.finalPhase) >= 22)) {
                 setUnlocks([...unlocks, detail.id]);
                 onEvent("password", detail.id);
-                if (!detail.meta.dynamicPassword) onRead(detail.id);
+                onRead(detail.id);
                 setPwError("");
               } else setPwError("密码不正确");
             }}
@@ -1319,7 +1330,6 @@ function AppContentView({
             <Media item={detail} />
           )}
           <RichText value={detail.richText} fallback={detail.body} />
-          {detail.meta.dynamicPassword && !state.read.includes(detail.id) && <button className="note-end-read" onClick={() => onRead(detail.id)}>读到结尾</button>}
           <dl className="item-metadata">
             {getFields(app.id)
               .filter((f) => detail.meta?.[f.key])
@@ -1416,10 +1426,11 @@ function AppContentView({
     );
   if (archive && app.id === "music" && name === "录音机")
     return (
-      <div className="catalog-skin">
+      <div className="catalog-skin voice-memos">
         <header className="app-nav">
-          <button onClick={back}>返回</button>
-          <strong>录音机</strong>
+          <button onClick={back} aria-label="返回">‹</button>
+          <strong>所有录音</strong>
+          <button aria-label="搜索录音">⌕</button>
         </header>
         <div className="catalog-scroll">
           <h1>所有录音</h1>
@@ -1427,14 +1438,13 @@ function AppContentView({
             <button className="catalog-row" key={i.id} onClick={() => read(i)}>
               <span>
                 <strong>{i.title}</strong>
-                <small>
-                  {i.time} · {i.meta.duration} 秒
-                </small>
+                <small>{i.time.slice(0,10)} <span>{i.meta.duration} 秒</span></small>
               </span>
               ▷
             </button>
           ))}
         </div>
+        <div className="voice-record-control"><button aria-label="开始录音"><Mic size={22}/></button></div>
       </div>
     );
   if (Skin)
@@ -1450,6 +1460,7 @@ function AppContentView({
               virtualDate={state.date || work.phone.date}
               onEvent={onEvent}
               contacts={[...(work.data.contacts || []), ...(state.messages.contacts || [])].filter((i) => visible(i, state))}
+              gallery={[...(work.data.photos || []), ...(state.messages.photos || [])].filter((i) => visible(i, state))}
               ui={state.ui?.[app.id]}
               storyState={state}
               storyTextPresets={pendingGuidance(work, state).filter((task) => task.app === app.id && task.inputText).map((task) => task.inputText!)}

@@ -363,6 +363,7 @@ export function CameraSkin(p: Props) {
   const [mode, setMode] = useState("照片"),
     [index, setIndex] = useState(0);
   const [front, setFront] = useState(false);
+  const [frontShot, setFrontShot] = useState(0);
   const [flash, setFlash] = useState(false);
   const finalPhoto = p.storyState?.messages.photos?.find((item) => item.id === "f-final-selfie");
   if (p.archive && (p.storyState?.variables.finalPhase === 30 || finalPhoto)) return (
@@ -376,6 +377,8 @@ export function CameraSkin(p: Props) {
     mode === "视频" ? i.kind === "video" : i.kind !== "video",
   );
   const frame = frames[index % Math.max(frames.length, 1)];
+  const frontFrames = (p.gallery || []).filter((i) => ["user-photo-11","user-photo-15","user-photo-16"].includes(i.id));
+  const preview = front && frontFrames.length ? frontFrames[frontShot % frontFrames.length] : frame;
   return (
     <div className="catalog-skin native-camera">
       <Header p={p} />
@@ -384,8 +387,8 @@ export function CameraSkin(p: Props) {
         <span>{mode === "视频" ? "HD · 30" : "4:3"}</span>
       </div>
       <div className="camera-view">
-        {frame ? (
-          <Media item={frame} />
+        {preview ? (
+          <Media item={preview} />
         ) : (
           <p>{p.creator ? "未设置取景画面" : "取景器未连接"}</p>
         )}
@@ -416,15 +419,14 @@ export function CameraSkin(p: Props) {
         <button
           className="camera-shutter"
           aria-label={p.creator ? "编辑拍摄画面" : "查看拍摄内容"}
-          disabled={!p.creator && !frame}
-          onClick={() => (p.creator ? p.onAdd() : frame && p.onItem(frame))}
+          disabled={!p.creator && !preview}
+          onClick={() => (p.creator ? p.onAdd() : front ? setFrontShot((n) => n + 1) : preview && p.onItem(preview))}
         >
           <span />
         </button>
         <button
-          aria-label="切换取景画面"
-          disabled={frames.length < 2}
-          onClick={() => setIndex((i) => i + 1)}
+          aria-label="翻转镜头"
+          onClick={() => setFront(!front)}
         >
           <Camera size={24} />
         </button>
@@ -458,6 +460,7 @@ function SafariBookmarks(p: Props) {
       <div className="catalog-scroll">
         <h1>{tab}</h1>
         <div className="safari-favorites">
+          {tab === "世界时钟" && ["首尔","东京","伦敦","纽约"].map((city) => { const zone = ({首尔:"Asia/Seoul",东京:"Asia/Tokyo",伦敦:"Europe/London",纽约:"America/New_York"} as Record<string,string>)[city]; const date = new Date(`${p.virtualDate || "2026-11-20"}T${p.virtualTime || "21:41"}:00+09:00`); return <div className="alarm-row" key={city}><button><time>{new Intl.DateTimeFormat("zh-CN",{timeZone:zone,hour:"2-digit",minute:"2-digit",hour12:false}).format(date)}</time><small>{city}</small></button><Globe size={26}/></div>; })}
           {items.map((i) => (
             <button key={i.id} onClick={() => p.onItem(i)}>
               <span>
@@ -729,6 +732,7 @@ export function ClockSkin(p: Props) {
 export function RemindersSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "全部");
   const [checked, setChecked] = useSkinState<string[]>(p, "checked", []);
+  const [deleted, setDeleted] = useSkinState<string[]>(p, "deleted", []);
   const [detail, show] = useState(false);
   const categories = ["今天", "计划", "全部", "旗标", "紧急", "已完成"];
   const icons = [Calendar, Clock, Inbox, Flag, AlarmClock, CheckCircle];
@@ -741,7 +745,7 @@ export function RemindersSkin(p: Props) {
     if (t === "紧急") return i.meta.urgent === "true";
     return t === "全部" || t === "待办清单";
   }
-  const list = items.filter((i) => matches(i, tab));
+  const list = items.filter((i) => !deleted.includes(i.id) && matches(i, tab));
   const enter = (t: string) => {
     setTab(t);
     show(true);
@@ -799,9 +803,10 @@ export function RemindersSkin(p: Props) {
                 <button onClick={() => p.onItem(i)}>
                   <strong>{i.title}</strong>
                   <small>
-                    {i.time} {i.folder}
+                    {i.id === "f-clue-reminder" ? `已逾期 ${Math.max(1,Math.floor((Date.parse((p.virtualDate || "2026-11-20")+"T12:00:00")-Date.parse(i.time.replace(" ","T")))/86400000))} 天 · 点开查看` : `${i.time} ${i.folder}`}
                   </small>
                 </button>
+                {i.id === "f-clue-reminder" && <button disabled={!p.storyState?.read.includes(i.id)} onClick={() => { setDeleted([...deleted,i.id]); p.onEvent?.("deleteReminder",i.id); }}>删除提醒</button>}
               </div>
             ))}
           </>

@@ -53,7 +53,7 @@ export function StoryX(p: Props) {
   );
   const profiles = available.filter((i) => i.folder === "用户");
   const owner = profiles.find((i) => i.meta.self === "true" && (activeIdentity === "private" ? i.id === "x-user-puppy" : i.id !== "x-user-puppy"));
-  const posts = available.filter((i) => i.folder === "动态");
+  const posts = available.filter((i) => i.folder === "动态").sort((a,b) => b.time.localeCompare(a.time));
   const notifications = available.filter((i) => i.folder === "通知");
   const dms = available.filter((i) => i.folder === "私信");
   const user = (id: string) => profiles.find((i) => i.id === id);
@@ -295,7 +295,7 @@ export function StoryX(p: Props) {
               ? account.title
               : compose
                 ? "发布动态"
-                : thread || "𝕏"}
+                : thread || (tab === "私信" ? "聊天" : "𝕏")}
         </b>
         <button
           aria-label="我的主页"
@@ -510,7 +510,8 @@ export function StoryX(p: Props) {
           </>
         ) : tab === "私信" ? (
           <>
-            <h2>私信</h2>
+            <div className="sx-dm-search"><Search size={19}/><span>搜索</span></div>
+            <h3>最近聊天</h3>
             {dmList.map((title) => {
               const items = dms.filter((i) => i.title === title),
                 last = items.at(-1)!;

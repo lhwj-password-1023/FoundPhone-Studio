@@ -181,7 +181,7 @@
     "scene": "第四场",
     "name": "阶段 8",
     "type": "story-action",
-    "app": "calendar",
+    "app": "reminders",
     "target": "",
     "prerequisites": {
       "key": "finalPhase",
@@ -195,7 +195,7 @@
     },
     "priority": 30,
     "unlocks": [],
-    "hint": "打开「日历」，翻到 2026 年 9 月，点开「取消的周末约会」。",
+    "hint": "打开「提醒事项」，点开已逾期的「取消的周末约会」，然后删除这条提醒。",
     "blocks": [
       "陌生号码"
     ]
@@ -556,7 +556,7 @@
     },
     "priority": 30,
     "unlocks": [],
-    "hint": "在「备忘录」完整阅读《给昇玟》，滑到结尾并确认。",
+    "hint": "在「备忘录」打开《给昇玟》即可完成阅读。",
     "blocks": [
       "陌生号码"
     ]

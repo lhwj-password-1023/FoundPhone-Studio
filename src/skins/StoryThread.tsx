@@ -40,7 +40,8 @@ export function StoryThread({
 }: Props) {
   const actor = useActor();
   const kakao = app === "kakao";
-  const list = items.filter((i) => i.title === thread).sort((a, b) => a.time.localeCompare(b.time));
+  // Content is appended when it arrives; authored timestamps may belong to another timeline.
+  const list = items.filter((i) => i.title === thread);
   const displayName = !kakao && thread === "陌生号码" ? String(state.ui?.messages?.contactAlias || thread) : thread;
   const choices = state.endings.length
     ? []
@@ -259,7 +260,7 @@ export function StoryThread({
                   {i.time.slice(-5)}{" "}
                   {i.outgoing &&
                     (i.meta.failed === "true" ? "未送达" : kakao
-                      ? i.meta.unread === "true" || n === list.length - 1
+                      ? !state.variables.storyFinalComplete && (i.meta.unread === "true" || n === list.length - 1)
                         ? "1"
                         : ""
                       : n === list.length - 1
@@ -402,6 +403,7 @@ export function StoryThread({
             if (option && !typing.active) { typing.start(option.body); return; }
             if (!option && choices.length === 1) { select(choices[0]); return; }
             if (choices.length > 1) setPicker(!picker);
+            else if (!choices.length) setBlocked(true);
           }}
         >
           {typing.active ? (

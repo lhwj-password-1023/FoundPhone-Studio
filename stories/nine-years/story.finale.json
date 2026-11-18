@@ -1,5 +1,5 @@
 {
-  "revision": 7,
+  "revision": 8,
   "installedApps": [
     "news"
   ],
@@ -1069,24 +1069,29 @@
         "hidden": true
       }
     ],
-    "calendar": [
+    "calendar": [],
+    "reminders": [
       {
-        "id": "f-clue-calendar",
+        "id": "f-clue-reminder",
         "title": "取消的周末约会",
         "body": "李旻浩 · 原本约好一起吃饭。备注：最近的压力和睡眠情况，下次就诊时记得告诉医生。",
         "time": "2026-09-12 15:00",
-        "hidden": true
+        "folder": "待办清单",
+        "hidden": true,
+        "meta": {
+          "due": "2026-09-12 15:00"
+        }
       }
     ],
     "safari": [
       {
         "id": "f-clue-news",
-        "title": "关于李旻浩的公开报道（架空同人剧情）",
-        "body": "这是一篇故事内虚构报道：李旻浩于2026年自杀离世。亲友回忆他长期承受复杂的工作与心理压力，无法把这一结果归因于某个单一决定。报道不涉及方法与过程。",
+        "title": "关于李旻浩的公开报道",
+        "body": "李旻浩于2026年自杀离世。亲友回忆他长期承受复杂的工作与心理压力，无法把这一结果归因于某个单一决定。",
         "time": "2026-10-20 10:00",
         "hidden": true,
         "meta": {
-          "source": "故事内虚构新闻"
+          "source": "文化观察"
         }
       }
     ],
@@ -2384,7 +2389,7 @@
         },
         {
           "type": "unlock",
-          "key": "f-clue-calendar",
+          "key": "f-clue-reminder",
           "value": ""
         }
       ],
@@ -2395,8 +2400,8 @@
       "id": "f-clue-2",
       "label": "f-clue-2",
       "type": "action",
-      "event": "read",
-      "target": "f-clue-calendar",
+      "event": "deleteReminder",
+      "target": "f-clue-reminder",
       "actions": [
         {
           "type": "variable",
@@ -4706,31 +4711,6 @@
           "key": "finalPhase",
           "op": "eq",
           "value": 28
-        },
-        {
-          "key": "read:f-alert-weather",
-          "op": "eq",
-          "value": true
-        },
-        {
-          "key": "read:f-alert-mom",
-          "op": "eq",
-          "value": true
-        },
-        {
-          "key": "read:f-alert-chan",
-          "op": "eq",
-          "value": true
-        },
-        {
-          "key": "read:f-alert-han",
-          "op": "eq",
-          "value": true
-        },
-        {
-          "key": "read:f-alert-news",
-          "op": "eq",
-          "value": true
         }
       ]
     },
@@ -4957,6 +4937,38 @@
           "key": "sceneFourStage16",
           "op": "eq",
           "value": true
+        }
+      ]
+    },
+    {
+      "id": "f-resume-7",
+      "label": "f-resume-7",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "7",
+      "actions": [],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-resume-7-reminder",
+      "label": "f-resume-7-reminder",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "7",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-clue-reminder",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 8
         }
       ]
     }

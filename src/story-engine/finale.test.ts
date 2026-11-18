@@ -55,7 +55,9 @@ test("从旧章节进入全剧终，跨 App 节点均可完成且自拍不会提
     else {
       const phase = Number(state.variables.finalPhase);
       const unread = Object.values(work.data).flat().find((item) => item.id.startsWith("f-") && !item.outgoing && visible(item,state) && !state.read.includes(item.id) && item.id !== "f-locked-note");
-      if (unread) state = dispatch(work,state,"read",unread.id);
+      if (phase===28) state = advanceFinale(work,state,"rescue-72h");
+      else if (unread) state = dispatch(work,state,"read",unread.id);
+      else if (phase===8) state = dispatch(work,state,"deleteReminder","f-clue-reminder");
       else if ([2,6,9,12,15,24,26,28].includes(phase)) {
         const targets: Record<number,string> = {2:"week-1",6:"week-2",9:"week-3",12:"week-4",15:"week-5",24:"future-autumn",26:"camp-day",28:"rescue-72h"};
         state = advanceFinale(work,state,targets[phase]);

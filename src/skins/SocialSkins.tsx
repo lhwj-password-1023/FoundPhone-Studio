@@ -91,7 +91,7 @@ function WeiboActions({ p, item }: { p: Props; item: Item }) {
 export function WeiboSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "关注");
   const [feed, setFeed] = useState("全部");
-  const list = feed === "全部" ? items : items.filter((i) => i.folder === feed);
+  const list = (feed === "全部" ? items : items.filter((i) => i.folder === feed)).sort((a,b)=>b.time.localeCompare(a.time));
   return (
     <div className="catalog-skin weibo-ui">
       <Header p={p} />
@@ -332,7 +332,7 @@ export function RedbookSkin(p: Props) {
       ? items.filter((i) => i.favorite)
       : tab === "关注"
         ? items.filter((i) => i.folder === "关注")
-        : items;
+        : [...items].sort((a,b)=>b.time.localeCompare(a.time));
   return (
     <div className="catalog-skin redbook-ui">
       <Header p={p} />

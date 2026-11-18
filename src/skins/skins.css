@@ -4148,3 +4148,9 @@
 .story-find-map b,.story-find-map i{position:absolute;left:68%;top:47%;font-style:normal;color:#3478e5;font-size:27px}
 .story-find-map i{left:70%;top:49%;color:#5994f0;font-size:19px}
 .story-find-detail button{border:0;border-radius:11px;padding:10px 25px;background:#e8f0ff;color:#3975d4}
+.safari-search-submit { display:block; margin:0 16px 8px auto; color:#007aff; background:none; font-weight:650; padding:5px 10px; }
+.safari-search-submit:disabled { opacity:.42; }
+.native-safari .safari-address { background:#f1f2f6; border:1px solid #e1e2e6; border-radius:15px; padding:0 13px; }
+.native-safari .native-reader { padding:14px 20px 26px; }
+.native-safari .native-reader h1 { font-size:27px; line-height:1.2; }
+.native-safari .native-reader .fiction-note { display:block; margin-top:24px; color:#8e8e93; font-size:11px; }

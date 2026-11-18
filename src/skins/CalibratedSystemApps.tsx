@@ -67,6 +67,9 @@ export function HealthSkin(p: Props) {
     [detail, setDetail] = useState(""),
     [profile, setProfile] = useState(false);
   const current = recordFor(p.items, detail);
+  const storyPhase = Number(p.storyState?.variables.finalPhase || 0);
+  const hasGoneOut = p.storyState?.variables.sceneThreeStage9 === true || storyPhase >= 26;
+  const healthValue = (id: string, i: Item | undefined) => id === "steps" ? (hasGoneOut ? storyPhase >= 26 ? "8,940" : "6,780" : "2,460") : id === "sleep" ? (storyPhase >= 24 ? "6 小时 12 分" : "4 小时 38 分") : i ? meta(i,"value",i.body || "无数据") : "无数据";
   const open = (key: string) => {
     const i = recordFor(p.items, key);
     if (i && p.creator) {
@@ -138,7 +141,7 @@ export function HealthSkin(p: Props) {
               ))}
             </div>
             <p className="health-detail-value">
-              {current ? meta(current, "value", "—") : "无数据"}{" "}
+              {healthValue(detail,current)}{" "}
               <small>{current ? meta(current, "unit") : ""}</small>
             </p>
             <div className="health-detail-chart" aria-label="健康记录图表">
@@ -242,9 +245,7 @@ export function HealthSkin(p: Props) {
                       <div className="health-card-bottom">
                         <div>
                           <b>
-                            {i
-                              ? meta(i, "value", i.body || "无数据")
-                              : "无数据"}
+                            {healthValue(id,i)}
                           </b>
                           <span>{i ? meta(i, "unit") : ""}</span>
                         </div>
@@ -378,7 +379,14 @@ export function WeatherSkin(p: Props) {
     [mode, setMode] = useState("temperature"),
     [sheet, setSheet] = useState(""),
     [query, setQuery] = useState("");
-  const item = p.items[index] || p.items[0],
+  const rawItem = p.items[index] || p.items[0];
+  const month = Number((p.virtualDate || "2026-11-20").slice(5,7));
+  const day = Number((p.virtualDate || "2026-11-20").slice(8,10));
+  // Seasonal Seoul ranges follow KMA climate normals; day-to-day values are story forecasts.
+  const normals = [[-6,2],[-4,4],[1,10],[7,18],[13,23],[18,27],[22,29],[22,30],[17,26],[10,20],[3,12],[-3,4]];
+  const [baseLow,baseHigh] = normals[Math.max(0,Math.min(11,month-1))];
+  const offset = (day % 5) - 2;
+  const item = rawItem?.id === "seoul-weather" ? {...rawItem,meta:{...rawItem.meta,temperature:String(Math.round((baseLow+baseHigh)/2)+offset),low:String(baseLow+offset),high:String(baseHigh+offset),condition:day%3===0?"小雨":day%2===0?"多云":"晴间多云",sunrise:"07:12",rain:day%3===0?"45%":"10%",wind:"2 米/秒",hourly:JSON.stringify(Array.from({length:6},(_,n)=>({time:n===0?"现在":`${(Number((p.virtualTime||"21:33").slice(0,2))+n)%24}时`,temperature:String(Math.round((baseLow+baseHigh)/2)+offset-n%3)}))),daily:JSON.stringify(Array.from({length:7},(_,n)=>({label:n===0?"今天":`周${"一二三四五六日"[(new Date(`${p.virtualDate||"2026-11-20"}T12:00:00Z`).getUTCDay()+n+6)%7]}`,low:String(baseLow+(n%4)-2),high:String(baseHigh+(n%5)-2)})))}} : rawItem,
     hourly = listMeta(item, "hourly"),
     daily = listMeta(item, "daily");
   const read = () => {

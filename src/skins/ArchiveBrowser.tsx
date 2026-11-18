@@ -120,6 +120,10 @@ export function ArchiveBrowser(p: Props) {
           onChange={p.creator ? (e) => { setQuery(e.target.value); setPanel("搜索"); } : undefined}
         />
       </form>
+      <button className="safari-search-submit" disabled={!input.trim() || (!p.creator && !typing.done)} onClick={() => {
+        const form = document.querySelector<HTMLFormElement>(".safari-address");
+        form?.requestSubmit();
+      }}>搜索</button>
       {panel === "搜索" &&
         !input &&
         p.items
@@ -196,6 +200,7 @@ export function ArchiveBrowser(p: Props) {
                 </>
               )}
             </p>
+            {page.id === "f-clue-news" && <small className="fiction-note">此报道为架空同人剧情中的虚构内容。</small>}
             {page.id.startsWith("s4-news-") && <>
               <button onClick={() => setPanel("分享")}><Share2 size={16} /> 分享</button>
               {panel === "分享" && <div className="safari-share-sheet" role="dialog" aria-label="分享网页"><strong>分享到</strong><button onClick={() => setPanel("选择联系人")}>信息</button><button onClick={() => setPanel("")}>取消</button></div>}

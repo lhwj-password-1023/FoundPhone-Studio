@@ -140,7 +140,7 @@ export function MymyKakao(p: SkinProps) {
                   )}
                   {m.outgoing && run.last && (
                     <span className="kzt">
-                      {m.meta.unread || ""}
+                      {m.meta.unread === "true" && !p.storyState?.endings.length ? "1" : ""}
                       <br />
                       {m.time.slice(-5)}
                     </span>
@@ -312,9 +312,6 @@ export function MymyKakao(p: SkinProps) {
                                 }
                               </i>
                             )}
-                          {last.meta.unread && (
-                            <i className="kzkbd">{last.meta.unread}</i>
-                          )}
                         </span>
                       </button>
                     );
@@ -381,7 +378,7 @@ export function MymyInstagram(p: SkinProps) {
     [pop, setPop] = useState("");
   const posts = p.items.filter(
       (i) => i.folder !== "私信" && i.meta.story !== "true",
-    ),
+    ).sort((a,b)=>b.time.localeCompare(a.time)),
     stories = p.items.filter((i) => i.meta.story === "true"),
     dms = p.items.filter((i) => i.folder === "私信"),
     active = stories[story - 1];

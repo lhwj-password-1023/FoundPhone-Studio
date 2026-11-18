@@ -9,7 +9,7 @@ export const originalIconFiles: Record<string, string> = {
   clock: "clock.png",
   notes: "notes.png",
   files: "files.png",
-  music: "music.png",
+  music: "voice-memos.svg",
   weather: "weather.png",
   maps: "maps.png",
   wallet: "wallet.png",

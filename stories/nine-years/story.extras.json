@@ -374,7 +374,8 @@
           "tags": "#鼓声",
           "historyOnly": "false",
           "liked": "true"
-        }
+        },
+        "media": "./story-images/reference-4.jpeg"
       },
       {
         "id": "x-post-5",
@@ -467,7 +468,8 @@
           "tags": "#耳机",
           "historyOnly": "false",
           "liked": "true"
-        }
+        },
+        "media": "./story-images/reference-7.jpeg"
       },
       {
         "id": "x-post-9",
@@ -513,7 +515,8 @@
           "tags": "#夜路",
           "historyOnly": "false",
           "liked": "false"
-        }
+        },
+        "media": "./story-images/reference-8.jpeg"
       },
       {
         "id": "x-post-11",
@@ -584,7 +587,8 @@
           "historyOnly": "false",
           "liked": "false",
           "resource": "album-9"
-        }
+        },
+        "media": "./story-images/reference-10.jpeg"
       },
       {
         "id": "x-post-14",
@@ -654,7 +658,8 @@
           "tags": "#记分纸",
           "historyOnly": "false",
           "liked": "false"
-        }
+        },
+        "media": "./story-images/reference-12.jpeg"
       },
       {
         "id": "x-post-17",
@@ -701,7 +706,8 @@
           "tags": "#借伞",
           "historyOnly": "false",
           "liked": "false"
-        }
+        },
+        "media": "./story-images/reference-13.jpeg"
       },
       {
         "id": "x-post-19",
@@ -1296,6 +1302,238 @@
           "userId": "x-user-puppy",
           "handle": "puppy_0922x",
           "historyOnly": "false"
+        }
+      }
+    ],
+    "photos": [
+      {
+        "id": "user-photo-4",
+        "title": "生活照片 1",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-16 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-4.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-16 12:00"
+        }
+      },
+      {
+        "id": "user-photo-5",
+        "title": "生活照片 2",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-16 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-5.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-16 12:00"
+        }
+      },
+      {
+        "id": "user-photo-6",
+        "title": "生活照片 3",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-15 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-6.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-15 12:00"
+        }
+      },
+      {
+        "id": "user-photo-7",
+        "title": "生活照片 4",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-15 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-7.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-15 12:00"
+        }
+      },
+      {
+        "id": "user-photo-8",
+        "title": "生活照片 5",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-14 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-8.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-14 12:00"
+        }
+      },
+      {
+        "id": "user-photo-9",
+        "title": "生活照片 6",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-14 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-9.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-14 12:00"
+        }
+      },
+      {
+        "id": "user-photo-10",
+        "title": "生活照片 7",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-13 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-10.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-13 12:00"
+        }
+      },
+      {
+        "id": "user-photo-11",
+        "title": "生活照片 8",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-13 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-11.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-13 12:00"
+        }
+      },
+      {
+        "id": "user-photo-12",
+        "title": "生活照片 9",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-12 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-12.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-12 12:00"
+        }
+      },
+      {
+        "id": "user-photo-13",
+        "title": "生活照片 10",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-12 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-13.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-12 12:00"
+        }
+      },
+      {
+        "id": "user-photo-14",
+        "title": "生活照片 11",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-11 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-14.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-11 12:00"
+        }
+      },
+      {
+        "id": "user-photo-15",
+        "title": "生活照片 12",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-11 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-15.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-11 12:00"
+        }
+      },
+      {
+        "id": "user-photo-16",
+        "title": "生活照片 13",
+        "body": "手机相册中的日常照片。",
+        "time": "2026-11-10 12:00",
+        "folder": "最近项目",
+        "kind": "image",
+        "read": true,
+        "media": "./story-images/reference-16.jpeg",
+        "meta": {
+          "capturedAt": "2026-11-10 12:00"
+        }
+      }
+    ],
+    "weather": [
+      {
+        "id": "seoul-weather",
+        "title": "首尔",
+        "body": "故事内天气预报",
+        "time": "2026-11-20 21:33",
+        "read": true,
+        "meta": {
+          "locationLabel": "当前位置",
+          "temperature": "7",
+          "high": "12",
+          "low": "3",
+          "condition": "多云",
+          "aqi": "48",
+          "aqiLabel": "良",
+          "hourly": "[]",
+          "daily": "[]"
+        }
+      }
+    ],
+    "health": [
+      {
+        "id": "health-sleep",
+        "title": "睡眠",
+        "body": "近期睡眠不规律",
+        "time": "2026-11-20 08:00",
+        "read": true,
+        "meta": {
+          "metric": "睡眠",
+          "value": "4 小时 38 分",
+          "unit": "昨晚",
+          "series": "[6,5.5,4.8,5.2,4.3,4.6,4.1]"
+        }
+      },
+      {
+        "id": "health-steps",
+        "title": "步数",
+        "body": "今日步数",
+        "time": "2026-11-20 21:33",
+        "read": true,
+        "meta": {
+          "metric": "步数",
+          "value": "2,460",
+          "unit": "步",
+          "series": "[3600,5100,2900,4200,2600,3100,2460]"
+        }
+      },
+      {
+        "id": "health-activity",
+        "title": "活动",
+        "body": "今日活动",
+        "time": "2026-11-20 21:33",
+        "read": true,
+        "meta": {
+          "metric": "活动",
+          "active": "180",
+          "exercise": "12",
+          "stand": "6"
         }
       }
     ]

@@ -628,3 +628,11 @@
   width: 25px;
   height: 25px;
 }
+/* Simplified, spacious contact rows. */
+.mymy-ui.mymy-kakao .kzkb { background:#fff; }
+.mymy-ui.mymy-kakao .kzksec { padding:20px 18px 10px; color:#777; font-weight:600; font-size:12px; }
+.mymy-ui.mymy-kakao .kzkr { min-height:68px; align-items:center; gap:12px; padding:10px 17px; border-bottom:1px solid #f1f1f2; }
+.mymy-ui.mymy-kakao .kzkr .catalog-avatar { width:46px; height:46px; border-radius:18px; }
+.mymy-ui.mymy-kakao .kzkn b { font-size:15px; color:#1e1e1e; }
+.mymy-ui.mymy-kakao .kzkn small { display:block; max-width:215px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#89898f; font-size:12px; }
+.mymy-ui.mymy-kakao .kzkmt { color:#a1a1a7; font-size:11px; }
