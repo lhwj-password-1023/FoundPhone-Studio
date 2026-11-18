@@ -83,7 +83,12 @@ test("从旧章节进入全剧终，跨 App 节点均可完成且自拍不会提
       else if (phase===20) state = makeStoryTransfer(work,state,"1025");
       else if (phase===22) state = dispatch(work,state,"password","f-locked-note");
       else if (phase===23) state = dispatch(work,state,"read","f-locked-note");
-      else if (phase===30) state = takeFinalPhoto(work,state,"data:image/jpeg;base64,AA==");
+      else if (phase===32) {
+        state = dispatch(work,state,"openApp","camera");
+        expect(takeFinalPhoto(work,state,"data:image/jpeg;base64,AA==")).toBe(state);
+        state = dispatch(work,state,"storyCameraFront","final");
+        state = takeFinalPhoto(work,state,"data:image/jpeg;base64,AA==");
+      }
     }
     if (before===JSON.stringify([state.completed.length,state.choices.length,state.read.length,state.variables.finalPhase,state.scheduled?.length])) throw Error(`剧情卡在第 ${n} 步，阶段 ${state.variables.finalPhase}`);
     if (Number(state.variables.finalPhase)<24) expect(state.date).toBe(originalDate);
@@ -93,6 +98,9 @@ test("从旧章节进入全剧终，跨 App 节点均可完成且自拍不会提
   expect(state.peerDate?.startsWith("2010-")).toBe(true);
   expect(state.date).toBe("2030-10-15");
   expect(state.messages.photos?.find((item)=>item.id==="f-final-selfie")?.meta.capturedAt).toContain("2030-10-15");
+  expect(state.read).toContain("f-rescue-felix-1");
+  expect(state.read).toContain("f-rescue-felix-2");
+  expect(state.variables.finalPhotoSaved).toBe(true);
 });
 
 test("转账金额由玩家决定，重复确认不会生成第二张卡片", () => {
@@ -126,6 +134,30 @@ test("旧版第六修订存档保留消息和已完成任务", () => {
   expect(restored.completed).toContain("f-resume");
   expect(restored.variables.finalPhase).toBe(1);
   expect(restored.choices.length).toBeGreaterThan(0);
+});
+
+test("旧版终场存档转入龙馥消息，逐条送达后才能拍摄", () => {
+  const saved = afterFourth();
+  let state = dispatch(work, {
+    ...saved, revision: 9,
+    variables: { ...saved.variables, finalPhase: 30, storyFinalComplete: false },
+  }, "resumeRevision", "9");
+  expect(state.scheduled?.some((entry) => entry.nodeId === "f-deliver-f-rescue-felix-1")).toBe(true);
+  expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-1")!, state)).toBe(false);
+  state = advance(work, state, 1200);
+  expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-1")!, state)).toBe(true);
+  expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-2")!, state)).toBe(false);
+  expect(takeFinalPhoto(work, state, "data:image/jpeg;base64,AA==")).toBe(state);
+  state = advance(work, state, 2000);
+  expect(visible(work.data.kakao.find((item) => item.id === "f-rescue-felix-2")!, state)).toBe(true);
+  state = dispatch(work, state, "read", "f-rescue-felix-1");
+  state = dispatch(work, state, "read", "f-rescue-felix-2");
+  expect(state.variables.finalPhase).toBe(32);
+  expect(takeFinalPhoto(work, state, "data:image/jpeg;base64,AA==")).toBe(state);
+  state = dispatch(work, state, "storyCameraFront", "final");
+  state = takeFinalPhoto(work, state, "data:image/jpeg;base64,AA==");
+  expect(state.variables.storyCompleted).toBe(true);
+  expect(state.messages.photos?.filter((item) => item.id === "f-final-selfie")).toHaveLength(1);
 });
 
 test("另一回复分支记录选择并在日常通信前合流", () => {

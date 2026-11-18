@@ -889,6 +889,10 @@
 .finale-camera .camera-view { position: relative; min-height: 68%; background: #292d30; overflow: hidden; }
 .finale-camera .camera-view img { width: 100%; height: 100%; object-fit: contain; }
 .finale-viewfinder { color: #eee; display: flex; align-items: center; justify-content: center; height: 100%; }
+.finale-front-preview img { width: 100%; height: 100%; object-fit: cover; }
+.finale-hospital-preview { position: relative; background: linear-gradient(145deg, #f5f0e8 0%, #d8e1e5 56%, #bbbfc4 100%); overflow: hidden; }
+.hospital-window { position: absolute; top: 8%; left: 12%; width: 72%; height: 48%; border: 14px solid #e8e6e1; background: linear-gradient(115deg, #fff8dd, #bcd3e2 65%, #edf2f0); box-shadow: 0 0 55px #fff9dc; }
+.hospital-bed { position: absolute; bottom: -7%; left: -5%; width: 110%; height: 37%; border-radius: 40% 40% 0 0; background: linear-gradient(#f9fbfc, #dce4e8); box-shadow: 0 -14px 32px #9ba8ad55; }
 .finale-captions { position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; color: white; text-shadow: 0 2px 8px #000; animation: finale-fade 1.2s ease both; }
 .finale-captions p { font-size: 18px; }
 .finale-captions strong { font-size: 25px; letter-spacing: .25em; }

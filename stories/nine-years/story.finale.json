@@ -1,8 +1,15 @@
 {
-  "revision": 9,
-  "removedApps": ["instagram", "news"],
-  "removedContent": ["instagram"],
-  "phone": { "passcode": "1023" },
+  "revision": 10,
+  "removedApps": [
+    "instagram",
+    "news"
+  ],
+  "removedContent": [
+    "instagram"
+  ],
+  "phone": {
+    "passcode": "1023"
+  },
   "installedApps": [],
   "variables": {
     "finalPhase": 0,
@@ -11,7 +18,17 @@
     "storyTransferAmount": "",
     "storyFinalComplete": false,
     "childhoodTransferAmount": "",
-    "childhoodTransferCompleted": false
+    "childhoodTransferCompleted": false,
+    "rescueNotificationsRead": false,
+    "felixFinalMessagesTriggered": false,
+    "felixFinalMessagesRead": false,
+    "finalCameraUnlocked": false,
+    "cameraOpened": false,
+    "frontCameraActivated": false,
+    "finalSelfieTaken": false,
+    "finalPhotoSaved": false,
+    "secondMiracleRevealed": false,
+    "storyCompleted": false
   },
   "content": {
     "messages": [
@@ -1068,6 +1085,22 @@
         "title": "方灿",
         "body": "谢天谢地你们被救出来了！医生说没有生命危险，你先安心养伤，别的事都别想！",
         "sender": "方灿",
+        "time": "2030-10-15 18:30",
+        "hidden": true
+      },
+      {
+        "id": "f-rescue-felix-1",
+        "title": "李龙馥",
+        "body": "昇玟，我刚路过看到你俩在自拍，就先不打扰了。",
+        "sender": "李龙馥",
+        "time": "2030-10-15 18:30",
+        "hidden": true
+      },
+      {
+        "id": "f-rescue-felix-2",
+        "title": "李龙馥",
+        "body": "昇玟，希望你和哥一定要幸福。",
+        "sender": "李龙馥",
         "time": "2030-10-15 18:30",
         "hidden": true
       }
@@ -4814,9 +4847,21 @@
           "type": "variable",
           "key": "finalPhase",
           "value": 30
+        },
+        {
+          "type": "variable",
+          "key": "rescueNotificationsRead",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "felixFinalMessagesTriggered",
+          "value": true
         }
       ],
-      "next": [],
+      "next": [
+        "f-deliver-f-rescue-felix-1"
+      ],
       "conditions": [
         {
           "key": "finalPhase",
@@ -4851,9 +4896,21 @@
           "type": "variable",
           "key": "finalPhase",
           "value": 30
+        },
+        {
+          "type": "variable",
+          "key": "rescueNotificationsRead",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "felixFinalMessagesTriggered",
+          "value": true
         }
       ],
-      "next": [],
+      "next": [
+        "f-deliver-f-rescue-felix-1"
+      ],
       "conditions": [
         {
           "key": "finalPhase",
@@ -4888,9 +4945,21 @@
           "type": "variable",
           "key": "finalPhase",
           "value": 30
+        },
+        {
+          "type": "variable",
+          "key": "rescueNotificationsRead",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "felixFinalMessagesTriggered",
+          "value": true
         }
       ],
-      "next": [],
+      "next": [
+        "f-deliver-f-rescue-felix-1"
+      ],
       "conditions": [
         {
           "key": "finalPhase",
@@ -4915,20 +4984,71 @@
       ]
     },
     {
-      "id": "f-final-photo",
-      "label": "f-final-photo",
+      "id": "f-deliver-f-rescue-felix-1",
+      "label": "f-deliver-f-rescue-felix-1",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-rescue-felix-1",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-rescue-felix-1",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-rescue-felix-2"
+      ],
+      "conditions": [],
+      "delayMs": 1100
+    },
+    {
+      "id": "f-deliver-f-rescue-felix-2",
+      "label": "f-deliver-f-rescue-felix-2",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-rescue-felix-2",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-rescue-felix-2",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": [],
+      "delayMs": 1800
+    },
+    {
+      "id": "f-rescue-felix-read-1",
+      "label": "f-rescue-felix-read-1",
       "type": "action",
-      "event": "storyShutter",
-      "target": "final",
+      "event": "read",
+      "target": "f-rescue-felix-1",
       "actions": [
         {
           "type": "variable",
           "key": "finalPhase",
-          "value": 31
+          "value": 32
         },
         {
           "type": "variable",
-          "key": "storyFinalComplete",
+          "key": "felixFinalMessagesRead",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "finalCameraUnlocked",
           "value": true
         }
       ],
@@ -4938,6 +5058,159 @@
           "key": "finalPhase",
           "op": "eq",
           "value": 30
+        },
+        {
+          "key": "read:f-rescue-felix-1",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-felix-2",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "f-rescue-felix-read-2",
+      "label": "f-rescue-felix-read-2",
+      "type": "action",
+      "event": "read",
+      "target": "f-rescue-felix-2",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 32
+        },
+        {
+          "type": "variable",
+          "key": "felixFinalMessagesRead",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "finalCameraUnlocked",
+          "value": true
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "key": "read:f-rescue-felix-1",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-felix-2",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "f-final-camera-open",
+      "label": "f-final-camera-open",
+      "type": "action",
+      "event": "openApp",
+      "target": "camera",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "cameraOpened",
+          "value": true
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "f-final-camera-front",
+      "label": "f-final-camera-front",
+      "type": "action",
+      "event": "storyCameraFront",
+      "target": "final",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "frontCameraActivated",
+          "value": true
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "f-final-photo",
+      "label": "f-final-photo",
+      "type": "action",
+      "event": "storyShutter",
+      "target": "final",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 33
+        },
+        {
+          "type": "variable",
+          "key": "storyFinalComplete",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "finalSelfieTaken",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "finalPhotoSaved",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "secondMiracleRevealed",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "storyCompleted",
+          "value": true
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 32
+        },
+        {
+          "key": "felixFinalMessagesRead",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "frontCameraActivated",
+          "op": "eq",
+          "value": true
         }
       ]
     },
@@ -5000,6 +5273,29 @@
       "actions": [],
       "next": [],
       "conditions": []
+    },
+    {
+      "id": "f-resume-9",
+      "label": "f-resume-9",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "9",
+      "actions": [],
+      "next": [
+        "f-deliver-f-rescue-felix-1"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 30
+        },
+        {
+          "key": "storyFinalComplete",
+          "op": "eq",
+          "value": false
+        }
+      ]
     }
   ],
   "tests": []

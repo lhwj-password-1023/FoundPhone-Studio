@@ -62,7 +62,7 @@ export function makeStoryTransfer(work: Work, state: Runtime, amount: string): R
 }
 
 export function takeFinalPhoto(work: Work, state: Runtime, media: string): Runtime {
-  if (state.variables.finalPhase !== 30 || state.variables.storyFinalComplete === true) return state;
+  if (state.variables.finalPhase !== 32 || state.variables.felixFinalMessagesRead !== true || state.variables.frontCameraActivated !== true || state.variables.storyFinalComplete === true) return state;
   const capturedAt = `${state.date || work.phone.date} ${state.time}`;
   const photo = makeItem({ id: "f-final-selfie", title: "我们", body: "", sender: work.phone.owner,
     kind: "image", media, time: capturedAt, folder: "最近项目", meta: { capturedAt, album: "自拍" } });

@@ -1,4 +1,5 @@
 import { useActor, ActionComposer } from "../ActorContext";
+import finalSelfie from "../assets/finale-selfie.jpeg?inline";
 import "./system-reference.css";
 import {
   Voicemail,
@@ -366,11 +367,12 @@ export function CameraSkin(p: Props) {
   const [frontShot, setFrontShot] = useState(0);
   const [flash, setFlash] = useState(false);
   const finalPhoto = p.storyState?.messages.photos?.find((item) => item.id === "f-final-selfie");
-  if (p.archive && (p.storyState?.variables.finalPhase === 30 || finalPhoto)) return (
+  if (p.archive && (p.storyState?.variables.finalPhase === 32 || finalPhoto)) return (
     <div className="catalog-skin native-camera finale-camera">
       <Header p={p} />
-      <div className="camera-view">{finalPhoto ? <><Media item={finalPhoto} /><div className="finale-captions"><p>奇迹真的发生了。</p><strong>全剧终</strong></div></> : <div className="finale-viewfinder">{front ? "前置摄像头" : "后置摄像头"}<div className="camera-grid" /></div>}{flash && <div className="camera-flash" />}</div>
-      {!finalPhoto && <div className="camera-controls"><button aria-label="切换前置摄像头" onClick={() => setFront(!front)}>{front ? "前置" : "切换前置"}</button><button className="camera-shutter" aria-label="拍摄双人自拍" disabled={!front} onClick={() => {setFlash(true);window.setTimeout(()=>setFlash(false),260);p.onEvent?.("storyShutter","final")}}><span /></button></div>}
+      <div className="camera-top"><span>闪光灯关闭</span><span>4:3</span></div>
+      <div className="camera-view">{finalPhoto ? <><Media item={finalPhoto} /><div className="finale-captions"><p>奇迹真的发生了。</p><strong>全剧终</strong></div></> : front ? <div className="finale-viewfinder finale-front-preview"><img src={finalSelfie} alt="前置摄像头取景画面" /><div className="camera-grid" /></div> : <div className="finale-viewfinder finale-hospital-preview"><div className="hospital-window" /><div className="hospital-bed" /><div className="camera-grid" /></div>}{flash && <div className="camera-flash" />}</div>
+      {!finalPhoto && <><div className="camera-mode"><button className="selected">照片</button></div><div className="camera-controls"><button aria-label="切换前置摄像头" onClick={() => {const next = !front; setFront(next); if (next) p.onEvent?.("storyCameraFront","final");}}>{front ? "前置" : "切换前置"}</button><button className="camera-shutter" aria-label="拍摄照片" onClick={() => {setFlash(true);window.setTimeout(()=>setFlash(false),260);if (front) p.onEvent?.("storyShutter","final")}}><span /></button><button aria-label="最近照片" onClick={() => {if (p.gallery?.[0]) p.onItem(p.gallery[0]);}}>最近项目</button></div></>}
     </div>
   );
   const frames = p.items.filter((i) =>

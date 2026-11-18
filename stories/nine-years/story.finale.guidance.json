@@ -717,7 +717,7 @@
     "scene": "终场",
     "name": "阶段 30",
     "type": "story-action",
-    "app": "camera",
+    "app": "kakao",
     "target": "",
     "prerequisites": {
       "key": "finalPhase",
@@ -731,7 +731,7 @@
     },
     "priority": 30,
     "unlocks": [],
-    "hint": "返回桌面打开「相机」，切换前置摄像头，亲自按快门。",
+    "hint": "打开 KakaoTalk，查看李龙馥发来的两条消息。",
     "blocks": [
       "陌生号码"
     ]
@@ -747,16 +747,41 @@
     "prerequisites": {
       "key": "finalPhase",
       "op": "eq",
-      "value": 31
+      "value": 33
     },
     "completion": {
       "key": "finalPhase",
       "op": "neq",
-      "value": 31
+      "value": 33
     },
     "priority": 30,
     "unlocks": [],
     "hint": "全剧终。可以自由浏览手机内的历史记录。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-32",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 32",
+    "type": "story-action",
+    "app": "camera",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 32
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 32
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "李龙馥刚刚说看到了昇玟和哥在自拍。现在返回桌面，打开相机 App，点击翻转镜头按钮切换至前置摄像头，然后亲自按下快门。",
     "blocks": [
       "陌生号码"
     ]
