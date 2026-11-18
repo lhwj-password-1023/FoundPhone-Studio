@@ -9,6 +9,9 @@ type RawStory = {
 };
 type Overlay = {
   installedApps?: Array<string | { id: string }>;
+  removedApps?: string[];
+  removedContent?: string[];
+  phone?: Record<string, unknown>;
   revision?: number;
   variables?: Record<string, boolean | number | string>;
   chats?: Array<{ id: string; title?: string; remove?: string[]; append?: Array<{ id: string }> }>;
@@ -27,11 +30,13 @@ export function applyStoryOverlay<T extends RawStory>(raw: T, overlay: Overlay):
     };
   });
   const content: Record<string, unknown[]> = { ...raw.content };
+  for (const app of overlay.removedContent || []) delete content[app];
   for (const [app, items] of Object.entries(overlay.content || {}))
     content[app] = [...(content[app] || []), ...items];
   return {
     ...raw,
-    installedApps: [...(raw.installedApps || []), ...(overlay.installedApps || [])],
+    installedApps: [...(raw.installedApps || []), ...(overlay.installedApps || [])].filter((app) => !overlay.removedApps?.includes(typeof app === "string" ? app : app.id)),
+    phone: { ...((raw as Record<string, unknown>).phone as object), ...overlay.phone },
     revision: overlay.revision || raw.revision,
     variables: { ...raw.variables, ...overlay.variables },
     chats,

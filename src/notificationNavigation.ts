@@ -21,7 +21,7 @@ export function recordNavigation(appId: string, item: Item, ui?: Record<string, 
     ["anchor:" + item.title]: item.id,
     routeVisit: Number(ui?.routeVisit || 0) + 1,
   };
-  if (appId === "x") return {
+  if (appId === "x" || appId === "twitter") return {
     xTab: item.folder === "私信" ? "私信" : item.folder === "通知" && !item.meta.target ? "通知" : "首页",
     xDetail: item.meta.target || item.meta.postId || (item.folder === "动态" ? item.id : ""),
     xDm: item.folder === "私信" ? item.title : "",

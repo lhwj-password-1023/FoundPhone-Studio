@@ -31,7 +31,6 @@ import { reconcileMessageOrder } from "./messageOrder";
 import { advanceSceneFour, shareSceneFourNews, addSceneFourMemory } from "./story-engine/scene-four-runtime";
 import { advanceFinale, reconnectTo2010, makeStoryTransfer, takeFinalPhoto } from "./story-engine/finale-runtime";
 import finalSelfie from "./assets/finale-selfie.jpeg?inline";
-import { useSimulatedTyping } from "./skins/useSimulatedTyping";
 import { routeForNotice } from "./story-engine/timeline";
 import { notificationTarget, recordNavigation } from "./notificationNavigation";
 import { guidanceAnswer, pendingGuidance } from "./story-engine/guidance";
@@ -500,6 +499,14 @@ function PhoneRuntime({
     );
   };
   const followNotice = (notice: string) => {
+    if (notice === "时空通信已修复，收到新的消息。") {
+      open("messages");
+      const current = runtimeRef.current;
+      update({ ...current, ui: { ...current.ui, messages: { ...current.ui?.messages, thread: "陌生号码", detail: "", ["anchor:陌生号码"]: "__bottom__", routeVisit: Number(current.ui?.messages?.routeVisit || 0) + 1 } } });
+      const routed = runtimeRef.current;
+      update({ ...routed, notifications: routed.notifications.filter((n) => n !== notice) });
+      return;
+    }
     const route = notificationTarget(notice, work, runtimeRef.current);
     if (route) goToRecord(route.app, route.item);
     else {
@@ -1251,7 +1258,6 @@ function AppContentView({
   const [tab, setTab] = useState(app.tabs[0]);
   const [q, setQ] = useState("");
   const [pw, setPw] = useState("");
-  const passwordTyping = useSimulatedTyping();
   const [localUnlocks, setLocalUnlocks] = useState<string[]>([]);
   const unlocks =
     archive && Array.isArray(ui?.passwords) ? ui.passwords : localUnlocks;
@@ -1302,28 +1308,23 @@ function AppContentView({
           <input
             type="password"
             placeholder="内容密码"
-            value={detail.meta.dynamicPassword ? passwordTyping.shown : pw}
+            value={pw}
             readOnly={!!detail.meta.dynamicPassword && !creator}
             inputMode={detail.meta.dynamicPassword ? "none" : undefined}
-            onClick={() => {
-              if (detail.meta.dynamicPassword && Number(state.variables.finalPhase) >= 22) {
-                if (passwordTyping.active) passwordTyping.reveal();
-                else passwordTyping.start(String(state.variables.storyTransferAmount || ""));
-              }
-            }}
             onChange={detail.meta.dynamicPassword ? undefined : (e) => setPw(e.target.value)}
           />
+          {!!detail.meta.dynamicPassword && <div className="transfer-keypad" aria-label="备忘录密码数字键盘">{Array.from({length:10},(_,n)=><button key={n} onClick={()=>setPw(pw.length < 4 ? pw + n : pw)}>{n}</button>)}<button onClick={()=>setPw(pw.slice(0,-1))}>删除</button></div>}
           <button
-            disabled={!!detail.meta.dynamicPassword && Number(state.variables.finalPhase) >= 22 && !passwordTyping.done}
+            disabled={!!detail.meta.dynamicPassword && (Number(state.variables.finalPhase) < 22 || pw.length !== 4)}
             onClick={() => {
-              const expected = detail.meta.dynamicPassword ? String(state.variables.storyTransferAmount || "") : detail.password;
-              const entered = detail.meta.dynamicPassword ? passwordTyping.value : pw;
+              const expected = detail.meta.dynamicPassword ? String(state.variables.childhoodTransferAmount || state.variables.storyTransferAmount || "") : detail.password;
+              const entered = pw;
               if (entered === expected && (!detail.meta.dynamicPassword || Number(state.variables.finalPhase) >= 22)) {
                 setUnlocks([...unlocks, detail.id]);
                 onEvent("password", detail.id);
                 onRead(detail.id);
                 setPwError("");
-              } else setPwError("密码不正确");
+              } else { setPwError("密码错误，请重试。"); setPw(""); }
             }}
           >
             解锁内容

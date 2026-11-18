@@ -63,6 +63,8 @@ export function StoryThread({
   const [countdown, setCountdown] = useState(30);
   const [transferOpen, setTransferOpen] = useState(false);
   const [amount, setAmount] = useState("");
+  const [amountHintSeen, setAmountHintSeen] = useState(false);
+  const [transferSaved, setTransferSaved] = useState(false);
   const transferTyping = useSimulatedTyping();
   useEffect(() => {
     if (state.variables.finalPhase !== 17 || (typing.active && !typing.done)) return;
@@ -400,7 +402,7 @@ export function StoryThread({
         </div>
       )}
       {failedMenu && <div className="story-blocked-backdrop" onClick={() => setFailedMenu(false)}><div className="story-blocked-dialog" role="dialog" aria-label="发送失败" onClick={(e) => e.stopPropagation()}><p>消息未送达</p><div><button onClick={() => setFailedMenu(false)}>取消</button><button onClick={() => setFailedMenu(false)}>再次尝试发送</button></div></div></div>}
-      {transferOpen && <div className="story-blocked-backdrop"><div className="story-blocked-dialog transfer-dialog" role="dialog" aria-label="转账汇款"><h3>转账/汇款</h3><p>收款人：旻浩哥</p><strong>金额：{amount || "请输入四位数"}</strong><div className="transfer-keypad">{Array.from({length:10},(_,n)=><button key={n} onClick={()=>setAmount(amount.length < 4 ? amount + n : amount)}>{n}</button>)}<button onClick={()=>setAmount(amount.slice(0,-1))}>删除</button></div><p onClick={()=>transferTyping.reveal()} className="simulated-caret">附言：{transferTyping.shown}</p><button disabled={amount.length!==4 || amount==="0000" || !transferTyping.done} onClick={()=>{onEvent("storyTransfer",amount);setTransferOpen(false)}}>确认转账</button><button onClick={()=>setTransferOpen(false)}>取消</button></div></div>}
+      {transferOpen && <div className="story-blocked-backdrop"><div className="story-blocked-dialog transfer-dialog" role="dialog" aria-label="转账汇款"><h3>转账/汇款</h3><p>收款人：旻浩哥</p><strong>金额：{amount || "请输入四位数"}</strong>{!amountHintSeen && amount.length===4 && <div role="alert"><p>请记好你输入的这串金额数字，之后可能还会用到。</p><button onClick={()=>{setAmountHintSeen(true);transferTyping.start("这么喜欢跳舞的话，就别轻易向生活低头。");}}>知道了</button></div>}<div className="transfer-keypad">{Array.from({length:10},(_,n)=><button key={n} onClick={()=>setAmount(amount.length < 4 ? amount + n : amount)}>{n}</button>)}<button onClick={()=>setAmount(amount.slice(0,-1))}>删除</button></div><p onClick={()=>transferTyping.reveal()} className="simulated-caret">附言：{transferTyping.shown}</p><button disabled={!/^[1-9]\d{3}$/.test(amount) || !amountHintSeen || !transferTyping.done || transferSaved} onClick={()=>{onEvent("storyTransfer",amount);setTransferSaved(true)}}>确认转账</button>{transferSaved && <p>转账成功。这串数字很重要，记得保存好。</p>}<button onClick={()=>setTransferOpen(false)}>{transferSaved ? "完成" : "取消"}</button></div></div>}
       {prompt && (
         <div className="story-blocked-backdrop" role="presentation" onClick={() => setPrompt(null)}>
           <div className="story-blocked-dialog" role="dialog" aria-modal="true" aria-label="剧情提示" onClick={(event) => event.stopPropagation()}>
@@ -413,7 +415,7 @@ export function StoryThread({
         </div>
       )}
       <footer>
-        {!kakao && state.variables.finalPhase === 20 && <button onClick={()=>{setAmount("");transferTyping.start("别轻易向生活低头。");setTransferOpen(true)}}>转账/汇款</button>}
+        {!kakao && state.variables.finalPhase === 20 && <button onClick={()=>{setAmount("");setAmountHintSeen(false);setTransferSaved(false);transferTyping.reset();setTransferOpen(true)}}>转账/汇款</button>}
         <button
           className="archive-input"
           onClick={() => compose("field")}

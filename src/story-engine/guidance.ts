@@ -38,6 +38,11 @@ export function blockedMessage(work: Work, state: Runtime, thread: string): bool
 
 export function guidanceAnswer(work: Work, state: Runtime): string {
   if (state.variables.storyFinalComplete === true) return "全剧终。可以继续自由探索手机。";
+  if (Number(state.variables.finalPhase) === 20) return "打开 iMessage 的转账功能，自行选择一笔四位数字金额，完成转账。记好你选择的数字，之后还会用到。";
+  if (Number(state.variables.finalPhase) === 22) {
+    const amount = String(state.variables.childhoodTransferAmount || state.variables.storyTransferAmount || "");
+    return amount ? `打开备忘录，找到《给昇玟》。密码是你之前给少年李旻浩转账的金额 ${amount}，请用屏幕数字键手动输入。` : "尚未保存转账金额。请先完成第五场转账。";
+  }
   const currentThread = String(state.ui?.messages?.thread || "");
   if (currentThread && pendingPeerReply(work, state, "messages", currentThread))
     return "对方还没有说完，留在 iMessage 等待消息发送完毕即可。";

@@ -10,6 +10,7 @@ export function TimeMachine({ state, phoneDate, onBack, onAdvance, onReconnect }
   const [busy, setBusy] = useState(false);
   const [progress, setProgress] = useState(0);
   const [selected, setSelected] = useState(false);
+  const [repairStep, setRepairStep] = useState<"idle" | "detecting" | "confirm" | "repairing">("idle");
   const finalPhase = Number(state.variables.finalPhase || 0);
   const finalOptions: Record<number, { target: string; label: string; timeline: string }> = {
     2: {target:"week-1",label:"向前推进一周",timeline:"李旻浩 · 通信时间"},
@@ -34,11 +35,16 @@ export function TimeMachine({ state, phoneDate, onBack, onAdvance, onReconnect }
   const weekday = (date: string) => new Intl.DateTimeFormat("zh-CN",{weekday:"long",timeZone:"UTC"}).format(new Date(date+"T12:00:00Z"));
   const connection = String(state.variables.storyConnection || "2017");
   useEffect(() => { setSelected(false); setBusy(false); }, [option?.target]);
-  useEffect(() => {
-    if (finalPhase !== 18) return;
-    const timer = window.setTimeout(onReconnect, 1200);
-    return () => window.clearTimeout(timer);
-  }, [finalPhase, onReconnect]);
+  const dualTimeline = state.variables.sceneFourStage1 === true;
+  const repairAvailable = dualTimeline && finalPhase === 18 && connection === "interrupted";
+  const beginRepair = () => {
+    setRepairStep("detecting");
+    window.setTimeout(() => setRepairStep("confirm"), 900);
+  };
+  const confirmRepair = () => {
+    setRepairStep("repairing");
+    window.setTimeout(() => { onReconnect(); setRepairStep("idle"); }, 1200);
+  };
   const advance = () => {
     if (!selected || !option || busy) return;
     setBusy(true);
@@ -52,8 +58,12 @@ export function TimeMachine({ state, phoneDate, onBack, onAdvance, onReconnect }
       <Clock3 size={34} />
       <h1>时间线</h1>
       <div className="time-line"><span>金昇玟的时间 · 当前故事时间</span><strong>{storyDate} {weekday(storyDate)} {state.time}</strong></div>
-      <div className="time-line"><span>李旻浩的时间 · {connection === "interrupted" ? "连接已中断 · 最后同步" : "通信中"}</span><strong>{peerDate} {weekday(peerDate)} {state.peerTime || state.time}</strong></div>
-      <p>两条时间线分别记录。时间只能按当前剧情向前推进。</p>
+      {dualTimeline && <div className="time-line"><span>李旻浩的时间 · {connection === "interrupted" ? "连接已中断 · 最后同步" : "通信中"}</span><strong>{peerDate} {weekday(peerDate)} {state.peerTime || state.time}</strong></div>}
+      <p>时间只能按当前剧情向前推进。</p>
+      {repairAvailable && repairStep === "idle" && <button className="time-confirm" onClick={beginRepair}>尝试修复连接</button>}
+      {repairAvailable && repairStep === "detecting" && <p role="status">正在检测时空通信……</p>}
+      {repairAvailable && repairStep === "confirm" && <div role="dialog" aria-label="修复连接"><p>检测到异常时间信号。发现可恢复的通信连接，是否尝试重新建立？</p><button onClick={confirmRepair}>开始修复</button><button onClick={() => setRepairStep("idle")}>暂时取消</button></div>}
+      {repairAvailable && repairStep === "repairing" && <p role="status">正在修复连接……</p>}
       {option ? <>
         <h2>可推进的时间</h2>
         <button className={selected ? "time-choice selected" : "time-choice"} aria-pressed={selected} onClick={() => setSelected(!selected)}>

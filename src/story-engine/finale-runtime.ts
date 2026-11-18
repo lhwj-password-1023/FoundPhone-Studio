@@ -53,11 +53,11 @@ export function reconnectTo2010(work: Work, state: Runtime): Runtime {
 }
 
 export function makeStoryTransfer(work: Work, state: Runtime, amount: string): Runtime {
-  if (state.variables.finalPhase !== 20 || !/^\d{4}$/.test(amount) || amount === "0000") return state;
+  if (state.variables.finalPhase !== 20 || !/^[1-9]\d{3}$/.test(amount) || state.variables.childhoodTransferCompleted === true) return state;
   const card = makeItem({ id: "f-transfer-card", title: "陌生号码", body: `转账成功 · ${amount}`, sender: work.phone.owner,
     kind: "transfer", outgoing: true, time: `${state.date || work.phone.date} ${state.time}`,
-    meta: { amount, memo: "别轻易向生活低头。", arrivedAt: `${state.peerDate} ${state.peerTime}` } });
-  const next = { ...state, variables: { ...state.variables, storyTransferAmount: amount }, messages: { ...state.messages, messages: [...(state.messages.messages || []), card] } };
+    meta: { amount, memo: "这么喜欢跳舞的话，就别轻易向生活低头。", arrivedAt: `${state.peerDate} ${state.peerTime}` } });
+  const next = { ...state, variables: { ...state.variables, storyTransferAmount: amount, childhoodTransferAmount: amount, childhoodTransferCompleted: true }, messages: { ...state.messages, messages: [...(state.messages.messages || []), card] } };
   return dispatch(work, next, "storyTransfer", "2010");
 }
 

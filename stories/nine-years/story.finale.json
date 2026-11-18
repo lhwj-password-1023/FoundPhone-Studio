@@ -1,14 +1,17 @@
 {
-  "revision": 8,
-  "installedApps": [
-    "news"
-  ],
+  "revision": 9,
+  "removedApps": ["instagram", "news"],
+  "removedContent": ["instagram"],
+  "phone": { "passcode": "1023" },
+  "installedApps": [],
   "variables": {
     "finalPhase": 0,
     "finalBranch": "",
     "storyConnection": "2017",
     "storyTransferAmount": "",
-    "storyFinalComplete": false
+    "storyFinalComplete": false,
+    "childhoodTransferAmount": "",
+    "childhoodTransferCompleted": false
   },
   "content": {
     "messages": [
@@ -1105,27 +1108,9 @@
         "password": "dynamic",
         "meta": {
           "hint": "我们故事真正开始的数字（4位）",
-          "dynamicPassword": "storyTransferAmount",
+          "dynamicPassword": "childhoodTransferAmount",
           "createdAt": "2026-09-22 20:10"
         }
-      }
-    ],
-    "news": [
-      {
-        "id": "f-alert-news",
-        "title": "突发快讯",
-        "body": "受突发特大暴雨影响，山区露营地发生严重泥石流灾害，现场有两人失联，搜救工作正在进行中……",
-        "sender": "突发快讯",
-        "time": "2030-10-12 18:30",
-        "hidden": true
-      },
-      {
-        "id": "f-rescue-news",
-        "title": "最新进展",
-        "body": "生命的奇迹！山区泥石流失联的两人已全部获救，目前体征平稳。",
-        "sender": "最新进展",
-        "time": "2030-10-15 18:30",
-        "hidden": true
       }
     ],
     "weather": [
@@ -1136,6 +1121,40 @@
         "sender": "天气警报",
         "time": "2030-10-12 18:30",
         "hidden": true
+      }
+    ],
+    "twitter": [
+      {
+        "id": "f-alert-news",
+        "title": "韩国新闻速报",
+        "body": "受突发特大暴雨影响，山区露营地发生严重泥石流灾害，现场有两人失联，搜救工作正在进行中……",
+        "sender": "韩国新闻速报",
+        "time": "2030-10-12 18:30",
+        "hidden": true,
+        "folder": "动态",
+        "kind": "text",
+        "meta": {
+          "handle": "@seoul_story_news",
+          "fiction": "true",
+          "likes": "218",
+          "reposts": "41"
+        }
+      },
+      {
+        "id": "f-rescue-news",
+        "title": "韩国新闻速报",
+        "body": "生命的奇迹！山区泥石流失联的两人已全部获救，目前体征平稳。",
+        "sender": "韩国新闻速报",
+        "time": "2030-10-15 18:30",
+        "hidden": true,
+        "folder": "动态",
+        "kind": "text",
+        "meta": {
+          "handle": "@seoul_story_news",
+          "fiction": "true",
+          "likes": "332",
+          "reposts": "64"
+        }
       }
     ]
   },
@@ -3882,7 +3901,7 @@
         {
           "type": "notification",
           "key": "",
-          "value": "系统提示：iMessage 时空对话已修复。"
+          "value": "时空通信已修复，收到新的消息。"
         }
       ],
       "next": [
@@ -4971,6 +4990,16 @@
           "value": 8
         }
       ]
+    },
+    {
+      "id": "f-resume-8",
+      "label": "f-resume-8",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "8",
+      "actions": [],
+      "next": [],
+      "conditions": []
     }
   ],
   "tests": []

@@ -437,7 +437,7 @@
     },
     "priority": 30,
     "unlocks": [],
-    "hint": "打开「时光机器」，查看中断的连接和新的时间锚点，再返回信息。",
+    "hint": "打开时光机器，点击“尝试修复连接”，再点击“开始修复”；完成后返回 iMessage。",
     "blocks": [
       "陌生号码"
     ]
@@ -656,7 +656,7 @@
     },
     "priority": 30,
     "unlocks": [],
-    "hint": "先打开「天气」查看红色预警，再到 KakaoTalk 查看妈妈、方灿、韩知城的消息，最后打开「新闻」阅读快讯。",
+    "hint": "先打开「天气」查看红色预警，再到 KakaoTalk 查看妈妈、方灿、韩知城的消息，最后打开「X」阅读快讯。",
     "blocks": [
       "陌生号码"
     ]
@@ -692,7 +692,7 @@
     "scene": "终场",
     "name": "阶段 29",
     "type": "story-action",
-    "app": "news",
+    "app": "twitter",
     "target": "",
     "prerequisites": {
       "key": "finalPhase",
@@ -706,7 +706,7 @@
     },
     "priority": 30,
     "unlocks": [],
-    "hint": "阅读 KakaoTalk 的获救消息，再打开「新闻」阅读最新进展。",
+    "hint": "阅读 KakaoTalk 的获救消息，再打开「X」查看最新进展动态。",
     "blocks": [
       "陌生号码"
     ]

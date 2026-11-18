@@ -101,8 +101,21 @@ test("转账金额由玩家决定，重复确认不会生成第二张卡片", ()
   expect(makeStoryTransfer(work, waiting, "123")).toBe(waiting);
   const sent = makeStoryTransfer(work, waiting, "4732");
   expect(sent.variables.storyTransferAmount).toBe("4732");
+  expect(sent.variables.childhoodTransferAmount).toBe("4732");
+  expect(sent.variables.childhoodTransferCompleted).toBe(true);
+  expect(sent.messages.messages?.find((item) => item.id === "f-transfer-card")?.meta.memo).toBe("这么喜欢跳舞的话，就别轻易向生活低头。");
   expect(sent.messages.messages?.filter((item) => item.id === "f-transfer-card")).toHaveLength(1);
   expect(makeStoryTransfer(work, sent, "4732")).toBe(sent);
+});
+
+test("锁屏、双时间线与新闻 App 配置", () => {
+  expect(work.phone.passcode).toBe("1023");
+  expect(work.apps.some((app) => (app.id === "news" || app.id === "instagram") && app.installed)).toBe(false);
+  expect(work.data.twitter.some((item) => item.id === "f-alert-news" && item.folder === "动态")).toBe(true);
+  expect(work.data.twitter.some((item) => item.id === "f-rescue-news" && item.folder === "动态")).toBe(true);
+  const before = afterThird();
+  expect(before.variables.sceneFourStage1).not.toBe(true);
+  expect(reconnectTo2010(work, { ...before, variables: { ...before.variables, finalPhase: 17 } })).toEqual({ ...before, variables: { ...before.variables, finalPhase: 17 } });
 });
 
 test("旧版第六修订存档保留消息和已完成任务", () => {
