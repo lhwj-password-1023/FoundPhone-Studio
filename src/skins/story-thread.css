@@ -344,3 +344,9 @@
 .archive-sheet .attachment-preview img { display: block; width: 100%; max-height: 40vh; object-fit: contain; }
 
 .archive-chat .peer-typing-bubble{font-size:14px;color:var(--chat-muted,#666973);min-width:82px;user-select:none}
+.story-blocked-backdrop { position: absolute; inset: 0; z-index: 30; display: grid; place-items: center; background: rgba(0,0,0,.18); }
+.story-blocked-dialog { width: min(290px, calc(100% - 44px)); border-radius: 16px; background: rgba(250,250,252,.98); color: #202124; text-align: center; box-shadow: 0 12px 32px #0002; overflow: hidden; }
+.story-blocked-dialog p { margin: 0; padding: 23px 18px; line-height: 1.55; }
+.story-blocked-dialog div { display: flex; border-top: 1px solid #ddd; }
+.story-blocked-dialog button { flex: 1; min-height: 44px; border: 0; background: transparent; color: #007aff; font-size: 16px; }
+.story-blocked-dialog button + button { border-left: 1px solid #ddd; font-weight: 600; }

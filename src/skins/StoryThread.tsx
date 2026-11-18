@@ -5,6 +5,7 @@ import { ArrowUp, ChevronLeft, Info, Paperclip, X } from "lucide-react";
 import { Avatar, Media } from "./shared";
 import { visible } from "../engine";
 import { replyOptions } from "../story-engine/timeline";
+import { blockedMessage } from "../story-engine/guidance";
 import type { Item, Runtime, UiValue, Work } from "../schema";
 import "./story-thread.css";
 
@@ -20,6 +21,7 @@ type Props = {
   onUi?: (key: string, value: UiValue) => void;
   onEvent: (event: string, id: string) => void;
   openResource: (id: string) => void;
+  openAssistant?: () => void;
 };
 export function StoryThread({
   work,
@@ -33,6 +35,7 @@ export function StoryThread({
   onUi,
   onEvent,
   openResource,
+  openAssistant,
 }: Props) {
   const actor = useActor();
   const kakao = app === "kakao";
@@ -51,6 +54,7 @@ export function StoryThread({
         : null,
     ),
     [inspect, setInspect] = useState<Item | null>(null);
+  const [blocked, setBlocked] = useState(false);
   const option = choices.find((i) => i.id === selected);
   const pane = useRef<HTMLDivElement>(null);
   const callbacks = useRef({ read, send, onUi });
@@ -360,6 +364,17 @@ export function StoryThread({
           ))}
         </div>
       )}
+      {blocked && (
+        <div className="story-blocked-backdrop" role="presentation" onClick={() => setBlocked(false)}>
+          <div className="story-blocked-dialog" role="dialog" aria-modal="true" aria-label="剧情提示" onClick={(event) => event.stopPropagation()}>
+            <p>昇玟好像有什么事情要做，试着问问GPT吧。</p>
+            <div>
+              <button onClick={() => setBlocked(false)}>知道了</button>
+              {openAssistant && <button onClick={() => { setBlocked(false); openAssistant(); }}>问问GPT</button>}
+            </div>
+          </div>
+        </div>
+      )}
       <footer>
         <button
           className="archive-input"
@@ -384,6 +399,10 @@ export function StoryThread({
           className="archive-send"
           aria-label={typing === null ? "发送回复" : "完成输入"}
           onClick={() => {
+            if (!kakao && !option && blockedMessage(work, state, thread)) {
+              setBlocked(true);
+              return;
+            }
             if (
               !actor.check(
                 option?.meta.action === "reply" ? "reply" : "message",

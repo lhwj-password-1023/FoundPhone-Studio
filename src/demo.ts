@@ -2,6 +2,7 @@ import { makeItem, uid, type Work } from "./schema";
 import { registry } from "./registry";
 export function createWork(title = "雨停之前"): Work {
   const w: Work = {
+    guidance: [],
     formatVersion: 1,
     id: uid(),
     title,

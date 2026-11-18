@@ -27,6 +27,7 @@ async function captureVisibleApp(): Promise<string> {
 import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
 import { routeForNotice } from "./story-engine/timeline";
+import { guidanceAnswer } from "./story-engine/guidance";
 import { StatusGlyph } from "./ios/StatusGlyph";
 import { SocialDetail, socialDetailApps } from "./skins/SocialDetails";
 import { NativeCalculator } from "./ios/Calculator";
@@ -171,6 +172,7 @@ function PhoneRuntime({
   onRuntime?: (s: Runtime) => void;
 }) {
   const [app, setApp] = useState("");
+  const assistantReturn = useRef("");
   const [homeRequest, setHomeRequest] = useState(0);
   const [locked, setLocked] = useState(!creator);
   const [pinOpen, setPinOpen] = useState(false);
@@ -421,6 +423,16 @@ function PhoneRuntime({
     setPanel("");
     onOpen?.(id);
     event("openApp", id);
+  };
+  const openAssistant = () => {
+    assistantReturn.current = app;
+    open("gpt");
+  };
+  const closeAssistant = () => {
+    const previous = assistantReturn.current;
+    assistantReturn.current = "";
+    if (previous && previous !== "gpt") open(previous);
+    else home();
   };
   const installedApps = work.apps.filter((a) => a.installed);
   const apps = installedApps.filter((a) => a.visible);
@@ -693,7 +705,8 @@ function PhoneRuntime({
                   onRead={(id) => event("read", id)}
                   onEdit={(item) => onEdit?.(app, item)}
                   onAdd={() => onAdd?.(app)}
-                  onBack={home}
+                  onBack={app === "gpt" ? closeAssistant : home}
+                  onAssistant={openAssistant}
                   onSettings={onSettings}
                   onUi={(key, value) => {
                     const current = runtimeRef.current;
@@ -1135,6 +1148,7 @@ function AppContentView({
   onEdit,
   onAdd,
   onBack,
+  onAssistant,
   onSettings,
   onUi,
   work,
@@ -1152,6 +1166,7 @@ function AppContentView({
   onEdit: (item: Item) => void;
   onAdd: () => void;
   onBack: () => void;
+  onAssistant?: () => void;
   onSettings?: () => void;
   onUi?: (key: string, value: UiValue) => void;
   work: Work;
@@ -1298,17 +1313,11 @@ function AppContentView({
         back={() => setThread("")}
         onUi={onUi}
         openResource={goToRecord}
+        openAssistant={onAssistant}
       />
     );
   if (app.id === "gpt" && !creator) {
-    const hint = items.find(
-      ({ meta }) =>
-        (meta.flag && state.variables[meta.flag] === true) ||
-        (meta.unlocked && state.unlocked.includes(meta.unlocked)) ||
-        (meta.choice && state.choices.length > 0) ||
-        (meta.read && state.read.includes(meta.read)) ||
-        meta.default === "yes",
-    );
+    const hint = guidanceAnswer(work, state);
     return (
       <section className="gpt-guide">
         <header>
@@ -1322,7 +1331,7 @@ function AppContentView({
             <>
               <p className="gpt-question">下一步该点哪里？</p>
               <small>剧情提示</small>
-              <p role="status">{String(ui.answer)}</p>
+              <p role="status" style={{ whiteSpace: "pre-line" }}>{hint}</p>
             </>
           ) : (
             <h2>需要一点提示吗？</h2>
@@ -1330,9 +1339,7 @@ function AppContentView({
         </main>
         <button
           className="gpt-ask"
-          onClick={() =>
-            onUi?.("answer", hint?.body || "当前没有新的剧情提示。")
-          }
+          onClick={() => onUi?.("answer", "shown")}
         >
           下一步该点哪里？ ↑
         </button>

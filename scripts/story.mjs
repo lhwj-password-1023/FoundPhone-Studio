@@ -104,6 +104,13 @@ try {
     if (error.code !== "ENOENT") throw error;
   }
   const { story, work } = compileStory(raw, extras);
+  try {
+    const input = JSON.parse(await readFile(file.replace(/\.(?:json|md)$/i, "") + ".guidance.json", "utf8"));
+    const { validateGuidance } = await server.ssrLoadModule("/src/story-engine/guidance.ts");
+    work.guidance = validateGuidance(work, input);
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
   if (mode === "test" || mode === "build") {
     const { testStory } = await server.ssrLoadModule(
       "/src/story-engine/testStory.ts",

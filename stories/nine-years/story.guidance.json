@@ -1,0 +1,472 @@
+[
+  {
+    "id": "opening",
+    "chapter": "九年",
+    "scene": "第一场",
+    "name": "opening",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "read:opening",
+      "op": "eq",
+      "value": false
+    },
+    "completion": {
+      "key": "read:opening",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「信息」→「陌生号码」，阅读第一条消息。",
+    "blocks": []
+  },
+  {
+    "id": "first-note",
+    "chapter": "九年",
+    "scene": "第一场",
+    "name": "first-note",
+    "type": "story-action",
+    "app": "notes",
+    "target": "十一月二十日晚",
+    "prerequisites": {
+      "all": [
+        {
+          "key": "read:opening",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "noteWritten",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    "completion": {
+      "key": "noteWritten",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「备忘录」→「十一月二十日晚」，写完备忘录并点「完成」。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "first-finish",
+    "chapter": "九年",
+    "scene": "第一场",
+    "name": "first-finish",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "noteWritten",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneOneComplete",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "返回「信息」→「陌生号码」，点输入框选预设回复并发送。",
+    "blocks": []
+  },
+  {
+    "id": "second-calendar",
+    "chapter": "九年",
+    "scene": "第二场",
+    "name": "second-calendar",
+    "type": "story-action",
+    "app": "calendar",
+    "target": "2026-10-04",
+    "prerequisites": {
+      "key": "treeholeOffered",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "farewellSeen",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「日历」，翻到 2026 年 10 月并点 4 日，阅读当天内容。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "second-photo",
+    "chapter": "九年",
+    "scene": "第二场",
+    "name": "second-photo",
+    "type": "story-action",
+    "app": "photos",
+    "target": "2024-10-23",
+    "prerequisites": {
+      "key": "farewellSeen",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "handsSeen",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「照片」，找到并查看 2024 年 10 月 23 日的照片。若在「最近删除」，先恢复。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "second-message",
+    "chapter": "九年",
+    "scene": "第二场",
+    "name": "second-message",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "handsSeen",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneTwoComplete",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "返回「信息」→「陌生号码」，发送当前开放的预设消息。",
+    "blocks": []
+  },
+  {
+    "id": "s3-1",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-1",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "sceneTwoComplete",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage1",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "阅读陌生号码的新消息，选择一条回复，再读完对方的后续消息。",
+    "blocks": []
+  },
+  {
+    "id": "s3-2",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-2",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "李旻浩",
+    "prerequisites": {
+      "key": "sceneThreeStage1",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage2",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「KakaoTalk」→置顶的「李旻浩」，向下阅读到 10 月 15 日最后一条未读消息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-3",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-3",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "sceneThreeStage2",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage3",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "返回「信息」→「陌生号码」，发送开放的预设消息并读完回复。",
+    "blocks": []
+  },
+  {
+    "id": "s3-4",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-4",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "方灿",
+    "prerequisites": {
+      "key": "sceneThreeStage3",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage4",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「KakaoTalk」→「方灿」，阅读提醒并发送两条预设回复。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-5",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-5",
+    "type": "story-action",
+    "app": "clock",
+    "target": "闹钟",
+    "prerequisites": {
+      "key": "sceneThreeStage4",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage5",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「时钟」→「闹钟」，添加上午 5:30 的闹钟并点「储存」。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-6",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-6",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "李龙馥",
+    "prerequisites": {
+      "key": "sceneThreeStage5",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage6",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「KakaoTalk」→「李龙馥」，询问耳机并读完回复。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-7",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-7",
+    "type": "story-action",
+    "app": "find",
+    "target": "李旻浩的 iPhone",
+    "prerequisites": {
+      "key": "sceneThreeStage6",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage7",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「查找」→设备→「李旻浩的 iPhone」，查看最新位置，再对当前页面截图。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-8",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-8",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "李旻浩",
+    "prerequisites": {
+      "key": "sceneThreeStage7",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage8",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "返回「KakaoTalk」→「李旻浩」，发送「哥，你在吗」。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-9",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-9",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "李龙馥",
+    "prerequisites": {
+      "key": "sceneThreeStage8",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage9",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「KakaoTalk」→「李龙馥」，阅读追问并完成预设回复。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-10",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-10",
+    "type": "story-action",
+    "app": "twitter",
+    "target": "私人小号",
+    "prerequisites": {
+      "key": "sceneThreeStage9",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage10",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「X」并切换到私人小号，输入预设动态，从「照片」选择刚保存的定位截图后发布。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-11",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-11",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "sceneThreeStage10",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage11",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "打开「信息」→「陌生号码」，继续咖啡厅对话，发送「？」。",
+    "blocks": []
+  },
+  {
+    "id": "s3-12",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-12",
+    "type": "story-action",
+    "app": "find",
+    "target": "李旻浩的 iPhone",
+    "prerequisites": {
+      "key": "sceneThreeStage11",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage12",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "再次打开「查找」，点击「李旻浩的 iPhone」查看与自己重合的最新位置。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s3-13",
+    "chapter": "九年",
+    "scene": "第三场",
+    "name": "s3-13",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "sceneThreeStage12",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneThreeStage13",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 10,
+    "unlocks": [],
+    "hint": "返回「信息」→「陌生号码」，发送当前开放的两条预设消息。",
+    "blocks": []
+  }
+]

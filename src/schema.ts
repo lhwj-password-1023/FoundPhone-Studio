@@ -42,6 +42,23 @@ export const conditionSchema = z.object({
   value: z.union([z.string(), z.number(), z.boolean()]),
 });
 export type Condition = z.infer<typeof conditionSchema>;
+export const guidancePredicateSchema: z.ZodType<unknown> = z.lazy(() =>
+  z.union([
+    conditionSchema,
+    z.object({ all: z.array(guidancePredicateSchema) }),
+    z.object({ any: z.array(guidancePredicateSchema) }),
+    z.object({ not: guidancePredicateSchema }),
+  ]),
+);
+export const guidanceTaskSchema = z.object({
+  id: z.string(), chapter: z.string(), scene: z.string(), name: z.string(),
+  type: z.string(), app: z.string(), target: z.string().default(""),
+  prerequisites: guidancePredicateSchema,
+  completion: guidancePredicateSchema,
+  priority: z.number().int(), unlocks: z.array(z.string()).default([]),
+  hint: z.string(), blocks: z.array(z.string()).default([]),
+});
+export type GuidanceTask = z.infer<typeof guidanceTaskSchema>;
 export const actionSchema = z.object({
   type: z.enum([
     "date",
@@ -129,6 +146,7 @@ export const workSchema = z.object({
     .max(100),
   data: z.record(z.string(), z.array(itemSchema).max(20000)),
   nodes: z.array(nodeSchema).max(2000),
+  guidance: z.array(guidanceTaskSchema).default([]),
   variables: z.record(
     z.string(),
     z.union([z.string(), z.number(), z.boolean()]),
