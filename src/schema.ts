@@ -171,6 +171,7 @@ export type Runtime = {
   }>;
   /** Stable, per-conversation order in which records appeared on this phone. */
   messageOrder?: Record<string, string[]>;
+  messageOrderVersion?: number;
   messageReceivedAt?: Record<string, string>;
   peerDate?: string;
   peerTime?: string;
@@ -205,6 +206,7 @@ export function initialRuntime(w: Work): Runtime {
   return {
     notificationRoutes: {},
     messageOrder: {},
+    messageOrderVersion: 2,
     messageReceivedAt: {},
     date: w.phone.date,
     elapsedMs: 0,

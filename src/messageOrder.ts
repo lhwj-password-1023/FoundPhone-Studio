@@ -3,13 +3,38 @@ import { visible } from "./engine";
 
 const chatApps = new Set(["messages", "kakao"]);
 export const conversationKey = (app: string, item: Item) =>
-  `${app}:${item.meta.conversationId || item.title}`;
+  `${app}:${item.title}`;
+
+function migrateOrder(work: Work, state: Runtime) {
+  const order: Record<string, string[]> = {};
+  const completed = new Map(state.completed.map((id, index) => [id, index]));
+  for (const app of chatApps) {
+    const authored = work.data[app] || [];
+    const runtime = state.messages[app] || [];
+    const records = [...authored.filter((item) => visible(item, state)), ...runtime];
+    const eventIndex = (item: Item) => {
+      const unlock = work.nodes.find((node) => completed.has(node.id) && node.actions.some((action) => action.type === "unlock" && action.key === item.id));
+      if (unlock) return completed.get(unlock.id)!;
+      if (item.id.startsWith("s4-card-")) {
+        const newsId = item.id.slice("s4-card-".length);
+        const share = work.nodes.find((node) => completed.has(node.id) && node.event === "shareNews" && node.target === newsId);
+        if (share) return completed.get(share.id)!;
+      }
+      return item.hidden ? Number.MAX_SAFE_INTEGER : -1;
+    };
+    records.map((item, source) => ({ item, source, event: eventIndex(item) }))
+      .sort((a, b) => a.event - b.event || a.source - b.source)
+      .forEach(({ item }) => (order[conversationKey(app, item)] ??= []).push(item.id));
+  }
+  return order;
+}
 
 /** Adds only newly visible records. Existing positions are never recalculated. */
 export function reconcileMessageOrder(work: Work, state: Runtime): Runtime {
-  const order = structuredClone(state.messageOrder || {});
+  const migrating = state.messageOrderVersion !== 2;
+  const order = migrating ? migrateOrder(work, state) : structuredClone(state.messageOrder || {});
   const received = { ...(state.messageReceivedAt || {}) };
-  let changed = !state.messageOrder || !state.messageReceivedAt;
+  let changed = migrating || !state.messageOrder || !state.messageReceivedAt;
   const stamp = `${state.date || work.phone.date} ${state.time}`;
   for (const app of chatApps) {
     const authored = work.data[app] || [];
@@ -31,7 +56,7 @@ export function reconcileMessageOrder(work: Work, state: Runtime): Runtime {
       changed = true;
     }
   }
-  return changed ? { ...state, messageOrder: order, messageReceivedAt: received } : state;
+  return changed ? { ...state, messageOrder: order, messageOrderVersion: 2, messageReceivedAt: received } : state;
 }
 
 export function orderMessages(app: string, items: Item[], state?: Runtime): Item[] {

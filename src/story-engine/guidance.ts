@@ -1,6 +1,7 @@
 import { testCondition } from "../engine";
 import { guidanceTaskSchema, type Condition, type GuidanceTask, type Runtime, type Work } from "../schema";
 import { replyOptions } from "./timeline";
+import { pendingPeerReply } from "./peerReply";
 
 type Predicate = Condition | { all: Predicate[] } | { any: Predicate[] } | { not: Predicate };
 const matches = (rule: unknown, state: Runtime): boolean => {
@@ -38,6 +39,8 @@ export function blockedMessage(work: Work, state: Runtime, thread: string): bool
 export function guidanceAnswer(work: Work, state: Runtime): string {
   if (state.variables.storyFinalComplete === true) return "全剧终。可以继续自由探索手机。";
   const currentThread = String(state.ui?.messages?.thread || "");
+  if (currentThread && pendingPeerReply(work, state, "messages", currentThread))
+    return "对方还没有说完，留在 iMessage 等待消息发送完毕即可。";
   if (currentThread && replyOptions(work, state, "messages", currentThread).length)
     return "现在可以返回 iMessage，继续对话了。";
   const available = Object.entries(work.data).flatMap(([app, items]) =>

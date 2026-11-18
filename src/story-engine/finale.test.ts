@@ -10,8 +10,26 @@ import { initialRuntime } from "../schema";
 import { advance, choose, dispatch, visible } from "../engine";
 import { addSceneFourMemory, advanceSceneFour, shareSceneFourNews } from "./scene-four-runtime";
 import { advanceFinale, makeStoryTransfer, reconnectTo2010, takeFinalPhoto } from "./finale-runtime";
+import { orderMessages, reconcileMessageOrder } from "../messageOrder";
 
 const { work, story } = compileStory(applyStoryOverlay(applyStoryOverlay(applyStoryOverlay(manuscript, three), four), finale), extras);
+
+test("第三场新闻到第四场第一句在同一会话末尾，旧存档也按事件顺序迁移", () => {
+  let state = afterFourth();
+  const first = state.choices.find((choice) => choice.target === "f-send-f-msg-1");
+  expect(first).toBeTruthy();
+  state = choose(work, state, first!.target);
+  const legacy = { ...state, messageOrderVersion: undefined, messageOrder: { "messages:treehole-thread": ["s4-recontact-d"], "messages:陌生号码": ["f-msg-1"] } };
+  const restored = reconcileMessageOrder(work, legacy);
+  const shown = orderMessages("messages", [...work.data.messages.filter((item) => visible(item, restored)), ...(restored.messages.messages || [])].filter((item) => item.title === "陌生号码"), restored);
+  const ids = shown.map((item) => item.id);
+  const card = ids.findIndex((id) => id.startsWith("s4-card-"));
+  expect(card).toBeGreaterThan(-1);
+  expect(card).toBeLessThan(ids.indexOf("s4-recontact-a"));
+  expect(ids.indexOf("s4-failed-text")).toBeLessThan(ids.indexOf("s4-recontact-a"));
+  expect(ids.indexOf("s4-recontact-d") + 1).toBe(ids.indexOf("f-msg-1"));
+  expect(reconcileMessageOrder(work, structuredClone(restored)).messageOrder).toEqual(restored.messageOrder);
+});
 function afterThird() {
   let state = dispatch(work, initialRuntime(work), "start");
   for (const step of story.tests.find((item) => item.name.startsWith("第三场"))!.steps) {

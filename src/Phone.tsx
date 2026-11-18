@@ -460,7 +460,8 @@ function PhoneRuntime({
     if (id !== app) {
       const current = runtimeRef.current;
       const appUi = current.ui?.[id] || {};
-      update({ ...current, ui: { ...current.ui, [id]: { ...appUi, ...(id === "health" ? { tab: "摘要" } : {}), thread: "", detail: "", xTab: "首页", xDetail: "", xProfile: "", xDm: "", mymyTab: "聊天", browserTabs: "", browserActive: 0, album: "", photoGroup: "" } } });
+      const resetAnchors = Object.fromEntries(Object.keys(appUi).filter((key) => key.startsWith("anchor:")).map((key) => [key, "__bottom__"]));
+      update({ ...current, ui: { ...current.ui, [id]: { ...appUi, ...resetAnchors, ...(id === "health" ? { tab: "摘要" } : {}), thread: "", detail: "", xTab: "首页", xDetail: "", xProfile: "", xDm: "", mymyTab: "聊天", browserTabs: "", browserActive: 0, album: "", photoGroup: "" } } });
     }
     setApp(id);
     setKeyboard(false);

@@ -6,6 +6,7 @@ import { Avatar, Media } from "./shared";
 import { visible } from "../engine";
 import { replyOptions } from "../story-engine/timeline";
 import { blockedMessage } from "../story-engine/guidance";
+import { pendingPeerReply } from "../story-engine/peerReply";
 import { useSimulatedTyping } from "./useSimulatedTyping";
 import { orderMessages } from "../messageOrder";
 import type { Item, Runtime, UiValue, Work } from "../schema";
@@ -53,7 +54,7 @@ export function StoryThread({
   const [inspect, setInspect] = useState<Item | null>(null);
   const [autoNext, setAutoNext] = useState(false);
   const typing = useSimulatedTyping(choices.find((i) => i.id === selected)?.body || "");
-  const [prompt, setPrompt] = useState<"blocked" | "idle" | null>(null);
+  const [prompt, setPrompt] = useState<"waiting" | "blocked" | "idle" | null>(null);
   const [contactSheet, setContactSheet] = useState(false);
   const [contactEdit, setContactEdit] = useState(false);
   const contactTyping = useSimulatedTyping();
@@ -86,6 +87,7 @@ export function StoryThread({
     setPicker(false);
   };
   const compose = (source: "field" | "arrow") => {
+    if (!kakao && pendingPeerReply(work, state, app, thread)) { setPrompt("waiting"); return; }
     if (typing.active) {
       if (!typing.done) { if (source === "field") typing.reveal(); return; }
       if (source === "field") return;
@@ -131,7 +133,7 @@ export function StoryThread({
         (n) => n.dataset.record === savedAnchor.current,
       );
     if (previous.current === undefined && anchor)
-      anchor.scrollIntoView({ block: "start" });
+      anchor.scrollIntoView({ block: "end" });
     else if (!previous.current || wasNearBottom.current || (previous.current !== lastId && list.at(-1)?.outgoing)) {
       el.scrollTo({ top: el.scrollHeight, behavior: previous.current ? "smooth" : "instant" });
       setNewMessages(0);
@@ -160,16 +162,10 @@ export function StoryThread({
     read(i.id);
     setInspect(i);
   };
-  const typingPeer = (state.scheduled || []).some((t) =>
-    work.nodes
-      .find((n) => n.id === t.nodeId)
-      ?.actions.some(
-        (a) =>
-          a.type === "unlock" &&
-          (work.data[app] || []).some(
-            (i) => i.id === a.key && i.title === thread && !i.outgoing,
-          ),
-      ),
+  const typingPeer = (state.scheduled || []).some((pending) =>
+    work.nodes.find((node) => node.id === pending.nodeId)?.actions.some((action) =>
+      action.type === "unlock" && (work.data[app] || []).some((item) => item.id === action.key && item.title === thread && !item.outgoing),
+    ),
   );
   return (
     <section
@@ -199,15 +195,11 @@ export function StoryThread({
           wasNearBottom.current = el.scrollHeight - el.scrollTop - el.clientHeight < 100;
           if (wasNearBottom.current && newMessages) setNewMessages(0);
           const top = el.getBoundingClientRect().top;
-          const first = Array.from(
-            el.querySelectorAll<HTMLElement>("[data-record]"),
-          ).find((n) => n.getBoundingClientRect().bottom > top);
-          if (
-            first?.dataset.record &&
-            savedAnchor.current !== first.dataset.record
-          ) {
-            savedAnchor.current = first.dataset.record;
-            callbacks.current.onUi?.(historyKey, first.dataset.record);
+          const first = Array.from(el.querySelectorAll<HTMLElement>("[data-record]")).find((n) => n.getBoundingClientRect().bottom > top);
+          const anchorId = wasNearBottom.current ? "__bottom__" : first?.dataset.record;
+          if (anchorId && savedAnchor.current !== anchorId) {
+            savedAnchor.current = anchorId;
+            callbacks.current.onUi?.(historyKey, anchorId);
           }
         }}
       >
@@ -412,7 +404,7 @@ export function StoryThread({
       {prompt && (
         <div className="story-blocked-backdrop" role="presentation" onClick={() => setPrompt(null)}>
           <div className="story-blocked-dialog" role="dialog" aria-modal="true" aria-label="剧情提示" onClick={(event) => event.stopPropagation()}>
-            <p>{prompt === "blocked" ? "昇玟好像有什么事情要做，试着问问GPT吧。" : "昇玟现在不想发送消息。"}</p>
+            <p>{prompt === "waiting" ? "请先等等对方想说什么。" : prompt === "blocked" ? "昇玟好像有什么事情要做，试着问问GPT吧。" : "昇玟现在不想发送消息。"}</p>
             <div>
               <button onClick={() => setPrompt(null)}>知道了</button>
               {prompt === "blocked" && openAssistant && <button onClick={() => { setPrompt(null); openAssistant(); }}>问问GPT</button>}
