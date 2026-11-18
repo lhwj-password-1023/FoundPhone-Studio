@@ -128,6 +128,20 @@ export function validateLayout(raw: unknown, input: Work) {
     }
     layout.previewLayoutRevision = 3;
   }
+  if (
+    w.id === "nine-years" &&
+    layout.previewLayoutRevision < 4 &&
+    w.apps.some((a) => a.id === "twitter" && a.installed)
+  ) {
+    const app = layout.apps.find((a) => a.id === "twitter");
+    if (app) {
+      app.installed = true;
+      app.visible = true;
+      app.folder = "";
+      app.name = "X";
+    }
+    layout.previewLayoutRevision = 4;
+  }
   const store = layout.apps.find((a) => a.id === "appstore");
   if (store) {
     store.installed = true;

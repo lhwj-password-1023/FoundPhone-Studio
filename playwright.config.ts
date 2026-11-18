@@ -5,6 +5,7 @@ export default defineConfig({
     "runtime.spec.ts",
     "nine-years.spec.ts",
     "scene-two.spec.ts",
+    "x-permissions.spec.ts",
     "release.spec.ts",
     "launcher.spec.ts",
     "home-swipe.spec.ts",

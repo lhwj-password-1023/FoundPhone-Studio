@@ -1,3 +1,4 @@
+import { useActor } from "../ActorContext";
 import { Transcript } from "./Transcript";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowUp, ChevronLeft, Info, Paperclip, X } from "lucide-react";
@@ -33,6 +34,7 @@ export function StoryThread({
   onEvent,
   openResource,
 }: Props) {
+  const actor = useActor();
   const kakao = app === "kakao";
   const list = items.filter((i) => i.title === thread);
   const choices = state.endings.length
@@ -114,7 +116,13 @@ export function StoryThread({
         : 145;
     const timer = setTimeout(() => {
       if (finished) {
-        callbacks.current.send(option.meta.reply);
+        if (
+          actor.check(option.meta.action === "reply" ? "reply" : "message", {
+            target: thread,
+            preset: option.id,
+          })
+        )
+          callbacks.current.send(option.meta.reply);
         callbacks.current.onUi?.("sending:" + thread, "");
         setSelected("");
         setTyping(null);
@@ -254,7 +262,17 @@ export function StoryThread({
             </div>
           );
         })}
-        {typingPeer && <article className="peer typing-row"><div className="archive-bubble peer-typing-bubble" role="status" aria-live="polite">正在输入…</div></article>}
+        {typingPeer && (
+          <article className="peer typing-row">
+            <div
+              className="archive-bubble peer-typing-bubble"
+              role="status"
+              aria-live="polite"
+            >
+              正在输入…
+            </div>
+          </article>
+        )}
       </div>
       {inspect?.meta.transcript ? (
         <Transcript
@@ -276,7 +294,9 @@ export function StoryThread({
               <X />
             </button>
             {inspect.kind === "image" && inspect.media && (
-              <div className="attachment-preview"><Media item={inspect} /></div>
+              <div className="attachment-preview">
+                <Media item={inspect} />
+              </div>
             )}
             <strong>{inspect.sender}</strong>
             <p>
@@ -343,7 +363,7 @@ export function StoryThread({
       <footer>
         <button
           className="archive-input"
-          disabled={!choices.length || typing !== null}
+          disabled={typing !== null}
           onClick={() => setPicker(!picker)}
         >
           {typing !== null ? (
@@ -363,8 +383,15 @@ export function StoryThread({
         <button
           className="archive-send"
           aria-label={typing === null ? "发送回复" : "完成输入"}
-          disabled={!option}
           onClick={() => {
+            if (
+              !actor.check(
+                option?.meta.action === "reply" ? "reply" : "message",
+                { target: thread, preset: option?.id },
+              )
+            )
+              return;
+            if (!option) return;
             onUi?.("sending:" + thread, selected);
             setTyping(typing !== null ? text.length : Math.min(1, text.length));
           }}

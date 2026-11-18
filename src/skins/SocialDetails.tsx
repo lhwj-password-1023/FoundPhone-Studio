@@ -1,3 +1,4 @@
+import { useActor } from "../ActorContext";
 import { useState } from "react";
 import {
   ChevronLeft,
@@ -34,6 +35,7 @@ export function SocialDetail(p: {
   ui?: Record<string, UiValue>;
   onUi?: (key: string, value: UiValue) => void;
 }) {
+  const actor = useActor();
   const { item } = p,
     weibo = p.app === "weibo";
   const [liked, setLiked] = useSkinState<boolean>(p, "liked-" + item.id, false),
@@ -61,6 +63,7 @@ export function SocialDetail(p: {
     }
   };
   const submit = () => {
+    if (!actor.check("comment", { target: item.id })) return;
     if (!draft.trim()) return;
     setExtra([...extra, (p.owner || "机主") + "：" + draft.trim()]);
     setDraft("");

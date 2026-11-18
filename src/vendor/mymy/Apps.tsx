@@ -1,3 +1,5 @@
+import { useActor } from "../../ActorContext";
+import { StoryX } from "../../skins/StoryX";
 /* React/data adapters for dudwo5/Mymy UI templates: kt/ktn/KHD/bub,
  * igHome/igProfile/igDM/igSheet, xHome. See NOTICE.txt for permission.
  * Author content, DOM globals, timers and media dependencies are excluded. */
@@ -62,6 +64,7 @@ function Back({ onClick }: { onClick: () => void }) {
   );
 }
 export function MymyKakao(p: SkinProps) {
+  const actor = useActor();
   const [tab, setTab] = useSkinState<string>(p, "mymyTab", "聊天"),
     [sent, setSent] = useSkinState<string[]>(p, "mymyKktSent", []),
     [draft, setDraft] = useState(""),
@@ -160,6 +163,7 @@ export function MymyKakao(p: SkinProps) {
             className="kzinp"
             onSubmit={(e) => {
               e.preventDefault();
+              if (!actor.check("message", { target: p.thread })) return;
               if (draft.trim()) {
                 setSent([
                   ...sent,
@@ -364,6 +368,7 @@ export function MymyKakao(p: SkinProps) {
   );
 }
 export function MymyInstagram(p: SkinProps) {
+  const actor = useActor();
   const [tab, setTab] = useSkinState<string>(p, "mymyTab", "个人主页"),
     [liked, setLiked] = useSkinState<string[]>(p, "mymyLiked", []),
     [saved, setSaved] = useSkinState<string[]>(p, "mymySaved", []),
@@ -483,7 +488,11 @@ export function MymyInstagram(p: SkinProps) {
     </article>
   );
   return (
-    <div className="mymy-ui mymy-instagram" data-mymy="instagram" data-profile={tab==="个人主页"}>
+    <div
+      className="mymy-ui mymy-instagram"
+      data-mymy="instagram"
+      data-profile={tab === "个人主页"}
+    >
       <div className="ig">
         <header className="igh">
           <button
@@ -542,7 +551,8 @@ export function MymyInstagram(p: SkinProps) {
                   </div>
                 </div>
               </div>
-              <p className="pn">{p.owner}</p><p className="pn">练习、吃饭，还有随手拍下来的东西。</p>
+              <p className="pn">{p.owner}</p>
+              <p className="pn">练习、吃饭，还有随手拍下来的东西。</p>
               <div className="ptab">
                 <div className="on">
                   <Grid />
@@ -637,6 +647,7 @@ export function MymyInstagram(p: SkinProps) {
               onSubmit={(e) => {
                 e.preventDefault();
                 if (draft.trim()) {
+                  if (!actor.check("comment", { target: sheet.id })) return;
                   setReplies([...replies, sheet.id + "\t" + draft.trim()]);
                   setDraft("");
                 }
@@ -688,6 +699,9 @@ export function MymyInstagram(p: SkinProps) {
   );
 }
 export function MymyX(p: SkinProps) {
+  return p.archive ? <StoryX {...p} /> : <LegacyX {...p} />;
+}
+function LegacyX(p: SkinProps) {
   const [dark, setDark] = useSkinState<boolean>(p, "x-dark", true);
   const [tab, setTab] = useSkinState<string>(p, "mymyTab", "推荐"),
     [likes, setLikes] = useSkinState<string[]>(p, "mymyXLikes", []),

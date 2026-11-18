@@ -1,0 +1,42 @@
+.actor-toast {
+  position: absolute;
+  bottom: 105px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 150;
+  max-width: 88%;
+  width: max-content;
+  border-radius: 22px;
+  background: #353539eb;
+  color: #fff;
+  padding: 12px 18px;
+  font-size: 15px;
+  box-shadow: 0 4px 20px #0002;
+}
+.actor-composer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #8883;
+}
+.actor-composer textarea {
+  flex: 1;
+  min-width: 130px;
+  resize: vertical;
+  min-height: 42px;
+  max-height: 160px;
+  background: #8881;
+  color: inherit;
+  border: 1px solid #8884;
+  border-radius: 20px;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 15px;
+}
+.actor-composer button {
+  padding: 9px;
+  color: #168bf5;
+  border-radius: 20px;
+}

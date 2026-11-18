@@ -108,8 +108,28 @@ export class StoryIssue extends Error {
     super(message);
   }
 }
-export function compileStory(raw: unknown): { story: Story; work: Work } {
-  const s = storySchema.parse(raw);
+const extrasSchema = z
+  .object({
+    installedApps: storySchema.shape.installedApps.removeDefault().optional(),
+    variables: storySchema.shape.variables.removeDefault().optional(),
+    content: storySchema.shape.content.removeDefault().optional(),
+  })
+  .strict();
+export function compileStory(
+  raw: unknown,
+  extras?: unknown,
+): { story: Story; work: Work } {
+  const base = storySchema.parse(raw);
+  const additions = extrasSchema.parse(extras || {});
+  const mergedContent = { ...base.content };
+  for (const [app, items] of Object.entries(additions.content || {}))
+    mergedContent[app] = [...(base.content[app] || []), ...items];
+  const s = storySchema.parse({
+    ...base,
+    installedApps: [...base.installedApps, ...(additions.installedApps || [])],
+    variables: { ...base.variables, ...additions.variables },
+    content: mergedContent,
+  });
   const fail = (p: string, m: string): never => {
     throw new StoryIssue(p, m);
   };
@@ -217,6 +237,29 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
       );
     });
   });
+  const mediaById = new Map(
+    Object.values(data)
+      .flat()
+      .map((item) => [item.id, item]),
+  );
+  const extraIds = new Set(
+    Object.values(additions.content || {})
+      .flat()
+      .map((item) => item.id),
+  );
+  for (const item of mediaById.values()) {
+    if (extraIds.has(item.id) && !item.media && item.meta.resource) {
+      const source = mediaById.get(item.meta.resource);
+      if (
+        source?.kind === item.kind &&
+        !source.hidden &&
+        !source.unlock &&
+        !source.meta.requires &&
+        !source.meta.stage
+      )
+        item.media = source.media;
+    }
+  }
   const nodes = s.events.map((e, n) => {
     unique(e.id, `events.${n}.id`);
     return nodeSchema.parse({

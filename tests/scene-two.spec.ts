@@ -81,7 +81,8 @@ for (const [branch, answer, otherAnswer] of [
     await expect(page.locator(".calendar-event")).toContainText("送别");
     await button(page, "返回桌面").click();
     await button(page, "打开信息").click();
-    await expect(page.locator(".archive-input")).toBeDisabled();
+    await button(page, "发送回复").click();
+    await expect(page.getByRole("status")).toHaveText("昇玟现在不想发送消息。");
     await expect(
       page.getByText("那你可以教教我，怎么忘记一个人吗", { exact: true }),
     ).toHaveCount(0);

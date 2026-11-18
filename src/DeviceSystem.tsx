@@ -1,3 +1,4 @@
+import { useActor } from "./ActorContext";
 import { SystemNotifications } from "./SystemNotifications";
 import {
   ConnectivityModule,
@@ -47,15 +48,23 @@ export function NativeComposer({
   creator: boolean;
   onAdd: () => void;
 }) {
+  const actor = useActor();
   const open = useContext(KeyboardContext);
   return (
-    <button
-      className="native-compose-field"
-      aria-label={creator ? "添加消息" : "输入消息"}
-      onClick={() => (creator ? onAdd() : open(true))}
-    >
-      {creator ? "添加消息" : ""}
-    </button>
+    <>
+      <button
+        className="native-compose-field"
+        aria-label={creator ? "添加消息" : "输入消息"}
+        onClick={() => (creator ? onAdd() : open(true))}
+      >
+        {creator ? "添加消息" : ""}
+      </button>
+      {actor.restricted && (
+        <button aria-label="发送消息" onClick={() => actor.check("message")}>
+          ↑
+        </button>
+      )}
+    </>
   );
 }
 export function DeviceLock({

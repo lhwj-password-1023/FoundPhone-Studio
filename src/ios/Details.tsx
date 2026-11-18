@@ -1,3 +1,4 @@
+import { useActor } from "../ActorContext";
 import { useState, useRef } from "react";
 import {
   ChevronLeft,
@@ -48,6 +49,7 @@ export function NativeDetail({
   onUi?: (k: string, v: UiValue) => void;
   adjacent?: (direction: number) => void;
 }) {
+  const actor = useActor();
   const [chrome, setChrome] = useState(true);
   const [info, setInfo] = useState(false),
     [zoom, setZoom] = useState(false);
@@ -225,7 +227,14 @@ export function NativeDetail({
             <h1>{item.title}</h1>
           </div>
           {requestCallback && (
-            <button onClick={requestCallback}>请对方回电</button>
+            <button
+              onClick={() => {
+                if (actor.check("call", { target: item.id }))
+                  requestCallback?.();
+              }}
+            >
+              请对方回电
+            </button>
           )}
           <div className="native-contact-actions">
             {[
@@ -237,15 +246,18 @@ export function NativeDetail({
               return (
                 <button
                   key={String(label)}
-                  disabled={
-                    !!ui &&
-                    (label === "视频" || (label === "信息" && !openMessage))
-                  }
-                  onClick={() =>
-                    label === "信息" && openMessage
-                      ? openMessage()
-                      : setCall(true)
-                  }
+                  disabled={label === "视频" && !!ui}
+                  onClick={() => {
+                    if (label === "信息") {
+                      if (openMessage) openMessage();
+                      else actor.check("message", { target: item.id });
+                      return;
+                    }
+                    if (actor.check("call", { target: item.id })) {
+                      if (requestCallback) requestCallback();
+                      else setCall(true);
+                    }
+                  }}
                 >
                   <Glyph size={23} />
                   {String(label)}

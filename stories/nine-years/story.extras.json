@@ -1,0 +1,1243 @@
+{
+  "installedApps": [
+    {
+      "id": "twitter",
+      "name": "X",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": ""
+    }
+  ],
+  "variables": {
+    "permit:call:contacts:mom-card": true,
+    "permit:call:phone:mom-card": true
+  },
+  "content": {
+    "twitter": [
+      {
+        "id": "x-user-self",
+        "title": "金昇玟",
+        "sender": "金昇玟",
+        "body": "不定期上线。唱歌、看球、吃饭。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_seungmin",
+          "self": "true",
+          "following": "x-user-group,x-user-chan,x-user-lee,x-user-record,x-user-stage,x-user-baseball,x-user-fanball",
+          "followers": "x-user-chan,x-user-lee,x-user-stay",
+          "fiction": "true",
+          "fullName": "金昇玟"
+        }
+      },
+      {
+        "id": "x-user-group",
+        "title": "组合动态小站",
+        "sender": "组合动态小站",
+        "body": "故事内的组合资讯站。这里的日程均为虚构。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_group_desk",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "组合动态小站"
+        }
+      },
+      {
+        "id": "x-user-chan",
+        "title": "灿哥",
+        "sender": "灿哥",
+        "body": "写东西的时候可能回得慢。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_chan_room",
+          "self": "false",
+          "following": "x-user-self",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "方灿"
+        }
+      },
+      {
+        "id": "x-user-lee",
+        "title": "旻浩哥",
+        "sender": "旻浩哥",
+        "body": "猫占了我的椅子。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_lee_cat",
+          "self": "false",
+          "following": "x-user-self",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "李旻浩"
+        }
+      },
+      {
+        "id": "x-user-record",
+        "title": "唱片便签",
+        "sender": "唱片便签",
+        "body": "记下唱片里喜欢的小细节。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_record_note",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "唱片便签"
+        }
+      },
+      {
+        "id": "x-user-stage",
+        "title": "小剧场日历",
+        "sender": "小剧场日历",
+        "body": "虚构的演出与排练资讯。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_stage_info",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "小剧场日历"
+        }
+      },
+      {
+        "id": "x-user-baseball",
+        "title": "九局观察",
+        "sender": "九局观察",
+        "body": "看棒球，也看天气。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_nine_innings",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "九局观察"
+        }
+      },
+      {
+        "id": "x-user-fanball",
+        "title": "左外野的风",
+        "sender": "左外野的风",
+        "body": "话不多，投坏球时例外。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_left_field",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "左外野的风"
+        }
+      },
+      {
+        "id": "x-user-photo",
+        "title": "下班看云",
+        "sender": "下班看云",
+        "body": "普通上班族。下班路上拍照。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_evening_cloud",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "下班看云"
+        }
+      },
+      {
+        "id": "x-user-student",
+        "title": "在图书馆",
+        "sender": "在图书馆",
+        "body": "作业写完才能睡。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_library_desk",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "在图书馆"
+        }
+      },
+      {
+        "id": "x-user-food",
+        "title": "一人份饭",
+        "sender": "一人份饭",
+        "body": "今天也做一人份。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_single_bowl",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "一人份饭"
+        }
+      },
+      {
+        "id": "x-user-musicfan",
+        "title": "耳机线打结",
+        "sender": "耳机线打结",
+        "body": "记住某一句和声就够了。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_headphone_knot",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "耳机线打结"
+        }
+      },
+      {
+        "id": "x-user-stay",
+        "title": "窗边听歌",
+        "sender": "窗边听歌",
+        "body": "听歌，看舞台，偶尔画点东西。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_window_listener",
+          "self": "false",
+          "following": "x-user-self",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "窗边听歌"
+        }
+      },
+      {
+        "id": "x-user-life",
+        "title": "巷口生活台",
+        "sender": "巷口生活台",
+        "body": "虚构的天气、出行和生活提示。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_corner_life",
+          "self": "false",
+          "following": "x-user-musicfan",
+          "followers": "x-user-self",
+          "fiction": "true",
+          "fullName": "巷口生活台"
+        }
+      },
+      {
+        "id": "x-post-0",
+        "title": "热汤",
+        "sender": "金昇玟",
+        "body": "一开始嫌烫，最后嫌凉。",
+        "time": "2026-11-19 22:13",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 2,
+        "comments": [
+          "一人份饭：中间刷了会儿手机吧。",
+          "金昇玟：……"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "0",
+          "views": "369",
+          "tags": "#热汤",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-3"
+        }
+      },
+      {
+        "id": "x-post-1",
+        "title": "赛后复盘",
+        "sender": "九局观察",
+        "body": "今天复盘一场自己编的模拟赛：第八局牺牲触击后，守备站位该不该前压？ #棒球复盘",
+        "time": "2026-11-20 19:10",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 203,
+        "comments": [
+          "左外野的风：先看跑者速度。",
+          "在图书馆：我只是进来学术语的。",
+          "九局观察：这一帖讨论的是模拟局面。",
+          "耳机线打结：原来我每个字都认识，加起来看不懂。"
+        ],
+        "meta": {
+          "userId": "x-user-baseball",
+          "handle": "mock_nine_innings",
+          "reposts": "1",
+          "views": "492",
+          "tags": "#赛后复盘",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-2",
+        "title": "下班的天",
+        "sender": "下班看云",
+        "body": "车还没来，天先暗了。 #下班路上",
+        "time": "2026-11-20 18:21",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 4,
+        "comments": [
+          "一人份饭：这张可以当壁纸。"
+        ],
+        "meta": {
+          "userId": "x-user-photo",
+          "handle": "mock_evening_cloud",
+          "reposts": "2",
+          "views": "615",
+          "tags": "#下班的天",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-4"
+        }
+      },
+      {
+        "id": "x-post-3",
+        "title": "充电位",
+        "sender": "在图书馆",
+        "body": "找到插座了。现在只差找到充电器。",
+        "time": "2026-11-20 16:31",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 5,
+        "comments": [
+          "巷口生活台：包的夹层呢？",
+          "在图书馆：在宿舍。"
+        ],
+        "meta": {
+          "userId": "x-user-student",
+          "handle": "mock_library_desk",
+          "reposts": "3",
+          "views": "738",
+          "tags": "#充电位",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-4",
+        "title": "鼓声",
+        "sender": "唱片便签",
+        "body": "今天听歌的小作业：只数鼓，不跟着唱。到副歌又忘了。 #耳机日记",
+        "time": "2026-11-20 14:00",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 452,
+        "comments": [
+          "耳机线打结：这个小作业已经失败三次。"
+        ],
+        "meta": {
+          "userId": "x-user-record",
+          "handle": "mock_record_note",
+          "reposts": "4",
+          "views": "861",
+          "tags": "#鼓声",
+          "historyOnly": "false",
+          "liked": "true"
+        }
+      },
+      {
+        "id": "x-post-5",
+        "title": "煎蛋",
+        "sender": "一人份饭",
+        "body": "煎蛋的边缘焦了。叫它脆边就好吃了。",
+        "time": "2026-11-20 12:08",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 7,
+        "comments": [
+          "下班看云：命名很重要。"
+        ],
+        "meta": {
+          "userId": "x-user-food",
+          "handle": "mock_single_bowl",
+          "reposts": "5",
+          "views": "984",
+          "tags": "#煎蛋",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-6",
+        "title": "排练的小事",
+        "sender": "小剧场日历",
+        "body": "虚构小剧场本周技术分享：开场前给地板做标记，记得把手电带走。",
+        "time": "2026-11-19 20:30",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 618,
+        "comments": [
+          "唱片便签：上次找了十分钟。"
+        ],
+        "meta": {
+          "userId": "x-user-stage",
+          "handle": "mock_stage_info",
+          "reposts": "6",
+          "views": "1107",
+          "tags": "#排练的小事",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-2"
+        }
+      },
+      {
+        "id": "x-post-7",
+        "title": "洗球帽",
+        "sender": "左外野的风",
+        "body": "休赛日终于洗了帽子，结果晚上又下雨。",
+        "time": "2026-11-19 19:15",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 9,
+        "comments": [
+          "九局观察：至少有一个地方变干净了。"
+        ],
+        "meta": {
+          "userId": "x-user-fanball",
+          "handle": "mock_left_field",
+          "reposts": "0",
+          "views": "1230",
+          "tags": "#洗球帽",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-8",
+        "title": "耳机",
+        "sender": "耳机线打结",
+        "body": "左耳机掉床下，右耳机去陪它。两只都找不到了。",
+        "time": "2026-11-19 09:11",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 10,
+        "comments": [
+          "在图书馆：它们也要放假。"
+        ],
+        "meta": {
+          "userId": "x-user-musicfan",
+          "handle": "mock_headphone_knot",
+          "reposts": "1",
+          "views": "1353",
+          "tags": "#耳机",
+          "historyOnly": "false",
+          "liked": "true"
+        }
+      },
+      {
+        "id": "x-post-9",
+        "title": "和声练习",
+        "sender": "窗边听歌",
+        "body": "照着公开舞台练和声，唱了半天发现自己一直跟主旋律。 #练唱日记",
+        "time": "2026-11-18 22:10",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 11,
+        "comments": [
+          "耳机线打结：大家起点都一样。"
+        ],
+        "meta": {
+          "userId": "x-user-stay",
+          "handle": "mock_window_listener",
+          "reposts": "2",
+          "views": "1476",
+          "tags": "#和声练习",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-10",
+        "title": "夜路",
+        "sender": "巷口生活台",
+        "body": "故事内生活提醒：落叶堆着的台阶容易滑。走路时把手机收起来。",
+        "time": "2026-11-18 18:00",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 12,
+        "comments": [
+          "下班看云：尤其桥下那几级。"
+        ],
+        "meta": {
+          "userId": "x-user-life",
+          "handle": "mock_corner_life",
+          "reposts": "3",
+          "views": "1599",
+          "tags": "#夜路",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-11",
+        "title": "存档",
+        "sender": "灿哥",
+        "body": "保存文件。再保存一次。",
+        "time": "2026-11-17 23:05",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 13,
+        "comments": [
+          "唱片便签：这是今天最实用的建议。"
+        ],
+        "meta": {
+          "userId": "x-user-chan",
+          "handle": "mock_chan_room",
+          "reposts": "4",
+          "views": "1722",
+          "tags": "#存档",
+          "historyOnly": "false",
+          "liked": "true"
+        }
+      },
+      {
+        "id": "x-post-12",
+        "title": "副歌",
+        "sender": "金昇玟",
+        "body": "最后一句，明天再唱。",
+        "time": "2026-11-16 00:14",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 14,
+        "comments": [
+          "耳机线打结：明天见。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "5",
+          "views": "1845",
+          "tags": "#副歌",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-1"
+        }
+      },
+      {
+        "id": "x-post-13",
+        "title": "酒店窗帘",
+        "sender": "下班看云",
+        "body": "早起的目标：先把窗帘拉开。",
+        "time": "2026-11-15 17:19",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 15,
+        "comments": [
+          "在图书馆：我会先按掉闹钟。"
+        ],
+        "meta": {
+          "userId": "x-user-photo",
+          "handle": "mock_evening_cloud",
+          "reposts": "6",
+          "views": "1968",
+          "tags": "#酒店窗帘",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-9"
+        }
+      },
+      {
+        "id": "x-post-14",
+        "title": "排练片刻",
+        "sender": "组合动态小站",
+        "body": "今天的练习室随手记录。大家辛苦了。故事内虚构日常。",
+        "time": "2026-11-14 14:40",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 1282,
+        "comments": [
+          "窗边听歌：地板上的胶带好抢眼。"
+        ],
+        "meta": {
+          "userId": "x-user-group",
+          "handle": "mock_group_desk",
+          "reposts": "0",
+          "views": "2091",
+          "tags": "#排练片刻",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-0"
+        }
+      },
+      {
+        "id": "x-post-15",
+        "title": "停顿",
+        "sender": "唱片便签",
+        "body": "同一段旋律，留半拍空白，感觉就变了。",
+        "time": "2026-11-12 11:08",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 1365,
+        "comments": [
+          "灿哥：留得太长就会忘记下一句。"
+        ],
+        "meta": {
+          "userId": "x-user-record",
+          "handle": "mock_record_note",
+          "reposts": "1",
+          "views": "2214",
+          "tags": "#停顿",
+          "historyOnly": "false",
+          "liked": "true"
+        }
+      },
+      {
+        "id": "x-post-16",
+        "title": "记分纸",
+        "sender": "九局观察",
+        "body": "纸质记分表的好处：走神了，纸也会诚实地空一格。",
+        "time": "2026-11-10 20:30",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 1448,
+        "comments": [
+          "左外野的风：我的半张都是空的。"
+        ],
+        "meta": {
+          "userId": "x-user-baseball",
+          "handle": "mock_nine_innings",
+          "reposts": "2",
+          "views": "2337",
+          "tags": "#记分纸",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-17",
+        "title": "半分钟",
+        "sender": "金昇玟",
+        "body": "以为半分钟很短的，可以试着等水烧开。",
+        "time": "2026-11-02 12:02",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 4,
+        "comments": [
+          "在图书馆：还剩一分钟的时候最慢。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "3",
+          "views": "2460",
+          "tags": "#半分钟",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-8"
+        }
+      },
+      {
+        "id": "x-post-18",
+        "title": "借伞",
+        "sender": "巷口生活台",
+        "body": "巷口旧物交换柜新添了伞架。归还时先晾干。故事内生活资讯。",
+        "time": "2026-10-29 09:30",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 5,
+        "comments": [
+          "一人份饭：记住了。"
+        ],
+        "meta": {
+          "userId": "x-user-life",
+          "handle": "mock_corner_life",
+          "reposts": "4",
+          "views": "2583",
+          "tags": "#借伞",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-19",
+        "title": "采购",
+        "sender": "一人份饭",
+        "body": "买菜前：只买三样。买菜后：三袋。",
+        "time": "2026-10-25 12:40",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 6,
+        "comments": [
+          "下班看云：计量单位没有统一。"
+        ],
+        "meta": {
+          "userId": "x-user-food",
+          "handle": "mock_single_bowl",
+          "reposts": "5",
+          "views": "2706",
+          "tags": "#采购",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-20",
+        "title": "少冰",
+        "sender": "金昇玟",
+        "body": "两杯少冰，结果拿错了两次。",
+        "time": "2026-10-18 12:05",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 7,
+        "comments": [
+          "灿哥：不是只有两杯吗？",
+          "金昇玟：嗯。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "6",
+          "views": "2829",
+          "tags": "#少冰",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-10"
+        }
+      },
+      {
+        "id": "x-post-21",
+        "title": "猫和椅子",
+        "sender": "旻浩哥",
+        "body": "让了一次椅子，现在椅子不是我的了。",
+        "time": "2026-10-16 15:22",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 8,
+        "comments": [
+          "窗边听歌：我家也这样。"
+        ],
+        "meta": {
+          "userId": "x-user-lee",
+          "handle": "mock_lee_cat",
+          "reposts": "0",
+          "views": "2952",
+          "tags": "#猫和椅子",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-6"
+        }
+      },
+      {
+        "id": "x-post-22",
+        "title": "汤和蛋糕",
+        "sender": "金昇玟",
+        "body": "今年也是先吃饭。",
+        "time": "2026-09-22 22:30",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 9,
+        "comments": [
+          "灿哥：吃饱。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "1",
+          "views": "3075",
+          "tags": "#汤和蛋糕",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-3"
+        }
+      },
+      {
+        "id": "x-post-23",
+        "title": "猫",
+        "sender": "金昇玟",
+        "body": "有人在椅子上找猫。猫在椅子下看他。",
+        "time": "2026-09-12 17:20",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 10,
+        "comments": [
+          "旻浩哥：下次你来找。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "2",
+          "views": "3198",
+          "tags": "#猫",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-6"
+        }
+      },
+      {
+        "id": "x-post-24",
+        "title": "开学",
+        "sender": "在图书馆",
+        "body": "新本子的第一页写得最好看。到第二页就原形毕露。",
+        "time": "2026-09-04 10:20",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 11,
+        "comments": [
+          "耳机线打结：我的第一页还空着。"
+        ],
+        "meta": {
+          "userId": "x-user-student",
+          "handle": "mock_library_desk",
+          "reposts": "3",
+          "views": "3321",
+          "tags": "#开学",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-25",
+        "title": "天色",
+        "sender": "金昇玟",
+        "body": "想出去走一圈。天说再想想。",
+        "time": "2026-08-21 18:03",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 12,
+        "comments": [
+          "下班看云：等雨小一点。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "4",
+          "views": "3444",
+          "tags": "#天色",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-4"
+        }
+      },
+      {
+        "id": "x-post-26",
+        "title": "彩排封面",
+        "sender": "小剧场日历",
+        "body": "十秒练习记录的封面。正式的视频还没整理出来。",
+        "time": "2026-08-18 17:15",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 2278,
+        "comments": [
+          "唱片便签：这块地板看起来很熟悉。"
+        ],
+        "meta": {
+          "userId": "x-user-stage",
+          "handle": "mock_stage_info",
+          "reposts": "5",
+          "views": "3567",
+          "tags": "#彩排封面",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-2",
+          "videoCover": "true"
+        }
+      },
+      {
+        "id": "x-post-27",
+        "title": "早起",
+        "sender": "金昇玟",
+        "body": "窗帘拉开了。人还没有。",
+        "time": "2026-07-11 08:10",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 14,
+        "comments": [
+          "在图书馆：懂。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "6",
+          "views": "3690",
+          "tags": "#早起",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-9"
+        }
+      },
+      {
+        "id": "x-post-28",
+        "title": "讨论",
+        "sender": "左外野的风",
+        "body": "好球带这个话题，越聊越宽。",
+        "time": "2026-06-14 19:06",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 15,
+        "comments": [
+          "九局观察：也有人越聊越窄。"
+        ],
+        "meta": {
+          "userId": "x-user-fanball",
+          "handle": "mock_left_field",
+          "reposts": "0",
+          "views": "3813",
+          "tags": "#讨论",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-29",
+        "title": "棒球帽",
+        "sender": "金昇玟",
+        "body": "洗完帽子才发现没有太阳。",
+        "time": "2026-05-08 13:20",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 16,
+        "comments": [
+          "左外野的风：是同一个季节。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "1",
+          "views": "3936",
+          "tags": "#棒球帽",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-30",
+        "title": "改名",
+        "sender": "耳机线打结",
+        "body": "播放列表叫「只听一首」。现在八十首。",
+        "time": "2026-04-10 18:01",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 2,
+        "comments": [
+          "唱片便签：一首一首加的也算。"
+        ],
+        "meta": {
+          "userId": "x-user-musicfan",
+          "handle": "mock_headphone_knot",
+          "reposts": "2",
+          "views": "4059",
+          "tags": "#改名",
+          "historyOnly": "false",
+          "liked": "true"
+        }
+      },
+      {
+        "id": "x-post-31",
+        "title": "标记",
+        "sender": "金昇玟",
+        "body": "别撕那条胶带，明天还站那里。",
+        "time": "2026-04-07 18:04",
+        "folder": "动态",
+        "kind": "image",
+        "read": true,
+        "likes": 3,
+        "comments": [
+          "灿哥：收到。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "3",
+          "views": "4182",
+          "tags": "#标记",
+          "historyOnly": "false",
+          "liked": "false",
+          "resource": "album-2"
+        }
+      },
+      {
+        "id": "x-post-32",
+        "title": "转发保存",
+        "sender": "金昇玟",
+        "body": "先存着。明天练。",
+        "time": "2026-03-19 22:00",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 4,
+        "comments": [],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "4",
+          "views": "4305",
+          "tags": "#转发保存",
+          "historyOnly": "false",
+          "liked": "false",
+          "quote": "x-post-15",
+          "repostedBy": "x-user-self"
+        }
+      },
+      {
+        "id": "x-post-33",
+        "title": "小玩笑",
+        "sender": "金昇玟",
+        "body": "杯子没盖好，包先喝到水了。",
+        "time": "2026-02-13 15:12",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 5,
+        "comments": [
+          "一人份饭：包比人勤快。"
+        ],
+        "meta": {
+          "userId": "x-user-self",
+          "handle": "mock_seungmin",
+          "reposts": "5",
+          "views": "4428",
+          "tags": "#小玩笑",
+          "historyOnly": "false",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-post-34",
+        "title": "旧照片的光",
+        "sender": "下班看云",
+        "body": "这一段路晴天影子特别长。 #下班路上",
+        "time": "2017-11-20 16:02",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "likes": 6,
+        "comments": [],
+        "meta": {
+          "userId": "x-user-photo",
+          "handle": "mock_evening_cloud",
+          "reposts": "6",
+          "views": "4551",
+          "tags": "#旧照片的光",
+          "historyOnly": "true",
+          "liked": "false"
+        }
+      },
+      {
+        "id": "x-self-reply",
+        "title": "说到存档",
+        "sender": "金昇玟",
+        "body": "保存第三次才放心。",
+        "time": "2026-11-17 23:09",
+        "folder": "动态",
+        "kind": "post",
+        "read": true,
+        "meta": {
+          "userId": "x-user-self",
+          "replyTo": "x-post-11"
+        }
+      },
+      {
+        "id": "x-notice-0",
+        "title": "点赞",
+        "sender": "灿哥",
+        "body": "灿哥赞了你的动态「副歌」。",
+        "folder": "通知",
+        "time": "2026-11-19 18:04",
+        "read": false,
+        "meta": {
+          "userId": "x-user-chan",
+          "target": "x-post-12"
+        }
+      },
+      {
+        "id": "x-notice-1",
+        "title": "评论",
+        "sender": "一人份饭",
+        "body": "一人份饭回复了你：中间刷了会儿手机吧。",
+        "folder": "通知",
+        "time": "2026-11-19 22:20",
+        "read": false,
+        "meta": {
+          "userId": "x-user-food",
+          "target": "x-post-0"
+        }
+      },
+      {
+        "id": "x-notice-2",
+        "title": "转发",
+        "sender": "耳机线打结",
+        "body": "耳机线打结转发了你收藏过的动态。",
+        "folder": "通知",
+        "time": "2026-11-19 20:03",
+        "read": true,
+        "meta": {
+          "userId": "x-user-musicfan",
+          "target": "x-post-7"
+        }
+      },
+      {
+        "id": "x-notice-3",
+        "title": "提及",
+        "sender": "下班看云",
+        "body": "下班看云提到了你：这张天色是不是很像你拍的那次？",
+        "folder": "通知",
+        "time": "2026-11-19 18:28",
+        "read": true,
+        "meta": {
+          "userId": "x-user-photo",
+          "target": "x-post-2"
+        }
+      },
+      {
+        "id": "x-notice-4",
+        "title": "新关注",
+        "sender": "在图书馆",
+        "body": "在图书馆关注了你。",
+        "folder": "通知",
+        "time": "2026-11-19 12:10",
+        "read": true,
+        "meta": {
+          "userId": "x-user-student",
+          "target": ""
+        }
+      },
+      {
+        "id": "x-dm-0-0",
+        "title": "灿哥",
+        "sender": "灿哥",
+        "body": "你说的那篇声音笔记我找到了。",
+        "time": "2026-11-18 15:20",
+        "folder": "私信",
+        "read": true,
+        "meta": {
+          "userId": "x-user-chan"
+        }
+      },
+      {
+        "id": "x-dm-0-1",
+        "title": "灿哥",
+        "sender": "灿哥",
+        "body": "就是这条，先存着。",
+        "time": "2026-11-18 15:21",
+        "folder": "私信",
+        "read": true,
+        "meta": {
+          "userId": "x-user-chan"
+        }
+      },
+      {
+        "id": "x-dm-1-0",
+        "title": "唱片便签",
+        "sender": "唱片便签",
+        "body": "谢谢补充那个换气点。下次整理时会标注。",
+        "time": "2026-11-18 15:20",
+        "folder": "私信",
+        "read": true,
+        "meta": {
+          "userId": "x-user-record"
+        }
+      },
+      {
+        "id": "x-trend-0",
+        "title": "#棒球复盘",
+        "body": "预设话题 · 查看讨论",
+        "folder": "趋势",
+        "time": "2026-11-20 12:00",
+        "read": true,
+        "meta": {
+          "category": "体育"
+        }
+      },
+      {
+        "id": "x-trend-1",
+        "title": "#下班路上",
+        "body": "预设话题 · 查看讨论",
+        "folder": "趋势",
+        "time": "2026-11-20 12:00",
+        "read": true,
+        "meta": {
+          "category": "日常"
+        }
+      },
+      {
+        "id": "x-trend-2",
+        "title": "#耳机日记",
+        "body": "预设话题 · 查看讨论",
+        "folder": "趋势",
+        "time": "2026-11-20 12:00",
+        "read": true,
+        "meta": {
+          "category": "音乐"
+        }
+      },
+      {
+        "id": "x-trend-3",
+        "title": "#练唱日记",
+        "body": "预设话题 · 查看讨论",
+        "folder": "趋势",
+        "time": "2026-11-20 12:00",
+        "read": true,
+        "meta": {
+          "category": "兴趣"
+        }
+      }
+    ]
+  }
+}

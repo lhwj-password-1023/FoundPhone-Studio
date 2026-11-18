@@ -1,3 +1,4 @@
+import { useActor, ActionComposer } from "../ActorContext";
 import "./system-reference.css";
 import {
   Voicemail,
@@ -56,6 +57,7 @@ import {
   type Props,
 } from "./shared";
 export function PhoneSkin(p: Props) {
+  const actor = useActor();
   const { tab, setTab, q, setQ, items } = useContent(p, "最近通话");
   const [digits, setDigits] = useState(""),
     [call, setCall] = useState("");
@@ -123,9 +125,10 @@ export function PhoneSkin(p: Props) {
             </div>
             <button
               className="dial-call"
-              disabled={!digits}
+
               aria-label="模拟拨号"
               onClick={() => {
+                if (!actor.check("call", { target: digits })) return;
                 setCall(digits);
                 const i = items.find((i) => meta(i, "number") === digits);
                 if (i) p.onRead(i.id);
@@ -274,7 +277,8 @@ export function PhotosSkin(p: Props) {
     <div className="catalog-skin native-photos">
       <Header p={p} />
       <div className="catalog-scroll">
-        <h1>{album || tab}</h1><p className="gallery-total">{list.length} 个项目</p>
+        <h1>{album || tab}</h1>
+        <p className="gallery-total">{list.length} 个项目</p>
         {p.archive && tab === "图库" && (
           <div className="gallery-period">
             {["年", "月", "日"].map((v) => (
@@ -524,7 +528,10 @@ export function CalendarSkin(p: Props) {
               key={i}
               onClick={() => {
                 setDay(i + 1);
-                p.onEvent?.("viewCalendarDay", prefix + "-" + String(i + 1).padStart(2, "0"));
+                p.onEvent?.(
+                  "viewCalendarDay",
+                  prefix + "-" + String(i + 1).padStart(2, "0"),
+                );
               }}
             >
               {i + 1}
@@ -604,7 +611,10 @@ export function MailSkin(p: Props) {
       <footer className="mail-footer">
         <span>{list.length} 封邮件</span>
         {p.archive ? (
-          <DraftInput p={p} label="写邮件" />
+          <>
+            <DraftInput p={p} label="写邮件" />
+            <ActionComposer action="email" target={tab} label="发送邮件" />
+          </>
         ) : (
           <Add p={p} label="写邮件" />
         )}

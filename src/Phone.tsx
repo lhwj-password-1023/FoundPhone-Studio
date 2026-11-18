@@ -1,3 +1,4 @@
+import { ActorProvider } from "./ActorContext";
 import { makeItem as makeCallRecord } from "./schema";
 import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
@@ -226,15 +227,27 @@ function PhoneRuntime({
         if (!active) return;
         if (saved && saved.state.revision === work.updatedAt)
           setOwn(saved.state);
-        else if (saved && work.nodes.some(node =>
-          node.event === "resumeRevision" && node.target === String(saved.state.revision)
-        )) {
+        else if (
+          saved &&
+          work.nodes.some(
+            (node) =>
+              node.event === "resumeRevision" &&
+              node.target === String(saved.state.revision),
+          )
+        ) {
           const restored = {
             ...saved.state,
             revision: work.updatedAt,
             variables: { ...work.variables, ...saved.state.variables },
           };
-          setOwn(dispatch(work, restored, "resumeRevision", String(saved.state.revision)));
+          setOwn(
+            dispatch(
+              work,
+              restored,
+              "resumeRevision",
+              String(saved.state.revision),
+            ),
+          );
         } else {
           setOwn(dispatch(work, initialRuntime(work), "start"));
           if (saved) setLoadError("作品已更新，已开始新的进度。");
@@ -671,9 +684,12 @@ function PhoneRuntime({
                     name={small ? undefined : a.name}
                     small={small}
                     badge={
-                      work.timeline && ["messages", "kakao"].includes(a.id)
+                      work.timeline &&
+                      ["messages", "kakao", "twitter"].includes(a.id)
                         ? (work.data[a.id] || []).filter(
                             (i) =>
+                              (a.id !== "twitter" ||
+                                ["通知", "私信"].includes(i.folder)) &&
                               !i.outgoing &&
                               !i.read &&
                               !s.read.includes(i.id) &&
@@ -1034,7 +1050,20 @@ function Media({ item }: { item: Item }) {
     </div>
   );
 }
-function AppContent({
+function AppContent(props: Parameters<typeof AppContentView>[0]) {
+  return (
+    <ActorProvider
+      work={props.work}
+      state={props.state}
+      app={props.app.id}
+      choose={props.onChoose}
+      onUi={props.onUi}
+    >
+      <AppContentView {...props} />
+    </ActorProvider>
+  );
+}
+function AppContentView({
   onChoose,
   onEvent,
   goToRecord,

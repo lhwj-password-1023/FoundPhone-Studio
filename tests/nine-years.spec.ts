@@ -84,7 +84,8 @@ test("陌生号码第一场，写下备忘录后才能继续", async ({ page }) 
   await reply(page, "没关系");
   await reply(page, "你到底是？");
   await page.locator('[data-record="leave"]').scrollIntoViewIfNeeded();
-  await expect(button(page, "发送回复")).toBeDisabled();
+  await button(page, "发送回复").click();
+  await expect(page.getByRole("status")).toHaveText("昇玟现在不想发送消息。");
   await button(page, "返回桌面").click();
   await button(page, "打开备忘录").click();
   await page
@@ -95,7 +96,8 @@ test("陌生号码第一场，写下备忘录后才能继续", async ({ page }) 
   await page.reload();
   await button(page, "轻触解锁").click();
   await button(page, "打开信息").click();
-  await expect(button(page, "发送回复")).toBeDisabled();
+  await button(page, "发送回复").click();
+  await expect(page.getByRole("status")).toHaveText("昇玟现在不想发送消息。");
   await button(page, "返回桌面").click();
   await button(page, "打开备忘录").click();
   await button(page, "完成").click();
@@ -106,5 +108,6 @@ test("陌生号码第一场，写下备忘录后才能继续", async ({ page }) 
   await expect(page.locator('[data-record="try-too-text"]')).toContainText(
     "我也想试着联系看看",
   );
-  await expect(button(page, "发送回复")).toBeDisabled();
+  await button(page, "发送回复").click();
+  await expect(page.getByRole("status")).toHaveText("昇玟现在不想发送消息。");
 });

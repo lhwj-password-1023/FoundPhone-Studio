@@ -1,3 +1,4 @@
+import { useActor } from "../ActorContext";
 import { useState } from "react";
 import {
   Home,
@@ -30,6 +31,7 @@ import { makeItem, type Item } from "../schema";
 import { useSkinState } from "../skinState";
 import "./threads-reference.css";
 export function ThreadsReference(p: SkinProps) {
+  const actor = useActor();
   const [tab, setTab] = useSkinState<string>(p, "threads-tab", "首页"),
     [liked, setLiked] = useSkinState<string[]>(p, "threads-liked", []),
     [saved, setSaved] = useSkinState<string[]>(p, "threads-saved", []),
@@ -161,6 +163,7 @@ export function ThreadsReference(p: SkinProps) {
               onSubmit={(e) => {
                 e.preventDefault();
                 if (draft.trim()) {
+                  if (!actor.check("comment", { target: selected.id })) return;
                   setReplies([...replies, selected.id + "\t" + draft.trim()]);
                   setDraft("");
                 }
@@ -471,6 +474,7 @@ export function ThreadsReference(p: SkinProps) {
             <button
               disabled={!draft.trim()}
               onClick={() => {
+                if (!actor.check("post")) return;
                 setPosts([draft.trim(), ...posts]);
                 setDraft("");
                 setCompose(false);

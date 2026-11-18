@@ -85,7 +85,18 @@ try {
   const { compileStory, storySchema } = await server.ssrLoadModule(
     "/src/story-engine/compiler.ts",
   );
-  const { story, work } = compileStory(raw);
+  let extras;
+  try {
+    extras = JSON.parse(
+      await readFile(
+        file.replace(/\.(?:json|md)$/i, "") + ".extras.json",
+        "utf8",
+      ),
+    );
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  const { story, work } = compileStory(raw, extras);
   if (mode === "test" || mode === "build") {
     const { testStory } = await server.ssrLoadModule(
       "/src/story-engine/testStory.ts",
