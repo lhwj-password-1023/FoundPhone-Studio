@@ -1,5 +1,5 @@
 {
-  "revision": 12,
+  "revision": 13,
   "removedApps": [
     "instagram",
     "news"
@@ -5313,6 +5313,16 @@
       "type": "action",
       "event": "resumeRevision",
       "target": "11",
+      "actions": [],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "message-time-resume-12",
+      "label": "message-time-resume-12",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "12",
       "actions": [],
       "next": [],
       "conditions": []
