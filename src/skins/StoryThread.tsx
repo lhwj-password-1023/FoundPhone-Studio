@@ -53,7 +53,7 @@ export function StoryThread({
   const [inspect, setInspect] = useState<Item | null>(null);
   const [autoNext, setAutoNext] = useState(false);
   const typing = useSimulatedTyping(choices.find((i) => i.id === selected)?.body || "");
-  const [blocked, setBlocked] = useState(false);
+  const [prompt, setPrompt] = useState<"blocked" | "idle" | null>(null);
   const [contactSheet, setContactSheet] = useState(false);
   const [contactEdit, setContactEdit] = useState(false);
   const contactTyping = useSimulatedTyping();
@@ -84,6 +84,28 @@ export function StoryThread({
     onUi?.("sending:" + thread, item.id);
     typing.start(item.body);
     setPicker(false);
+  };
+  const compose = (source: "field" | "arrow") => {
+    if (typing.active) {
+      if (!typing.done) { if (source === "field") typing.reveal(); return; }
+      if (source === "field") return;
+    }
+    const candidate = option || (choices.length === 1 ? choices[0] : undefined);
+    if (candidate) {
+      if (!option || !typing.active) { select(candidate); return; }
+      if (source === "arrow") {
+        if (!actor.check(candidate.meta.action === "reply" ? "reply" : "message", { target: thread, preset: candidate.id })) return;
+        send(candidate.meta.reply);
+        onUi?.("sending:" + thread, "");
+        setSelected("");
+        typing.reset();
+        setAutoNext(true);
+      }
+      return;
+    }
+    if (choices.length > 1) { setPicker(true); return; }
+    setPicker(false);
+    setPrompt(!kakao && blockedMessage(work, state, thread) ? "blocked" : "idle");
   };
   useEffect(() => {
     if (!autoNext || selected || choices.length !== 1) return;
@@ -387,13 +409,13 @@ export function StoryThread({
       )}
       {failedMenu && <div className="story-blocked-backdrop" onClick={() => setFailedMenu(false)}><div className="story-blocked-dialog" role="dialog" aria-label="发送失败" onClick={(e) => e.stopPropagation()}><p>消息未送达</p><div><button onClick={() => setFailedMenu(false)}>取消</button><button onClick={() => setFailedMenu(false)}>再次尝试发送</button></div></div></div>}
       {transferOpen && <div className="story-blocked-backdrop"><div className="story-blocked-dialog transfer-dialog" role="dialog" aria-label="转账汇款"><h3>转账/汇款</h3><p>收款人：旻浩哥</p><strong>金额：{amount || "请输入四位数"}</strong><div className="transfer-keypad">{Array.from({length:10},(_,n)=><button key={n} onClick={()=>setAmount(amount.length < 4 ? amount + n : amount)}>{n}</button>)}<button onClick={()=>setAmount(amount.slice(0,-1))}>删除</button></div><p onClick={()=>transferTyping.reveal()} className="simulated-caret">附言：{transferTyping.shown}</p><button disabled={amount.length!==4 || amount==="0000" || !transferTyping.done} onClick={()=>{onEvent("storyTransfer",amount);setTransferOpen(false)}}>确认转账</button><button onClick={()=>setTransferOpen(false)}>取消</button></div></div>}
-      {blocked && (
-        <div className="story-blocked-backdrop" role="presentation" onClick={() => setBlocked(false)}>
+      {prompt && (
+        <div className="story-blocked-backdrop" role="presentation" onClick={() => setPrompt(null)}>
           <div className="story-blocked-dialog" role="dialog" aria-modal="true" aria-label="剧情提示" onClick={(event) => event.stopPropagation()}>
-            <p>昇玟好像有什么事情要做，试着问问GPT吧。</p>
+            <p>{prompt === "blocked" ? "昇玟好像有什么事情要做，试着问问GPT吧。" : "昇玟现在不想发送消息。"}</p>
             <div>
-              <button onClick={() => setBlocked(false)}>知道了</button>
-              {openAssistant && <button onClick={() => { setBlocked(false); openAssistant(); }}>问问GPT</button>}
+              <button onClick={() => setPrompt(null)}>知道了</button>
+              {prompt === "blocked" && openAssistant && <button onClick={() => { setPrompt(null); openAssistant(); }}>问问GPT</button>}
             </div>
           </div>
         </div>
@@ -402,13 +424,7 @@ export function StoryThread({
         {!kakao && state.variables.finalPhase === 20 && <button onClick={()=>{setAmount("");transferTyping.start("别轻易向生活低头。");setTransferOpen(true)}}>转账/汇款</button>}
         <button
           className="archive-input"
-          onClick={() => {
-            if (typing.active && !typing.done) { typing.reveal(); return; }
-            if (option && !typing.active) { typing.start(option.body); return; }
-            if (!option && choices.length === 1) { select(choices[0]); return; }
-            if (choices.length > 1) setPicker(!picker);
-            else if (!choices.length) setBlocked(true);
-          }}
+          onClick={() => compose("field")}
         >
           {typing.active ? (
             <span className="compose-in-progress simulated-caret">
@@ -428,28 +444,7 @@ export function StoryThread({
           className="archive-send"
           aria-label="发送回复"
           disabled={typing.active && !typing.done}
-          onClick={() => {
-            const candidate = option || (choices.length === 1 ? choices[0] : undefined);
-            if (!kakao && !candidate && blockedMessage(work, state, thread)) {
-              setBlocked(true);
-              return;
-            }
-            if (
-              !actor.check(
-                candidate?.meta.action === "reply" ? "reply" : "message",
-                { target: thread, preset: candidate?.id },
-              )
-            )
-              return;
-            if (!candidate) return;
-            if (!option || !typing.active) { select(candidate); return; }
-            if (!typing.done) return;
-            send(candidate.meta.reply);
-            onUi?.("sending:" + thread, "");
-            setSelected("");
-            typing.reset();
-            setAutoNext(true);
-          }}
+          onClick={() => compose("arrow")}
         >
           <ArrowUp size={19} />
         </button>

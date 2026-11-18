@@ -157,6 +157,18 @@ export const workSchema = z.object({
 export type Work = z.infer<typeof workSchema>;
 export type UiValue = string | number | boolean | string[];
 export type Runtime = {
+  notificationRoutes?: Record<string, {
+    notificationId: string;
+    appId: string;
+    notificationType: string;
+    targetPage: string;
+    targetId: string;
+    messageId: string;
+    sceneId: string;
+    createdAt: string;
+    readStatus: "unread" | "read";
+    navigationPayload: Record<string, string>;
+  }>;
   /** Stable, per-conversation order in which records appeared on this phone. */
   messageOrder?: Record<string, string[]>;
   messageReceivedAt?: Record<string, string>;
@@ -191,6 +203,7 @@ export type Runtime = {
 };
 export function initialRuntime(w: Work): Runtime {
   return {
+    notificationRoutes: {},
     messageOrder: {},
     messageReceivedAt: {},
     date: w.phone.date,

@@ -44,6 +44,25 @@ function apply(a: Action, s: Runtime, w: Work) {
       if (!s.hidden.includes(a.key)) s.hidden.push(a.key);
       break;
     case "notification":
+      {
+        const match = Object.entries(w.data).flatMap(([app, items]) => items.map((item) => ({ app, item }))).find(({ item }) => item.id === a.key);
+        const noticeId = match ? "@item/" + a.key : String(a.value);
+        if (noticeId) {
+          s.notificationRoutes ??= {};
+          s.notificationRoutes[noticeId] = {
+            notificationId: noticeId,
+            appId: match?.app || (w.apps.some((app) => app.id === a.key) ? a.key : "system"),
+            notificationType: match ? (match.app === "messages" || match.app === "kakao" ? "message" : match.app) : "system",
+            targetPage: match ? (match.app === "messages" || match.app === "kakao" ? "conversation" : "detail") : "system-detail",
+            targetId: match?.item.meta.conversationId || match?.item.id || a.key,
+            messageId: match?.item.id || "",
+            sceneId: match?.item.meta.sceneId || "",
+            createdAt: `${s.date || w.phone.date} ${s.time}`,
+            readStatus: "unread",
+            navigationPayload: match ? { recordId: match.item.id, thread: match.item.title } : {},
+          };
+        }
+      }
       if (
         a.key &&
         Object.values(w.data).some((items) =>

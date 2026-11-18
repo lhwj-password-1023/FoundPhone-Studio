@@ -3,11 +3,12 @@ import { motion } from "motion/react";
 import { X } from "lucide-react";
 import { AppArtwork } from "./AppArtwork";
 import { routeForNotice } from "./story-engine/timeline";
-import type { Work } from "./schema";
+import type { Runtime, Work } from "./schema";
 export function notificationContent(
   text: string,
   apps: Work["apps"],
   work?: Work,
+  routes?: Runtime["notificationRoutes"],
 ) {
   const target = work && routeForNotice(text, work);
   if (target)
@@ -24,11 +25,11 @@ export function notificationContent(
     };
   const separator = text.search(/[:：]/);
   const sender = separator > 0 ? text.slice(0, separator) : "信息";
-  const app = apps.find((a) => a.name === sender);
+  const appId = routes?.[text]?.appId;
   return {
     title: sender,
     body: separator > 0 ? text.slice(separator + 1) : text,
-    appId: app?.id ?? "messages",
+    appId: appId && apps.some((a) => a.id === appId) ? appId : "system",
   };
 }
 export function SystemNotifications({
@@ -37,11 +38,13 @@ export function SystemNotifications({
   onOpen,
   onDismiss,
   work,
+  routes,
   compact = false,
 }: {
   notices: string[];
   apps: Work["apps"];
   work?: Work;
+  routes?: Runtime["notificationRoutes"];
   onOpen: (notice: string) => void;
   onDismiss: (index: number) => void;
   compact?: boolean;
@@ -58,7 +61,7 @@ export function SystemNotifications({
     >
       <div className="notice-cards">
         {shown.map(({ text, index }) => {
-          const n = notificationContent(text, apps, work);
+          const n = notificationContent(text, apps, work, routes);
           return (
             <motion.div
               layout

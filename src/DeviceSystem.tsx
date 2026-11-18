@@ -39,7 +39,7 @@ import {
   Lock,
 } from "lucide-react";
 import { motion } from "motion/react";
-import type { Work } from "./schema";
+import type { Runtime, Work } from "./schema";
 export const KeyboardContext = createContext<(open: boolean) => void>(() => {});
 export function NativeComposer({
   creator,
@@ -71,6 +71,7 @@ export function DeviceLock({
   work,
   time,
   notices,
+  routes,
   onDismiss,
   pinOpen,
   setPinOpen,
@@ -83,6 +84,7 @@ export function DeviceLock({
   work: Work;
   time: string;
   notices: string[];
+  routes?: Runtime["notificationRoutes"];
   onDismiss: (index: number) => void;
   pinOpen: boolean;
   setPinOpen: (v: boolean) => void;
@@ -141,6 +143,7 @@ export function DeviceLock({
               <SystemNotifications
                 compact
                 notices={notices}
+                routes={routes}
                 apps={work.apps}
                 work={work}
                 onOpen={onOpenNotice || open}

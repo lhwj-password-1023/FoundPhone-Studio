@@ -33,6 +33,7 @@ import { advanceFinale, reconnectTo2010, makeStoryTransfer, takeFinalPhoto } fro
 import finalSelfie from "./assets/finale-selfie.jpeg?inline";
 import { useSimulatedTyping } from "./skins/useSimulatedTyping";
 import { routeForNotice } from "./story-engine/timeline";
+import { notificationTarget, recordNavigation } from "./notificationNavigation";
 import { guidanceAnswer, pendingGuidance } from "./story-engine/guidance";
 import { StatusGlyph } from "./ios/StatusGlyph";
 import { SocialDetail, socialDetailApps } from "./skins/SocialDetails";
@@ -187,6 +188,7 @@ function PhoneRuntime({
   const [recent, setRecent] = useState<string[]>([]);
   const appSnapshots = useRef(new Map<string, HTMLElement>());
   const [banner, setBanner] = useState("");
+  const [systemNotice, setSystemNotice] = useState("");
   const lastNotices = useRef<string[]>([]);
   const [contextApp, setContextApp] = useState("");
   const [deviceScale, setDeviceScale] = useState(0.84);
@@ -483,35 +485,30 @@ function PhoneRuntime({
   const goToRecord = (appId: string, item?: Item) => {
     open(appId);
     if (!item || !visible(item, runtimeRef.current)) return;
-    if (["weather", "news", "reminders", "safari"].includes(appId)) {
-      update(dispatch(work, runtimeRef.current, "read", item.id));
-      return;
-    }
     const current = runtimeRef.current;
-    const route: Record<string, UiValue> = item.meta.conversationId
-      ? {
-          thread: item.title,
-          detail: "",
-          ["anchor:" + item.title]: item.id,
-          routeVisit: Number(current.ui?.[appId]?.routeVisit || 0) + 1,
-        }
-      : { thread: "", detail: item.id };
+    const chat = appId === "messages" || appId === "kakao";
+    const route = recordNavigation(appId, item, current.ui?.[appId]);
     const next = {
       ...current,
       ui: { ...current.ui, [appId]: { ...current.ui?.[appId], ...route } },
     };
     update(
-      item.meta.conversationId || item.password
+      chat || item.password
         ? next
         : dispatch(work, next, "read", item.id),
     );
   };
   const followNotice = (notice: string) => {
-    const route = routeForNotice(notice, work);
-    goToRecord(
-      route?.app || notificationContent(notice, work.apps).appId,
-      route?.item,
-    );
+    const route = notificationTarget(notice, work, runtimeRef.current);
+    if (route) goToRecord(route.app, route.item);
+    else {
+      const appId = runtimeRef.current.notificationRoutes?.[notice]?.appId;
+      if (appId && work.apps.some((a) => a.id === appId)) open(appId);
+      else setSystemNotice(notice);
+    }
+    const current = runtimeRef.current;
+    const entry = current.notificationRoutes?.[notice];
+    update({ ...current, notifications: current.notifications.filter((n) => n !== notice), notificationRoutes: entry ? { ...current.notificationRoutes, [notice]: { ...entry, readStatus: "read" } } : current.notificationRoutes });
   };
   const openNotice = (notice: string) => {
     setPanel("");
@@ -710,6 +707,7 @@ function PhoneRuntime({
                 }
                 time={displayTime}
                 notices={s.notifications}
+                routes={s.notificationRoutes}
                 onDismiss={dismissNotice}
                 pinOpen={pinOpen}
                 setPinOpen={setPinOpen}
@@ -870,6 +868,7 @@ function PhoneRuntime({
                   {work.phone.notifications && s.notifications.length ? (
                     <SystemNotifications
                       notices={s.notifications}
+                      routes={s.notificationRoutes}
                       apps={work.apps}
                       work={work}
                       onOpen={openNotice}
@@ -999,16 +998,25 @@ function PhoneRuntime({
               }}
             >
               <AppIcon
-                id={notificationContent(banner, work.apps, work).appId}
+                id={notificationContent(banner, work.apps, work, s.notificationRoutes).appId}
                 small
               />
               <span>
                 <strong>
-                  {notificationContent(banner, work.apps, work).title}
+                  {notificationContent(banner, work.apps, work, s.notificationRoutes).title}
                 </strong>
-                <span>{notificationContent(banner, work.apps, work).body}</span>
+                <span>{notificationContent(banner, work.apps, work, s.notificationRoutes).body}</span>
               </span>
             </button>
+          )}
+          {systemNotice && !locked && (
+            <div className="story-blocked-backdrop" role="presentation" onClick={() => setSystemNotice("")}>
+              <div className="story-blocked-dialog" role="dialog" aria-label="系统通知详情" onClick={(event) => event.stopPropagation()}>
+                <h3>系统通知</h3>
+                <p>{systemNotice}</p>
+                <button onClick={() => setSystemNotice("")}>关闭</button>
+              </div>
+            </div>
           )}
           {panel === "switcher" && (
             <div className="device-switcher">
