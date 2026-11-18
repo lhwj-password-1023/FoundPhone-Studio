@@ -27,6 +27,7 @@ async function captureVisibleApp(): Promise<string> {
 }
 import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
+import { reconcileMessageOrder } from "./messageOrder";
 import { advanceSceneFour, shareSceneFourNews, addSceneFourMemory } from "./story-engine/scene-four-runtime";
 import { advanceFinale, reconnectTo2010, makeStoryTransfer, takeFinalPhoto } from "./story-engine/finale-runtime";
 import finalSelfie from "./assets/finale-selfie.jpeg?inline";
@@ -240,6 +241,7 @@ function PhoneRuntime({
   const runtimeRef = useRef(s);
   runtimeRef.current = s;
   const update = (next: Runtime) => {
+    next = reconcileMessageOrder(work, next);
     runtimeRef.current = next;
     setOwn(next);
     onRuntime?.(next);
@@ -248,7 +250,7 @@ function PhoneRuntime({
     let active = true;
     if (creator || external) return;
     if (freshTest) {
-      setOwn(dispatch(work, initialRuntime(work), "start"));
+      setOwn(reconcileMessageOrder(work, dispatch(work, initialRuntime(work), "start")));
       setReady(true);
       return;
     }
@@ -257,7 +259,7 @@ function PhoneRuntime({
       .then((saved) => {
         if (!active) return;
         if (saved && saved.state.revision === work.updatedAt)
-          setOwn(saved.state);
+          setOwn(reconcileMessageOrder(work, saved.state));
         else if (
           saved &&
           work.nodes.some(
@@ -271,22 +273,22 @@ function PhoneRuntime({
             revision: work.updatedAt,
             variables: { ...work.variables, ...saved.state.variables },
           };
-          setOwn(
+          setOwn(reconcileMessageOrder(work,
             dispatch(
               work,
               restored,
               "resumeRevision",
               String(saved.state.revision),
             ),
-          );
+          ));
         } else {
-          setOwn(dispatch(work, initialRuntime(work), "start"));
+          setOwn(reconcileMessageOrder(work, dispatch(work, initialRuntime(work), "start")));
           if (saved) setLoadError("作品已更新，已开始新的进度。");
         }
         setReady(true);
       })
       .catch(() => {
-        setOwn(dispatch(work, initialRuntime(work), "start"));
+        setOwn(reconcileMessageOrder(work, dispatch(work, initialRuntime(work), "start")));
         setLoadError("无法读取本地存档。本次仍可游玩。");
         setReady(true);
       });

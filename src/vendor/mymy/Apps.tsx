@@ -31,6 +31,7 @@ import type { SkinProps } from "../../AppSkins";
 import { Avatar, Media } from "../../skins/shared";
 import { useSkinState } from "../../skinState";
 import { makeItem, type Item } from "../../schema";
+import { orderMessages } from "../../messageOrder";
 import "./ui.css";
 import "./adapter.css";
 function grouped(items: Item[]) {
@@ -72,7 +73,7 @@ export function MymyKakao(p: SkinProps) {
     [menu, setMenu] = useState(false);
   const [profile, setProfile] = useState<Item | null>(null);
   const list = grouped(p.items),
-    messages = [
+    messages = orderMessages("kakao", [
       ...p.items.filter((i) => i.title === p.thread),
       ...sent.flatMap((raw, index) => {
         try {
@@ -99,11 +100,20 @@ export function MymyKakao(p: SkinProps) {
           return [];
         }
       }),
-    ],
+    ], p.storyState),
     scroll = useRef<HTMLDivElement>(null);
+  const [newMessages, setNewMessages] = useState(0);
+  const previousId = useRef<string | undefined>(undefined);
+  const nearBottom = useRef(true);
   useEffect(() => {
     const node = scroll.current;
-    if (node) node.scrollTop = node.scrollHeight;
+    if (!node) return;
+    const latest = messages.at(-1);
+    if (!previousId.current || nearBottom.current || (previousId.current !== latest?.id && latest?.outgoing)) {
+      node.scrollTo({ top: node.scrollHeight, behavior: previousId.current ? "smooth" : "auto" });
+      setNewMessages(0);
+    } else if (previousId.current !== latest?.id) setNewMessages((n) => n + 1);
+    previousId.current = latest?.id;
   }, [p.thread, messages.length]);
   return (
     <div className="mymy-ui mymy-kakao" data-mymy="kakao">
@@ -118,7 +128,7 @@ export function MymyKakao(p: SkinProps) {
               </button>
             </span>
           </header>
-          <div className="msgs kk" ref={scroll}>
+          <div className="msgs kk" ref={scroll} onScroll={() => { const node = scroll.current; if (!node) return; nearBottom.current = node.scrollHeight - node.scrollTop - node.clientHeight < 100; if (nearBottom.current && newMessages) setNewMessages(0); }}>
             {messages.map((m, i) => {
               const run = messageRun(messages, i);
               return (
@@ -159,6 +169,7 @@ export function MymyKakao(p: SkinProps) {
             })}
             {!messages.length && <Blank />}
           </div>
+          {newMessages > 0 && <button className="kakao-new-messages" onClick={() => { scroll.current?.scrollTo({ top: scroll.current.scrollHeight, behavior: "smooth" }); setNewMessages(0); }}>新消息 {newMessages}</button>}
           <form
             className="kzinp"
             onSubmit={(e) => {

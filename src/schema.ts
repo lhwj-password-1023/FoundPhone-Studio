@@ -157,6 +157,9 @@ export const workSchema = z.object({
 export type Work = z.infer<typeof workSchema>;
 export type UiValue = string | number | boolean | string[];
 export type Runtime = {
+  /** Stable, per-conversation order in which records appeared on this phone. */
+  messageOrder?: Record<string, string[]>;
+  messageReceivedAt?: Record<string, string>;
   peerDate?: string;
   peerTime?: string;
   readAt?: Record<string, { device: string; elapsedMs: number }>;
@@ -188,6 +191,8 @@ export type Runtime = {
 };
 export function initialRuntime(w: Work): Runtime {
   return {
+    messageOrder: {},
+    messageReceivedAt: {},
     date: w.phone.date,
     elapsedMs: 0,
     clockRemainderMs: 0,

@@ -53,6 +53,7 @@
   padding: 10px 15px;
   min-height: 0;
 }
+.archive-chat .archive-new-messages { position: absolute; right: 18px; bottom: 105px; z-index: 5; border: 0; border-radius: 18px; padding: 7px 13px; color: #fff; background: #1976d2; box-shadow: 0 3px 12px #0003; }
 .archive-date {
   display: block;
   text-align: center;

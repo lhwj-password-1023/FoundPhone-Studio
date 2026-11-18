@@ -636,3 +636,4 @@
 .mymy-ui.mymy-kakao .kzkn b { font-size:15px; color:#1e1e1e; }
 .mymy-ui.mymy-kakao .kzkn small { display:block; max-width:215px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#89898f; font-size:12px; }
 .mymy-ui.mymy-kakao .kzkmt { color:#a1a1a7; font-size:11px; }
+.mymy-ui.mymy-kakao .kakao-new-messages { position:absolute; right:18px; bottom:80px; z-index:5; border:0; border-radius:18px; padding:7px 13px; color:#fff; background:#315cbb; box-shadow:0 3px 12px #0003; }

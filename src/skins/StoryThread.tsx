@@ -7,6 +7,7 @@ import { visible } from "../engine";
 import { replyOptions } from "../story-engine/timeline";
 import { blockedMessage } from "../story-engine/guidance";
 import { useSimulatedTyping } from "./useSimulatedTyping";
+import { orderMessages } from "../messageOrder";
 import type { Item, Runtime, UiValue, Work } from "../schema";
 import "./story-thread.css";
 
@@ -41,7 +42,7 @@ export function StoryThread({
   const actor = useActor();
   const kakao = app === "kakao";
   // Content is appended when it arrives; authored timestamps may belong to another timeline.
-  const list = items.filter((i) => i.title === thread);
+  const list = orderMessages(app, items.filter((i) => i.title === thread), state);
   const displayName = !kakao && thread === "陌生号码" ? String(state.ui?.messages?.contactAlias || thread) : thread;
   const choices = state.endings.length
     ? []
@@ -57,6 +58,7 @@ export function StoryThread({
   const [contactEdit, setContactEdit] = useState(false);
   const contactTyping = useSimulatedTyping();
   const [failedMenu, setFailedMenu] = useState(false);
+  const [newMessages, setNewMessages] = useState(0);
   const [countdown, setCountdown] = useState(30);
   const [transferOpen, setTransferOpen] = useState(false);
   const [amount, setAmount] = useState("");
@@ -95,6 +97,7 @@ export function StoryThread({
   const savedAnchor = useRef(state.ui?.[app]?.[historyKey]);
   const lastId = list.at(-1)?.id;
   const previous = useRef<string | undefined>(undefined);
+  const wasNearBottom = useRef(true);
   const readIds = useRef(state.read);
   readIds.current = state.read;
   useEffect(() => {
@@ -107,12 +110,10 @@ export function StoryThread({
       );
     if (previous.current === undefined && anchor)
       anchor.scrollIntoView({ block: "start" });
-    else if (
-      !previous.current ||
-      el.scrollHeight - el.scrollTop - el.clientHeight < 270 ||
-      list.at(-1)?.outgoing
-    )
-      el.scrollTop = el.scrollHeight;
+    else if (!previous.current || wasNearBottom.current || (previous.current !== lastId && list.at(-1)?.outgoing)) {
+      el.scrollTo({ top: el.scrollHeight, behavior: previous.current ? "smooth" : "instant" });
+      setNewMessages(0);
+    } else if (previous.current !== lastId) setNewMessages((n) => n + 1);
     previous.current = lastId;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -173,6 +174,8 @@ export function StoryThread({
         onScroll={() => {
           const el = pane.current;
           if (!el) return;
+          wasNearBottom.current = el.scrollHeight - el.scrollTop - el.clientHeight < 100;
+          if (wasNearBottom.current && newMessages) setNewMessages(0);
           const top = el.getBoundingClientRect().top;
           const first = Array.from(
             el.querySelectorAll<HTMLElement>("[data-record]"),
@@ -285,6 +288,7 @@ export function StoryThread({
           </article>
         )}
       </div>
+      {newMessages > 0 && <button className="archive-new-messages" onClick={() => { pane.current?.scrollTo({ top: pane.current.scrollHeight, behavior: "smooth" }); setNewMessages(0); }}>新消息 {newMessages}</button>}
       {inspect?.meta.transcript ? (
         <Transcript
           key={inspect.id}
