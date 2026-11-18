@@ -1,0 +1,3953 @@
+{
+  "revision": 6,
+  "installedApps": [
+    "timemachine"
+  ],
+  "variables": {
+    "sceneFourStage1": false,
+    "sceneFourStage2": false,
+    "sceneFourStage3": false,
+    "sceneFourStage4": false,
+    "sceneFourStage5": false,
+    "sceneFourStage6": false,
+    "sceneFourStage7": false,
+    "sceneFourStage8": false,
+    "sceneFourStage9": false,
+    "sceneFourStage10": false,
+    "sceneFourStage11": false,
+    "sceneFourStage12": false,
+    "sceneFourStage13": false,
+    "sceneFourStage14": false,
+    "sceneFourStage15": false,
+    "sceneFourStage16": false,
+    "minho_blocked_seungmin": false,
+    "s4NewsSearch": false,
+    "s4Shared": false
+  },
+  "chats": [
+    {
+      "id": "treehole-thread",
+      "append": [
+        {
+          "id": "s4-hello",
+          "body": "哥",
+          "time": "2026-11-20 22:28",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:28",
+            "arrivedAt": "2017-11-20 22:28",
+            "reply": "s4-send-s4-hello"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-i-am",
+          "body": "我是昇玟",
+          "time": "2026-11-20 22:28",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:28",
+            "arrivedAt": "2017-11-20 22:28",
+            "reply": "s4-send-s4-i-am"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-question",
+          "body": "？",
+          "time": "2026-11-20 22:28",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:28",
+            "arrivedAt": "2026-11-20 22:28"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-met",
+          "body": "我们之前见过吗？",
+          "time": "2026-11-20 22:28",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:28",
+            "arrivedAt": "2026-11-20 22:28"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-remind",
+          "body": "抱歉，我可能忘了，可以提醒我一下吗？",
+          "time": "2026-11-20 22:28",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:28",
+            "arrivedAt": "2026-11-20 22:28"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-stop-pretend",
+          "body": "不要再装了，你到底是谁？",
+          "time": "2026-11-20 22:33",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:33",
+            "arrivedAt": "2017-11-20 22:33",
+            "reply": "s4-send-s4-stop-pretend"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-bang-han",
+          "body": "方灿？韩知城？不管是谁，这样真的很无聊。",
+          "time": "2026-11-20 22:33",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:33",
+            "arrivedAt": "2017-11-20 22:33",
+            "reply": "s4-send-s4-bang-han"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-know-chan",
+          "body": "你认识灿哥啊，太好了。",
+          "time": "2026-11-20 22:33",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:33",
+            "arrivedAt": "2026-11-20 22:33"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-maybe-mentioned",
+          "body": "可能他和我提起过你，一下子没能想起来。",
+          "time": "2026-11-20 22:33",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:33",
+            "arrivedAt": "2026-11-20 22:33"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-wait",
+          "body": "等等……",
+          "time": "2026-11-20 22:33",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:33",
+            "arrivedAt": "2017-11-20 22:33",
+            "reply": "s4-send-s4-wait"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-meeting-chan",
+          "body": "我一会儿要和他见面呢。",
+          "time": "2026-11-20 22:33",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:33",
+            "arrivedAt": "2026-11-20 22:33"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-jyp",
+          "body": "他人咋样？在JYP当练习生靠谱吗？",
+          "time": "2026-11-20 22:33",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:33",
+            "arrivedAt": "2026-11-20 22:33"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-invite",
+          "body": "灿哥邀请我参加JYP的选秀，但我还在犹豫要不要参加。",
+          "time": "2026-11-20 22:36",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:36",
+            "arrivedAt": "2026-11-20 22:36"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-do-not",
+          "body": "不要去。",
+          "time": "2026-11-20 22:36",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:36",
+            "arrivedAt": "2017-11-20 22:36",
+            "reply": "s4-send-s4-do-not"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-never",
+          "body": "一定不要去。",
+          "time": "2026-11-20 22:36",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:36",
+            "arrivedAt": "2017-11-20 22:36",
+            "reply": "s4-send-s4-never"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-please",
+          "body": "求求你。",
+          "time": "2026-11-20 22:36",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:36",
+            "arrivedAt": "2017-11-20 22:36",
+            "reply": "s4-send-s4-please"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-why",
+          "body": "为什么啊？",
+          "time": "2026-11-20 22:36",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:36",
+            "arrivedAt": "2026-11-20 22:36"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-he-arrived",
+          "body": "稍等，他来了。",
+          "time": "2026-11-20 22:36",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:36",
+            "arrivedAt": "2026-11-20 22:36"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-consider",
+          "body": "那我先回复他考虑考虑，一会儿聊。",
+          "time": "2026-11-20 22:36",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:36",
+            "arrivedAt": "2026-11-20 22:36"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-warning-again",
+          "body": "他要是再来找你，也不要答应。",
+          "time": "2026-11-20 22:39",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:39",
+            "arrivedAt": "2017-11-20 22:39",
+            "reply": "s4-send-s4-warning-again"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-why-again",
+          "body": "为什么啊？",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-21 00:42",
+            "arrivedAt": "2026-11-21 00:42"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-accident",
+          "body": "如果我告诉你，你以后会遭遇意外呢？",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-21 00:42",
+            "arrivedAt": "2017-11-21 00:42",
+            "reply": "s4-send-s4-accident"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-sick",
+          "body": "你有病吧。",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-21 00:42",
+            "arrivedAt": "2026-11-21 00:42"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-curse",
+          "body": "为什么诅咒我？",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-21 00:42",
+            "arrivedAt": "2026-11-21 00:42"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-should-accept",
+          "body": "早知道刚刚答应灿哥了。",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-21 00:42",
+            "arrivedAt": "2026-11-21 00:42"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-no-lie",
+          "body": "我没有骗你。",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-21 00:42",
+            "arrivedAt": "2017-11-21 00:42",
+            "reply": "s4-send-s4-no-lie"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-your-year",
+          "body": "你那边是不是2017年？",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-21 00:42",
+            "arrivedAt": "2017-11-21 00:42",
+            "reply": "s4-send-s4-your-year"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-from-future",
+          "body": "我来自2026年，未来的一切我都知道。",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-21 00:42",
+            "arrivedAt": "2017-11-21 00:42",
+            "reply": "s4-send-s4-from-future"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-i-see",
+          "body": "我知道了。",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-21 00:42",
+            "arrivedAt": "2026-11-21 00:42"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-scammer",
+          "body": "原来是骗子，故意在报纸上放号码骗人的吧。",
+          "time": "2026-11-21 00:42",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-21 00:42",
+            "arrivedAt": "2026-11-21 00:42"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-blocked-text",
+          "body": "拉黑了拜拜，好走不送。",
+          "time": "2026-11-21 00:48",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-21 00:48",
+            "arrivedAt": "2026-11-21 00:48"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-failed-text",
+          "body": "这是未来会发生的事情，不信你等等看。",
+          "time": "2026-11-21 00:49",
+          "hidden": true,
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-21 00:49",
+            "arrivedAt": "2017-11-21 00:49",
+            "reply": "s4-send-s4-failed-text",
+            "failed": "true"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-recontact-a",
+          "body": "你不会真的没骗我吧？",
+          "time": "2026-11-21 00:52",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2018-02-21 00:52",
+            "arrivedAt": "2026-11-21 00:52",
+            "timeLink": "independent"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-recontact-b",
+          "body": "怎么和你说的一模一样？",
+          "time": "2026-11-21 00:52",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2018-02-21 00:52",
+            "arrivedAt": "2026-11-21 00:52",
+            "timeLink": "independent"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-recontact-c",
+          "body": "那我真的会……那啥吗？",
+          "time": "2026-11-21 00:52",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2018-02-21 00:52",
+            "arrivedAt": "2026-11-21 00:52",
+            "timeLink": "independent"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s4-recontact-d",
+          "body": "到底发生了什么？",
+          "time": "2026-11-21 00:52",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2018-02-21 00:52",
+            "arrivedAt": "2026-11-21 00:52",
+            "timeLink": "independent"
+          },
+          "sender": "陌生号码"
+        }
+      ]
+    },
+    {
+      "id": "room-fel",
+      "append": [
+        {
+          "id": "s4-fel-accuse",
+          "body": "装陌生人逗我很有意思吗？",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31",
+            "reply": "s4-send-s4-fel-accuse"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-fel-q",
+          "body": "？",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s4-fel-what",
+          "body": "你在说什么？",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s4-fel-number",
+          "body": "那个号码。",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31",
+            "reply": "s4-send-s4-fel-number"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-fel-you",
+          "body": "不是你在给我发消息吗？",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31",
+            "reply": "s4-send-s4-fel-you"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-fel-which",
+          "body": "什么号码？",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s4-fel-confused",
+          "body": "昇玟，我真的不知道你在说什么。",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s4-fel-sure",
+          "body": "你确定？",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31",
+            "reply": "s4-send-s4-fel-sure"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-fel-of-course",
+          "body": "当然啊。",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s4-fel-wrong",
+          "body": "你到底怎么了？",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s4-fel-nothing",
+          "body": "没什么。",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31",
+            "reply": "s4-send-s4-fel-nothing"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-fel-mistake",
+          "body": "我搞错了。",
+          "time": "2026-11-20 22:31",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:31",
+            "arrivedAt": "2026-11-20 22:31",
+            "reply": "s4-send-s4-fel-mistake"
+          },
+          "senderId": "owner"
+        }
+      ]
+    },
+    {
+      "id": "room-chan",
+      "append": [
+        {
+          "id": "s4-chan-where",
+          "body": "昇玟，你在哪？",
+          "time": "2026-11-20 22:35",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:35",
+            "arrivedAt": "2026-11-20 22:35"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-chan-felix",
+          "body": "龙馥说你急急忙忙出门了，没事吧？",
+          "time": "2026-11-20 22:35",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:35",
+            "arrivedAt": "2026-11-20 22:35"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-chan-ask",
+          "body": "灿哥，旻浩哥当初加入我们，是你邀请的吗？",
+          "time": "2026-11-20 22:35",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:35",
+            "arrivedAt": "2026-11-20 22:35",
+            "reply": "s4-send-s4-chan-ask"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-chan-yes",
+          "body": "是啊。",
+          "time": "2026-11-20 22:38",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:38",
+            "arrivedAt": "2026-11-20 22:38"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-chan-refused",
+          "body": "但他第一次拒绝了，我邀请了好几次呢。",
+          "time": "2026-11-20 22:38",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:38",
+            "arrivedAt": "2026-11-20 22:38"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-chan-why",
+          "body": "怎么突然提起这个？",
+          "time": "2026-11-20 22:38",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:38",
+            "arrivedAt": "2026-11-20 22:38"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-chan-nevermind",
+          "body": "没什么。",
+          "time": "2026-11-20 22:38",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-20 22:38",
+            "arrivedAt": "2026-11-20 22:38",
+            "reply": "s4-send-s4-chan-nevermind"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-memory-a",
+          "body": "不过听你提起以前，我想起来一个怪事。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-memory-b",
+          "body": "旻浩啊，当时真的非常敏锐呢。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-memory-c",
+          "body": "我记得那时候他还说了几件以后会发生的事。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-impossible",
+          "body": "我们都说不可能。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-true",
+          "body": "结果后来还真的让他说中了。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-oh",
+          "body": "是吗。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51",
+            "reply": "s4-send-s4-oh"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-when",
+          "body": "对了哥，旻浩哥什么时候接受邀请的？",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51",
+            "reply": "s4-send-s4-when"
+          },
+          "senderId": "owner"
+        },
+        {
+          "id": "s4-forgot",
+          "body": "这我哪记得。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-winter",
+          "body": "大概是17年冬天？记不清了。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s4-understood",
+          "body": "知道了。",
+          "time": "2026-11-21 00:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-B",
+            "sentAt": "2026-11-21 00:51",
+            "arrivedAt": "2026-11-21 00:51",
+            "reply": "s4-send-s4-understood"
+          },
+          "senderId": "owner"
+        }
+      ]
+    }
+  ],
+  "content": {
+    "notes": [
+      {
+        "id": "s4-note",
+        "title": "如果是真的",
+        "body": "",
+        "time": "2026-11-20 23:40",
+        "hidden": true,
+        "folder": "备忘录",
+        "meta": {
+          "composeText": "那真的是你吗？\n\n是九年前的你吗？\n\n如果这件事是真的，那是不是意味着一切都还有机会改变？\n\n如果我真的可以和过去的你说话，是不是就能阻止后来发生的那些事？\n\n我不知道为什么会变成这样，也不知道到底该怎么做。\n\n但如果这一切都是真的，我一定要拼尽全力阻止一切。",
+          "writtenFlag": "sceneFourStage9",
+          "createdAt": "2026-11-20 23:40"
+        }
+      }
+    ],
+    "safari": [
+      {
+        "id": "s4-news-eclipse",
+        "title": "NASA预告1月31日月全食",
+        "body": "NASA于2018年1月18日预告：1月31日将出现月全食，东亚等地可见。",
+        "time": "2018-01-18 12:00",
+        "hidden": true,
+        "meta": {
+          "source": "NASA",
+          "publishedAt": "2018-01-18",
+          "eventAt": "2018-01-31 00:00",
+          "url": "https://www.nasa.gov/solar-system/super-blue-blood-moon-coming-jan-31/",
+          "keyword": "2017年之后发生的大事",
+          "memory": "一月三十一日会出现月全食"
+        }
+      },
+      {
+        "id": "s4-news-falcon",
+        "title": "猎鹰重型火箭首次试飞成功",
+        "body": "2018年2月6日，猎鹰重型火箭从肯尼迪航天中心首次升空。NASA于次日刊发报道。",
+        "time": "2018-02-07 12:00",
+        "hidden": true,
+        "meta": {
+          "source": "NASA",
+          "publishedAt": "2018-02-07",
+          "eventAt": "2018-02-06 00:00",
+          "url": "https://www.nasa.gov/humans-in-space/commercial-space/falcon-heavy-a-multi-user-spaceport-success-story/",
+          "keyword": "2017年之后发生的大事",
+          "memory": "二月六日猎鹰重型火箭会首次升空"
+        }
+      },
+      {
+        "id": "s4-news-olympics",
+        "title": "平昌冬奥会开幕式举行",
+        "body": "2018年2月9日，平昌冬奥会在韩国举行开幕式。此页为国际奥委会一年后的回顾。",
+        "time": "2019-02-09 12:00",
+        "hidden": true,
+        "meta": {
+          "source": "国际奥委会",
+          "publishedAt": "2019-02-09",
+          "eventAt": "2018-02-09 00:00",
+          "url": "https://www.olympics.com/ioc/news/pyeongchang-celebrates-one-year-on-with-events-across-the-country",
+          "keyword": "2017年之后发生的大事",
+          "memory": "二月九日平昌冬奥会会开幕"
+        }
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": "s4-contact-save",
+      "label": "s4-contact-save",
+      "type": "action",
+      "event": "saveContact",
+      "target": "s4-lee",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneFourStage1",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-offer-s4-hello"
+      ],
+      "conditions": [
+        {
+          "key": "sceneThreeStage13",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneFourStage1",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-offer-s4-hello",
+      "label": "s4-offer-s4-hello",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-hello"
+      ]
+    },
+    {
+      "id": "s4-send-s4-hello",
+      "label": "哥",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-hello",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:28"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-i-am"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-i-am",
+      "label": "s4-offer-s4-i-am",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-i-am"
+      ]
+    },
+    {
+      "id": "s4-send-s4-i-am",
+      "label": "我是昇玟",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-i-am",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:28"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-question"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-question",
+      "label": "s4-deliver-s4-question",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-question",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-question",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-question",
+      "label": "s4-read-s4-question",
+      "type": "action",
+      "event": "read",
+      "target": "s4-question",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:28"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-met"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-met",
+      "label": "s4-deliver-s4-met",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-met",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-met",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-met",
+      "label": "s4-read-s4-met",
+      "type": "action",
+      "event": "read",
+      "target": "s4-met",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:28"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-remind"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-remind",
+      "label": "s4-deliver-s4-remind",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-remind",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-remind",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-remind",
+      "label": "s4-read-s4-remind",
+      "type": "action",
+      "event": "read",
+      "target": "s4-remind",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:28"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage2",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s4-felix-open",
+      "label": "s4-felix-open",
+      "type": "action",
+      "event": "openThread",
+      "target": "李龙馥",
+      "actions": [],
+      "next": [
+        "s4-offer-s4-fel-accuse"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage2",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneFourStage3",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-offer-s4-fel-accuse",
+      "label": "s4-offer-s4-fel-accuse",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-fel-accuse"
+      ]
+    },
+    {
+      "id": "s4-send-s4-fel-accuse",
+      "label": "装陌生人逗我很有意思吗？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-accuse",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-fel-q"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-fel-q",
+      "label": "s4-deliver-s4-fel-q",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-q",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-fel-q",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-fel-q",
+      "label": "s4-read-s4-fel-q",
+      "type": "action",
+      "event": "read",
+      "target": "s4-fel-q",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-fel-what"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-fel-what",
+      "label": "s4-deliver-s4-fel-what",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-what",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-fel-what",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-fel-what",
+      "label": "s4-read-s4-fel-what",
+      "type": "action",
+      "event": "read",
+      "target": "s4-fel-what",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-fel-number"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-fel-number",
+      "label": "s4-offer-s4-fel-number",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-fel-number"
+      ]
+    },
+    {
+      "id": "s4-send-s4-fel-number",
+      "label": "那个号码。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-number",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-fel-you"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-fel-you",
+      "label": "s4-offer-s4-fel-you",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-fel-you"
+      ]
+    },
+    {
+      "id": "s4-send-s4-fel-you",
+      "label": "不是你在给我发消息吗？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-you",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-fel-which"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-fel-which",
+      "label": "s4-deliver-s4-fel-which",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-which",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-fel-which",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-fel-which",
+      "label": "s4-read-s4-fel-which",
+      "type": "action",
+      "event": "read",
+      "target": "s4-fel-which",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-fel-confused"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-fel-confused",
+      "label": "s4-deliver-s4-fel-confused",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-confused",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-fel-confused",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-fel-confused",
+      "label": "s4-read-s4-fel-confused",
+      "type": "action",
+      "event": "read",
+      "target": "s4-fel-confused",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-fel-sure"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-fel-sure",
+      "label": "s4-offer-s4-fel-sure",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-fel-sure"
+      ]
+    },
+    {
+      "id": "s4-send-s4-fel-sure",
+      "label": "你确定？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-sure",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-fel-of-course"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-fel-of-course",
+      "label": "s4-deliver-s4-fel-of-course",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-of-course",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-fel-of-course",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-fel-of-course",
+      "label": "s4-read-s4-fel-of-course",
+      "type": "action",
+      "event": "read",
+      "target": "s4-fel-of-course",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-fel-wrong"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-fel-wrong",
+      "label": "s4-deliver-s4-fel-wrong",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-wrong",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-fel-wrong",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-fel-wrong",
+      "label": "s4-read-s4-fel-wrong",
+      "type": "action",
+      "event": "read",
+      "target": "s4-fel-wrong",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-fel-nothing"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-fel-nothing",
+      "label": "s4-offer-s4-fel-nothing",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-fel-nothing"
+      ]
+    },
+    {
+      "id": "s4-send-s4-fel-nothing",
+      "label": "没什么。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-nothing",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-fel-mistake"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-fel-mistake",
+      "label": "s4-offer-s4-fel-mistake",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-fel-mistake"
+      ]
+    },
+    {
+      "id": "s4-send-s4-fel-mistake",
+      "label": "我搞错了。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-fel-mistake",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:31"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage3",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s4-confront-ready",
+      "label": "s4-confront-ready",
+      "type": "action",
+      "event": "variable",
+      "target": "sceneFourStage3",
+      "actions": [],
+      "next": [
+        "s4-offer-s4-stop-pretend"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage3",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneFourStage4",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-offer-s4-stop-pretend",
+      "label": "s4-offer-s4-stop-pretend",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-stop-pretend"
+      ]
+    },
+    {
+      "id": "s4-send-s4-stop-pretend",
+      "label": "不要再装了，你到底是谁？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-stop-pretend",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:33"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-bang-han"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-bang-han",
+      "label": "s4-offer-s4-bang-han",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-bang-han"
+      ]
+    },
+    {
+      "id": "s4-send-s4-bang-han",
+      "label": "方灿？韩知城？不管是谁，这样真的很无聊。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-bang-han",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:33"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-know-chan"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-know-chan",
+      "label": "s4-deliver-s4-know-chan",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-know-chan",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-know-chan",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-know-chan",
+      "label": "s4-read-s4-know-chan",
+      "type": "action",
+      "event": "read",
+      "target": "s4-know-chan",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:33"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-maybe-mentioned"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-maybe-mentioned",
+      "label": "s4-deliver-s4-maybe-mentioned",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-maybe-mentioned",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-maybe-mentioned",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-maybe-mentioned",
+      "label": "s4-read-s4-maybe-mentioned",
+      "type": "action",
+      "event": "read",
+      "target": "s4-maybe-mentioned",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:33"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-wait"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-wait",
+      "label": "s4-offer-s4-wait",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-wait"
+      ]
+    },
+    {
+      "id": "s4-send-s4-wait",
+      "label": "等等……",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-wait",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:33"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-meeting-chan"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-meeting-chan",
+      "label": "s4-deliver-s4-meeting-chan",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-meeting-chan",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-meeting-chan",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-meeting-chan",
+      "label": "s4-read-s4-meeting-chan",
+      "type": "action",
+      "event": "read",
+      "target": "s4-meeting-chan",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:33"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-jyp"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-jyp",
+      "label": "s4-deliver-s4-jyp",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-jyp",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-jyp",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-jyp",
+      "label": "s4-read-s4-jyp",
+      "type": "action",
+      "event": "read",
+      "target": "s4-jyp",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:33"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage4",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-chan-where"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-chan-where",
+      "label": "s4-deliver-s4-chan-where",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-chan-where",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-chan-where",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-chan-where",
+      "label": "s4-read-s4-chan-where",
+      "type": "action",
+      "event": "read",
+      "target": "s4-chan-where",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:35"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-chan-felix"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-chan-felix",
+      "label": "s4-deliver-s4-chan-felix",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-chan-felix",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-chan-felix",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-chan-felix",
+      "label": "s4-read-s4-chan-felix",
+      "type": "action",
+      "event": "read",
+      "target": "s4-chan-felix",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:35"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-chan-ask"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-chan-ask",
+      "label": "s4-offer-s4-chan-ask",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-chan-ask"
+      ]
+    },
+    {
+      "id": "s4-send-s4-chan-ask",
+      "label": "灿哥，旻浩哥当初加入我们，是你邀请的吗？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-chan-ask",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:35"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage5",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-invite"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-invite",
+      "label": "s4-deliver-s4-invite",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-invite",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-invite",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-invite",
+      "label": "s4-read-s4-invite",
+      "type": "action",
+      "event": "read",
+      "target": "s4-invite",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:36"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-do-not"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-do-not",
+      "label": "s4-offer-s4-do-not",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-do-not"
+      ]
+    },
+    {
+      "id": "s4-send-s4-do-not",
+      "label": "不要去。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-do-not",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:36"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-never"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-never",
+      "label": "s4-offer-s4-never",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-never"
+      ]
+    },
+    {
+      "id": "s4-send-s4-never",
+      "label": "一定不要去。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-never",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:36"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-please"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-please",
+      "label": "s4-offer-s4-please",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-please"
+      ]
+    },
+    {
+      "id": "s4-send-s4-please",
+      "label": "求求你。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-please",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:36"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-why"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-why",
+      "label": "s4-deliver-s4-why",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-why",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-why",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-why",
+      "label": "s4-read-s4-why",
+      "type": "action",
+      "event": "read",
+      "target": "s4-why",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:36"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-he-arrived"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-he-arrived",
+      "label": "s4-deliver-s4-he-arrived",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-he-arrived",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-he-arrived",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-he-arrived",
+      "label": "s4-read-s4-he-arrived",
+      "type": "action",
+      "event": "read",
+      "target": "s4-he-arrived",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:36"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-consider"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-consider",
+      "label": "s4-deliver-s4-consider",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-consider",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-consider",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-consider",
+      "label": "s4-read-s4-consider",
+      "type": "action",
+      "event": "read",
+      "target": "s4-consider",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:36"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage6",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-chan-yes"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-chan-yes",
+      "label": "s4-deliver-s4-chan-yes",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-chan-yes",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-chan-yes",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-chan-yes",
+      "label": "s4-read-s4-chan-yes",
+      "type": "action",
+      "event": "read",
+      "target": "s4-chan-yes",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:38"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-chan-refused"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-chan-refused",
+      "label": "s4-deliver-s4-chan-refused",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-chan-refused",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-chan-refused",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-chan-refused",
+      "label": "s4-read-s4-chan-refused",
+      "type": "action",
+      "event": "read",
+      "target": "s4-chan-refused",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:38"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-chan-why"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-chan-why",
+      "label": "s4-deliver-s4-chan-why",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-chan-why",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-chan-why",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-chan-why",
+      "label": "s4-read-s4-chan-why",
+      "type": "action",
+      "event": "read",
+      "target": "s4-chan-why",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:38"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-chan-nevermind"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-chan-nevermind",
+      "label": "s4-offer-s4-chan-nevermind",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-chan-nevermind"
+      ]
+    },
+    {
+      "id": "s4-send-s4-chan-nevermind",
+      "label": "没什么。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-chan-nevermind",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:38"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-warning-again"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-warning-again",
+      "label": "s4-offer-s4-warning-again",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-warning-again"
+      ]
+    },
+    {
+      "id": "s4-send-s4-warning-again",
+      "label": "他要是再来找你，也不要答应。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-warning-again",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-20"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:39"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage7",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s4-time-one",
+      "label": "s4-time-one",
+      "type": "action",
+      "event": "timeAdvance",
+      "target": "one-hour-1",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneFourStage8",
+          "value": true
+        },
+        {
+          "type": "unlock",
+          "key": "s4-note",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "sceneFourStage7",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneFourStage8",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-note-written",
+      "label": "s4-note-written",
+      "type": "action",
+      "event": "writeNote",
+      "target": "s4-note",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneFourStage9",
+          "value": true
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "sceneFourStage8",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneFourStage9",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-time-two",
+      "label": "s4-time-two",
+      "type": "action",
+      "event": "timeAdvance",
+      "target": "one-hour-2",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneFourStage10",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-why-again"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage9",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneFourStage10",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-why-again",
+      "label": "s4-deliver-s4-why-again",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-why-again",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-why-again",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-why-again",
+      "label": "s4-read-s4-why-again",
+      "type": "action",
+      "event": "read",
+      "target": "s4-why-again",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-accident"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-accident",
+      "label": "s4-offer-s4-accident",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-accident"
+      ]
+    },
+    {
+      "id": "s4-send-s4-accident",
+      "label": "如果我告诉你，你以后会遭遇意外呢？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-accident",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-sick"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-sick",
+      "label": "s4-deliver-s4-sick",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-sick",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-sick",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-sick",
+      "label": "s4-read-s4-sick",
+      "type": "action",
+      "event": "read",
+      "target": "s4-sick",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-curse"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-curse",
+      "label": "s4-deliver-s4-curse",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-curse",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-curse",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-curse",
+      "label": "s4-read-s4-curse",
+      "type": "action",
+      "event": "read",
+      "target": "s4-curse",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-should-accept"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-should-accept",
+      "label": "s4-deliver-s4-should-accept",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-should-accept",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-should-accept",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-should-accept",
+      "label": "s4-read-s4-should-accept",
+      "type": "action",
+      "event": "read",
+      "target": "s4-should-accept",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-no-lie"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-no-lie",
+      "label": "s4-offer-s4-no-lie",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-no-lie"
+      ]
+    },
+    {
+      "id": "s4-send-s4-no-lie",
+      "label": "我没有骗你。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-no-lie",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-your-year"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-your-year",
+      "label": "s4-offer-s4-your-year",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-your-year"
+      ]
+    },
+    {
+      "id": "s4-send-s4-your-year",
+      "label": "你那边是不是2017年？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-your-year",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-from-future"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-from-future",
+      "label": "s4-offer-s4-from-future",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-from-future"
+      ]
+    },
+    {
+      "id": "s4-send-s4-from-future",
+      "label": "我来自2026年，未来的一切我都知道。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-from-future",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-i-see"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-i-see",
+      "label": "s4-deliver-s4-i-see",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-i-see",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-i-see",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-i-see",
+      "label": "s4-read-s4-i-see",
+      "type": "action",
+      "event": "read",
+      "target": "s4-i-see",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-scammer"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-scammer",
+      "label": "s4-deliver-s4-scammer",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-scammer",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-scammer",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-scammer",
+      "label": "s4-read-s4-scammer",
+      "type": "action",
+      "event": "read",
+      "target": "s4-scammer",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:42"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage11",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s4-news-search",
+      "label": "s4-news-search",
+      "type": "action",
+      "event": "storyNewsSearch",
+      "target": "future",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "s4NewsSearch",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage12",
+          "value": true
+        },
+        {
+          "type": "unlock",
+          "key": "s4-news-eclipse",
+          "value": ""
+        },
+        {
+          "type": "unlock",
+          "key": "s4-news-falcon",
+          "value": ""
+        },
+        {
+          "type": "unlock",
+          "key": "s4-news-olympics",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "sceneFourStage11",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "s4NewsSearch",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-share-s4-news-eclipse",
+      "label": "s4-share-s4-news-eclipse",
+      "type": "action",
+      "event": "shareNews",
+      "target": "s4-news-eclipse",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "s4Shared",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-blocked"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage12",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "s4Shared",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-share-s4-news-falcon",
+      "label": "s4-share-s4-news-falcon",
+      "type": "action",
+      "event": "shareNews",
+      "target": "s4-news-falcon",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "s4Shared",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-blocked"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage12",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "s4Shared",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-share-s4-news-olympics",
+      "label": "s4-share-s4-news-olympics",
+      "type": "action",
+      "event": "shareNews",
+      "target": "s4-news-olympics",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "s4Shared",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-blocked"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage12",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "s4Shared",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-deliver-blocked",
+      "label": "s4-deliver-blocked",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-blocked-text",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-blocked-text",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-blocked",
+      "label": "s4-read-blocked",
+      "type": "action",
+      "event": "read",
+      "target": "s4-blocked-text",
+      "actions": [],
+      "next": [
+        "s4-offer-failed-text"
+      ]
+    },
+    {
+      "id": "s4-offer-failed-text",
+      "label": "s4-offer-failed-text",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-failed-text"
+      ]
+    },
+    {
+      "id": "s4-send-s4-failed-text",
+      "label": "这是未来会发生的事情，不信你等等看。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-failed-text",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "minho_blocked_seungmin",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage13",
+          "value": true
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-memory-a"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-memory-a",
+      "label": "s4-deliver-s4-memory-a",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-memory-a",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-memory-a",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-memory-a",
+      "label": "s4-read-s4-memory-a",
+      "type": "action",
+      "event": "read",
+      "target": "s4-memory-a",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-memory-b"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-memory-b",
+      "label": "s4-deliver-s4-memory-b",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-memory-b",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-memory-b",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-memory-b",
+      "label": "s4-read-s4-memory-b",
+      "type": "action",
+      "event": "read",
+      "target": "s4-memory-b",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-memory-c"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-memory-c",
+      "label": "s4-deliver-s4-memory-c",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-memory-c",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-memory-c",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-memory-c",
+      "label": "s4-read-s4-memory-c",
+      "type": "action",
+      "event": "read",
+      "target": "s4-memory-c",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-impossible"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-impossible",
+      "label": "s4-deliver-s4-impossible",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-impossible",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-impossible",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-impossible",
+      "label": "s4-read-s4-impossible",
+      "type": "action",
+      "event": "read",
+      "target": "s4-impossible",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-true"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-true",
+      "label": "s4-deliver-s4-true",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-true",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-true",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-true",
+      "label": "s4-read-s4-true",
+      "type": "action",
+      "event": "read",
+      "target": "s4-true",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-oh"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-oh",
+      "label": "s4-offer-s4-oh",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-oh"
+      ]
+    },
+    {
+      "id": "s4-send-s4-oh",
+      "label": "是吗。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-oh",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-when"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-when",
+      "label": "s4-offer-s4-when",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-when"
+      ]
+    },
+    {
+      "id": "s4-send-s4-when",
+      "label": "对了哥，旻浩哥什么时候接受邀请的？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-when",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-forgot"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-forgot",
+      "label": "s4-deliver-s4-forgot",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-forgot",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-forgot",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-forgot",
+      "label": "s4-read-s4-forgot",
+      "type": "action",
+      "event": "read",
+      "target": "s4-forgot",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-winter"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-winter",
+      "label": "s4-deliver-s4-winter",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-winter",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-winter",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-winter",
+      "label": "s4-read-s4-winter",
+      "type": "action",
+      "event": "read",
+      "target": "s4-winter",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        }
+      ],
+      "next": [
+        "s4-offer-s4-understood"
+      ]
+    },
+    {
+      "id": "s4-offer-s4-understood",
+      "label": "s4-offer-s4-understood",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "s4-send-s4-understood"
+      ]
+    },
+    {
+      "id": "s4-send-s4-understood",
+      "label": "知道了。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-understood",
+          "value": ""
+        },
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:51"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage14",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s4-time-three-months",
+      "label": "s4-time-three-months",
+      "type": "action",
+      "event": "timeAdvance",
+      "target": "three-months",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneFourStage15",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "key": "minho_blocked_seungmin",
+          "value": false
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-recontact-a"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage14",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneFourStage15",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-recontact-a",
+      "label": "s4-deliver-s4-recontact-a",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-recontact-a",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-recontact-a",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-recontact-a",
+      "label": "s4-read-s4-recontact-a",
+      "type": "action",
+      "event": "read",
+      "target": "s4-recontact-a",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:52"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-recontact-b"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-recontact-b",
+      "label": "s4-deliver-s4-recontact-b",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-recontact-b",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-recontact-b",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-recontact-b",
+      "label": "s4-read-s4-recontact-b",
+      "type": "action",
+      "event": "read",
+      "target": "s4-recontact-b",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:52"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-recontact-c"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-recontact-c",
+      "label": "s4-deliver-s4-recontact-c",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-recontact-c",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-recontact-c",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-recontact-c",
+      "label": "s4-read-s4-recontact-c",
+      "type": "action",
+      "event": "read",
+      "target": "s4-recontact-c",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:52"
+        }
+      ],
+      "next": [
+        "s4-deliver-s4-recontact-d"
+      ]
+    },
+    {
+      "id": "s4-deliver-s4-recontact-d",
+      "label": "s4-deliver-s4-recontact-d",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s4-recontact-d",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s4-recontact-d",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "delayMs": 900
+    },
+    {
+      "id": "s4-read-s4-recontact-d",
+      "label": "s4-read-s4-recontact-d",
+      "type": "action",
+      "event": "read",
+      "target": "s4-recontact-d",
+      "actions": [
+        {
+          "type": "date",
+          "key": "",
+          "value": "2026-11-21"
+        },
+        {
+          "type": "time",
+          "key": "",
+          "value": "00:52"
+        },
+        {
+          "type": "variable",
+          "key": "sceneFourStage16",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s4-resume",
+      "label": "s4-resume",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "5",
+      "actions": [],
+      "next": []
+    }
+  ],
+  "tests": []
+}

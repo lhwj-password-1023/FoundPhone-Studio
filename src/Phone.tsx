@@ -26,6 +26,7 @@ async function captureVisibleApp(): Promise<string> {
 }
 import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
+import { advanceSceneFour, shareSceneFourNews, addSceneFourMemory } from "./story-engine/scene-four-runtime";
 import { routeForNotice } from "./story-engine/timeline";
 import { guidanceAnswer } from "./story-engine/guidance";
 import { StatusGlyph } from "./ios/StatusGlyph";
@@ -315,6 +316,33 @@ function PhoneRuntime({
   const event = (event: string, target: string) => {
     if (creator) return;
     const current = runtimeRef.current;
+    if (event === "saveContact" && target === "s4-lee" && current.variables.sceneThreeStage13 === true && current.variables.sceneFourStage1 !== true) {
+      const contact = makeCallRecord({ id: "s4-lee-contact", title: "旻浩哥", body: "iMessage 联系人", sender: "旻浩哥", time: `${current.date || work.phone.date} ${current.time}`, meta: { phone: "2017 年的陌生号码", timeline: "2017" } });
+      const next = { ...current, ui: { ...current.ui, messages: { ...current.ui?.messages, contactAlias: "旻浩哥" } }, messages: { ...current.messages, contacts: [...(current.messages.contacts || []), contact] } };
+      update(dispatch(work, next, event, target));
+      return;
+    }
+    if (event === "timeAdvance") { update(advanceSceneFour(work, current, target)); return; }
+    if (event === "writeNote" && target === "s4-note" && current.variables.sceneFourStage8 === true) {
+      const stamp = `${current.date || work.phone.date} ${current.time}`;
+      update(dispatch(work, { ...current, ui: { ...current.ui, notes: { ...current.ui?.notes, ["modifiedAt:" + target]: stamp } } }, event, target));
+      return;
+    }
+    if (event === "shareNews") {
+      const next = shareSceneFourNews(work, current, target);
+      if (next === current) return;
+      update({ ...next, ui: { ...next.ui, messages: { ...next.ui?.messages, thread: "陌生号码" } } });
+      open("messages");
+      return;
+    }
+    if (event === "read" && target === "s4-memory-c" && current.variables.sceneFourStage13 === true) {
+      update(dispatch(work, addSceneFourMemory(work, current), event, target));
+      return;
+    }
+    if (event === "read" && target.startsWith("s4-recontact-")) {
+      const sent = work.data.messages?.find((item) => item.id === target)?.meta.sentAt;
+      if (sent) { update(dispatch(work, { ...current, peerDate: sent.slice(0, 10), peerTime: sent.slice(11, 16) }, event, target)); return; }
+    }
     if (event === "storyScreenshot" && target === "s3-lee-phone" && current.variables.s3FindSeen === true && !current.messages.photos?.some((i) => i.id === "s3-find-screenshot")) {
       const canvas = document.createElement("canvas");
       canvas.width = 390; canvas.height = 780;
@@ -1176,14 +1204,14 @@ function AppContentView({
   if (archive && app.id === "notes") {
     items = items.map((item) =>
       item.meta.writtenFlag && state.variables[item.meta.writtenFlag] === true
-        ? { ...item, body: item.meta.composeText }
+        ? { ...item, body: item.meta.composeText, time: String(ui?.["modifiedAt:" + item.id] || item.time) }
         : item,
     );
   }
   const [localDetail, setLocalDetail] = useState<Item | null>(null);
   const [localThread, setLocalThread] = useState("");
   const detail = archive
-    ? [...items, ...(app.id === "phone" ? work.data.contacts || [] : [])].find(
+    ? [...items, ...(app.id === "phone" ? [...(work.data.contacts || []), ...(state.messages.contacts || [])] : [])].find(
         (i) => i.id === ui?.detail && visible(i, state),
       ) || null
     : localDetail;
@@ -1402,7 +1430,7 @@ function AppContentView({
               archive={archive}
               virtualDate={state.date || work.phone.date}
               onEvent={onEvent}
-              contacts={work.data.contacts?.filter((i) => visible(i, state))}
+              contacts={[...(work.data.contacts || []), ...(state.messages.contacts || [])].filter((i) => visible(i, state))}
               ui={state.ui?.[app.id]}
               storyState={state}
               onUi={creator ? undefined : onUi}
@@ -1462,7 +1490,7 @@ function AppContentView({
                   : undefined
               }
               openMessage={
-                work.data.messages?.some(
+                detail.id === "s4-lee-contact" ? () => goToRecord("how-know-name") : work.data.messages?.some(
                   (i) => i.title === detail.title && visible(i, state),
                 )
                   ? () =>
@@ -1635,10 +1663,10 @@ function AppContentView({
                   }}
                 >
                   <span className="avatar" style={{ background: app.color }}>
-                    {t.slice(0, 1)}
+                    {(app.id === "messages" && t === "陌生号码" ? String(state.ui?.messages?.contactAlias || t) : t).slice(0, 1)}
                   </span>
                   <span>
-                    <strong>{t}</strong>
+                    <strong>{app.id === "messages" && t === "陌生号码" ? String(state.ui?.messages?.contactAlias || t) : t}</strong>
                     <p>{last.body}</p>
                   </span>
                   <small>{last.time.slice(-5)}</small>

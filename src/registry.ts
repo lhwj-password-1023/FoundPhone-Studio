@@ -69,6 +69,7 @@ const definitions: [
   ["calendar", "日历", "records", "#e96360", Calendar, ["日程", "日历"]],
   ["mail", "邮件", "document", "#3985e8", Mail, ["收件箱", "草稿", "已发送"]],
   ["clock", "时钟", "records", "#303236", Clock, ["闹钟", "世界时钟"]],
+  ["timemachine", "时光机器", "system", "#536d82", Clock, ["时间推进"]],
   [
     "reminders",
     "提醒事项",

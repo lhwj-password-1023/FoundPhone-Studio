@@ -8,6 +8,7 @@ import {
   Minus,
   Star,
   Search,
+  Share2,
 } from "lucide-react";
 import { useSkinState } from "../skinState";
 import { Header, type Props } from "./shared";
@@ -72,7 +73,7 @@ export function ArchiveBrowser(p: Props) {
   const input = preset ? typing.shown : query;
   const search = input.trim().toLowerCase();
   const results = p.items.filter((i) =>
-    (i.title + i.body + i.meta.url).toLowerCase().includes(search),
+    (i.title + i.body + i.meta.url + (i.meta.keyword || "")).toLowerCase().includes(search),
   );
   const display =
     panel === "历史记录"
@@ -101,6 +102,8 @@ export function ArchiveBrowser(p: Props) {
           e.preventDefault();
           if (preset && !typing.done) return;
           p.onEvent?.("search", input.trim());
+          if (/2017年之后|2018年|未来几年|重大新闻|世界大事|2018.*新闻/.test(input.trim()) && p.storyState?.variables.sceneFourStage11 === true)
+            p.onEvent?.("storyNewsSearch", "future");
           if (results.length === 1) navigate(results[0].id);
           else setPanel("搜索结果");
         }}
@@ -171,10 +174,11 @@ export function ArchiveBrowser(p: Props) {
               新建标签页
             </button>
           </>
-        ) : page && (!panel || panel === "页内查找") ? (
+        ) : page && (!panel || ["页内查找", "分享", "选择联系人"].includes(panel)) ? (
           <article className="native-reader">
             <small>{page.meta.source || "作品内已保存的网页"}</small>
             <h1>{page.title}</h1>
+            {page.meta.publishedAt && <small>发布时间：{page.meta.publishedAt}</small>}
             {panel === "页内查找" && (
               <label>
                 页内查找{" "}
@@ -193,6 +197,11 @@ export function ArchiveBrowser(p: Props) {
                 </>
               )}
             </p>
+            {page.id.startsWith("s4-news-") && <>
+              <button onClick={() => setPanel("分享")}><Share2 size={16} /> 分享</button>
+              {panel === "分享" && <div className="safari-share-sheet" role="dialog" aria-label="分享网页"><strong>分享到</strong><button onClick={() => setPanel("选择联系人")}>信息</button><button onClick={() => setPanel("")}>取消</button></div>}
+              {panel === "选择联系人" && <div className="safari-share-sheet" role="dialog" aria-label="选择联系人"><strong>收件人</strong><button onClick={() => { p.onEvent?.("shareNews", page.id); setPanel(""); }}>旻浩哥</button><button onClick={() => setPanel("分享")}>返回</button></div>}
+            </>}
             <button onClick={() => setPanel(panel ? "" : "页内查找")}>
               查找文字
             </button>

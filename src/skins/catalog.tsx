@@ -23,6 +23,7 @@ export const catalogSkins = {
   calendar: skin(system, "CalendarSkin"),
   mail: skin(system, "MailSkin"),
   clock: skin(system, "ClockSkin"),
+  timemachine: skin(() => import("./TimeMachine"), "TimeMachineSkin"),
   reminders: skin(system, "RemindersSkin"),
   files: skin(system, "FilesSkin"),
   music: skin(system, "MusicSkin"),

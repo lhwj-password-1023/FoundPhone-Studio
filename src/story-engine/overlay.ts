@@ -1,4 +1,5 @@
 type RawStory = {
+  installedApps?: Array<string | { id: string }>;
   revision?: number;
   variables?: Record<string, unknown>;
   chats?: Array<{ id: string; title: string; messages: Array<{ id: string }> }>;
@@ -7,6 +8,7 @@ type RawStory = {
   tests?: unknown[];
 };
 type Overlay = {
+  installedApps?: Array<string | { id: string }>;
   revision?: number;
   variables?: Record<string, boolean | number | string>;
   chats?: Array<{ id: string; title?: string; remove?: string[]; append?: Array<{ id: string }> }>;
@@ -29,6 +31,7 @@ export function applyStoryOverlay<T extends RawStory>(raw: T, overlay: Overlay):
     content[app] = [...(content[app] || []), ...items];
   return {
     ...raw,
+    installedApps: [...(raw.installedApps || []), ...(overlay.installedApps || [])],
     revision: overlay.revision || raw.revision,
     variables: { ...raw.variables, ...overlay.variables },
     chats,

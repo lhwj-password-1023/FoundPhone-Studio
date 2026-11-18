@@ -468,5 +468,418 @@
     "unlocks": [],
     "hint": "返回「信息」→「陌生号码」，发送当前开放的两条预设消息。",
     "blocks": []
+  },
+  {
+    "id": "s4-1",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-1",
+    "type": "story-action",
+    "app": "messages",
+    "target": "陌生号码",
+    "prerequisites": {
+      "key": "sceneThreeStage13",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage1",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开 iMessage 顶部的联系人资料，把陌生号码备注为“旻浩哥”，保存后继续聊天。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-2",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-2",
+    "type": "story-action",
+    "app": "messages",
+    "target": "旻浩哥",
+    "prerequisites": {
+      "key": "sceneFourStage1",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage2",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "返回 iMessage，发送“哥”和“我是昇玟”，读完对方回复。",
+    "blocks": []
+  },
+  {
+    "id": "s4-3",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-3",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "李龙馥",
+    "prerequisites": {
+      "key": "sceneFourStage2",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage3",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开 KakaoTalk，找到李龙馥，完成关于陌生号码的对话，然后返回 iMessage。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-4",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-4",
+    "type": "story-action",
+    "app": "messages",
+    "target": "旻浩哥",
+    "prerequisites": {
+      "key": "sceneFourStage3",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage4",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "返回 iMessage，继续发送当前预设消息并阅读回复。",
+    "blocks": []
+  },
+  {
+    "id": "s4-5",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-5",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "方灿",
+    "prerequisites": {
+      "key": "sceneFourStage4",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage5",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开 KakaoTalk，查看方灿的新消息并完成当前回复。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-6",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-6",
+    "type": "story-action",
+    "app": "messages",
+    "target": "旻浩哥",
+    "prerequisites": {
+      "key": "sceneFourStage5",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage6",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "返回 iMessage，继续发送阻止选秀的预设消息。",
+    "blocks": []
+  },
+  {
+    "id": "s4-7",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-7",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "方灿",
+    "prerequisites": {
+      "key": "sceneFourStage6",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage7",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开 KakaoTalk，读完方灿的历史确认并回复，然后返回 iMessage 再发一条提醒。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-8",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-8",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "sceneFourStage7",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage8",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开时光机器，将时间向前推进一小时。之后打开备忘录，写下昇玟此刻的想法。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-9",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-9",
+    "type": "story-action",
+    "app": "notes",
+    "target": "如果是真的",
+    "prerequisites": {
+      "key": "sceneFourStage8",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage9",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开备忘录，新建并保存“如果是真的”这条记录。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-10",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-10",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "sceneFourStage9",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage10",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开时光机器，再将时间向前推进一小时，然后返回 iMessage 查看新消息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-11",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-11",
+    "type": "story-action",
+    "app": "messages",
+    "target": "旻浩哥",
+    "prerequisites": {
+      "key": "sceneFourStage10",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage11",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "返回 iMessage，阅读新消息并继续发送当前预设回复。",
+    "blocks": []
+  },
+  {
+    "id": "s4-12",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-12",
+    "type": "story-action",
+    "app": "safari",
+    "target": "",
+    "prerequisites": {
+      "key": "sceneFourStage11",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage12",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开 Safari，搜索“2017年之后发生的大事”。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-13",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-13",
+    "type": "story-action",
+    "app": "safari",
+    "target": "",
+    "prerequisites": {
+      "key": "sceneFourStage12",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "s4Shared",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "在 Safari 打开一条未来新闻，通过系统分享菜单选择“信息”与“旻浩哥”发送链接卡片。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-failed",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-failed",
+    "type": "story-action",
+    "app": "messages",
+    "target": "旻浩哥",
+    "prerequisites": {
+      "key": "s4Shared",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "s4Shared",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "返回 iMessage，尝试发送预设消息，查看发送失败状态。",
+    "blocks": []
+  },
+  {
+    "id": "s4-14",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-14",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "方灿",
+    "prerequisites": {
+      "key": "sceneFourStage13",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage14",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开 KakaoTalk，查看方灿的新消息，并询问旻浩哥当年接受邀请的时间。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-15",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-15",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "sceneFourStage14",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage15",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "打开时光机器，将2017年的时间线向前推进三个月，看看李旻浩会不会重新联系昇玟。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "s4-16",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "s4-16",
+    "type": "story-action",
+    "app": "messages",
+    "target": "旻浩哥",
+    "prerequisites": {
+      "key": "sceneFourStage15",
+      "op": "eq",
+      "value": true
+    },
+    "completion": {
+      "key": "sceneFourStage16",
+      "op": "eq",
+      "value": true
+    },
+    "priority": 20,
+    "unlocks": [],
+    "hint": "返回 iMessage，查看旻浩哥发来的新消息。",
+    "blocks": []
   }
 ]

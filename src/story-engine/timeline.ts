@@ -29,9 +29,14 @@ export function validateTimeline(work: Work) {
           : meta.route === "A-B"
             ? -work.timeline.years
             : 0;
+      const independent = meta.timeLink === "independent" && meta.route === "B-A";
+      if (independent) {
+        shiftYears(meta.sentAt, 0);
+        shiftYears(meta.arrivedAt, 0);
+      }
       if (
         !["B-A", "A-B", "A-A", "B-B"].includes(meta.route) ||
-        shiftYears(meta.sentAt, offset) !== meta.arrivedAt ||
+        (!independent && shiftYears(meta.sentAt, offset) !== meta.arrivedAt) ||
         item.time !==
           (meta.route.startsWith("B-") && offset ? meta.arrivedAt : meta.sentAt)
       )

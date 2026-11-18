@@ -36,6 +36,7 @@ export function blockedMessage(work: Work, state: Runtime, thread: string): bool
 }
 
 export function guidanceAnswer(work: Work, state: Runtime): string {
+  if (state.variables.sceneFourStage16 === true) return "当前剧情已经结束，可以继续自由探索手机。";
   const currentThread = String(state.ui?.messages?.thread || "");
   if (currentThread && replyOptions(work, state, "messages", currentThread).length)
     return "现在可以返回 iMessage，继续对话了。";

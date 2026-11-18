@@ -156,6 +156,8 @@ export const workSchema = z.object({
 export type Work = z.infer<typeof workSchema>;
 export type UiValue = string | number | boolean | string[];
 export type Runtime = {
+  peerDate?: string;
+  peerTime?: string;
   readAt?: Record<string, { device: string; elapsedMs: number }>;
   date?: string;
   elapsedMs?: number;
