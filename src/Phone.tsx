@@ -1,5 +1,29 @@
 import { ActorProvider } from "./ActorContext";
 import { makeItem as makeCallRecord } from "./schema";
+async function captureVisibleApp(): Promise<string> {
+  const source = document.querySelector<HTMLElement>(".app-screen");
+  if (!source) return "";
+  const box = source.getBoundingClientRect();
+  const clone = source.cloneNode(true) as HTMLElement;
+  const originals = [source,...source.querySelectorAll<HTMLElement>("*")];
+  const copies = [clone,...clone.querySelectorAll<HTMLElement>("*")];
+  originals.forEach((element,index) => {
+    const style = getComputedStyle(element);
+    for (const property of style) copies[index].style.setProperty(property,style.getPropertyValue(property));
+  });
+  clone.style.transform="none";clone.style.opacity="1";clone.style.position="relative";clone.style.left="0";clone.style.top="0";
+  clone.setAttribute("xmlns","http://www.w3.org/1999/xhtml");
+  const width=Math.max(1,Math.round(box.width)), height=Math.max(1,Math.round(box.height));
+  const xml=new XMLSerializer().serializeToString(clone);
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><foreignObject width="100%" height="100%">${xml}</foreignObject></svg>`;
+  const picture=new Image();
+  picture.src="data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(svg)));
+  await picture.decode();
+  const canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
+  const context=canvas.getContext("2d");if(!context)return "";
+  context.drawImage(picture,0,0);
+  return canvas.toDataURL("image/png");
+}
 import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
 import { routeForNotice } from "./story-engine/timeline";
@@ -287,7 +311,41 @@ function PhoneRuntime({
     return () => clearInterval(interval);
   }, [creator, ready, work.id, work.updatedAt]);
   const event = (event: string, target: string) => {
-    if (!creator) update(dispatch(work, runtimeRef.current, event, target));
+    if (creator) return;
+    const current = runtimeRef.current;
+    if (event === "storyScreenshot" && target === "s3-lee-phone" && current.variables.s3FindSeen === true && !current.messages.photos?.some((i) => i.id === "s3-find-screenshot")) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 390; canvas.height = 780;
+      const c = canvas.getContext("2d");
+      if (!c) return;
+      c.fillStyle = "#f4f5f0"; c.fillRect(0,0,390,780);
+      c.fillStyle = "#e4e5d8"; c.fillRect(0,75,390,400);
+      c.strokeStyle = "#fff"; c.lineWidth = 15;
+      for (const n of [125,210,320,430]) { c.beginPath(); c.moveTo(0,n); c.lineTo(390,n); c.stroke(); }
+      for (const n of [55,155,260,350]) { c.beginPath(); c.moveTo(n,75); c.lineTo(n,475); c.stroke(); }
+      c.fillStyle = "#16202b"; c.font = "bold 20px sans-serif"; c.fillText("查找",20,47);
+      c.fillStyle = "#3c82e6"; c.beginPath(); c.arc(280,220,14,0,Math.PI*2); c.fill();
+      c.fillStyle = "#fff"; c.font = "18px sans-serif"; c.fillText("●",271,227);
+      c.fillStyle = "#fff"; c.fillRect(0,475,390,305);
+      c.fillStyle = "#16202b"; c.font = "bold 24px sans-serif"; c.fillText("李旻浩的 iPhone",22,526);
+      c.font = "17px sans-serif"; c.fillText("在线 · 刚刚",22,559); c.fillText("转角咖啡",22,604);
+      c.fillStyle = "#3975d4"; c.fillText("路线",22,656);
+      void captureVisibleApp().catch(()=>"").then((captured)=>{
+        const latest = runtimeRef.current;
+        if (latest.messages.photos?.some((i) => i.id === "s3-find-screenshot")) return;
+        const shot = makeCallRecord({id:"s3-find-screenshot",title:"查找截屏",kind:"image",folder:"截屏",body:"李旻浩的 iPhone · 转角咖啡",time:(current.date || work.phone.date)+" "+current.time,sender:work.phone.owner,media:captured || canvas.toDataURL("image/png"),meta:{capturedAt:(current.date || work.phone.date)+" "+current.time,source:"s3-lee-phone"}});
+        update(dispatch(work,{...latest,messages:{...latest.messages,photos:[shot,...(latest.messages.photos || [])]}},event,target));
+      });
+      return;
+    }
+    if (event === "storyPost" && target === "puppy_0922x" && current.variables.sceneThreeStage9 === true && !current.messages.twitter?.some((i) => i.id === "s3-x-post")) {
+      const shot = current.messages.photos?.find((i) => i.id === "s3-find-screenshot");
+      if (!shot) return;
+      const post = makeCallRecord({id:"s3-x-post",title:"私人小号动态",kind:"post",folder:"动态",body:"你真的回来了吗，可不可以告诉我你在哪里",time:(current.date || work.phone.date)+" "+current.time,sender:"puppy_0922x",media:shot.media,meta:{handle:"puppy_0922x",userId:"x-user-puppy",screenshotId:shot.id}});
+      update(dispatch(work,{...current,messages:{...current.messages,twitter:[post,...(current.messages.twitter || [])]}},event,target));
+      return;
+    }
+    update(dispatch(work, current, event, target));
   };
   const endCall = () => {
     const cur = runtimeRef.current,
@@ -1195,6 +1253,7 @@ function AppContentView({
             {detail.time} · {detail.sender}
           </small>
           <h2>{detail.title}</h2>
+          {app.id === "find" && detail.id === "s3-lee-phone" && <div className="story-find-detail"><div className="story-find-map" aria-label="转角咖啡附近地图"><span>转角咖啡</span><b>●</b>{state.variables.sceneThreeStage9 === true && <i>●</i>}</div><p>在线 · 刚刚更新</p><p>转角咖啡附近</p><button onClick={() => onUi?.("route:s3-lee-phone",true)}>路线</button>{ui?.["route:s3-lee-phone"] === true && <small>路线已显示 · 转角咖啡</small>}</div>}
           {(detail.media || ["media", "social"].includes(app.engine)) && (
             <Media item={detail} />
           )}
@@ -1338,6 +1397,7 @@ function AppContentView({
               onEvent={onEvent}
               contacts={work.data.contacts?.filter((i) => visible(i, state))}
               ui={state.ui?.[app.id]}
+              storyState={state}
               onUi={creator ? undefined : onUi}
               name={name}
               items={shown.map((i) => ({
@@ -1432,6 +1492,9 @@ function AppContentView({
                 <span />
               </div>
               {detailView}
+              {archive && app.id === "find" && detail.id === "s3-lee-phone" && state.variables.s3FindSeen === true && state.variables.sceneThreeStage7 !== true && (
+                <button className="story-screenshot" onClick={() => onEvent("storyScreenshot",detail.id)}>截屏并保存到照片</button>
+              )}
             </>
           ))}
       </>

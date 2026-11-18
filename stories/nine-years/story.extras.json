@@ -1237,6 +1237,66 @@
         "meta": {
           "category": "兴趣"
         }
+      },
+      {
+        "id": "x-user-puppy",
+        "title": "puppy_0922x",
+        "sender": "puppy_0922x",
+        "body": "偶尔记点生活。",
+        "folder": "用户",
+        "time": "2026-01-01 10:01",
+        "read": true,
+        "meta": {
+          "handle": "puppy_0922x",
+          "self": "true",
+          "following": "",
+          "followers": ""
+        }
+      },
+      {
+        "id": "x-puppy-day-0",
+        "title": "生活动态",
+        "sender": "puppy_0922x",
+        "body": "今晚的热汤很暖。",
+        "folder": "动态",
+        "time": "2026-10-01 20:14",
+        "kind": "post",
+        "read": true,
+        "meta": {
+          "userId": "x-user-puppy",
+          "handle": "puppy_0922x",
+          "historyOnly": "false"
+        }
+      },
+      {
+        "id": "x-puppy-day-1",
+        "title": "生活动态",
+        "sender": "puppy_0922x",
+        "body": "练习结束，回家。",
+        "folder": "动态",
+        "time": "2026-10-08 18:32",
+        "kind": "post",
+        "read": true,
+        "meta": {
+          "userId": "x-user-puppy",
+          "handle": "puppy_0922x",
+          "historyOnly": "false"
+        }
+      },
+      {
+        "id": "x-puppy-day-2",
+        "title": "生活动态",
+        "sender": "puppy_0922x",
+        "body": "窗边有一小块太阳。",
+        "folder": "动态",
+        "time": "2026-11-17 12:06",
+        "kind": "post",
+        "read": true,
+        "meta": {
+          "userId": "x-user-puppy",
+          "handle": "puppy_0922x",
+          "historyOnly": "false"
+        }
       }
     ]
   }

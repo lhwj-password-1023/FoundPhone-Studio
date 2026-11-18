@@ -81,7 +81,14 @@ try {
       source.slice(0, match.index + match[0].indexOf(match[1])).split("\n")
         .length - 1;
   }
-  const raw = JSON.parse(json);
+  let raw = JSON.parse(json);
+  try {
+    const overlay = JSON.parse(await readFile(file.replace(/\.(?:json|md)$/i, "") + ".scene-three.json", "utf8"));
+    const { applyStoryOverlay } = await server.ssrLoadModule("/src/story-engine/overlay.ts");
+    raw = applyStoryOverlay(raw, overlay);
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
   const { compileStory, storySchema } = await server.ssrLoadModule(
     "/src/story-engine/compiler.ts",
   );

@@ -1,0 +1,2837 @@
+{
+  "revision": 5,
+  "variables": {
+    "sceneThreeStage1": false,
+    "sceneThreeStage2": false,
+    "sceneThreeStage3": false,
+    "sceneThreeStage4": false,
+    "sceneThreeStage5": false,
+    "sceneThreeStage6": false,
+    "sceneThreeStage7": false,
+    "sceneThreeStage8": false,
+    "sceneThreeStage9": false,
+    "sceneThreeStage10": false,
+    "sceneThreeStage11": false,
+    "sceneThreeStage12": false,
+    "sceneThreeStage13": false,
+    "s3FindSeen": false
+  },
+  "chats": [
+    {
+      "id": "treehole-thread",
+      "remove": [],
+      "append": [
+        {
+          "id": "forget-hard",
+          "body": "忘记一个人……听起来像是一件很难的事。",
+          "time": "2026-11-20 21:48",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:48",
+            "arrivedAt": "2026-11-20 21:48"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "liked-before",
+          "body": "你之前很喜欢他吗？",
+          "time": "2026-11-20 21:48",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:48",
+            "arrivedAt": "2026-11-20 21:48"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s3-a-text",
+          "body": "现在也很喜欢。",
+          "time": "2026-11-20 21:49",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:49",
+            "arrivedAt": "2017-11-20 21:49",
+            "reply": "s3-a"
+          }
+        },
+        {
+          "id": "s3-a-answer",
+          "body": "那为什么要忘记呢？",
+          "time": "2026-11-20 21:49",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:49",
+            "arrivedAt": "2026-11-20 21:49"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "s3-b-text",
+          "body": "……已经不重要了。",
+          "time": "2026-11-20 21:49",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:49",
+            "arrivedAt": "2017-11-20 21:49",
+            "reply": "s3-b"
+          }
+        },
+        {
+          "id": "s3-b-answer",
+          "body": "如果是真的不重要，你就不会半夜找一个陌生人问这种问题了。",
+          "time": "2026-11-20 21:49",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:49",
+            "arrivedAt": "2026-11-20 21:49"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "no-forgetting",
+          "body": "其实我也不知道怎么忘记一个人。",
+          "time": "2026-11-20 21:50",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:50",
+            "arrivedAt": "2026-11-20 21:50"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "not-liked",
+          "body": "老实说，我到现在为止，好像还没有真正喜欢过谁。",
+          "time": "2026-11-20 21:51",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:51",
+            "arrivedAt": "2026-11-20 21:51"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "do-not-force",
+          "body": "不过……如果是我，我大概不会去强迫自己忘记吧。",
+          "time": "2026-11-20 21:52",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:52",
+            "arrivedAt": "2026-11-20 21:52"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "remember-clearer",
+          "body": "越是告诉自己‘别想了’，反而记得越清楚，不是吗？",
+          "time": "2026-11-20 21:53",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:53",
+            "arrivedAt": "2026-11-20 21:53"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "never-return",
+          "body": "那如果那个人再也不会回来了呢？",
+          "time": "2026-11-20 21:54",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 21:54",
+            "arrivedAt": "2017-11-20 21:54",
+            "reply": "s3-send-never-return"
+          }
+        },
+        {
+          "id": "s3-apology",
+          "body": "……对不起",
+          "time": "2026-11-20 21:55",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:55",
+            "arrivedAt": "2026-11-20 21:55"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "too-easy",
+          "body": "我刚才说得太轻松了。",
+          "time": "2026-11-20 21:56",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:56",
+            "arrivedAt": "2026-11-20 21:56"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "remember-everything",
+          "body": "我大概会把和他有关的每一件事都好好记下来。",
+          "time": "2026-11-20 21:57",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:57",
+            "arrivedAt": "2026-11-20 21:57"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "really-here",
+          "body": "至少证明他真的来过我的世界。",
+          "time": "2026-11-20 21:58",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 21:58",
+            "arrivedAt": "2026-11-20 21:58"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "maybe-crazy",
+          "body": "我大概疯了，以为他回来了，怎么可能",
+          "time": "2026-11-20 22:21",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:21",
+            "arrivedAt": "2017-11-20 22:21",
+            "reply": "s3-send-maybe-crazy"
+          }
+        },
+        {
+          "id": "what-happened",
+          "body": "怎么了",
+          "time": "2026-11-20 22:21",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:21",
+            "arrivedAt": "2026-11-20 22:21"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "at-cafe",
+          "body": "刚刚看到他的手机显示在转角咖啡附近。",
+          "time": "2026-11-20 22:22",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:22",
+            "arrivedAt": "2017-11-20 22:22",
+            "reply": "s3-send-at-cafe"
+          }
+        },
+        {
+          "id": "not-there",
+          "body": "但那里没有他。",
+          "time": "2026-11-20 22:22",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:22",
+            "arrivedAt": "2017-11-20 22:22",
+            "reply": "s3-send-not-there"
+          }
+        },
+        {
+          "id": "me-too",
+          "body": "好巧，我也在那。",
+          "time": "2026-11-20 22:23",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:23",
+            "arrivedAt": "2026-11-20 22:23"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "where-sitting",
+          "body": "你坐在哪里？不如见一面吧。",
+          "time": "2026-11-20 22:23",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:23",
+            "arrivedAt": "2026-11-20 22:23"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "window-seat",
+          "body": "我坐在进门左手靠窗的位置。",
+          "time": "2026-11-20 22:24",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:24",
+            "arrivedAt": "2017-11-20 22:24",
+            "reply": "s3-send-window-seat"
+          }
+        },
+        {
+          "id": "no-one-here",
+          "body": "我也，怎么没看到你，这里只有我一个人啊。",
+          "time": "2026-11-20 22:25",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:25",
+            "arrivedAt": "2026-11-20 22:25"
+          },
+          "sender": "陌生号码"
+        },
+        {
+          "id": "question-mark",
+          "body": "？",
+          "time": "2026-11-20 22:25",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:25",
+            "arrivedAt": "2017-11-20 22:25",
+            "reply": "s3-send-question-mark"
+          }
+        },
+        {
+          "id": "who-are-you",
+          "body": "你是谁？",
+          "time": "2026-11-20 22:26",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:26",
+            "arrivedAt": "2017-11-20 22:26",
+            "reply": "s3-send-who-are-you"
+          }
+        },
+        {
+          "id": "are-you-minho",
+          "body": "你是旻浩哥吗？",
+          "time": "2026-11-20 22:26",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-B",
+            "sentAt": "2026-11-20 22:26",
+            "arrivedAt": "2017-11-20 22:26",
+            "reply": "s3-send-are-you-minho"
+          }
+        },
+        {
+          "id": "how-know-name",
+          "body": "你怎么知道我的名字？",
+          "time": "2026-11-20 22:27",
+          "hidden": true,
+          "meta": {
+            "route": "B-A",
+            "sentAt": "2017-11-20 22:27",
+            "arrivedAt": "2026-11-20 22:27"
+          },
+          "sender": "陌生号码"
+        }
+      ]
+    },
+    {
+      "id": "room-chan",
+      "remove": [],
+      "append": [
+        {
+          "id": "s3-chan-0",
+          "body": "昇玟，明天早上六点楼下集合。",
+          "time": "2026-11-20 21:58",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:58",
+            "arrivedAt": "2026-11-20 21:58"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s3-chan-1",
+          "body": "要出发去拍 MV，别睡过头了。",
+          "time": "2026-11-20 21:58",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:58",
+            "arrivedAt": "2026-11-20 21:58"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s3-chan-2",
+          "body": "还有，最近看你一直没什么精神。",
+          "time": "2026-11-20 21:58",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:58",
+            "arrivedAt": "2026-11-20 21:58"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s3-chan-3",
+          "body": "我知道你很难受，但还是得好好吃饭，好好睡觉。",
+          "time": "2026-11-20 21:58",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:58",
+            "arrivedAt": "2026-11-20 21:58"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "s3-chan-4",
+          "body": "慢慢来，别一个人硬撑着。",
+          "time": "2026-11-20 21:58",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:58",
+            "arrivedAt": "2026-11-20 21:58"
+          },
+          "sender": "方灿"
+        },
+        {
+          "id": "chan-ok",
+          "body": "知道了哥。",
+          "time": "2026-11-20 21:59",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:59",
+            "arrivedAt": "2026-11-20 21:59",
+            "reply": "s3-send-chan-ok"
+          }
+        },
+        {
+          "id": "chan-adjust",
+          "body": "我会调整好的。",
+          "time": "2026-11-20 21:59",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:59",
+            "arrivedAt": "2026-11-20 21:59",
+            "reply": "s3-send-chan-adjust"
+          }
+        },
+        {
+          "id": "chan-rest",
+          "body": "嗯，早点休息。",
+          "time": "2026-11-20 21:59",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 21:59",
+            "arrivedAt": "2026-11-20 21:59"
+          },
+          "sender": "方灿"
+        }
+      ],
+      "title": "方灿"
+    },
+    {
+      "id": "room-lee",
+      "remove": [
+        "lee-m10",
+        "lee-m11",
+        "lee-m13",
+        "lee-m9",
+        "lee-m12"
+      ],
+      "append": [
+        {
+          "id": "s3-lee-history-0",
+          "senderId": "owner",
+          "body": "哥",
+          "time": "2026-10-04 21:10",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-04 21:10",
+            "arrivedAt": "2026-10-04 21:10",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-1",
+          "senderId": "owner",
+          "body": "你在干嘛",
+          "time": "2026-10-04 21:11",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-04 21:11",
+            "arrivedAt": "2026-10-04 21:11",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-2",
+          "senderId": "owner",
+          "body": "看到的话回我一下",
+          "time": "2026-10-04 21:13",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-04 21:13",
+            "arrivedAt": "2026-10-04 21:13",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-3",
+          "senderId": "owner",
+          "body": "哥，你可以回我一下吗",
+          "time": "2026-10-05 22:05",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-05 22:05",
+            "arrivedAt": "2026-10-05 22:05",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-4",
+          "senderId": "owner",
+          "body": "我有话想跟你说",
+          "time": "2026-10-05 22:08",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-05 22:08",
+            "arrivedAt": "2026-10-05 22:08",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-5",
+          "senderId": "owner",
+          "body": "今天练习的时候又想起你了",
+          "time": "2026-10-07 23:02",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-07 23:02",
+            "arrivedAt": "2026-10-07 23:02",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-6",
+          "senderId": "owner",
+          "body": "好想你",
+          "time": "2026-10-07 23:03",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-07 23:03",
+            "arrivedAt": "2026-10-07 23:03",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-7",
+          "senderId": "owner",
+          "body": "我今天做梦梦到你了",
+          "time": "2026-10-09 08:40",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-09 08:40",
+            "arrivedAt": "2026-10-09 08:40",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-8",
+          "senderId": "owner",
+          "body": "醒过来的时候还以为是真的",
+          "time": "2026-10-09 08:41",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-09 08:41",
+            "arrivedAt": "2026-10-09 08:41",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-9",
+          "senderId": "owner",
+          "body": "哥",
+          "time": "2026-10-12 23:18",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-12 23:18",
+            "arrivedAt": "2026-10-12 23:18",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-10",
+          "senderId": "owner",
+          "body": "我真的很想你",
+          "time": "2026-10-12 23:19",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-12 23:19",
+            "arrivedAt": "2026-10-12 23:19",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-11",
+          "senderId": "owner",
+          "body": "你可以回复我一下吗",
+          "time": "2026-10-15 22:36",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-15 22:36",
+            "arrivedAt": "2026-10-15 22:36",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "s3-lee-history-12",
+          "senderId": "owner",
+          "body": "就一下",
+          "time": "2026-10-15 22:37",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-10-15 22:37",
+            "arrivedAt": "2026-10-15 22:37",
+            "unread": "true"
+          }
+        },
+        {
+          "id": "lee-are-you",
+          "body": "哥，你在吗",
+          "time": "2026-11-20 22:05",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:05",
+            "arrivedAt": "2026-11-20 22:05",
+            "reply": "s3-send-lee-are-you",
+            "unread": "true"
+          }
+        }
+      ],
+      "title": "李旻浩"
+    },
+    {
+      "id": "room-fel",
+      "remove": [],
+      "append": [
+        {
+          "id": "headphones",
+          "body": "龙馥，你有没有看到我的耳机？",
+          "time": "2026-11-20 22:00",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:00",
+            "arrivedAt": "2026-11-20 22:00",
+            "reply": "s3-send-headphones"
+          }
+        },
+        {
+          "id": "s3-lix-ear-0",
+          "body": "没有诶。",
+          "time": "2026-11-20 22:00",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:00",
+            "arrivedAt": "2026-11-20 22:00"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s3-lix-ear-1",
+          "body": "你是不是又忘记放哪儿了ㅋㅋ",
+          "time": "2026-11-20 22:00",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:00",
+            "arrivedAt": "2026-11-20 22:00"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "s3-lix-ear-2",
+          "body": "用查找看看？",
+          "time": "2026-11-20 22:00",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:00",
+            "arrivedAt": "2026-11-20 22:00"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "lix-out-0",
+          "body": "你出门了？",
+          "time": "2026-11-20 22:06",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:06",
+            "arrivedAt": "2026-11-20 22:06"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "lix-out-1",
+          "body": "你要去哪里？",
+          "time": "2026-11-20 22:06",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:06",
+            "arrivedAt": "2026-11-20 22:06"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "lix-he-returned",
+          "body": "哥好像回来了。",
+          "time": "2026-11-20 22:07",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:07",
+            "arrivedAt": "2026-11-20 22:07",
+            "reply": "s3-send-lix-he-returned"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "lix-disbelief-0",
+          "body": "怎么可能。",
+          "time": "2026-11-20 22:07",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:07",
+            "arrivedAt": "2026-11-20 22:07"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "lix-disbelief-1",
+          "body": "别再犯傻了。",
+          "time": "2026-11-20 22:07",
+          "hidden": true,
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:07",
+            "arrivedAt": "2026-11-20 22:07"
+          },
+          "sender": "李龙馥"
+        },
+        {
+          "id": "lix-go-look",
+          "body": "我去看一下就回来。",
+          "time": "2026-11-20 22:08",
+          "hidden": true,
+          "senderId": "owner",
+          "meta": {
+            "route": "A-A",
+            "sentAt": "2026-11-20 22:08",
+            "arrivedAt": "2026-11-20 22:08",
+            "reply": "s3-send-lix-go-look"
+          },
+          "sender": "李龙馥"
+        }
+      ],
+      "title": "李龙馥"
+    }
+  ],
+  "content": {
+    "find": [
+      {
+        "id": "s3-airpods",
+        "title": "金昇玟的耳机",
+        "folder": "物品",
+        "body": "上次出现于住处",
+        "meta": {
+          "status": "上次出现于住处",
+          "x": "38",
+          "y": "62"
+        }
+      },
+      {
+        "id": "s3-laptop",
+        "title": "金昇玟的电脑",
+        "folder": "设备",
+        "body": "住处",
+        "meta": {
+          "status": "上次出现于住处",
+          "x": "43",
+          "y": "61"
+        }
+      },
+      {
+        "id": "s3-lee-phone",
+        "title": "李旻浩的 iPhone",
+        "folder": "设备",
+        "body": "在线 · 位置刚刚更新 · 转角咖啡",
+        "hidden": true,
+        "meta": {
+          "status": "在线 · 转角咖啡 · 刚刚",
+          "x": "72",
+          "y": "36"
+        }
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": "s3-start",
+      "label": "第三场开始",
+      "type": "action",
+      "event": "read",
+      "target": "how-to-forget-text",
+      "next": [
+        "s3-deliver-forget-hard"
+      ],
+      "conditions": [
+        {
+          "key": "sceneTwoComplete",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "s3-deliver-forget-hard",
+      "label": "s3-deliver-forget-hard",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "forget-hard",
+          "value": ""
+        }
+      ],
+      "delayMs": 1200,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-forget-hard",
+      "label": "s3-read-forget-hard",
+      "type": "action",
+      "event": "read",
+      "target": "forget-hard",
+      "next": [
+        "s3-deliver-liked-before"
+      ]
+    },
+    {
+      "id": "s3-deliver-liked-before",
+      "label": "s3-deliver-liked-before",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "liked-before",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "liked-before",
+          "value": ""
+        }
+      ],
+      "delayMs": 1200,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-liked-before",
+      "label": "s3-read-liked-before",
+      "type": "choice",
+      "event": "read",
+      "target": "liked-before",
+      "next": [
+        "s3-a",
+        "s3-b"
+      ]
+    },
+    {
+      "id": "s3-a",
+      "label": "现在也很喜欢。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-a-text",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage1",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-deliver-s3-a-answer"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-s3-a-answer",
+      "label": "s3-deliver-s3-a-answer",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-a-answer",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-a-answer",
+          "value": ""
+        }
+      ],
+      "delayMs": 1300,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-a-answer",
+      "label": "s3-read-s3-a-answer",
+      "type": "action",
+      "event": "read",
+      "target": "s3-a-answer",
+      "next": [
+        "s3-deliver-no-forgetting"
+      ]
+    },
+    {
+      "id": "s3-b",
+      "label": "……已经不重要了。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-b-text",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage1",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-deliver-s3-b-answer"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-s3-b-answer",
+      "label": "s3-deliver-s3-b-answer",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-b-answer",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-b-answer",
+          "value": ""
+        }
+      ],
+      "delayMs": 1300,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-b-answer",
+      "label": "s3-read-s3-b-answer",
+      "type": "action",
+      "event": "read",
+      "target": "s3-b-answer",
+      "next": [
+        "s3-deliver-no-forgetting"
+      ]
+    },
+    {
+      "id": "s3-deliver-no-forgetting",
+      "label": "s3-deliver-no-forgetting",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "no-forgetting",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "no-forgetting",
+          "value": ""
+        }
+      ],
+      "delayMs": 1100,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-no-forgetting",
+      "label": "s3-read-no-forgetting",
+      "type": "action",
+      "event": "read",
+      "target": "no-forgetting",
+      "next": [
+        "s3-deliver-not-liked"
+      ]
+    },
+    {
+      "id": "s3-deliver-not-liked",
+      "label": "s3-deliver-not-liked",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "not-liked",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "not-liked",
+          "value": ""
+        }
+      ],
+      "delayMs": 1100,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-not-liked",
+      "label": "s3-read-not-liked",
+      "type": "action",
+      "event": "read",
+      "target": "not-liked",
+      "next": [
+        "s3-deliver-do-not-force"
+      ]
+    },
+    {
+      "id": "s3-deliver-do-not-force",
+      "label": "s3-deliver-do-not-force",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "do-not-force",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "do-not-force",
+          "value": ""
+        }
+      ],
+      "delayMs": 1100,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-do-not-force",
+      "label": "s3-read-do-not-force",
+      "type": "action",
+      "event": "read",
+      "target": "do-not-force",
+      "next": [
+        "s3-deliver-remember-clearer"
+      ]
+    },
+    {
+      "id": "s3-deliver-remember-clearer",
+      "label": "s3-deliver-remember-clearer",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "remember-clearer",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "remember-clearer",
+          "value": ""
+        }
+      ],
+      "delayMs": 1100,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-remember-clearer",
+      "label": "s3-read-remember-clearer",
+      "type": "action",
+      "event": "read",
+      "target": "remember-clearer",
+      "next": []
+    },
+    {
+      "id": "s3-lee-read",
+      "label": "读到最后一条未读消息",
+      "type": "action",
+      "event": "read",
+      "target": "s3-lee-history-12",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneThreeStage2",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-offer-never-return"
+      ],
+      "conditions": [
+        {
+          "key": "read:remember-clearer",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "s3-offer-never-return",
+      "label": "s3-offer-never-return",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-never-return"
+      ]
+    },
+    {
+      "id": "s3-send-never-return",
+      "label": "那如果那个人再也不会回来了呢？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:54"
+        },
+        {
+          "type": "unlock",
+          "key": "never-return",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-deliver-s3-apology"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-s3-apology",
+      "label": "s3-deliver-sorry",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-apology",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-apology",
+          "value": ""
+        }
+      ],
+      "delayMs": 1000,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-apology",
+      "label": "s3-read-sorry",
+      "type": "action",
+      "event": "read",
+      "target": "s3-apology",
+      "next": [
+        "s3-deliver-too-easy"
+      ]
+    },
+    {
+      "id": "s3-deliver-too-easy",
+      "label": "s3-deliver-too-easy",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "too-easy",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "too-easy",
+          "value": ""
+        }
+      ],
+      "delayMs": 1000,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-too-easy",
+      "label": "s3-read-too-easy",
+      "type": "action",
+      "event": "read",
+      "target": "too-easy",
+      "next": [
+        "s3-deliver-remember-everything"
+      ]
+    },
+    {
+      "id": "s3-deliver-remember-everything",
+      "label": "s3-deliver-remember-everything",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "remember-everything",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "remember-everything",
+          "value": ""
+        }
+      ],
+      "delayMs": 1000,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-remember-everything",
+      "label": "s3-read-remember-everything",
+      "type": "action",
+      "event": "read",
+      "target": "remember-everything",
+      "next": [
+        "s3-deliver-really-here"
+      ]
+    },
+    {
+      "id": "s3-deliver-really-here",
+      "label": "s3-deliver-really-here",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "really-here",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "really-here",
+          "value": ""
+        }
+      ],
+      "delayMs": 1000,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-really-here",
+      "label": "s3-read-really-here",
+      "type": "action",
+      "event": "read",
+      "target": "really-here",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "21:59"
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage3",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-deliver-s3-chan-0"
+      ]
+    },
+    {
+      "id": "s3-deliver-s3-chan-0",
+      "label": "s3-deliver-s3-chan-0",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-chan-0",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-chan-0",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-chan-0",
+      "label": "s3-read-s3-chan-0",
+      "type": "action",
+      "event": "read",
+      "target": "s3-chan-0",
+      "next": [
+        "s3-deliver-s3-chan-1"
+      ]
+    },
+    {
+      "id": "s3-deliver-s3-chan-1",
+      "label": "s3-deliver-s3-chan-1",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-chan-1",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-chan-1",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-chan-1",
+      "label": "s3-read-s3-chan-1",
+      "type": "action",
+      "event": "read",
+      "target": "s3-chan-1",
+      "next": [
+        "s3-deliver-s3-chan-2"
+      ]
+    },
+    {
+      "id": "s3-deliver-s3-chan-2",
+      "label": "s3-deliver-s3-chan-2",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-chan-2",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-chan-2",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-chan-2",
+      "label": "s3-read-s3-chan-2",
+      "type": "action",
+      "event": "read",
+      "target": "s3-chan-2",
+      "next": [
+        "s3-deliver-s3-chan-3"
+      ]
+    },
+    {
+      "id": "s3-deliver-s3-chan-3",
+      "label": "s3-deliver-s3-chan-3",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-chan-3",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-chan-3",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-chan-3",
+      "label": "s3-read-s3-chan-3",
+      "type": "action",
+      "event": "read",
+      "target": "s3-chan-3",
+      "next": [
+        "s3-deliver-s3-chan-4"
+      ]
+    },
+    {
+      "id": "s3-deliver-s3-chan-4",
+      "label": "s3-deliver-s3-chan-4",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-chan-4",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-chan-4",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-chan-4",
+      "label": "s3-read-s3-chan-4",
+      "type": "action",
+      "event": "read",
+      "target": "s3-chan-4",
+      "next": [
+        "s3-offer-chan-ok"
+      ]
+    },
+    {
+      "id": "s3-offer-chan-ok",
+      "label": "s3-offer-chan-ok",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-chan-ok"
+      ]
+    },
+    {
+      "id": "s3-send-chan-ok",
+      "label": "知道了哥。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "chan-ok",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-offer-chan-adjust"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-offer-chan-adjust",
+      "label": "s3-offer-chan-adjust",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-chan-adjust"
+      ]
+    },
+    {
+      "id": "s3-send-chan-adjust",
+      "label": "我会调整好的。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "chan-adjust",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage4",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-deliver-chan-rest"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-chan-rest",
+      "label": "s3-deliver-chan-rest",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "chan-rest",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "chan-rest",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-chan-rest",
+      "label": "s3-read-chan-rest",
+      "type": "action",
+      "event": "read",
+      "target": "chan-rest",
+      "next": []
+    },
+    {
+      "id": "s3-alarm-set",
+      "label": "设置明早五点半闹钟",
+      "type": "action",
+      "event": "setAlarm",
+      "target": "05:30",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:00"
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage5",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-offer-headphones"
+      ],
+      "conditions": [
+        {
+          "key": "sceneThreeStage4",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "s3-offer-headphones",
+      "label": "s3-offer-headphones",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-headphones"
+      ]
+    },
+    {
+      "id": "s3-send-headphones",
+      "label": "龙馥，你有没有看到我的耳机？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "headphones",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-deliver-s3-lix-ear-0"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-s3-lix-ear-0",
+      "label": "s3-deliver-s3-lix-ear-0",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-lix-ear-0",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-lix-ear-0",
+          "value": ""
+        }
+      ],
+      "delayMs": 750,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-lix-ear-0",
+      "label": "s3-read-s3-lix-ear-0",
+      "type": "action",
+      "event": "read",
+      "target": "s3-lix-ear-0",
+      "next": [
+        "s3-deliver-s3-lix-ear-1"
+      ]
+    },
+    {
+      "id": "s3-deliver-s3-lix-ear-1",
+      "label": "s3-deliver-s3-lix-ear-1",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-lix-ear-1",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-lix-ear-1",
+          "value": ""
+        }
+      ],
+      "delayMs": 750,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-lix-ear-1",
+      "label": "s3-read-s3-lix-ear-1",
+      "type": "action",
+      "event": "read",
+      "target": "s3-lix-ear-1",
+      "next": [
+        "s3-deliver-s3-lix-ear-2"
+      ]
+    },
+    {
+      "id": "s3-deliver-s3-lix-ear-2",
+      "label": "s3-deliver-s3-lix-ear-2",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-lix-ear-2",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "s3-lix-ear-2",
+          "value": ""
+        }
+      ],
+      "delayMs": 750,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-s3-lix-ear-2",
+      "label": "s3-read-s3-lix-ear-2",
+      "type": "action",
+      "event": "read",
+      "target": "s3-lix-ear-2",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneThreeStage6",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s3-find-unlock",
+      "label": "发现共享设备",
+      "type": "action",
+      "event": "read",
+      "target": "s3-lix-ear-2",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "s3-lee-phone",
+          "value": ""
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s3-find-detail",
+      "label": "查看异常位置",
+      "type": "action",
+      "event": "read",
+      "target": "s3-lee-phone",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "s3FindSeen",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "key": "sceneThreeStage6",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s3-screenshot",
+      "label": "保存查找截屏",
+      "type": "action",
+      "event": "storyScreenshot",
+      "target": "s3-lee-phone",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:05"
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage7",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-offer-lee-are-you"
+      ],
+      "conditions": [
+        {
+          "key": "s3FindSeen",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "s3-offer-lee-are-you",
+      "label": "s3-offer-lee-are-you",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-lee-are-you"
+      ]
+    },
+    {
+      "id": "s3-send-lee-are-you",
+      "label": "哥，你在吗",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "lee-are-you",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage8",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-deliver-lix-out-0"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-lix-out-0",
+      "label": "s3-deliver-lix-out-0",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "lix-out-0",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "lix-out-0",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-lix-out-0",
+      "label": "s3-read-lix-out-0",
+      "type": "action",
+      "event": "read",
+      "target": "lix-out-0",
+      "next": [
+        "s3-deliver-lix-out-1"
+      ]
+    },
+    {
+      "id": "s3-deliver-lix-out-1",
+      "label": "s3-deliver-lix-out-1",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "lix-out-1",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "lix-out-1",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-lix-out-1",
+      "label": "s3-read-lix-out-1",
+      "type": "action",
+      "event": "read",
+      "target": "lix-out-1",
+      "next": [
+        "s3-offer-lix-he-returned"
+      ]
+    },
+    {
+      "id": "s3-offer-lix-he-returned",
+      "label": "s3-offer-lix-he-returned",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-lix-he-returned"
+      ]
+    },
+    {
+      "id": "s3-send-lix-he-returned",
+      "label": "哥好像回来了。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "lix-he-returned",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-deliver-lix-disbelief-0"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-lix-disbelief-0",
+      "label": "s3-deliver-lix-disbelief-0",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "lix-disbelief-0",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "lix-disbelief-0",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-lix-disbelief-0",
+      "label": "s3-read-lix-disbelief-0",
+      "type": "action",
+      "event": "read",
+      "target": "lix-disbelief-0",
+      "next": [
+        "s3-deliver-lix-disbelief-1"
+      ]
+    },
+    {
+      "id": "s3-deliver-lix-disbelief-1",
+      "label": "s3-deliver-lix-disbelief-1",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "lix-disbelief-1",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "lix-disbelief-1",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-lix-disbelief-1",
+      "label": "s3-read-lix-disbelief-1",
+      "type": "action",
+      "event": "read",
+      "target": "lix-disbelief-1",
+      "next": [
+        "s3-offer-lix-go-look"
+      ]
+    },
+    {
+      "id": "s3-offer-lix-go-look",
+      "label": "s3-offer-lix-go-look",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-lix-go-look"
+      ]
+    },
+    {
+      "id": "s3-send-lix-go-look",
+      "label": "我去看一下就回来。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:20"
+        },
+        {
+          "type": "unlock",
+          "key": "lix-go-look",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage9",
+          "value": true
+        }
+      ],
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-x-post",
+      "label": "小号发布带图动态",
+      "type": "action",
+      "event": "storyPost",
+      "target": "puppy_0922x",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:21"
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage10",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-offer-maybe-crazy"
+      ],
+      "conditions": [
+        {
+          "key": "sceneThreeStage9",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneThreeStage7",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "s3-offer-maybe-crazy",
+      "label": "s3-offer-maybe-crazy",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-maybe-crazy"
+      ]
+    },
+    {
+      "id": "s3-send-maybe-crazy",
+      "label": "我大概疯了，以为他回来了，怎么可能",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "maybe-crazy",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-deliver-what-happened"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-what-happened",
+      "label": "s3-deliver-what-happened",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "what-happened",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "what-happened",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-what-happened",
+      "label": "s3-read-what-happened",
+      "type": "action",
+      "event": "read",
+      "target": "what-happened",
+      "next": [
+        "s3-offer-at-cafe"
+      ]
+    },
+    {
+      "id": "s3-offer-at-cafe",
+      "label": "s3-offer-at-cafe",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-at-cafe"
+      ]
+    },
+    {
+      "id": "s3-send-at-cafe",
+      "label": "刚刚看到他的手机显示在转角咖啡附近。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "at-cafe",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-offer-not-there"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-offer-not-there",
+      "label": "s3-offer-not-there",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-not-there"
+      ]
+    },
+    {
+      "id": "s3-send-not-there",
+      "label": "但那里没有他。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "not-there",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-deliver-me-too"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-me-too",
+      "label": "s3-deliver-me-too",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "me-too",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "me-too",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-me-too",
+      "label": "s3-read-me-too",
+      "type": "action",
+      "event": "read",
+      "target": "me-too",
+      "next": [
+        "s3-deliver-where-sitting"
+      ]
+    },
+    {
+      "id": "s3-deliver-where-sitting",
+      "label": "s3-deliver-where-sitting",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "where-sitting",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "where-sitting",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-where-sitting",
+      "label": "s3-read-where-sitting",
+      "type": "action",
+      "event": "read",
+      "target": "where-sitting",
+      "next": [
+        "s3-offer-window-seat"
+      ]
+    },
+    {
+      "id": "s3-offer-window-seat",
+      "label": "s3-offer-window-seat",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-window-seat"
+      ]
+    },
+    {
+      "id": "s3-send-window-seat",
+      "label": "我坐在进门左手靠窗的位置。",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "window-seat",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-deliver-no-one-here"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-no-one-here",
+      "label": "s3-deliver-no-one-here",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "no-one-here",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "no-one-here",
+          "value": ""
+        }
+      ],
+      "delayMs": 800,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-read-no-one-here",
+      "label": "s3-read-no-one-here",
+      "type": "action",
+      "event": "read",
+      "target": "no-one-here",
+      "next": [
+        "s3-offer-question-mark"
+      ]
+    },
+    {
+      "id": "s3-offer-question-mark",
+      "label": "s3-offer-question-mark",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-question-mark"
+      ]
+    },
+    {
+      "id": "s3-send-question-mark",
+      "label": "？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:25"
+        },
+        {
+          "type": "unlock",
+          "key": "question-mark",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage11",
+          "value": true
+        }
+      ],
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-second-find",
+      "label": "再次确认共享设备",
+      "type": "action",
+      "event": "read",
+      "target": "s3-lee-phone",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneThreeStage12",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-offer-who-are-you"
+      ],
+      "conditions": [
+        {
+          "key": "sceneThreeStage11",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "s3-offer-who-are-you",
+      "label": "s3-offer-who-are-you",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-who-are-you"
+      ]
+    },
+    {
+      "id": "s3-send-who-are-you",
+      "label": "你是谁？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "who-are-you",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-offer-are-you-minho"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-offer-are-you-minho",
+      "label": "s3-offer-are-you-minho",
+      "type": "choice",
+      "actions": [],
+      "target": "",
+      "next": [
+        "s3-send-are-you-minho"
+      ]
+    },
+    {
+      "id": "s3-send-are-you-minho",
+      "label": "你是旻浩哥吗？",
+      "type": "action",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "are-you-minho",
+          "value": ""
+        }
+      ],
+      "next": [
+        "s3-deliver-how-know-name"
+      ],
+      "target": ""
+    },
+    {
+      "id": "s3-deliver-how-know-name",
+      "label": "s3-deliver-how-know-name",
+      "type": "delay",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "how-know-name",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "how-know-name",
+          "value": ""
+        }
+      ],
+      "delayMs": 950,
+      "target": "",
+      "next": []
+    },
+    {
+      "id": "s3-complete",
+      "label": "s3-complete",
+      "type": "action",
+      "event": "read",
+      "target": "how-know-name",
+      "actions": [
+        {
+          "type": "time",
+          "key": "",
+          "value": "22:27"
+        },
+        {
+          "type": "variable",
+          "key": "sceneThreeStage13",
+          "value": true
+        }
+      ],
+      "next": []
+    },
+    {
+      "id": "s3-resume",
+      "label": "继续第三场",
+      "event": "openApp",
+      "target": "messages",
+      "conditions": [
+        {
+          "key": "sceneTwoComplete",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "sceneThreeStage1",
+          "op": "eq",
+          "value": false
+        }
+      ],
+      "next": [
+        "s3-deliver-forget-hard"
+      ]
+    },
+    {
+      "id": "s3-lee-already-read",
+      "label": "已查看旻浩聊天",
+      "event": "read",
+      "target": "remember-clearer",
+      "conditions": [
+        {
+          "key": "read:s3-lee-history-12",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "variable",
+          "key": "sceneThreeStage2",
+          "value": true
+        }
+      ],
+      "next": [
+        "s3-offer-never-return"
+      ]
+    },
+    {
+      "id": "resume-second-scene",
+      "label": "继续第二场存档",
+      "event": "resumeRevision",
+      "target": "4",
+      "actions": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "第三场 · 完整跨 App 路径",
+      "steps": [
+        {
+          "event": "read",
+          "target": "opening"
+        },
+        {
+          "advanceMs": 2800
+        },
+        {
+          "event": "read",
+          "target": "newspaper"
+        },
+        {
+          "choose": "wrong-number"
+        },
+        {
+          "advanceMs": 2000
+        },
+        {
+          "event": "read",
+          "target": "sorry"
+        },
+        {
+          "choose": "fine"
+        },
+        {
+          "advanceMs": 5000
+        },
+        {
+          "event": "read",
+          "target": "again"
+        },
+        {
+          "advanceMs": 2400
+        },
+        {
+          "event": "read",
+          "target": "number-check"
+        },
+        {
+          "choose": "who-really"
+        },
+        {
+          "advanceMs": 3900
+        },
+        {
+          "event": "read",
+          "target": "explain"
+        },
+        {
+          "advanceMs": 3000
+        },
+        {
+          "event": "read",
+          "target": "leave"
+        },
+        {
+          "event": "openApp",
+          "target": "notes"
+        },
+        {
+          "event": "read",
+          "target": "evening-note"
+        },
+        {
+          "event": "writeNote",
+          "target": "evening-note"
+        },
+        {
+          "event": "openApp",
+          "target": "messages"
+        },
+        {
+          "choose": "treehole"
+        },
+        {
+          "choose": "try-too"
+        },
+        {
+          "advanceMs": 3200
+        },
+        {
+          "event": "read",
+          "target": "classified"
+        },
+        {
+          "choose": "my-number"
+        },
+        {
+          "advanceMs": 2000
+        },
+        {
+          "event": "read",
+          "target": "no-idea"
+        },
+        {
+          "advanceMs": 3200
+        },
+        {
+          "event": "read",
+          "target": "each-other"
+        },
+        {
+          "advanceMs": 2300
+        },
+        {
+          "event": "read",
+          "target": "anonymous"
+        },
+        {
+          "choose": "can-i-tell"
+        },
+        {
+          "advanceMs": 2900
+        },
+        {
+          "event": "read",
+          "target": "glad-to-help"
+        },
+        {
+          "event": "viewCalendarDay",
+          "target": "2026-10-04"
+        },
+        {
+          "event": "read",
+          "target": "joined-hands"
+        },
+        {
+          "choose": "how-to-forget"
+        },
+        {
+          "event": "read",
+          "target": "how-to-forget-text"
+        },
+        {
+          "advanceMs": 1500
+        },
+        {
+          "event": "read",
+          "target": "forget-hard"
+        },
+        {
+          "advanceMs": 1500
+        },
+        {
+          "event": "read",
+          "target": "liked-before"
+        },
+        {
+          "choose": "s3-a"
+        },
+        {
+          "advanceMs": 1500
+        },
+        {
+          "event": "read",
+          "target": "s3-a-answer"
+        },
+        {
+          "advanceMs": 1300
+        },
+        {
+          "event": "read",
+          "target": "no-forgetting"
+        },
+        {
+          "advanceMs": 1300
+        },
+        {
+          "event": "read",
+          "target": "not-liked"
+        },
+        {
+          "advanceMs": 1300
+        },
+        {
+          "event": "read",
+          "target": "do-not-force"
+        },
+        {
+          "advanceMs": 1300
+        },
+        {
+          "event": "read",
+          "target": "remember-clearer"
+        },
+        {
+          "event": "read",
+          "target": "s3-lee-history-12"
+        },
+        {
+          "choose": "s3-send-never-return"
+        },
+        {
+          "advanceMs": 1200
+        },
+        {
+          "event": "read",
+          "target": "s3-apology"
+        },
+        {
+          "advanceMs": 1200
+        },
+        {
+          "event": "read",
+          "target": "too-easy"
+        },
+        {
+          "advanceMs": 1200
+        },
+        {
+          "event": "read",
+          "target": "remember-everything"
+        },
+        {
+          "advanceMs": 1200
+        },
+        {
+          "event": "read",
+          "target": "really-here"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-chan-0"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-chan-1"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-chan-2"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-chan-3"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-chan-4"
+        },
+        {
+          "choose": "s3-send-chan-ok"
+        },
+        {
+          "choose": "s3-send-chan-adjust"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "chan-rest"
+        },
+        {
+          "event": "setAlarm",
+          "target": "05:30"
+        },
+        {
+          "choose": "s3-send-headphones"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-lix-ear-0"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-lix-ear-1"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "s3-lix-ear-2"
+        },
+        {
+          "event": "read",
+          "target": "s3-lee-phone"
+        },
+        {
+          "event": "storyScreenshot",
+          "target": "s3-lee-phone"
+        },
+        {
+          "choose": "s3-send-lee-are-you"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "lix-out-0"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "lix-out-1"
+        },
+        {
+          "choose": "s3-send-lix-he-returned"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "lix-disbelief-0"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "lix-disbelief-1"
+        },
+        {
+          "choose": "s3-send-lix-go-look"
+        },
+        {
+          "event": "storyPost",
+          "target": "puppy_0922x"
+        },
+        {
+          "choose": "s3-send-maybe-crazy"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "what-happened"
+        },
+        {
+          "choose": "s3-send-at-cafe"
+        },
+        {
+          "choose": "s3-send-not-there"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "me-too"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "where-sitting"
+        },
+        {
+          "choose": "s3-send-window-seat"
+        },
+        {
+          "advanceMs": 1000
+        },
+        {
+          "event": "read",
+          "target": "no-one-here"
+        },
+        {
+          "choose": "s3-send-question-mark"
+        },
+        {
+          "event": "read",
+          "target": "s3-lee-phone"
+        },
+        {
+          "choose": "s3-send-who-are-you"
+        },
+        {
+          "choose": "s3-send-are-you-minho"
+        },
+        {
+          "advanceMs": 1200
+        },
+        {
+          "event": "read",
+          "target": "how-know-name"
+        }
+      ],
+      "expectUnlocked": [
+        "how-know-name"
+      ]
+    }
+  ]
+}

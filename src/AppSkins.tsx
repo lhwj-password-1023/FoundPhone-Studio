@@ -31,9 +31,10 @@ import {
   Layers,
   ShoppingBag,
 } from "lucide-react";
-import { safeMedia, type Item, type UiValue } from "./schema";
+import { safeMedia, type Item, type UiValue, type Runtime } from "./schema";
 export type SkinProps = {
   ui?: Record<string, UiValue>;
+  storyState?: Runtime;
   onUi?: (key: string, value: UiValue) => void;
   appId?: string;
   owner?: string;

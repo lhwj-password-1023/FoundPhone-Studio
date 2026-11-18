@@ -250,7 +250,7 @@ export function StoryThread({
                   {i.time.slice(-5)}{" "}
                   {i.outgoing &&
                     (kakao
-                      ? n === list.length - 1
+                      ? i.meta.unread === "true" || n === list.length - 1
                         ? "1"
                         : ""
                       : n === list.length - 1
@@ -315,7 +315,7 @@ export function StoryThread({
               </button>
             )}
             <div>
-              {["❤️", "👍", "🙂"].map((e) => (
+              {inspect.meta.unread !== "true" && ["❤️", "👍", "🙂"].map((e) => (
                 <button
                   key={e}
                   onClick={() => {
@@ -327,7 +327,7 @@ export function StoryThread({
                 </button>
               ))}
             </div>
-            {inspect.outgoing && (
+            {inspect.outgoing && inspect.meta.unread !== "true" && (
               <button
                 onClick={() => {
                   onUi?.(

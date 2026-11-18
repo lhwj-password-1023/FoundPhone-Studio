@@ -20,3 +20,5 @@ X 使用 twitter App ID。用户、动态、通知、私信、趋势按 content.
 回电沿用 requestCallback 事件，需同时配置 permit:call:应用ID:联系人卡片ID 为 true，且该事件尚未完成。点赞、收藏、浏览、搜索独立于发送权限。X 的 like、unlike、save、unsave、viewProfile、viewComments、readComment、search 只通知已有事件系统，剧情作者需明确配置事件才能产生剧情效果。
 
 私信使用 read 记录和原有状态系统。X 的通知和未读私信共同计入桌面角标。所有内容先由剧情可见性过滤，再按手机年表时间过滤。历史搜索可找到 historyOnly 的普通旧动态。
+
+第三场在第二场最后一句发出后继续，依次经过信息、KakaoTalk、时钟、查找、照片和 X。闹钟、共享设备截屏、X 小号附图发布及第二次查找均由玩家实际操作触发，结尾停在「你怎么知道我的名字？」。版本 5 保留版本 3、4 的存档接续。截屏保存在本机虚构相册中，X 选择器读取同一份图片记录；虚构地图不使用真实 GPS。

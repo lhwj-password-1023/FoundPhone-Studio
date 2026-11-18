@@ -625,6 +625,11 @@ export function MailSkin(p: Props) {
 export function ClockSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "闹钟");
   const [enabled, setEnabled] = useSkinState<string[]>(p, "alarms", []),
+    [storyAlarms, setStoryAlarms] = useSkinState<string[]>(p, "storyAlarms", []),
+    [adding, setAdding] = useState(false),
+    [hour, setHour] = useState("5"),
+    [minute, setMinute] = useState("30"),
+    [period, setPeriod] = useState("上午"),
     [seconds, setSeconds] = useState(0),
     [running, setRunning] = useState(false);
   useEffect(() => {
@@ -632,10 +637,14 @@ export function ClockSkin(p: Props) {
     const timer = setInterval(() => setSeconds((s) => s + 1), 1000);
     return () => clearInterval(timer);
   }, [running]);
+  useEffect(() => {
+    if (p.storyState?.variables.sceneThreeStage4 === true && p.storyState?.variables.sceneThreeStage5 !== true && storyAlarms.includes("05:30") && enabled.includes("05:30")) p.onEvent?.("setAlarm","05:30");
+  }, [p.storyState?.variables.sceneThreeStage4,p.storyState?.variables.sceneThreeStage5,storyAlarms,enabled]);
   return (
     <div className="catalog-skin native-clock">
       <Header p={p} />
       <div className="catalog-scroll">
+        {tab === "闹钟" && <button className="alarm-add" aria-label="添加闹钟" onClick={() => setAdding(true)}>＋</button>}
         <h1>{tab}</h1>
         {tab === "秒表" ? (
           <div className="stopwatch">
@@ -658,7 +667,9 @@ export function ClockSkin(p: Props) {
             </div>
           </div>
         ) : (
-          items.map((i) => (
+          <>
+          {tab === "闹钟" && storyAlarms.map((time) => <div className="alarm-row" key={time}><button><time>{time}</time><small>明天早上</small></button><button role="switch" aria-label={`闹钟${time}`} aria-checked={enabled.includes(time)} className={`native-switch ${enabled.includes(time) ? "on" : ""}`} onClick={() => setEnabled(enabled.includes(time) ? enabled.filter(x => x !== time) : [...enabled,time])}><span /></button></div>)}
+          {items.map((i) => (
             <div className="alarm-row" key={i.id}>
               <button onClick={() => p.onItem(i)}>
                 <time>{meta(i, "clock", i.time.slice(-5))}</time>
@@ -686,9 +697,11 @@ export function ClockSkin(p: Props) {
                 <Clock size={35} />
               )}
             </div>
-          ))
+          ))}
+          </>
         )}
       </div>
+      {adding && <div className="alarm-sheet" role="dialog" aria-label="添加闹钟"><h2>添加闹钟</h2><div><select aria-label="上午下午" value={period} onChange={e=>setPeriod(e.target.value)}><option>上午</option><option>下午</option></select><select aria-label="小时" value={hour} onChange={e=>setHour(e.target.value)}>{Array.from({length:12},(_,i)=><option key={i} value={String(i+1)}>{i+1}</option>)}</select><span>:</span><select aria-label="分钟" value={minute} onChange={e=>setMinute(e.target.value)}>{Array.from({length:60},(_,i)=><option key={i} value={String(i)}>{String(i).padStart(2,"0")}</option>)}</select></div><button onClick={()=>setAdding(false)}>取消</button><button onClick={()=>{const value=(period==="上午" ? String(Number(hour)%12) : String(Number(hour)%12+12)).padStart(2,"0")+":"+minute.padStart(2,"0");setStoryAlarms([...new Set([...storyAlarms,value])]);setEnabled([...new Set([...enabled,value])]);setAdding(false);if(value==="05:30")p.onEvent?.("setAlarm","05:30");}}>储存</button></div>}
       <Tabs
         tabs={["世界时钟", "闹钟", "秒表"]}
         value={tab}
@@ -957,10 +970,12 @@ function LocationMap({
   items,
   onItem,
   find = false,
+  atCafe = false,
 }: {
   items: Item[];
   onItem: (i: Item) => void;
   find?: boolean;
+  atCafe?: boolean;
 }) {
   return (
     <div className={`fiction-map ${find ? "find-map" : ""}`}>
@@ -988,10 +1003,10 @@ function LocationMap({
           aria-label={`地图位置${i.title}`}
           className="map-pin"
           style={{
-            left: `${Math.max(5, Math.min(90, Number(meta(i, "x", String(20 + ((n * 17) % 65))))))}%`,
-            top: `${Math.max(8, Math.min(80, Number(meta(i, "y", String(25 + ((n * 13) % 50))))))}%`,
+            left: `${atCafe && i.id === "this-iphone" ? 72 : Math.max(5, Math.min(90, Number(meta(i, "x", String(20 + ((n * 17) % 65))))))}%`,
+            top: `${atCafe && i.id === "this-iphone" ? 36 : Math.max(8, Math.min(80, Number(meta(i, "y", String(25 + ((n * 13) % 50))))))}%`,
           }}
-          onClick={() => onItem(i)}
+          onClick={() => onItem(atCafe && i.id === "this-iphone" ? {...i,body:"转角咖啡 · 与共享设备位于同一位置",meta:{...i.meta,status:"转角咖啡 · 刚刚"}} : i)}
         >
           {find ? <Smartphone size={22} /> : <MapPin size={24} />}
         </button>
@@ -1057,28 +1072,28 @@ export function WalletSkin(p: Props) {
 }
 export function FindSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "设备");
+  const atCafe = p.storyState?.variables.sceneThreeStage9 === true;
   const list = items.filter((i) =>
     tab === "设备" ? !["人物", "物品"].includes(i.folder) : i.folder === tab,
   );
   return (
     <div className="catalog-skin native-find">
       <Header p={p} />
-      <LocationMap items={list} onItem={p.onItem} find />
+      <LocationMap items={list} onItem={p.onItem} find atCafe={atCafe} />
       <div className="find-sheet">
         <h2>{tab}</h2>
         {tab === "我" && <p>{p.owner} · 此设备</p>}
-        {list.map((i) => (
+        {list.map((i) => (<div key={i.id}>{i.id === "s3-lee-phone" && <h3 className="native-section">家庭共享</h3>}
           <Row
-            key={i.id}
-            item={i}
+            item={atCafe && i.id === "this-iphone" ? {...i,body:"转角咖啡 · 与共享设备位于同一位置",meta:{...i.meta,status:"转角咖啡 · 刚刚"}} : i}
             onItem={p.onItem}
             leading={
               tab === "设备" ? <Smartphone /> : <Avatar name={i.title} />
             }
           >
-            {meta(i, "status", "位置记录")}
+            {atCafe && i.id === "this-iphone" ? "转角咖啡 · 刚刚" : meta(i, "status", "位置记录")}
           </Row>
-        ))}
+        </div>))}
         <Empty items={list} />
       </div>
       <Tabs

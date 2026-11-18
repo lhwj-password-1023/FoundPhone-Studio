@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowLeft,
   Home,
@@ -20,6 +20,14 @@ import "./story-x.css";
 
 export function StoryX(p: Props) {
   const actor = useActor();
+  const [activeIdentity,setIdentity] = useSkinState<string>(p,"xIdentity","public");
+  const [draftIndex,setDraftIndex] = useState(0);
+  const [attached,setAttached] = useState(false);
+  const [photoPicker,setPhotoPicker] = useState(false);
+  const [storyNotice,setStoryNotice] = useState("");
+  const storyText = "你真的回来了吗，可不可以告诉我你在哪里";
+  const screenshot = p.storyState?.messages.photos?.find(i=>i.id==="s3-find-screenshot");
+  const storyReady = p.storyState?.variables.sceneThreeStage9 === true && p.storyState?.variables.sceneThreeStage10 !== true;
   const [tab, setTab] = useSkinState<string>(p, "xTab", "首页");
   const [feed, setFeed] = useSkinState<string>(p, "xFeed", "为你推荐");
   const [query, setQuery] = useSkinState<string>(p, "xQuery", "");
@@ -33,6 +41,7 @@ export function StoryX(p: Props) {
   const [people, setPeople] = useState("");
   const [mediaOpen, showMedia] = useState(false);
   const [compose, setCompose] = useState(false);
+  useEffect(()=>{if(!compose || activeIdentity!=="private" || draftIndex>=storyText.length)return;const timer=setTimeout(()=>setDraftIndex(draftIndex+1),115);return()=>clearTimeout(timer)},[compose,activeIdentity,draftIndex]);
   const [thread, setThread] = useSkinState<string>(p, "xDm", "");
   const [expanded, expand] = useState(false);
   const [replyingTo, setReplyingTo] = useState("");
@@ -42,7 +51,7 @@ export function StoryX(p: Props) {
       (p.virtualDate || "") + " " + (p.virtualTime || "23:59"),
   );
   const profiles = available.filter((i) => i.folder === "用户");
-  const owner = profiles.find((i) => i.meta.self === "true");
+  const owner = profiles.find((i) => i.meta.self === "true" && (activeIdentity === "private" ? i.id === "x-user-puppy" : i.id !== "x-user-puppy"));
   const posts = available.filter((i) => i.folder === "动态");
   const notifications = available.filter((i) => i.folder === "通知");
   const dms = available.filter((i) => i.folder === "私信");
@@ -293,10 +302,12 @@ export function StoryX(p: Props) {
         >
           <User />
         </button>
+        <button aria-label="切换账号" onClick={()=>{const next=activeIdentity==="private"?"public":"private";setIdentity(next);setProfile(next==="private"?"x-user-puppy":"x-user-self");setCompose(false);setDetail("");}}> {activeIdentity==="private"?"@puppy_0922x":"切换账号"} </button>
       </header>
       <main className="sx-scroll">
+        {storyNotice && <p role="status" className="sx-muted">{storyNotice}</p>}
         {compose ? (
-          <>
+          activeIdentity === "private" && !current ? <div className="sx-story-compose"><h2>@puppy_0922x</h2><p className="compose-in-progress">{storyText.slice(0,draftIndex)}</p><button onClick={()=>setDraftIndex(storyText.length)}>完成输入</button><button onClick={()=>setPhotoPicker(true)}>从照片选择图片</button>{attached && screenshot?.media && <img src={screenshot.media} alt="查找定位截屏"/>}<button disabled={draftIndex<storyText.length || !attached} onClick={()=>{p.onEvent?.("storyPost","puppy_0922x");setCompose(false);setProfile("x-user-puppy")}}>发布</button>{photoPicker && <div className="sx-photo-picker" role="dialog" aria-label="选择照片"><h3>最近项目 · 截屏</h3>{screenshot?.media && <button onClick={()=>{setAttached(true);setPhotoPicker(false)}}><img src={screenshot.media} alt="李旻浩的 iPhone 定位截屏"/>选择此截屏</button>}<button onClick={()=>setPhotoPicker(false)}>取消</button></div>}</div> : <>
             <h2>{current ? "转发动态" : "有什么新鲜事？"}</h2>
             <ActionComposer
               action={current ? "repost" : "post"}
@@ -549,6 +560,8 @@ export function StoryX(p: Props) {
           className="sx-fab"
           aria-label="发布新动态"
           onClick={() => {
+            if(activeIdentity === "private" && !storyReady){setStoryNotice("昇玟现在不想发布其他动态。");return;}
+            setStoryNotice("");setDraftIndex(0);setAttached(false);
             setCompose(true);
             setProfile("");
           }}
