@@ -27,6 +27,9 @@ async function captureVisibleApp(): Promise<string> {
 import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
 import { advanceSceneFour, shareSceneFourNews, addSceneFourMemory } from "./story-engine/scene-four-runtime";
+import { advanceFinale, reconnectTo2010, makeStoryTransfer, takeFinalPhoto } from "./story-engine/finale-runtime";
+import finalSelfie from "./assets/finale-selfie.jpeg?inline";
+import { useSimulatedTyping } from "./skins/useSimulatedTyping";
 import { routeForNotice } from "./story-engine/timeline";
 import { guidanceAnswer, pendingGuidance } from "./story-engine/guidance";
 import { StatusGlyph } from "./ios/StatusGlyph";
@@ -323,6 +326,10 @@ function PhoneRuntime({
       return;
     }
     if (event === "timeAdvance") { update(advanceSceneFour(work, current, target)); return; }
+    if (event === "storyTimeAdvance") { update(advanceFinale(work, current, target)); return; }
+    if (event === "storyTransfer") { update(makeStoryTransfer(work, current, target)); return; }
+    if (event === "storyShutter") { update(takeFinalPhoto(work, current, finalSelfie)); return; }
+    if (event === "storyReconnect") { update(reconnectTo2010(work, current)); return; }
     if (event === "writeNote" && target === "s4-note" && current.variables.sceneFourStage8 === true) {
       const stamp = `${current.date || work.phone.date} ${current.time}`;
       update(dispatch(work, { ...current, ui: { ...current.ui, notes: { ...current.ui?.notes, ["modifiedAt:" + target]: stamp } } }, event, target));
@@ -671,8 +678,7 @@ function PhoneRuntime({
               onClick={() => setPanel(panel === "control" ? "" : "control")}
               aria-label="控制中心"
             >
-              <StatusGlyph kind="cellular" />
-              <StatusGlyph kind="wifi" />
+              {[27,28].includes(Number(s.variables.finalPhase)) ? <small>无服务</small> : <><StatusGlyph kind="cellular" /><StatusGlyph kind="wifi" /></>}
               <span
                 className={`ios-battery${work.phone.battery <= 20 ? " low-battery" : ""}`}
               >
@@ -1223,6 +1229,7 @@ function AppContentView({
   const [tab, setTab] = useState(app.tabs[0]);
   const [q, setQ] = useState("");
   const [pw, setPw] = useState("");
+  const passwordTyping = useSimulatedTyping();
   const [localUnlocks, setLocalUnlocks] = useState<string[]>([]);
   const unlocks =
     archive && Array.isArray(ui?.passwords) ? ui.passwords : localUnlocks;
@@ -1273,15 +1280,26 @@ function AppContentView({
           <input
             type="password"
             placeholder="内容密码"
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
+            value={detail.meta.dynamicPassword ? passwordTyping.shown : pw}
+            readOnly={!!detail.meta.dynamicPassword && !creator}
+            inputMode={detail.meta.dynamicPassword ? "none" : undefined}
+            onClick={() => {
+              if (detail.meta.dynamicPassword && Number(state.variables.finalPhase) >= 22) {
+                if (passwordTyping.active) passwordTyping.reveal();
+                else passwordTyping.start(String(state.variables.storyTransferAmount || ""));
+              }
+            }}
+            onChange={detail.meta.dynamicPassword ? undefined : (e) => setPw(e.target.value)}
           />
           <button
+            disabled={!!detail.meta.dynamicPassword && Number(state.variables.finalPhase) >= 22 && !passwordTyping.done}
             onClick={() => {
-              if (pw === detail.password) {
+              const expected = detail.meta.dynamicPassword ? String(state.variables.storyTransferAmount || "") : detail.password;
+              const entered = detail.meta.dynamicPassword ? passwordTyping.value : pw;
+              if (entered === expected && (!detail.meta.dynamicPassword || Number(state.variables.finalPhase) >= 22)) {
                 setUnlocks([...unlocks, detail.id]);
                 onEvent("password", detail.id);
-                onRead(detail.id);
+                if (!detail.meta.dynamicPassword) onRead(detail.id);
                 setPwError("");
               } else setPwError("密码不正确");
             }}
@@ -1301,6 +1319,7 @@ function AppContentView({
             <Media item={detail} />
           )}
           <RichText value={detail.richText} fallback={detail.body} />
+          {detail.meta.dynamicPassword && !state.read.includes(detail.id) && <button className="note-end-read" onClick={() => onRead(detail.id)}>读到结尾</button>}
           <dl className="item-metadata">
             {getFields(app.id)
               .filter((f) => detail.meta?.[f.key])

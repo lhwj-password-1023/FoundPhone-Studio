@@ -56,6 +56,15 @@ export function StoryThread({
   const [contactEdit, setContactEdit] = useState(false);
   const contactTyping = useSimulatedTyping();
   const [failedMenu, setFailedMenu] = useState(false);
+  const [countdown, setCountdown] = useState(30);
+  const [transferOpen, setTransferOpen] = useState(false);
+  const [amount, setAmount] = useState("");
+  const transferTyping = useSimulatedTyping();
+  useEffect(() => {
+    if (state.variables.finalPhase !== 17 || (typing.active && !typing.done)) return;
+    const timer = window.setInterval(() => setCountdown((n) => Math.max(1, n - 1)), 1000);
+    return () => window.clearInterval(timer);
+  }, [state.variables.finalPhase, typing.active, typing.done]);
   const openedThread = useRef("");
   useEffect(() => {
     if (openedThread.current === thread) return;
@@ -176,6 +185,9 @@ export function StoryThread({
           }
         }}
       >
+        {!kakao && state.variables.finalPhase === 17 && <p className="story-countdown">警告：时光机器达到运行上限，当前时空对话将于 {countdown} 秒后永久关闭。</p>}
+        {!kakao && state.variables.finalPhase === 18 && <p className="story-countdown">时光机器已达上限，对话已永久关闭。</p>}
+        {!kakao && state.variables.finalPhase === 22 && <p className="story-countdown">因果闭环已完成，iMessage 对话再次永久关闭。</p>}
         {list.map((i, n) => {
           const asset = getAsset(i),
             reaction = state.ui?.[app]?.["reaction:" + i.id];
@@ -239,6 +251,7 @@ export function StoryThread({
                           ? "▷ 语音 · " + i.meta.duration + " 秒"
                           : i.body}
                       </span>}
+                      {i.id === "f-news-reference" && <small className="story-news-reference">{(() => { const id = (state.ui?.safari?.sharedNewsIds as string[] | undefined)?.[0]; return id ? `已应验：${work.data.safari?.find((item) => item.id === id)?.title || ""}` : ""; })()}</small>}
                     </>
                   )}
                 </div>
@@ -368,6 +381,7 @@ export function StoryThread({
         </div>
       )}
       {failedMenu && <div className="story-blocked-backdrop" onClick={() => setFailedMenu(false)}><div className="story-blocked-dialog" role="dialog" aria-label="发送失败" onClick={(e) => e.stopPropagation()}><p>消息未送达</p><div><button onClick={() => setFailedMenu(false)}>取消</button><button onClick={() => setFailedMenu(false)}>再次尝试发送</button></div></div></div>}
+      {transferOpen && <div className="story-blocked-backdrop"><div className="story-blocked-dialog transfer-dialog" role="dialog" aria-label="转账汇款"><h3>转账/汇款</h3><p>收款人：旻浩哥</p><strong>金额：{amount || "请输入四位数"}</strong><div className="transfer-keypad">{Array.from({length:10},(_,n)=><button key={n} onClick={()=>setAmount(amount.length < 4 ? amount + n : amount)}>{n}</button>)}<button onClick={()=>setAmount(amount.slice(0,-1))}>删除</button></div><p onClick={()=>transferTyping.reveal()} className="simulated-caret">附言：{transferTyping.shown}</p><button disabled={amount.length!==4 || amount==="0000" || !transferTyping.done} onClick={()=>{onEvent("storyTransfer",amount);setTransferOpen(false)}}>确认转账</button><button onClick={()=>setTransferOpen(false)}>取消</button></div></div>}
       {blocked && (
         <div className="story-blocked-backdrop" role="presentation" onClick={() => setBlocked(false)}>
           <div className="story-blocked-dialog" role="dialog" aria-modal="true" aria-label="剧情提示" onClick={(event) => event.stopPropagation()}>
@@ -380,6 +394,7 @@ export function StoryThread({
         </div>
       )}
       <footer>
+        {!kakao && state.variables.finalPhase === 20 && <button onClick={()=>{setAmount("");transferTyping.start("别轻易向生活低头。");setTransferOpen(true)}}>转账/汇款</button>}
         <button
           className="archive-input"
           onClick={() => {

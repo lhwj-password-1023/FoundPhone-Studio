@@ -362,6 +362,16 @@ export function PhotosSkin(p: Props) {
 export function CameraSkin(p: Props) {
   const [mode, setMode] = useState("照片"),
     [index, setIndex] = useState(0);
+  const [front, setFront] = useState(false);
+  const [flash, setFlash] = useState(false);
+  const finalPhoto = p.storyState?.messages.photos?.find((item) => item.id === "f-final-selfie");
+  if (p.archive && (p.storyState?.variables.finalPhase === 30 || finalPhoto)) return (
+    <div className="catalog-skin native-camera finale-camera">
+      <Header p={p} />
+      <div className="camera-view">{finalPhoto ? <><Media item={finalPhoto} /><div className="finale-captions"><p>奇迹真的发生了。</p><strong>全剧终</strong></div></> : <div className="finale-viewfinder">{front ? "前置摄像头" : "后置摄像头"}<div className="camera-grid" /></div>}{flash && <div className="camera-flash" />}</div>
+      {!finalPhoto && <div className="camera-controls"><button aria-label="切换前置摄像头" onClick={() => setFront(!front)}>{front ? "前置" : "切换前置"}</button><button className="camera-shutter" aria-label="拍摄双人自拍" disabled={!front} onClick={() => {setFlash(true);window.setTimeout(()=>setFlash(false),260);p.onEvent?.("storyShutter","final")}}><span /></button></div>}
+    </div>
+  );
   const frames = p.items.filter((i) =>
     mode === "视频" ? i.kind === "video" : i.kind !== "video",
   );
@@ -483,11 +493,15 @@ function SafariBookmarks(p: Props) {
   );
 }
 export { NotesSkin } from "../ios/Notes";
+export function NewsSkin(p: Props) {
+  return <div className="catalog-skin native-news"><Header p={p} /><div className="catalog-scroll"><h1>新闻</h1>{p.items.map((item)=><button className="catalog-row" key={item.id} onClick={()=>p.onItem(item)}><span><strong>{item.title}</strong><small>{item.time}</small><p>{item.body}</p></span></button>)}</div></div>;
+}
 export function CalendarSkin(p: Props) {
   const [y, m, d] = (p.virtualDate || "2026-09-01").split("-").map(Number);
   const [month, setMonth] = useState(m - 1),
     [year, setYear] = useState(y),
     [day, setDay] = useState(d);
+  useEffect(() => { setMonth(m - 1); setYear(y); setDay(d); }, [p.virtualDate]);
   const prefix = `${year}-${String(month + 1).padStart(2, "0")}`;
   const list = p.items.filter((i) =>
     i.time.startsWith(`${prefix}-${String(day).padStart(2, "0")}`),
@@ -646,6 +660,7 @@ export function ClockSkin(p: Props) {
       <div className="catalog-scroll">
         {tab === "闹钟" && <button className="alarm-add" aria-label="添加闹钟" onClick={() => setAdding(true)}>＋</button>}
         <h1>{tab}</h1>
+        {p.archive && <p className="story-current-clock">当前故事时间：{p.virtualDate} {p.virtualTime}</p>}
         {tab === "秒表" ? (
           <div className="stopwatch">
             <output>

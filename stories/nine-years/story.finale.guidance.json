@@ -1,0 +1,764 @@
+[
+  {
+    "id": "final-0",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 0",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "all": [
+        {
+          "key": "sceneFourStage16",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 0
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，继续阅读新消息。",
+    "blocks": []
+  },
+  {
+    "id": "final-1",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 1",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 1
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 1
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，逐条发送预设回复并阅读对方消息。",
+    "blocks": []
+  },
+  {
+    "id": "final-2",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 2",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 2
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 2
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将李旻浩的通信时间向前推进一周，然后返回信息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-3",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 3",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 3
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 3
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，完成练舞受伤的对话。",
+    "blocks": []
+  },
+  {
+    "id": "final-4",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 4",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 4
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 4
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开 KakaoTalk →「方灿」，阅读关于旻浩的消息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-6",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 6",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 6
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 6
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将李旻浩的通信时间再推进一周，然后返回信息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-7",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 7",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 7
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 7
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，完成便利店布丁的对话。",
+    "blocks": []
+  },
+  {
+    "id": "final-8",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 8",
+    "type": "story-action",
+    "app": "calendar",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 8
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 8
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「日历」，翻到 2026 年 9 月，点开「取消的周末约会」。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-9",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 9",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 9
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 9
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将李旻浩的通信时间再推进一周，然后返回信息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-10",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 10",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 10
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 10
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，完成彼此习惯联系的对话。",
+    "blocks": []
+  },
+  {
+    "id": "final-11",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 11",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 11
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 11
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开 KakaoTalk →「李龙馥」，阅读关于旻浩的消息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-12",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 12",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 12
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 12
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将李旻浩的通信时间再推进一周，然后返回信息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-13",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 13",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 13
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 13
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，完成关于未来相遇的对话。",
+    "blocks": []
+  },
+  {
+    "id": "final-14",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 14",
+    "type": "story-action",
+    "app": "safari",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 14
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 14
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开 Safari，阅读故事内关于李旻浩的虚构报道。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-15",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 15",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 15
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 15
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将李旻浩的通信时间再推进一周，然后返回信息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-16",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 16",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 16
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 16
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，继续关于选秀的对话。",
+    "blocks": []
+  },
+  {
+    "id": "final-17",
+    "chapter": "九年",
+    "scene": "第四场",
+    "name": "阶段 17",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 17
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 17
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，逐条阅读倒计时消息并亲自发送最后两条话。",
+    "blocks": []
+  },
+  {
+    "id": "final-18",
+    "chapter": "九年",
+    "scene": "第五场",
+    "name": "阶段 18",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 18
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 18
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，查看中断的连接和新的时间锚点，再返回信息。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-19",
+    "chapter": "九年",
+    "scene": "第五场",
+    "name": "阶段 19",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 19
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 19
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「信息」→「旻浩哥」，和 2010 年的少年旻浩交谈。",
+    "blocks": []
+  },
+  {
+    "id": "final-20",
+    "chapter": "九年",
+    "scene": "第五场",
+    "name": "阶段 20",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 20
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 20
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "在「信息」→「旻浩哥」点击「转账/汇款」，用屏幕数字键选任意四位数，确认附言后转账。记住金额。",
+    "blocks": []
+  },
+  {
+    "id": "final-21",
+    "chapter": "九年",
+    "scene": "第五场",
+    "name": "阶段 21",
+    "type": "story-action",
+    "app": "messages",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 21
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 21
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "返回「信息」→「旻浩哥」，读完少年旻浩的回复并发送鼓励的话。",
+    "blocks": []
+  },
+  {
+    "id": "final-22",
+    "chapter": "九年",
+    "scene": "第六场",
+    "name": "阶段 22",
+    "type": "story-action",
+    "app": "notes",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 22
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 22
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「备忘录」→《给昇玟》，点击密码框自动填入刚才的四位金额，再点解锁。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-23",
+    "chapter": "九年",
+    "scene": "第六场",
+    "name": "阶段 23",
+    "type": "story-action",
+    "app": "notes",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 23
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 23
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "在「备忘录」完整阅读《给昇玟》，滑到结尾并确认。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-24",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 24",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 24
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 24
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将金昇玟的时间推进至几年后的秋天。日历会同步更新。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-25",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 25",
+    "type": "story-action",
+    "app": "kakao",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 25
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 25
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开 KakaoTalk →「李龙馥」，阅读露营邀请并发送预设回复。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-26",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 26",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 26
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 26
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将金昇玟的时间推进至露营当天。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-27",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 27",
+    "type": "story-action",
+    "app": "weather",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 27
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 27
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "先打开「天气」查看红色预警，再到 KakaoTalk 查看妈妈、方灿、韩知城的消息，最后打开「新闻」阅读快讯。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-28",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 28",
+    "type": "story-action",
+    "app": "timemachine",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 28
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 28
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "打开「时光机器」，将金昇玟的时间向前推进 72 小时。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-29",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 29",
+    "type": "story-action",
+    "app": "news",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 29
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 29
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "阅读 KakaoTalk 的获救消息，再打开「新闻」阅读最新进展。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-30",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 30",
+    "type": "story-action",
+    "app": "camera",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 30
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 30
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "返回桌面打开「相机」，切换前置摄像头，亲自按快门。",
+    "blocks": [
+      "陌生号码"
+    ]
+  },
+  {
+    "id": "final-31",
+    "chapter": "九年",
+    "scene": "终场",
+    "name": "阶段 31",
+    "type": "story-action",
+    "app": "camera",
+    "target": "",
+    "prerequisites": {
+      "key": "finalPhase",
+      "op": "eq",
+      "value": 31
+    },
+    "completion": {
+      "key": "finalPhase",
+      "op": "neq",
+      "value": 31
+    },
+    "priority": 30,
+    "unlocks": [],
+    "hint": "全剧终。可以自由浏览手机内的历史记录。",
+    "blocks": [
+      "陌生号码"
+    ]
+  }
+]

@@ -886,3 +886,13 @@
 .ios18 .calibrated-weather[data-empty="true"] .weather-days > button > i {
   background: #ffffff30;
 }
+.finale-camera .camera-view { position: relative; min-height: 68%; background: #292d30; overflow: hidden; }
+.finale-camera .camera-view img { width: 100%; height: 100%; object-fit: contain; }
+.finale-viewfinder { color: #eee; display: flex; align-items: center; justify-content: center; height: 100%; }
+.finale-captions { position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; color: white; text-shadow: 0 2px 8px #000; animation: finale-fade 1.2s ease both; }
+.finale-captions p { font-size: 18px; }
+.finale-captions strong { font-size: 25px; letter-spacing: .25em; }
+.camera-flash { position: absolute; inset: 0; background: white; animation: shutter-flash .26s ease-out forwards; }
+@keyframes shutter-flash { from { opacity: .9; } to { opacity: 0; } }
+@keyframes finale-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.story-current-clock { padding: 0 16px; opacity: .7; }

@@ -19,6 +19,7 @@ export const catalogSkins = {
   photos: skin(system, "PhotosSkin"),
   camera: skin(system, "CameraSkin"),
   safari: skin(system, "SafariSkin"),
+  news: skin(system, "NewsSkin"),
   notes: skin(system, "NotesSkin"),
   calendar: skin(system, "CalendarSkin"),
   mail: skin(system, "MailSkin"),

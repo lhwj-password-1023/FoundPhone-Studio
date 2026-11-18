@@ -1,0 +1,4965 @@
+{
+  "revision": 7,
+  "installedApps": [
+    "news"
+  ],
+  "variables": {
+    "finalPhase": 0,
+    "finalBranch": "",
+    "storyConnection": "2017",
+    "storyTransferAmount": "",
+    "storyFinalComplete": false
+  },
+  "content": {
+    "messages": [
+      {
+        "id": "f-msg-1",
+        "title": "陌生号码",
+        "body": "你终于肯信我了。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-1"
+        }
+      },
+      {
+        "id": "f-msg-2",
+        "title": "陌生号码",
+        "body": "至于我是谁……你还是别知道比较好，就当我是个能看见未来的树洞吧。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-2"
+        }
+      },
+      {
+        "id": "f-news-reference",
+        "title": "陌生号码",
+        "body": "行吧，看在你连那件事都能算准的份上。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-3",
+        "title": "陌生号码",
+        "body": "所以你之前死活不让我去JYP，是因为我进了这一行会出事？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-4",
+        "title": "陌生号码",
+        "body": "是。只要你别进那个圈子，别去当爱豆，去过普通人的生活，2026年的意外就不会发生。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-4"
+        }
+      },
+      {
+        "id": "f-msg-5",
+        "title": "陌生号码",
+        "body": "可我今天又遇到灿哥了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-6",
+        "title": "陌生号码",
+        "body": "而且……我真的很喜欢跳舞。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-7",
+        "title": "陌生号码",
+        "body": "不去试试的话，我这辈子都会不甘心的。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-branch-A-one",
+        "title": "陌生号码",
+        "body": "到底什么比活着还重要？",
+        "sender": "金昇玟",
+        "time": "2026-11-21 02:00",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-branch-a1"
+        }
+      },
+      {
+        "id": "f-branch-A-two",
+        "title": "陌生号码",
+        "body": "你能不能听话一次？",
+        "sender": "金昇玟",
+        "time": "2026-11-21 02:01",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-branch-A-send-two"
+        }
+      },
+      {
+        "id": "f-branch-A-answer",
+        "title": "陌生号码",
+        "body": "管得比我妈还宽。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 02:02",
+        "hidden": true,
+        "meta": {}
+      },
+      {
+        "id": "f-branch-B-one",
+        "title": "陌生号码",
+        "body": "算我求你了，哪怕为了身边爱你的人，换条路走吧。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 02:00",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-branch-b1"
+        }
+      },
+      {
+        "id": "f-branch-B-answer",
+        "title": "陌生号码",
+        "body": "可我身边现在也没什么非我不可的人啊……倒是你，干嘛这么在乎我的死活？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 02:02",
+        "hidden": true,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-8",
+        "title": "陌生号码",
+        "body": "今天练舞把膝盖弄疼了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-9",
+        "title": "陌生号码",
+        "body": "左边膝盖？",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-9"
+        }
+      },
+      {
+        "id": "f-msg-10",
+        "title": "陌生号码",
+        "body": "？？？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-11",
+        "title": "陌生号码",
+        "body": "你怎么知道？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-12",
+        "title": "陌生号码",
+        "body": "当然。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-12"
+        }
+      },
+      {
+        "id": "f-msg-13",
+        "title": "陌生号码",
+        "body": "先休息，别硬撑。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-13"
+        }
+      },
+      {
+        "id": "f-msg-14",
+        "title": "陌生号码",
+        "body": "以后不舒服的话，记得及时去检查。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-14"
+        }
+      },
+      {
+        "id": "f-msg-15",
+        "title": "陌生号码",
+        "body": "未来的人连这个都知道？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-16",
+        "title": "陌生号码",
+        "body": "有点可怕啊你。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-17",
+        "title": "陌生号码",
+        "body": "未来的人还知道，你从来没听过我的建议。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-17"
+        }
+      },
+      {
+        "id": "f-msg-18",
+        "title": "陌生号码",
+        "body": "合理，是我的风格。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-19",
+        "title": "陌生号码",
+        "body": "刚练完，好饿。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-20",
+        "title": "陌生号码",
+        "body": "去便利店第二排买个焦糖布丁。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-20"
+        }
+      },
+      {
+        "id": "f-msg-21",
+        "title": "陌生号码",
+        "body": "这么精确",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-22",
+        "title": "陌生号码",
+        "body": "你肯定喜欢。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-22"
+        }
+      },
+      {
+        "id": "f-msg-23",
+        "title": "陌生号码",
+        "body": "但我还没吃过呢。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-24",
+        "title": "陌生号码",
+        "body": "买了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-25",
+        "title": "陌生号码",
+        "body": "确实挺好吃。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-26",
+        "title": "陌生号码",
+        "body": "以后要是见面，你得请我吃十个。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-27",
+        "title": "陌生号码",
+        "body": "十个不会腻吗。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-27"
+        }
+      },
+      {
+        "id": "f-msg-28",
+        "title": "陌生号码",
+        "body": "那分你一个吧",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-29",
+        "title": "陌生号码",
+        "body": "……",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-29"
+        }
+      },
+      {
+        "id": "f-msg-30",
+        "title": "陌生号码",
+        "body": "今天怎么一直没消息？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-31",
+        "title": "陌生号码",
+        "body": "有工作。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-31"
+        }
+      },
+      {
+        "id": "f-msg-32",
+        "title": "陌生号码",
+        "body": "哦。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-33",
+        "title": "陌生号码",
+        "body": "我还以为你失踪了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-34",
+        "title": "陌生号码",
+        "body": "你很想我？",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-34"
+        }
+      },
+      {
+        "id": "f-msg-35",
+        "title": "陌生号码",
+        "body": "少自恋。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-36",
+        "title": "陌生号码",
+        "body": "不过下次忙的话提前说一声。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-37",
+        "title": "陌生号码",
+        "body": "好。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-37"
+        }
+      },
+      {
+        "id": "f-msg-38",
+        "title": "陌生号码",
+        "body": "所以我们真的不能见面吗？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-39",
+        "title": "陌生号码",
+        "body": "现在不行。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-39"
+        }
+      },
+      {
+        "id": "f-msg-40",
+        "title": "陌生号码",
+        "body": "那以后呢？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-41",
+        "title": "陌生号码",
+        "body": "也许吧。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-41"
+        }
+      },
+      {
+        "id": "f-msg-42",
+        "title": "陌生号码",
+        "body": "你每次都这么说。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-43",
+        "title": "陌生号码",
+        "body": "2026年很远吗？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-44",
+        "title": "陌生号码",
+        "body": "很远。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-44"
+        }
+      },
+      {
+        "id": "f-msg-45",
+        "title": "陌生号码",
+        "body": "那我慢慢走过去不就好了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-46",
+        "title": "陌生号码",
+        "body": "今天又下雨了，练习室的窗户一直响。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-47",
+        "title": "陌生号码",
+        "body": "记得带伞。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-47"
+        }
+      },
+      {
+        "id": "f-msg-48",
+        "title": "陌生号码",
+        "body": "已经带了，你的提醒晚了一步。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-49",
+        "title": "陌生号码",
+        "body": "还有，我提交选秀报名表了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-50",
+        "title": "陌生号码",
+        "body": "为什么？！我明明把所有的捷径和退路都告诉你了，为什么你还是要去参加选拔？！",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-50"
+        }
+      },
+      {
+        "id": "f-msg-51",
+        "title": "陌生号码",
+        "body": "为什么你就这么执着？！",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-51"
+        }
+      },
+      {
+        "id": "f-msg-52",
+        "title": "陌生号码",
+        "body": "……你别哭啊。隔着屏幕我都好像听见你哭了，康阿叽。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-53",
+        "title": "陌生号码",
+        "body": "其实一直没跟你说。在我更小的时候，家里特别困难，有阵子我连舞室的练习费都交不起，快要坚持不下去了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-54",
+        "title": "陌生号码",
+        "body": "就在我打算彻底放弃跳舞的那天，有个陌生人给我转了一笔钱，还一直发消息给我打气，帮我守住了跳舞的梦想。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-55",
+        "title": "陌生号码",
+        "body": "从那时候起，我的人生才有了希望和方向。我不想让那个人失望，也不想让自己失望。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-56",
+        "title": "陌生号码",
+        "body": "……原来你心里一直有这么一个人。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-56"
+        }
+      },
+      {
+        "id": "f-msg-57",
+        "title": "陌生号码",
+        "body": "好吧，我一个后来才出现的人，确实比不了。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-57"
+        }
+      },
+      {
+        "id": "f-msg-58",
+        "title": "陌生号码",
+        "body": "……噗，你这是在吃醋吗？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-59",
+        "title": "陌生号码",
+        "body": "以前确实是因为他。但现在，我多了一个非去不可的理由。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-60",
+        "title": "陌生号码",
+        "body": "什么理由？",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-60"
+        }
+      },
+      {
+        "id": "f-msg-61",
+        "title": "陌生号码",
+        "body": "我想站到最亮的地方，然后一直走到2026年，去见你。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-62",
+        "title": "陌生号码",
+        "body": "……你疯了吗！",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-62"
+        }
+      },
+      {
+        "id": "f-msg-63",
+        "title": "陌生号码",
+        "body": "我都说了，那样你会死",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-63"
+        }
+      },
+      {
+        "id": "f-msg-64",
+        "title": "陌生号码",
+        "body": "无所谓，我是活在当下的人。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-65",
+        "title": "陌生号码",
+        "body": "如果活到一百岁的代价是永远见不到你，那我宁愿选现在。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-66",
+        "title": "陌生号码",
+        "body": "等等，我手机上突然提示对话即将关闭？！",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-67",
+        "title": "陌生号码",
+        "body": "喂！你还没告诉我你到底是谁！2026年我要去哪里找你？！",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-68",
+        "title": "陌生号码",
+        "body": "李旻浩，不后悔的话，就来找我吧。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-68"
+        }
+      },
+      {
+        "id": "f-msg-69",
+        "title": "陌生号码",
+        "body": "我叫金昇玟，是你未来的队友，也是未来最喜欢你的那个人。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-69"
+        }
+      },
+      {
+        "id": "f-msg-70",
+        "title": "陌生号码",
+        "body": "旻浩哥！你还在吗？！",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-70"
+        }
+      },
+      {
+        "id": "f-msg-71",
+        "title": "陌生号码",
+        "body": "……你是谁？怎么知道我的名字？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-72",
+        "title": "陌生号码",
+        "body": "如果是舞室老师让你来催学费的，不用催了，我明天就退课，以后再也不跳了。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-73",
+        "title": "陌生号码",
+        "body": "……退课？",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-73"
+        }
+      },
+      {
+        "id": "f-msg-74",
+        "title": "陌生号码",
+        "body": "今年是哪一年？",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-74"
+        }
+      },
+      {
+        "id": "f-msg-75",
+        "title": "陌生号码",
+        "body": "2010年啊，莫名其妙。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-76",
+        "title": "陌生号码",
+        "body": "别退课",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-76"
+        }
+      },
+      {
+        "id": "f-msg-77",
+        "title": "陌生号码",
+        "body": "不要放弃跳舞",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-77"
+        }
+      },
+      {
+        "id": "f-msg-78",
+        "title": "陌生号码",
+        "body": "说得轻巧，连下个月舞室押金都交不起的人，谈什么梦想。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-79",
+        "title": "陌生号码",
+        "body": "？！你给我转钱干什么？你到底是谁？",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-80",
+        "title": "陌生号码",
+        "body": "一个在未来看过你跳舞的人。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-80"
+        }
+      },
+      {
+        "id": "f-msg-81",
+        "title": "陌生号码",
+        "body": "你在舞台上真的很耀眼，所以拜托你，一定要坚持下去。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-81"
+        }
+      },
+      {
+        "id": "f-msg-82",
+        "title": "陌生号码",
+        "body": "哪怕前面再难，也别放弃，总有一天你会遇到一群很爱你的队友。",
+        "sender": "金昇玟",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-82"
+        }
+      },
+      {
+        "id": "f-msg-83",
+        "title": "陌生号码",
+        "body": "……谢谢你。这笔钱我记下了，以后一定还给你。",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-84",
+        "title": "陌生号码",
+        "body": "我不会放弃的",
+        "sender": "旻浩哥",
+        "time": "2026-11-21 00:52",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      }
+    ],
+    "kakao": [
+      {
+        "id": "f-clue-chat-1",
+        "title": "方灿",
+        "sender": "方灿",
+        "body": "旻浩以前工作再累，也总说休息一下就好。现在想起来，他把很多压力都藏着。",
+        "time": "2026-11-21 03:00",
+        "hidden": true
+      },
+      {
+        "id": "f-clue-chat-2",
+        "title": "李龙馥",
+        "sender": "李龙馥",
+        "body": "昇玟，我们知道你一直在想旻浩哥。那时候谁都没看清他承受了多少，不要把全部责任揽在自己身上。",
+        "time": "2026-11-21 04:00",
+        "hidden": true
+      },
+      {
+        "id": "f-msg-85",
+        "title": "李龙馥",
+        "body": "昇玟，最近休假天气这么好，周末要不要一起出去露营？",
+        "sender": "李龙馥",
+        "time": "2030-10-09 10:00",
+        "hidden": true,
+        "outgoing": false,
+        "meta": {}
+      },
+      {
+        "id": "f-msg-86",
+        "title": "李龙馥",
+        "body": "好啊，一起去吧。",
+        "sender": "金昇玟",
+        "time": "2030-10-09 10:00",
+        "hidden": true,
+        "outgoing": true,
+        "meta": {
+          "reply": "f-send-f-msg-86"
+        }
+      },
+      {
+        "id": "f-alert-mom",
+        "title": "妈妈",
+        "body": "昇玟！看到新闻说你们露营的山区发泥石流了！你在哪？快回电话啊！！",
+        "sender": "妈妈",
+        "time": "2030-10-12 18:30",
+        "hidden": true
+      },
+      {
+        "id": "f-alert-chan",
+        "title": "方灿",
+        "body": "昇玟！能看到消息吗？！你在山里是不是安全？搜救队已经过去了，千万撑住！",
+        "sender": "方灿",
+        "time": "2030-10-12 18:30",
+        "hidden": true
+      },
+      {
+        "id": "f-alert-han",
+        "title": "韩知城",
+        "body": "昇玟呐别吓我，快回个消息啊！！电话怎么不在服务区！！",
+        "sender": "韩知城",
+        "time": "2030-10-12 18:30",
+        "hidden": true
+      },
+      {
+        "id": "f-rescue-mom",
+        "title": "妈妈",
+        "body": "太好了……接到医院电话说你被一位好心人救出来了，醒了就好好休息，妈妈马上赶过去！",
+        "sender": "妈妈",
+        "time": "2030-10-15 18:30",
+        "hidden": true
+      },
+      {
+        "id": "f-rescue-chan",
+        "title": "方灿",
+        "body": "谢天谢地你们被救出来了！医生说没有生命危险，你先安心养伤，别的事都别想！",
+        "sender": "方灿",
+        "time": "2030-10-15 18:30",
+        "hidden": true
+      }
+    ],
+    "calendar": [
+      {
+        "id": "f-clue-calendar",
+        "title": "取消的周末约会",
+        "body": "李旻浩 · 原本约好一起吃饭。备注：最近的压力和睡眠情况，下次就诊时记得告诉医生。",
+        "time": "2026-09-12 15:00",
+        "hidden": true
+      }
+    ],
+    "safari": [
+      {
+        "id": "f-clue-news",
+        "title": "关于李旻浩的公开报道（架空同人剧情）",
+        "body": "这是一篇故事内虚构报道：李旻浩于2026年自杀离世。亲友回忆他长期承受复杂的工作与心理压力，无法把这一结果归因于某个单一决定。报道不涉及方法与过程。",
+        "time": "2026-10-20 10:00",
+        "hidden": true,
+        "meta": {
+          "source": "故事内虚构新闻"
+        }
+      }
+    ],
+    "notes": [
+      {
+        "id": "f-locked-note",
+        "title": "给昇玟",
+        "body": "昇玟啊，当你解开这个密码的时候，应该已经给小时候那个穷得叮当响的我转完账了吧？\n\n其实在 JYP 练习生室第一次见到你，听见你自我介绍说“你好，我叫金昇玟”的那一秒，我就知道你是谁了。\n\n只是那时候的你，还是一张白纸，还不知道后来会发生时光机器的事。所以我假装什么都不知道，把秘密藏在心里，顺理成章地成为你的哥哥、你的队友，你的爱人。\n\n金昇玟，我来找你了，我一点都不后悔。和你在一起的每一天，我都非常非常幸福。\n\n所以，别再试图回到过去救我了，好好吃饭，好好生活下去。\n\n我始终相信，既然奇迹能在我们身上发生第一次，以后就肯定还会发生第二次。\n\n——你旻浩哥",
+        "sender": "李旻浩",
+        "time": "2026-09-22 20:10",
+        "password": "dynamic",
+        "meta": {
+          "hint": "我们故事真正开始的数字（4位）",
+          "dynamicPassword": "storyTransferAmount",
+          "createdAt": "2026-09-22 20:10"
+        }
+      }
+    ],
+    "news": [
+      {
+        "id": "f-alert-news",
+        "title": "突发快讯",
+        "body": "受突发特大暴雨影响，山区露营地发生严重泥石流灾害，现场有两人失联，搜救工作正在进行中……",
+        "sender": "突发快讯",
+        "time": "2030-10-12 18:30",
+        "hidden": true
+      },
+      {
+        "id": "f-rescue-news",
+        "title": "最新进展",
+        "body": "生命的奇迹！山区泥石流失联的两人已全部获救，目前体征平稳。",
+        "sender": "最新进展",
+        "time": "2030-10-15 18:30",
+        "hidden": true
+      }
+    ],
+    "weather": [
+      {
+        "id": "f-alert-weather",
+        "title": "天气警报",
+        "body": "暴雨及泥石流红色预警：山区突发强降雨，局部地区已出现山体滑坡与泥石流迹象，请立即中止户外活动并紧急避险！",
+        "sender": "天气警报",
+        "time": "2030-10-12 18:30",
+        "hidden": true
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": "f-start",
+      "label": "f-start",
+      "type": "action",
+      "event": "read",
+      "target": "s4-recontact-d",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 1
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-1"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage16",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "f-offer-f-msg-1",
+      "label": "f-offer-f-msg-1",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-1"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-1",
+      "label": "f-send-f-msg-1",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-1",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-2"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-2",
+      "label": "f-offer-f-msg-2",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-2"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-2",
+      "label": "f-send-f-msg-2",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-2",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-news-reference"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-news-reference",
+      "label": "f-deliver-f-news-reference",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-news-reference",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-news-reference",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-news-reference",
+      "label": "f-read-f-news-reference",
+      "type": "action",
+      "event": "read",
+      "target": "f-news-reference",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-3"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-3",
+      "label": "f-deliver-f-msg-3",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-3",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-3",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-3",
+      "label": "f-read-f-msg-3",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-3",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-4"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-4",
+      "label": "f-offer-f-msg-4",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-4"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-4",
+      "label": "f-send-f-msg-4",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-4",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-5"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-5",
+      "label": "f-deliver-f-msg-5",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-5",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-5",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-5",
+      "label": "f-read-f-msg-5",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-5",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-6"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-6",
+      "label": "f-deliver-f-msg-6",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-6",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-6",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-6",
+      "label": "f-read-f-msg-6",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-6",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-7"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-7",
+      "label": "f-deliver-f-msg-7",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-7",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-7",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-7",
+      "label": "f-read-f-msg-7",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-7",
+      "actions": [],
+      "next": [
+        "f-branch-offer"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-offer",
+      "label": "f-branch-offer",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-branch-a1",
+        "f-branch-b1"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-a1",
+      "label": "到底什么比活着还重要？",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-branch-A-one",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "finalBranch",
+          "value": "A"
+        }
+      ],
+      "next": [
+        "f-branch-A-offer-two"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-A-offer-two",
+      "label": "f-branch-A-offer-two",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-branch-A-send-two"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-A-send-two",
+      "label": "f-branch-A-send-two",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-branch-A-two",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-branch-A-reply"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-A-reply",
+      "label": "f-branch-A-reply",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-branch-A-answer",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-branch-A-answer",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-A-read",
+      "label": "f-branch-A-read",
+      "type": "action",
+      "event": "read",
+      "target": "f-branch-A-answer",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 2
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-b1",
+      "label": "算我求你了，哪怕为了身边爱你的人，换条路走吧。",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-branch-B-one",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "finalBranch",
+          "value": "B"
+        }
+      ],
+      "next": [
+        "f-branch-B-reply"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-B-reply",
+      "label": "f-branch-B-reply",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-branch-B-answer",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-branch-B-answer",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-branch-B-read",
+      "label": "f-branch-B-read",
+      "type": "action",
+      "event": "read",
+      "target": "f-branch-B-answer",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 2
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-week-1",
+      "label": "f-week-1",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "week-1",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 3
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-8"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-msg-8",
+      "label": "f-deliver-f-msg-8",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-8",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-8",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-8",
+      "label": "f-read-f-msg-8",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-8",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-9"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-9",
+      "label": "f-offer-f-msg-9",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-9"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-9",
+      "label": "f-send-f-msg-9",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-9",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-10"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-10",
+      "label": "f-deliver-f-msg-10",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-10",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-10",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-10",
+      "label": "f-read-f-msg-10",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-10",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-11"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-11",
+      "label": "f-deliver-f-msg-11",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-11",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-11",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-11",
+      "label": "f-read-f-msg-11",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-11",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-12"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-12",
+      "label": "f-offer-f-msg-12",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-12"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-12",
+      "label": "f-send-f-msg-12",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-12",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-13"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-13",
+      "label": "f-offer-f-msg-13",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-13"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-13",
+      "label": "f-send-f-msg-13",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-13",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-14"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-14",
+      "label": "f-offer-f-msg-14",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-14"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-14",
+      "label": "f-send-f-msg-14",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-14",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-15"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-15",
+      "label": "f-deliver-f-msg-15",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-15",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-15",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-15",
+      "label": "f-read-f-msg-15",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-15",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-16"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-16",
+      "label": "f-deliver-f-msg-16",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-16",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-16",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-16",
+      "label": "f-read-f-msg-16",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-16",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-17"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-17",
+      "label": "f-offer-f-msg-17",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-17"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-17",
+      "label": "f-send-f-msg-17",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-17",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-18"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-18",
+      "label": "f-deliver-f-msg-18",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-18",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-18",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-18",
+      "label": "f-read-f-msg-18",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-18",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 4
+        },
+        {
+          "type": "unlock",
+          "key": "f-clue-chat-1",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-clue-chat-1",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-clue-1",
+      "label": "f-clue-1",
+      "type": "action",
+      "event": "read",
+      "target": "f-clue-chat-1",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 5
+        }
+      ],
+      "next": [
+        "f-offer-week-2"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "f-offer-week-2",
+      "label": "f-offer-week-2",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 6
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-week-2",
+      "label": "f-week-2",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "week-2",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 7
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-19"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-msg-19",
+      "label": "f-deliver-f-msg-19",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-19",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-19",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-19",
+      "label": "f-read-f-msg-19",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-19",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-20"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-20",
+      "label": "f-offer-f-msg-20",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-20"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-20",
+      "label": "f-send-f-msg-20",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-20",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-21"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-21",
+      "label": "f-deliver-f-msg-21",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-21",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-21",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-21",
+      "label": "f-read-f-msg-21",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-21",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-22"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-22",
+      "label": "f-offer-f-msg-22",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-22"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-22",
+      "label": "f-send-f-msg-22",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-22",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-23"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-23",
+      "label": "f-deliver-f-msg-23",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-23",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-23",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-23",
+      "label": "f-read-f-msg-23",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-23",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-24"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-24",
+      "label": "f-deliver-f-msg-24",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-24",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-24",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-24",
+      "label": "f-read-f-msg-24",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-24",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-25"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-25",
+      "label": "f-deliver-f-msg-25",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-25",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-25",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-25",
+      "label": "f-read-f-msg-25",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-25",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-26"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-26",
+      "label": "f-deliver-f-msg-26",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-26",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-26",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-26",
+      "label": "f-read-f-msg-26",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-26",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-27"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-27",
+      "label": "f-offer-f-msg-27",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-27"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-27",
+      "label": "f-send-f-msg-27",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-27",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-28"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-28",
+      "label": "f-deliver-f-msg-28",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-28",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-28",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-28",
+      "label": "f-read-f-msg-28",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-28",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-29"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-29",
+      "label": "f-offer-f-msg-29",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-29"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-29",
+      "label": "f-send-f-msg-29",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-29",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 8
+        },
+        {
+          "type": "unlock",
+          "key": "f-clue-calendar",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-clue-2",
+      "label": "f-clue-2",
+      "type": "action",
+      "event": "read",
+      "target": "f-clue-calendar",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 9
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 9
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 8
+        }
+      ]
+    },
+    {
+      "id": "f-week-3",
+      "label": "f-week-3",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "week-3",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 10
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-30"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 9
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-msg-30",
+      "label": "f-deliver-f-msg-30",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-30",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-30",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-30",
+      "label": "f-read-f-msg-30",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-30",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-31"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-31",
+      "label": "f-offer-f-msg-31",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-31"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-31",
+      "label": "f-send-f-msg-31",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-31",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-32"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-32",
+      "label": "f-deliver-f-msg-32",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-32",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-32",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-32",
+      "label": "f-read-f-msg-32",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-32",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-33"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-33",
+      "label": "f-deliver-f-msg-33",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-33",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-33",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-33",
+      "label": "f-read-f-msg-33",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-33",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-34"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-34",
+      "label": "f-offer-f-msg-34",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-34"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-34",
+      "label": "f-send-f-msg-34",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-34",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-35"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-35",
+      "label": "f-deliver-f-msg-35",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-35",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-35",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-35",
+      "label": "f-read-f-msg-35",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-35",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-36"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-36",
+      "label": "f-deliver-f-msg-36",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-36",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-36",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-36",
+      "label": "f-read-f-msg-36",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-36",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-37"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-37",
+      "label": "f-offer-f-msg-37",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-37"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-37",
+      "label": "f-send-f-msg-37",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-37",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 11
+        },
+        {
+          "type": "unlock",
+          "key": "f-clue-chat-2",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-clue-chat-2",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-clue-3",
+      "label": "f-clue-3",
+      "type": "action",
+      "event": "read",
+      "target": "f-clue-chat-2",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 12
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 12
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 11
+        }
+      ]
+    },
+    {
+      "id": "f-week-4",
+      "label": "f-week-4",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "week-4",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 13
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-38"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-msg-38",
+      "label": "f-deliver-f-msg-38",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-38",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-38",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-38",
+      "label": "f-read-f-msg-38",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-38",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-39"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-39",
+      "label": "f-offer-f-msg-39",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-39"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-39",
+      "label": "f-send-f-msg-39",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-39",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-40"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-40",
+      "label": "f-deliver-f-msg-40",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-40",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-40",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-40",
+      "label": "f-read-f-msg-40",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-40",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-41"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-41",
+      "label": "f-offer-f-msg-41",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-41"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-41",
+      "label": "f-send-f-msg-41",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-41",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-42"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-42",
+      "label": "f-deliver-f-msg-42",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-42",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-42",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-42",
+      "label": "f-read-f-msg-42",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-42",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-43"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-43",
+      "label": "f-deliver-f-msg-43",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-43",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-43",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-43",
+      "label": "f-read-f-msg-43",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-43",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-44"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-44",
+      "label": "f-offer-f-msg-44",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-44"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-44",
+      "label": "f-send-f-msg-44",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-44",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-45"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-45",
+      "label": "f-deliver-f-msg-45",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-45",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-45",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-45",
+      "label": "f-read-f-msg-45",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-45",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 14
+        },
+        {
+          "type": "unlock",
+          "key": "f-clue-news",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-clue-4",
+      "label": "f-clue-4",
+      "type": "action",
+      "event": "read",
+      "target": "f-clue-news",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 15
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 15
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 14
+        }
+      ]
+    },
+    {
+      "id": "f-week-5",
+      "label": "f-week-5",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "week-5",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 16
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-46"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-msg-46",
+      "label": "f-deliver-f-msg-46",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-46",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-46",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-46",
+      "label": "f-read-f-msg-46",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-46",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-47"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-47",
+      "label": "f-offer-f-msg-47",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-47"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-47",
+      "label": "f-send-f-msg-47",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-47",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-48"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-48",
+      "label": "f-deliver-f-msg-48",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-48",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-48",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-48",
+      "label": "f-read-f-msg-48",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-48",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-49"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-49",
+      "label": "f-deliver-f-msg-49",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-49",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-49",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-49",
+      "label": "f-read-f-msg-49",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-49",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-50"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-50",
+      "label": "f-offer-f-msg-50",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-50"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-50",
+      "label": "f-send-f-msg-50",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-50",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-51"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-51",
+      "label": "f-offer-f-msg-51",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-51"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-51",
+      "label": "f-send-f-msg-51",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-51",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-52"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-52",
+      "label": "f-deliver-f-msg-52",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-52",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-52",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-52",
+      "label": "f-read-f-msg-52",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-52",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-53"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-53",
+      "label": "f-deliver-f-msg-53",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-53",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-53",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-53",
+      "label": "f-read-f-msg-53",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-53",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-54"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-54",
+      "label": "f-deliver-f-msg-54",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-54",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-54",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-54",
+      "label": "f-read-f-msg-54",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-54",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-55"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-55",
+      "label": "f-deliver-f-msg-55",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-55",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-55",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-55",
+      "label": "f-read-f-msg-55",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-55",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-56"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-56",
+      "label": "f-offer-f-msg-56",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-56"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-56",
+      "label": "f-send-f-msg-56",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-56",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-57"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-57",
+      "label": "f-offer-f-msg-57",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-57"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-57",
+      "label": "f-send-f-msg-57",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-57",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-58"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-58",
+      "label": "f-deliver-f-msg-58",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-58",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-58",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-58",
+      "label": "f-read-f-msg-58",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-58",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-59"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-59",
+      "label": "f-deliver-f-msg-59",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-59",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-59",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-59",
+      "label": "f-read-f-msg-59",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-59",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-60"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-60",
+      "label": "f-offer-f-msg-60",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-60"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-60",
+      "label": "f-send-f-msg-60",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-60",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-61"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-61",
+      "label": "f-deliver-f-msg-61",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-61",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-61",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-61",
+      "label": "f-read-f-msg-61",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-61",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-62"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-62",
+      "label": "f-offer-f-msg-62",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-62"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-62",
+      "label": "f-send-f-msg-62",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-62",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-63"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-63",
+      "label": "f-offer-f-msg-63",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-63"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-63",
+      "label": "f-send-f-msg-63",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-63",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-64"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-64",
+      "label": "f-deliver-f-msg-64",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-64",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-64",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-64",
+      "label": "f-read-f-msg-64",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-64",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-65"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-65",
+      "label": "f-deliver-f-msg-65",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-65",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-65",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-65",
+      "label": "f-read-f-msg-65",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-65",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 17
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-66"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-66",
+      "label": "f-deliver-f-msg-66",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-66",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-66",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-66",
+      "label": "f-read-f-msg-66",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-66",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-67"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-67",
+      "label": "f-deliver-f-msg-67",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-67",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-67",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-67",
+      "label": "f-read-f-msg-67",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-67",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-68"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-68",
+      "label": "f-offer-f-msg-68",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-68"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-68",
+      "label": "f-send-f-msg-68",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-68",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-69"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-69",
+      "label": "f-offer-f-msg-69",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-69"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-69",
+      "label": "f-send-f-msg-69",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-69",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 18
+        },
+        {
+          "type": "variable",
+          "key": "storyConnection",
+          "value": "interrupted"
+        },
+        {
+          "type": "notification",
+          "key": "",
+          "value": "时光机器已达上限，对话已永久关闭。"
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-reconnect",
+      "label": "f-reconnect",
+      "type": "action",
+      "event": "storyReconnect",
+      "target": "2010",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 19
+        },
+        {
+          "type": "variable",
+          "key": "storyConnection",
+          "value": "2010"
+        },
+        {
+          "type": "notification",
+          "key": "",
+          "value": "系统提示：iMessage 时空对话已修复。"
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-70"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 18
+        }
+      ]
+    },
+    {
+      "id": "f-offer-f-msg-70",
+      "label": "f-offer-f-msg-70",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-70"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-70",
+      "label": "f-send-f-msg-70",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-70",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-71"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-71",
+      "label": "f-deliver-f-msg-71",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-71",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-71",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-71",
+      "label": "f-read-f-msg-71",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-71",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-72"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-72",
+      "label": "f-deliver-f-msg-72",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-72",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-72",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-72",
+      "label": "f-read-f-msg-72",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-72",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-73"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-73",
+      "label": "f-offer-f-msg-73",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-73"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-73",
+      "label": "f-send-f-msg-73",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-73",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-74"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-74",
+      "label": "f-offer-f-msg-74",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-74"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-74",
+      "label": "f-send-f-msg-74",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-74",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-75"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-75",
+      "label": "f-deliver-f-msg-75",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-75",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-75",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-75",
+      "label": "f-read-f-msg-75",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-75",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-76"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-76",
+      "label": "f-offer-f-msg-76",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-76"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-76",
+      "label": "f-send-f-msg-76",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-76",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-77"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-77",
+      "label": "f-offer-f-msg-77",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-77"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-77",
+      "label": "f-send-f-msg-77",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-77",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-78"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-78",
+      "label": "f-deliver-f-msg-78",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-78",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-78",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-78",
+      "label": "f-read-f-msg-78",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-78",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 20
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-transfer",
+      "label": "f-transfer",
+      "type": "action",
+      "event": "storyTransfer",
+      "target": "2010",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 21
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-79"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-msg-79",
+      "label": "f-deliver-f-msg-79",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-79",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-79",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-79",
+      "label": "f-read-f-msg-79",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-79",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-80"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-80",
+      "label": "f-offer-f-msg-80",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-80"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-80",
+      "label": "f-send-f-msg-80",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-80",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-81"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-81",
+      "label": "f-offer-f-msg-81",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-81"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-81",
+      "label": "f-send-f-msg-81",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-81",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-offer-f-msg-82"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-82",
+      "label": "f-offer-f-msg-82",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-82"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-82",
+      "label": "f-send-f-msg-82",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-82",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-83"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-83",
+      "label": "f-deliver-f-msg-83",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-83",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-83",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-83",
+      "label": "f-read-f-msg-83",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-83",
+      "actions": [],
+      "next": [
+        "f-deliver-f-msg-84"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-deliver-f-msg-84",
+      "label": "f-deliver-f-msg-84",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-84",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-84",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-84",
+      "label": "f-read-f-msg-84",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-84",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 22
+        },
+        {
+          "type": "variable",
+          "key": "storyConnection",
+          "value": "interrupted"
+        },
+        {
+          "type": "notification",
+          "key": "",
+          "value": "因果闭环已完成，iMessage 对话再次永久关闭。"
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-note-unlock",
+      "label": "f-note-unlock",
+      "type": "action",
+      "event": "password",
+      "target": "f-locked-note",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 23
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 22
+        }
+      ]
+    },
+    {
+      "id": "f-note-read",
+      "label": "f-note-read",
+      "type": "action",
+      "event": "read",
+      "target": "f-locked-note",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 24
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 23
+        }
+      ]
+    },
+    {
+      "id": "f-years",
+      "label": "f-years",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "future-autumn",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 25
+        }
+      ],
+      "next": [
+        "f-deliver-f-msg-85"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 24
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-msg-85",
+      "label": "f-deliver-f-msg-85",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-85",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-msg-85",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-read-f-msg-85",
+      "label": "f-read-f-msg-85",
+      "type": "action",
+      "event": "read",
+      "target": "f-msg-85",
+      "actions": [],
+      "next": [
+        "f-offer-f-msg-86"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-offer-f-msg-86",
+      "label": "f-offer-f-msg-86",
+      "type": "choice",
+      "event": "",
+      "target": "",
+      "actions": [],
+      "next": [
+        "f-send-f-msg-86"
+      ],
+      "conditions": []
+    },
+    {
+      "id": "f-send-f-msg-86",
+      "label": "f-send-f-msg-86",
+      "type": "action",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-msg-86",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 26
+        }
+      ],
+      "next": [],
+      "conditions": []
+    },
+    {
+      "id": "f-camp",
+      "label": "f-camp",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "camp-day",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 27
+        }
+      ],
+      "next": [
+        "f-deliver-f-alert-weather"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 26
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-alert-weather",
+      "label": "f-deliver-f-alert-weather",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-alert-weather",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-alert-weather",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-alert-mom"
+      ],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-deliver-f-alert-mom",
+      "label": "f-deliver-f-alert-mom",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-alert-mom",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-alert-mom",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-alert-chan"
+      ],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-deliver-f-alert-chan",
+      "label": "f-deliver-f-alert-chan",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-alert-chan",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-alert-chan",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-alert-han"
+      ],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-deliver-f-alert-han",
+      "label": "f-deliver-f-alert-han",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-alert-han",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-alert-han",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-alert-news"
+      ],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-deliver-f-alert-news",
+      "label": "f-deliver-f-alert-news",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-alert-news",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-alert-news",
+          "value": ""
+        },
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 28
+        }
+      ],
+      "next": [],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-rescue-time",
+      "label": "f-rescue-time",
+      "type": "action",
+      "event": "storyTimeAdvance",
+      "target": "rescue-72h",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 29
+        }
+      ],
+      "next": [
+        "f-deliver-f-rescue-mom"
+      ],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 28
+        },
+        {
+          "key": "read:f-alert-weather",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-alert-mom",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-alert-chan",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-alert-han",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-alert-news",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "f-deliver-f-rescue-mom",
+      "label": "f-deliver-f-rescue-mom",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-rescue-mom",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-rescue-mom",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-rescue-chan"
+      ],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-deliver-f-rescue-chan",
+      "label": "f-deliver-f-rescue-chan",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-rescue-chan",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-rescue-chan",
+          "value": ""
+        }
+      ],
+      "next": [
+        "f-deliver-f-rescue-news"
+      ],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-deliver-f-rescue-news",
+      "label": "f-deliver-f-rescue-news",
+      "type": "delay",
+      "event": "",
+      "target": "",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "f-rescue-news",
+          "value": ""
+        },
+        {
+          "type": "notification",
+          "key": "f-rescue-news",
+          "value": ""
+        }
+      ],
+      "next": [],
+      "conditions": [],
+      "delayMs": 650
+    },
+    {
+      "id": "f-rescue-read-f-rescue-mom",
+      "label": "f-rescue-read-f-rescue-mom",
+      "type": "action",
+      "event": "read",
+      "target": "f-rescue-mom",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 30
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 29
+        },
+        {
+          "key": "read:f-rescue-mom",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-chan",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-news",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "f-rescue-read-f-rescue-chan",
+      "label": "f-rescue-read-f-rescue-chan",
+      "type": "action",
+      "event": "read",
+      "target": "f-rescue-chan",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 30
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 29
+        },
+        {
+          "key": "read:f-rescue-mom",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-chan",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-news",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "f-rescue-read-f-rescue-news",
+      "label": "f-rescue-read-f-rescue-news",
+      "type": "action",
+      "event": "read",
+      "target": "f-rescue-news",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 30
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 29
+        },
+        {
+          "key": "read:f-rescue-mom",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-chan",
+          "op": "eq",
+          "value": true
+        },
+        {
+          "key": "read:f-rescue-news",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "f-final-photo",
+      "label": "f-final-photo",
+      "type": "action",
+      "event": "storyShutter",
+      "target": "final",
+      "actions": [
+        {
+          "type": "variable",
+          "key": "finalPhase",
+          "value": 31
+        },
+        {
+          "type": "variable",
+          "key": "storyFinalComplete",
+          "value": true
+        }
+      ],
+      "next": [],
+      "conditions": [
+        {
+          "key": "finalPhase",
+          "op": "eq",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "id": "f-resume",
+      "label": "f-resume",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "6",
+      "actions": [],
+      "next": [
+        "f-start"
+      ],
+      "conditions": [
+        {
+          "key": "sceneFourStage16",
+          "op": "eq",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "tests": []
+}

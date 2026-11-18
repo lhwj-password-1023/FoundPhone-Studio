@@ -96,6 +96,13 @@ try {
   } catch (error) {
     if (error.code !== "ENOENT") throw error;
   }
+  try {
+    const overlay = JSON.parse(await readFile(file.replace(/\.(?:json|md)$/i, "") + ".finale.json", "utf8"));
+    const { applyStoryOverlay } = await server.ssrLoadModule("/src/story-engine/overlay.ts");
+    raw = applyStoryOverlay(raw, overlay);
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
   const { compileStory, storySchema } = await server.ssrLoadModule(
     "/src/story-engine/compiler.ts",
   );
@@ -113,6 +120,7 @@ try {
   const { story, work } = compileStory(raw, extras);
   try {
     const input = JSON.parse(await readFile(file.replace(/\.(?:json|md)$/i, "") + ".guidance.json", "utf8"));
+    try { input.push(...JSON.parse(await readFile(file.replace(/\.(?:json|md)$/i, "") + ".finale.guidance.json", "utf8"))); } catch (error) { if (error.code !== "ENOENT") throw error; }
     const { validateGuidance } = await server.ssrLoadModule("/src/story-engine/guidance.ts");
     work.guidance = validateGuidance(work, input);
   } catch (error) {
