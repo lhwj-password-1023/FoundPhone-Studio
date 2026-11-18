@@ -1,5 +1,6 @@
 import type { Item, Runtime, Work } from "./schema";
 import { visible } from "./engine";
+import { storyMessageTime } from "./storyMessageTime";
 
 const chatApps = new Set(["messages", "kakao"]);
 export const conversationKey = (app: string, item: Item) =>
@@ -34,7 +35,9 @@ export function reconcileMessageOrder(work: Work, state: Runtime): Runtime {
   const migrating = state.messageOrderVersion !== 2;
   const order = migrating ? migrateOrder(work, state) : structuredClone(state.messageOrder || {});
   const received = { ...(state.messageReceivedAt || {}) };
-  let changed = migrating || !state.messageOrder || !state.messageReceivedAt;
+  const sent = { ...(state.messageSentAt || {}) };
+  const repairTimestamps = state.messageTimestampVersion !== 2;
+  let changed = migrating || repairTimestamps || !state.messageOrder || !state.messageReceivedAt;
   for (const app of chatApps) {
     const authored = work.data[app] || [];
     const runtime = state.messages[app] || [];
@@ -56,7 +59,37 @@ export function reconcileMessageOrder(work: Work, state: Runtime): Runtime {
       changed = true;
     }
   }
-  return changed ? { ...state, messageOrder: order, messageOrderVersion: 2, messageReceivedAt: received } : state;
+  if (repairTimestamps) {
+    for (const [key, ids] of Object.entries(order)) {
+      const app = key.split(":", 1)[0];
+      const records = [...(work.data[app] || []), ...(state.messages[app] || [])];
+      let previous = "";
+      for (const id of ids) {
+        const item = records.find((record) => record.id === id);
+        if (!item) continue;
+        if (/^(s4-|f-)/.test(id)) {
+          const stamp = storyMessageTime(item, previous, received[id] || item.time);
+          received[id] = stamp.receivedAt;
+          sent[id] = stamp.sentAt;
+        }
+        previous = received[id] || item.meta.arrivedAt || item.time;
+      }
+    }
+  }
+  const latest = repairTimestamps
+    ? Object.entries(received).filter(([id]) => /^(s4-|f-)/.test(id)).map(([, stamp]) => stamp).sort().at(-1)
+    : undefined;
+  const current = `${state.date || work.phone.date} ${state.time}`;
+  return changed ? {
+    ...state,
+    date: latest && latest.slice(0, 16) > current ? latest.slice(0, 10) : state.date,
+    time: latest && latest.slice(0, 16) > current ? latest.slice(11, 16) : state.time,
+    messageOrder: order,
+    messageOrderVersion: 2,
+    messageReceivedAt: received,
+    messageSentAt: sent,
+    messageTimestampVersion: 2,
+  } : state;
 }
 
 export function orderMessages(app: string, items: Item[], state?: Runtime): Item[] {

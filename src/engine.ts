@@ -1,5 +1,6 @@
 import type { Action, Condition, Item, Runtime, StoryNode, Work } from "./schema";
 import { makeItem } from "./schema";
+import { storyMessageTime } from "./storyMessageTime";
 
 function storyChatRecord(work: Work, id: string): { app: string; item: Item } | undefined {
   for (const app of ["messages", "kakao"]) {
@@ -24,24 +25,20 @@ function frozenMessageTime(work: Work, state: Runtime, app: string, item: Item) 
   const received = { ...state.messageReceivedAt };
   const sent = { ...state.messageSentAt };
   if (received[item.id]) return;
-  const base = Date.parse(`${state.date || work.phone.date}T${state.time}:00Z`);
   const records = [...(work.data[app] || []), ...(state.messages[app] || [])];
-  const earlier = records.filter((record) => record.title === item.title)
+  const previous = records.filter((record) => record.title === item.title)
     .map((record) => received[record.id])
     .filter((stamp): stamp is string => !!stamp)
-    .map((stamp) => Date.parse(stamp.replace(" ", "T") + "Z"))
-    .filter(Number.isFinite);
-  const previous = Math.max(0, ...earlier);
-  const gap = 12 + Math.min(25, Math.floor(item.body.length / 2));
-  const stamp = new Date(Math.max(base, previous + gap * 1000)).toISOString().replace("T", " ").slice(0, 19);
-  received[item.id] = stamp;
-  if (item.outgoing || app === "kakao" || !state.peerDate) sent[item.id] = stamp;
-  else sent[item.id] = `${state.peerDate} ${state.peerTime || state.time}:${stamp.slice(-2)}`;
+    .sort()
+    .at(-1);
+  const stamp = storyMessageTime(item, previous, `${state.date || work.phone.date} ${state.time}`);
+  received[item.id] = stamp.receivedAt;
+  sent[item.id] = stamp.sentAt;
   state.messageReceivedAt = received;
   state.messageSentAt = sent;
-  if (stamp.slice(0, 16) > `${state.date || work.phone.date} ${state.time}`) {
-    state.date = stamp.slice(0, 10);
-    state.time = stamp.slice(11, 16);
+  if (stamp.receivedAt.slice(0, 16) > `${state.date || work.phone.date} ${state.time}`) {
+    state.date = stamp.receivedAt.slice(0, 10);
+    state.time = stamp.receivedAt.slice(11, 16);
   }
 }
 export function testCondition(c: Condition, s: Runtime): boolean {
