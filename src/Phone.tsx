@@ -226,7 +226,16 @@ function PhoneRuntime({
         if (!active) return;
         if (saved && saved.state.revision === work.updatedAt)
           setOwn(saved.state);
-        else {
+        else if (saved && work.nodes.some(node =>
+          node.event === "resumeRevision" && node.target === String(saved.state.revision)
+        )) {
+          const restored = {
+            ...saved.state,
+            revision: work.updatedAt,
+            variables: { ...work.variables, ...saved.state.variables },
+          };
+          setOwn(dispatch(work, restored, "resumeRevision", String(saved.state.revision)));
+        } else {
           setOwn(dispatch(work, initialRuntime(work), "start"));
           if (saved) setLoadError("作品已更新，已开始新的进度。");
         }

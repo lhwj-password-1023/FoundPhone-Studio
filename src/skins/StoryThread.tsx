@@ -254,17 +254,7 @@ export function StoryThread({
             </div>
           );
         })}
-        {typingPeer && (
-          <article className="peer typing-row">
-            <div
-              className="archive-bubble peer-typing-bubble"
-              role="status"
-              aria-live="polite"
-            >
-              正在输入…
-            </div>
-          </article>
-        )}
+        {typingPeer && <article className="peer typing-row"><div className="archive-bubble peer-typing-bubble" role="status" aria-live="polite">正在输入…</div></article>}
       </div>
       {inspect?.meta.transcript ? (
         <Transcript
@@ -285,6 +275,9 @@ export function StoryThread({
             >
               <X />
             </button>
+            {inspect.kind === "image" && inspect.media && (
+              <div className="attachment-preview"><Media item={inspect} /></div>
+            )}
             <strong>{inspect.sender}</strong>
             <p>
               发送 {inspect.meta.sentAt}

@@ -341,9 +341,6 @@
   background: currentColor;
 }
 
-.archive-chat .peer-typing-bubble {
-  font-size: 14px;
-  color: var(--chat-muted, #666973);
-  min-width: 82px;
-  user-select: none;
-}
+.archive-sheet .attachment-preview img { display: block; width: 100%; max-height: 40vh; object-fit: contain; }
+
+.archive-chat .peer-typing-bubble{font-size:14px;color:var(--chat-muted,#666973);min-width:82px;user-select:none}
