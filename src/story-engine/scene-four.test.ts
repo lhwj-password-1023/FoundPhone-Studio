@@ -8,7 +8,7 @@ import { compileStory } from "./compiler";
 import { initialRuntime } from "../schema";
 import { advance, choose, dispatch, visible } from "../engine";
 import { addSceneFourMemory, advanceSceneFour, shareSceneFourNews } from "./scene-four-runtime";
-import { messageFields } from "../messageOrder";
+import { messageFields, reconcileMessageOrder } from "../messageOrder";
 
 const { work, story } = compileStory(applyStoryOverlay(applyStoryOverlay(manuscript, three), four), extras);
 function afterThird() {
@@ -73,6 +73,21 @@ test("第四场按操作跨 App 推进，保留双时间线和新闻选择", () 
   expect(fields.receivedAt).toBe(received[0]);
   expect(fields.sentAt).toMatch(/^2018-02-21 /);
   expect(messageFields("messages", work.data.messages.find((item) => item.id === "s4-recontact-a")!, { ...restored, date: "2026-12-01", time: "23:55" }).receivedAt).toBe(received[0]);
+  expect(state.messageReceivedAt!["s4-invite"] >= "2026-11-20 22:36:00").toBe(true);
+  expect(state.messageReceivedAt!["s4-why-again"] >= "2026-11-21 00:42:00").toBe(true);
+  expect(state.messageSentAt?.["s4-question"]).toMatch(/^2017-11-20 /);
+
+  const oldSave = {
+    ...restored,
+    messageTimestampVersion: undefined,
+    messageReceivedAt: { ...restored.messageReceivedAt, "s4-invite": "2026-11-20 22:35:16", "s4-why-again": "2026-11-21 00:39:00" },
+    messageSentAt: { ...restored.messageSentAt, "s4-question": "2026-11-20 22:28:26" },
+  };
+  const repaired = reconcileMessageOrder(work, oldSave);
+  expect(repaired.messageReceivedAt!["s4-invite"] >= "2026-11-20 22:36:00").toBe(true);
+  expect(repaired.messageReceivedAt!["s4-why-again"] >= "2026-11-21 00:42:00").toBe(true);
+  expect(repaired.messageSentAt?.["s4-question"]).toMatch(/^2017-11-20 /);
+  expect(reconcileMessageOrder(work, { ...repaired, date: "2026-12-01", time: "23:55" }).messageReceivedAt).toEqual(repaired.messageReceivedAt);
 });
 
 test("第五版存档进入第四场时保留第三场记录", () => {
