@@ -15,8 +15,8 @@ function StoryPlayer() {
         ? "./test-work.json"
         : new URLSearchParams(location.search).get("template") === "blank"
           ? "./blank-work.json"
-          : "./work.json",
-      { signal: abort.signal },
+          : "./work.json?release=9",
+      { signal: abort.signal, cache: "no-store" },
     )
       .then((r) => {
         if (!r.ok) throw Error("缺少作品文件，请运行 npm run story:build");
