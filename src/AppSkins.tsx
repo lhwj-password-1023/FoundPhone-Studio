@@ -35,6 +35,7 @@ import { safeMedia, type Item, type UiValue, type Runtime } from "./schema";
 export type SkinProps = {
   ui?: Record<string, UiValue>;
   storyState?: Runtime;
+  storyTextPresets?: string[];
   onUi?: (key: string, value: UiValue) => void;
   appId?: string;
   owner?: string;

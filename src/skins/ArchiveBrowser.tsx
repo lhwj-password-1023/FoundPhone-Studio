@@ -1,4 +1,4 @@
-import { useProgressiveText } from "./ProgressiveText";
+import { useSimulatedTyping } from "./useSimulatedTyping";
 import { useState } from "react";
 import {
   BookOpen,
@@ -61,16 +61,16 @@ export function ArchiveBrowser(p: Props) {
     });
     setPanel("");
     setQuery("");
-    setPreset("");
+    typing.reset();
     setFind("");
     if (id) {
       setVisited([id, ...visited.filter((v) => v !== id)]);
       p.onRead(id);
     }
   };
-  const [preset, setPreset] = useState("");
-  const typing = useProgressiveText(preset);
-  const input = preset ? typing.shown : query;
+  const typing = useSimulatedTyping();
+  const input = typing.active ? typing.shown : query;
+  const searchPresets = p.storyTextPresets?.length ? p.storyTextPresets : p.items.map((item) => item.meta.keyword || item.title);
   const search = input.trim().toLowerCase();
   const results = p.items.filter((i) =>
     (i.title + i.body + i.meta.url + (i.meta.keyword || "")).toLowerCase().includes(search),
@@ -100,7 +100,7 @@ export function ArchiveBrowser(p: Props) {
         className="safari-address"
         onSubmit={(e) => {
           e.preventDefault();
-          if (preset && !typing.done) return;
+          if (!p.creator && !typing.done) return;
           p.onEvent?.("search", input.trim());
           if (/2017年之后|2018年|未来几年|重大新闻|世界大事|2018.*新闻/.test(input.trim()) && p.storyState?.variables.sceneFourStage11 === true)
             p.onEvent?.("storyNewsSearch", "future");
@@ -113,22 +113,21 @@ export function ArchiveBrowser(p: Props) {
           aria-label="地址栏"
           placeholder={page?.meta.url || "搜索或输入网址"}
           value={input}
-          onFocus={() => setPanel("搜索")}
-          onChange={(e) => {
-            setPreset("");
-            setQuery(e.target.value);
-            setPanel("搜索");
-          }}
+          readOnly={!p.creator}
+          inputMode={p.creator ? undefined : "none"}
+          onFocus={() => { setPanel("搜索"); if (!typing.active && searchPresets.length) typing.start(searchPresets[0]); }}
+          onClick={() => { if (typing.active && !typing.done) typing.reveal(); }}
+          onChange={p.creator ? (e) => { setQuery(e.target.value); setPanel("搜索"); } : undefined}
         />
       </form>
       {panel === "搜索" &&
         !input &&
         p.items
-          .filter((i) => i.meta.keyword || i.folder === "历史记录")
+          .filter((i) => i.meta.keyword || i.folder === "历史记录" || i.title)
           .map((i) => (
             <button
               key={i.id}
-              onClick={() => setPreset(i.meta.keyword || i.title)}
+              onClick={() => typing.start(i.meta.keyword || i.title)}
             >
               {i.meta.keyword || i.title}
             </button>

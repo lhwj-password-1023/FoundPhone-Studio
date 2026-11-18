@@ -57,6 +57,7 @@ export const guidanceTaskSchema = z.object({
   completion: guidancePredicateSchema,
   priority: z.number().int(), unlocks: z.array(z.string()).default([]),
   hint: z.string(), blocks: z.array(z.string()).default([]),
+  inputText: z.string().optional(),
 });
 export type GuidanceTask = z.infer<typeof guidanceTaskSchema>;
 export const actionSchema = z.object({

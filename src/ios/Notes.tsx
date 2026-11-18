@@ -1,5 +1,5 @@
-import { useProgressiveText } from "../skins/ProgressiveText";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSimulatedTyping } from "../skins/useSimulatedTyping";
 import {
   Check,
   ChevronDown,
@@ -246,7 +246,14 @@ export function NoteDetail({
   const [attachment, setAttachment] = useState(false);
   const composing = !!writeNote && !!ui?.["composing:" + item.id];
   const body = composing ? item.meta.composeText : item.body;
-  const typing = useProgressiveText(composing ? body : "");
+  const titleTyping = useSimulatedTyping();
+  const typing = useSimulatedTyping();
+  useEffect(() => {
+    if (composing && !titleTyping.active) titleTyping.start(item.title);
+  }, [composing, item.title, titleTyping]);
+  useEffect(() => {
+    if (composing && titleTyping.done && !typing.active) typing.start(body);
+  }, [composing, titleTyping.done, typing, body]);
   const pinned = !!ui?.["pin:" + item.id];
   const trashed = !!ui?.["trash:" + item.id];
   const checklist = item.meta.checklist === "true";
@@ -271,7 +278,7 @@ export function NoteDetail({
         </button>
         <div className="notes-glass notes-pill">
           {composing && (
-            <button disabled={!typing.done} onClick={writeNote}>
+            <button disabled={!titleTyping.done || !typing.done} onClick={writeNote}>
               完成
             </button>
           )}
@@ -325,10 +332,10 @@ export function NoteDetail({
         </div>
       )}
       <main className="native-note-paper notes-paper">
-        <h1>{item.title}</h1>
+        <h1 onClick={() => composing && titleTyping.reveal()}>{composing ? titleTyping.shown : item.title}</h1>
         {writeNote ? (
           composing ? (
-            <p className={typing.done ? "" : "compose-in-progress"}>
+            <p className={typing.done ? "" : "compose-in-progress simulated-caret"} onClick={() => typing.reveal()} style={{ whiteSpace: "pre-wrap" }}>
               {typing.shown}
             </p>
           ) : (

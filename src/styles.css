@@ -4918,3 +4918,17 @@ label {
   background: #e34f58;
   transform: rotate(135deg);
 }
+.simulated-caret:not(:empty)::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: -0.15em;
+  background: currentColor;
+  animation: simulated-caret-blink 0.9s steps(1) infinite;
+}
+
+@keyframes simulated-caret-blink {
+  50% { opacity: 0; }
+}

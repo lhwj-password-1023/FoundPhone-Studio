@@ -13,7 +13,7 @@ import {
   type ActorAction,
 } from "./actor";
 import type { Work, Runtime, Item } from "./schema";
-import { useProgressiveText } from "./skins/ProgressiveText";
+import { useSimulatedTyping } from "./skins/useSimulatedTyping";
 import "./actor.css";
 type Request = { target?: string; preset?: string };
 type Actor = {
@@ -107,14 +107,9 @@ export function ActionComposer({
   label: string;
 }) {
   const actor = useActor(),
-    [draft, setDraft] = useState(""),
-    [selected, select] = useState<Item | null>(null),
-    [typing, type] = useState(false);
-  const text = useProgressiveText(typing ? selected?.body || "" : "");
+    [selected, select] = useState<Item | null>(() => actor.presets(action, target).find((item) => item.id === actor.draft(action + ":" + target + ":preset")) || null);
   const draftKey = action + ":" + target;
-  const value = typing
-    ? text.shown
-    : selected?.body || actor.draft(draftKey) || draft;
+  const typing = useSimulatedTyping(selected?.body || "");
   const presets = actor.presets(action, target);
   return (
     <form
@@ -125,44 +120,40 @@ export function ActionComposer({
           actor.check(action, { target });
           return;
         }
-        if (!typing) {
-          if (actor.check(action, { target, preset: selected.id })) type(true);
-          return;
-        }
-        if (
-          text.done &&
-          actor.execute(action, { target, preset: selected.id })
-        ) {
+        if (!typing.active) { typing.start(selected.body); return; }
+        if (typing.done && actor.execute(action, { target, preset: selected.id })) {
           select(null);
-          type(false);
-          setDraft("");
+          typing.reset();
           actor.saveDraft(draftKey, "");
+          actor.saveDraft(draftKey + ":preset", "");
         }
       }}
     >
       <textarea
         aria-label={label + "草稿"}
         placeholder={label}
-        value={value}
-        readOnly={typing}
-        onChange={(e) => {
-          select(null);
-          setDraft(e.target.value);
-          actor.saveDraft(draftKey, e.target.value);
+        value={typing.shown}
+        readOnly
+        inputMode="none"
+        onClick={() => {
+          if (typing.active && !typing.done) typing.reveal();
+          else if (!typing.active && presets.length === 1) {
+            select(presets[0]); typing.start(presets[0].body); actor.saveDraft(draftKey + ":preset", presets[0].id);
+          }
         }}
       />
       {presets.map((i) => (
         <button
           type="button"
-          disabled={typing}
+          disabled={typing.active && !typing.done}
           key={i.id}
-          onClick={() => select(i)}
+          onClick={() => { select(i); typing.start(i.body); actor.saveDraft(draftKey + ":preset", i.id); }}
         >
           {i.body}
         </button>
       ))}
-      <button disabled={typing && !text.done}>
-        {typing ? "确认" + label : label}
+      <button disabled={typing.active && !typing.done}>
+        {label}
       </button>
     </form>
   );

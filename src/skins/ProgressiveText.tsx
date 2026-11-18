@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useSimulatedTyping } from "./useSimulatedTyping";
 
 export function useProgressiveText(text: string) {
   const letters = useMemo(
@@ -30,10 +31,9 @@ import type { Props } from "./shared";
 export function DraftInput({ p, label }: { p: Props; label: string }) {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useSkinState<string>(p, "personalDraft", "");
-  const [preset, setPreset] = useState("");
-  const typing = useProgressiveText(preset);
-  const busy = !!preset && !typing.done;
-  const value = preset ? typing.shown : draft;
+  const [presetId, setPresetId] = useSkinState<string>(p, "personalDraftPreset", "");
+  const typing = useSimulatedTyping(p.items.find((item) => item.id === presetId)?.meta.composeText || "");
+  const presets = p.items.filter((item) => item.meta.composeText);
   return (
     <div className="personal-compose">
       <button onClick={() => setOpen(!open)}>{open ? "收起" : label}</button>
@@ -42,29 +42,30 @@ export function DraftInput({ p, label }: { p: Props; label: string }) {
           <textarea
             aria-label={label}
             placeholder={label}
-            value={value}
-            readOnly={busy}
-            onChange={(e) => {
-              setPreset("");
-              setDraft(e.target.value);
+            value={typing.active ? typing.shown : draft}
+            readOnly={!p.creator}
+            inputMode={p.creator ? undefined : "none"}
+            onClick={() => {
+              if (typing.active && !typing.done) typing.reveal();
+              else if (!typing.active && presets.length === 1) { setPresetId(presets[0].id); typing.start(presets[0].meta.composeText); }
             }}
+            onChange={p.creator ? (e) => setDraft(e.target.value) : undefined}
           />
-          {p.items
-            .filter((i) => i.meta.composeText)
-            .map((i) => (
+          {presets.map((i) => (
               <button
                 key={i.id}
-                disabled={busy}
-                onClick={() => setPreset(i.meta.composeText)}
+                type="button"
+                onClick={() => { setPresetId(i.id); typing.start(i.meta.composeText); }}
               >
                 {i.title}
               </button>
             ))}
           <button
-            disabled={busy || !value.trim()}
+            disabled={!p.creator && !typing.done}
             onClick={() => {
-              setDraft(value);
-              setPreset("");
+              setDraft(typing.active ? typing.value : draft);
+              setPresetId("");
+              typing.reset();
               setOpen(false);
             }}
           >

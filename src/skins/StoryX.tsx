@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ArrowLeft,
   Home,
@@ -16,12 +16,13 @@ import { useSkinState } from "../skinState";
 import { useActor, ActionComposer } from "../ActorContext";
 import { Avatar, Media, Empty, type Props } from "./shared";
 import type { Item } from "../schema";
+import { useSimulatedTyping } from "./useSimulatedTyping";
 import "./story-x.css";
 
 export function StoryX(p: Props) {
   const actor = useActor();
   const [activeIdentity,setIdentity] = useSkinState<string>(p,"xIdentity","public");
-  const [draftIndex,setDraftIndex] = useState(0);
+  const storyTyping = useSimulatedTyping();
   const [attached,setAttached] = useState(false);
   const [photoPicker,setPhotoPicker] = useState(false);
   const [storyNotice,setStoryNotice] = useState("");
@@ -31,6 +32,7 @@ export function StoryX(p: Props) {
   const [tab, setTab] = useSkinState<string>(p, "xTab", "首页");
   const [feed, setFeed] = useSkinState<string>(p, "xFeed", "为你推荐");
   const [query, setQuery] = useSkinState<string>(p, "xQuery", "");
+  const searchTyping = useSimulatedTyping();
   const [detail, setDetail] = useSkinState<string>(p, "xDetail", "");
   const [profile, setProfile] = useSkinState<string>(p, "xProfile", "");
   const [profileTab, setProfileTab] = useSkinState<string>(
@@ -41,7 +43,6 @@ export function StoryX(p: Props) {
   const [people, setPeople] = useState("");
   const [mediaOpen, showMedia] = useState(false);
   const [compose, setCompose] = useState(false);
-  useEffect(()=>{if(!compose || activeIdentity!=="private" || draftIndex>=storyText.length)return;const timer=setTimeout(()=>setDraftIndex(draftIndex+1),115);return()=>clearTimeout(timer)},[compose,activeIdentity,draftIndex]);
   const [thread, setThread] = useSkinState<string>(p, "xDm", "");
   const [expanded, expand] = useState(false);
   const [replyingTo, setReplyingTo] = useState("");
@@ -307,7 +308,7 @@ export function StoryX(p: Props) {
       <main className="sx-scroll">
         {storyNotice && <p role="status" className="sx-muted">{storyNotice}</p>}
         {compose ? (
-          activeIdentity === "private" && !current ? <div className="sx-story-compose"><h2>@puppy_0922x</h2><p className="compose-in-progress">{storyText.slice(0,draftIndex)}</p><button onClick={()=>setDraftIndex(storyText.length)}>完成输入</button><button onClick={()=>setPhotoPicker(true)}>从照片选择图片</button>{attached && screenshot?.media && <img src={screenshot.media} alt="查找定位截屏"/>}<button disabled={draftIndex<storyText.length || !attached} onClick={()=>{p.onEvent?.("storyPost","puppy_0922x");setCompose(false);setProfile("x-user-puppy")}}>发布</button>{photoPicker && <div className="sx-photo-picker" role="dialog" aria-label="选择照片"><h3>最近项目 · 截屏</h3>{screenshot?.media && <button onClick={()=>{setAttached(true);setPhotoPicker(false)}}><img src={screenshot.media} alt="李旻浩的 iPhone 定位截屏"/>选择此截屏</button>}<button onClick={()=>setPhotoPicker(false)}>取消</button></div>}</div> : <>
+          activeIdentity === "private" && !current ? <div className="sx-story-compose"><h2>@puppy_0922x</h2><button className="compose-in-progress simulated-caret" onClick={() => storyTyping.reveal()}>{storyTyping.shown || "点击输入动态"}</button><button onClick={()=>setPhotoPicker(true)}>从照片选择图片</button>{attached && screenshot?.media && <img src={screenshot.media} alt="查找定位截屏"/>}<button disabled={!storyTyping.done || !attached} onClick={()=>{p.onEvent?.("storyPost","puppy_0922x");setCompose(false);storyTyping.reset();setProfile("x-user-puppy")}}>发布</button>{photoPicker && <div className="sx-photo-picker" role="dialog" aria-label="选择照片"><h3>最近项目 · 截屏</h3>{screenshot?.media && <button onClick={()=>{setAttached(true);setPhotoPicker(false)}}><img src={screenshot.media} alt="李旻浩的 iPhone 定位截屏"/>选择此截屏</button>}<button onClick={()=>setPhotoPicker(false)}>取消</button></div>}</div> : <>
             <h2>{current ? "转发动态" : "有什么新鲜事？"}</h2>
             <ActionComposer
               action={current ? "repost" : "post"}
@@ -418,17 +419,23 @@ export function StoryX(p: Props) {
               className="sx-search"
               onSubmit={(e) => {
                 e.preventDefault();
-                p.onEvent?.("search", query.trim());
+                if (!searchTyping.done) return;
+                setQuery(searchTyping.value);
+                p.onEvent?.("search", searchTyping.value.trim());
               }}
             >
               <Search size={18} />
               <input
                 aria-label="搜索用户或话题"
                 placeholder="搜索用户、关键词或话题"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                value={searchTyping.active ? searchTyping.shown : query}
+                readOnly={!p.creator}
+                inputMode={p.creator ? undefined : "none"}
+                onFocus={() => { if (!searchTyping.active) searchTyping.start(p.storyTextPresets?.[0] || profiles[0]?.title || posts[0]?.title || ""); }}
+                onClick={() => searchTyping.active && !searchTyping.done && searchTyping.reveal()}
+                onChange={p.creator ? (e) => setQuery(e.target.value) : undefined}
               />
-              <button>搜索</button>
+              <button disabled={!p.creator && !searchTyping.done}>搜索</button>
             </form>
             {search ? (
               <>
@@ -561,7 +568,7 @@ export function StoryX(p: Props) {
           aria-label="发布新动态"
           onClick={() => {
             if(activeIdentity === "private" && !storyReady){setStoryNotice("昇玟现在不想发布其他动态。");return;}
-            setStoryNotice("");setDraftIndex(0);setAttached(false);
+            setStoryNotice("");storyTyping.start(storyText);setAttached(false);
             setCompose(true);
             setProfile("");
           }}

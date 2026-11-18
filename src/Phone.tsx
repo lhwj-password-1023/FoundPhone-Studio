@@ -28,7 +28,7 @@ import { Transcript } from "./skins/Transcript";
 import { StoryThread } from "./skins/StoryThread";
 import { advanceSceneFour, shareSceneFourNews, addSceneFourMemory } from "./story-engine/scene-four-runtime";
 import { routeForNotice } from "./story-engine/timeline";
-import { guidanceAnswer } from "./story-engine/guidance";
+import { guidanceAnswer, pendingGuidance } from "./story-engine/guidance";
 import { StatusGlyph } from "./ios/StatusGlyph";
 import { SocialDetail, socialDetailApps } from "./skins/SocialDetails";
 import { NativeCalculator } from "./ios/Calculator";
@@ -1433,6 +1433,7 @@ function AppContentView({
               contacts={[...(work.data.contacts || []), ...(state.messages.contacts || [])].filter((i) => visible(i, state))}
               ui={state.ui?.[app.id]}
               storyState={state}
+              storyTextPresets={pendingGuidance(work, state).filter((task) => task.app === app.id && task.inputText).map((task) => task.inputText!)}
               onUi={creator ? undefined : onUi}
               name={name}
               items={shown.map((i) => ({
