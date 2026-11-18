@@ -522,10 +522,7 @@ export function CalendarSkin(p: Props) {
             <button
               className={day === i + 1 ? "selected" : ""}
               key={i}
-              onClick={() => {
-                setDay(i + 1);
-                p.onEvent?.("viewCalendarDay", prefix + "-" + String(i + 1).padStart(2, "0"));
-              }}
+              onClick={() => setDay(i + 1)}
             >
               {i + 1}
               {p.items.some((x) =>
@@ -545,7 +542,7 @@ export function CalendarSkin(p: Props) {
             key={i.id}
             onClick={() => p.onItem(i)}
           >
-            <time>{i.time.length === 10 ? "全天" : i.time.slice(-5)}</time>
+            <time>{i.time.slice(-5)}</time>
             <div>
               <strong>{i.title}</strong>
               <p>{meta(i, "location", i.body)}</p>

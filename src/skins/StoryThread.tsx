@@ -153,11 +153,6 @@ export function StoryThread({
         <div>
           <Avatar name={thread} />
           <strong>{thread}</strong>
-          {typingPeer && (
-            <small className="peer-typing" role="status">
-              正在输入…
-            </small>
-          )}
         </div>
         <button
           aria-label="聊天资料"
@@ -259,6 +254,17 @@ export function StoryThread({
             </div>
           );
         })}
+        {typingPeer && (
+          <article className="peer typing-row">
+            <div
+              className="archive-bubble peer-typing-bubble"
+              role="status"
+              aria-live="polite"
+            >
+              正在输入…
+            </div>
+          </article>
+        )}
       </div>
       {inspect?.meta.transcript ? (
         <Transcript
@@ -279,9 +285,6 @@ export function StoryThread({
             >
               <X />
             </button>
-            {inspect.kind === "image" && inspect.media && (
-              <div className="attachment-preview"><Media item={inspect} /></div>
-            )}
             <strong>{inspect.sender}</strong>
             <p>
               发送 {inspect.meta.sentAt}

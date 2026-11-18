@@ -4,7 +4,6 @@ export default defineConfig({
   testMatch: [
     "runtime.spec.ts",
     "nine-years.spec.ts",
-    "scene-two.spec.ts",
     "release.spec.ts",
     "launcher.spec.ts",
     "home-swipe.spec.ts",

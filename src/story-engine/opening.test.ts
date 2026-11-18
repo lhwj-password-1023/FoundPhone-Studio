@@ -38,24 +38,5 @@ test("提前打开或只阅读备忘录都不能代替写完，刷新后能接�
   s = choose(work, s, "try-too");
   expect(s.variables.sceneOneComplete).toBe(true);
   expect(s.endings).toEqual([]);
-  expect(s.scheduled?.map((t) => t.nodeId)).toEqual(["deliver-classified"]);
-});
-
-test("提前查看旧照或只查看送别日期都不能解锁末句", () => {
-  let s = dispatch(work, initialRuntime(work), "start");
-  for (const step of story.tests[2].steps) {
-    if (step.event === "viewCalendarDay") break;
-    if (step.event) s = dispatch(work, s, step.event, step.target);
-    if (step.choose) s = choose(work, s, step.choose);
-    if (step.advanceMs) s = advance(work, s, step.advanceMs);
-  }
-  expect(s.variables.treeholeOffered).toBe(true);
-  s = dispatch(work, s, "read", "joined-hands");
-  s = dispatch(work, s, "viewCalendarDay", "2026-10-03");
-  expect(s.variables.farewellSeen).toBe(false);
-  s = dispatch(work, s, "viewCalendarDay", "2026-10-04");
-  expect(s.variables.farewellSeen).toBe(true);
-  expect(s.choices).toEqual([]);
-  s = dispatch(work, structuredClone(s), "read", "joined-hands");
-  expect(s.choices.map((c) => c.target)).toEqual(["how-to-forget"]);
+  expect(s.scheduled).toEqual([]);
 });
