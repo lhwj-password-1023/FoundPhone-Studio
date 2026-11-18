@@ -1,3 +1,4 @@
+import { BONUS_TRACKS, type BonusUnlocks } from "../bonus";
 import { AudioPlayer, useTrack } from "../audio";
 import { useSkinState } from "../skinState";
 import {
@@ -61,6 +62,7 @@ function TrackPlayer({
 }
 export function SpotifySkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "首页");
+  const bonusUnlocks = (p.storyState?.ui?.bonusUnlocks || {}) as BonusUnlocks;
   const [playlist, setPlaylist] = useState(""),
     [track, setTrack] = useTrack(p, items);
   const list = playlist
@@ -89,6 +91,7 @@ export function SpotifySkin(p: Props) {
         <h1>{playlist || (tab === "音乐库" ? "音乐库" : "为你收藏")}</h1>
         {!playlist && (
           <div className="spotify-playlists">
+            <button onClick={() => setPlaylist("bonus")}><Music size={29} /><strong>bonus</strong></button>
             {groupItems(items, "我的音乐").map((g) => (
               <button key={g} onClick={() => setPlaylist(g)}>
                 <Music size={29} />
@@ -102,7 +105,18 @@ export function SpotifySkin(p: Props) {
             返回全部音乐
           </button>
         )}
-        <div className="spotify-tracks">
+        {playlist === "bonus" ? <div className="spotify-bonus">
+          <div className="bonus-cover">bonus</div><p>{BONUS_TRACKS.filter(t => bonusUnlocks[t.id]).length} / 10 已解锁</p>
+          {BONUS_TRACKS.map((song, n) => {
+            const unlocked = Boolean(bonusUnlocks[song.id]);
+            return <div key={song.id} className="bonus-track">
+              <span>{n + 1}</span><div className="bonus-art" aria-label={unlocked ? song.album + ' 官方封面' : '未解锁封面'}>{unlocked && <img src={`${import.meta.env.BASE_URL}bonus-covers/${song.id}.jpg`} alt={song.album + '封面'} onError={e => {e.currentTarget.style.display = 'none'}} />}</div>
+              <div><strong>{unlocked ? song.title : '???'}</strong><small>{unlocked ? song.artist : '???'}</small></div>
+              {unlocked && <a href={song.url} target="_blank" rel="noopener noreferrer" aria-label={'在 Spotify 查找' + song.title}><Play size={17}/></a>}
+              {!unlocked && <span aria-label="未解锁">🔒</span>}
+            </div>;
+          })}
+        </div> : <div className="spotify-tracks">
           {list.map((i, n) => (
             <button
               key={i.id}
@@ -120,8 +134,8 @@ export function SpotifySkin(p: Props) {
               <small>{meta(i, "duration")}</small>
             </button>
           ))}
-        </div>
-        <Empty items={list} />
+        </div>}
+        {playlist !== "bonus" && <Empty items={list} />}
       </div>
       {track && (
         <TrackPlayer

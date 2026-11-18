@@ -1,5 +1,5 @@
 {
-  "revision": 10,
+  "revision": 11,
   "removedApps": [
     "instagram",
     "news"
@@ -5296,6 +5296,16 @@
           "value": false
         }
       ]
+    },
+    {
+      "id": "bonus-resume-10",
+      "label": "bonus-resume-10",
+      "type": "action",
+      "event": "resumeRevision",
+      "target": "10",
+      "actions": [],
+      "next": [],
+      "conditions": []
     }
   ],
   "tests": []

@@ -31,7 +31,7 @@ export const catalogSkins = {
   maps: skin(system, "MapsSkin"),
   weather: skin(system, "WeatherSkin"),
   wallet: skin(system, "WalletSkin"),
-  health: skin(system, "HealthSkin"),
+  health: skin(() => import("./StoryHealth"), "StoryHealth"),
   find: skin(system, "FindSkin"),
   messages: skin(messaging, "MessagesSkin"),
   qq: skin(messaging, "QQSkin"),

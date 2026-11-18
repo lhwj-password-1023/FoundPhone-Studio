@@ -54,6 +54,8 @@ export function NativeSettings({
   setAppearance,
   onRestart,
   onSettings,
+  onEvent,
+  airplane: savedAirplane = false,
 }: {
   work: Work;
   items: Item[];
@@ -63,10 +65,12 @@ export function NativeSettings({
   setAppearance?: (value: string) => void;
   onRestart?: () => void;
   onSettings?: () => void;
+  onEvent?: (event: string, target: string) => void;
+  airplane?: boolean;
 }) {
   const nav = useNavigation(),
     [query, setQuery] = useState(""),
-    [airplane, setAirplane] = useState(false),
+    [airplane, setAirplane] = useState(savedAirplane),
     [wifi, setWifi] = useState(true),
     [bluetooth, setBluetooth] = useState(true),
     [lowPower, setLowPower] = useState(false);
@@ -253,7 +257,7 @@ export function NativeSettings({
                         if (e.key === "Enter") nav.push(name);
                       }}
                       onClick={() => {
-                        if (name !== "飞行模式") nav.push(name);
+                        if (name !== "飞行模式") { nav.push(name); if (name === "通用") onEvent?.("settings", "general"); }
                       }}
                     >
                       <span
@@ -267,7 +271,7 @@ export function NativeSettings({
                         <IOSToggle
                           label="飞行模式"
                           checked={airplane}
-                          onChange={setAirplane}
+                          onChange={(value) => { setAirplane(value); onEvent?.("settings", value ? "airplane-on" : "airplane-off"); }}
                         />
                       ) : (
                         <>

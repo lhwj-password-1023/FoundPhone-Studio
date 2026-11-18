@@ -1,3 +1,4 @@
+import { unlockBonus, type BonusId, type BonusUnlocks } from "./bonus";
 import { ActorProvider } from "./ActorContext";
 import { Mic } from "lucide-react";
 import { makeItem as makeCallRecord } from "./schema";
@@ -269,10 +270,15 @@ function PhoneRuntime({
               node.target === String(saved.state.revision),
           )
         ) {
+          const savedBonus = (saved.state.ui?.bonusUnlocks || {}) as BonusUnlocks;
+          const migratedBonus = saved.state.variables.storyFinalComplete === true
+            ? unlockBonus(savedBonus, 'cinema', `${saved.state.date || work.phone.date} ${saved.state.time}`)
+            : savedBonus;
           const restored = {
             ...saved.state,
             revision: work.updatedAt,
             variables: { ...work.variables, ...saved.state.variables },
+            ui: { ...saved.state.ui, bonusUnlocks: migratedBonus },
           };
           setOwn(reconcileMessageOrder(work,
             dispatch(
@@ -323,6 +329,26 @@ function PhoneRuntime({
   const event = (event: string, target: string) => {
     if (creator) return;
     const current = runtimeRef.current;
+    const bonus: Record<string, BonusId> = {
+      'openApp:weather': 'raining-stars', 'openApp:timemachine': 'back-door',
+      'openApp:time-machine': 'back-door', 'settings:general': 'back-then',
+      'settings:airplane-on': 'astronaut', 'read:lyric-draft': 'just-a-little',
+      'read:bonus-as-we-are-recording': 'as-we-are', 'read:x-bonus-coffee': 'this-that', 'bonusPhoto:oldest': 'photobook',
+    };
+    const bonusId = bonus[event + ':' + target];
+    if (bonusId) {
+      const previous = (current.ui?.bonusUnlocks || {}) as BonusUnlocks;
+      const unlocked = unlockBonus(previous, bonusId, `${current.date || work.phone.date} ${current.time}`);
+      if (unlocked !== previous) {
+        update({ ...current, ui: { ...current.ui, bonusUnlocks: unlocked } });
+        setBanner(`Spotify · bonus 已解锁 ${bonusId === 'raining-stars' ? 'Raining stars' : bonusId === 'back-door' ? 'Back Door' : bonusId === 'this-that' ? 'This & That' : bonusId === 'just-a-little' ? 'just a little' : bonusId === 'as-we-are' ? 'As We Are' : bonusId === 'astronaut' ? 'Astronaut' : 'Back Then'}`);
+      }
+    }
+    const currentAfterBonus = runtimeRef.current;
+    if (event === 'settings' && (target === 'airplane-on' || target === 'airplane-off')) {
+      update({ ...currentAfterBonus, ui: { ...currentAfterBonus.ui, settings: { ...currentAfterBonus.ui?.settings, airplane: target === 'airplane-on' } } });
+      return;
+    }
     if (event === "saveContact" && target === "s4-lee" && current.variables.sceneThreeStage13 === true && current.variables.sceneFourStage1 !== true) {
       const contact = makeCallRecord({ id: "s4-lee-contact", title: "旻浩哥", body: "iMessage 联系人", sender: "旻浩哥", time: `${current.date || work.phone.date} ${current.time}`, meta: { phone: "2017 年的陌生号码", timeline: "2017" } });
       const next = { ...current, ui: { ...current.ui, messages: { ...current.ui?.messages, contactAlias: "旻浩哥" } }, messages: { ...current.messages, contacts: [...(current.messages.contacts || []), contact] } };
@@ -332,7 +358,14 @@ function PhoneRuntime({
     if (event === "timeAdvance") { update(advanceSceneFour(work, current, target)); return; }
     if (event === "storyTimeAdvance") { update(advanceFinale(work, current, target)); return; }
     if (event === "storyTransfer") { update(makeStoryTransfer(work, current, target)); return; }
-    if (event === "storyShutter") { update(takeFinalPhoto(work, current, finalSelfie)); return; }
+    if (event === "storyShutter") {
+      const completed = takeFinalPhoto(work, current, finalSelfie);
+      const finished = completed.variables.storyFinalComplete === true;
+      const previous = (completed.ui?.bonusUnlocks || {}) as BonusUnlocks;
+      const unlocked = finished ? unlockBonus(previous, 'cinema', `${completed.date || work.phone.date} ${completed.time}`) : previous;
+      update({ ...completed, ui: { ...completed.ui, bonusUnlocks: unlocked } });
+      return;
+    }
     if (event === "storyReconnect") { update(reconnectTo2010(work, current)); return; }
     if (event === "writeNote" && target === "s4-note" && current.variables.sceneFourStage8 === true) {
       const stamp = `${current.date || work.phone.date} ${current.time}`;
@@ -387,7 +420,7 @@ function PhoneRuntime({
       update(dispatch(work,{...current,messages:{...current.messages,twitter:[post,...(current.messages.twitter || [])]}},event,target));
       return;
     }
-    update(dispatch(work, current, event, target));
+    update(dispatch(work, currentAfterBonus, event, target));
   };
   const endCall = () => {
     const cur = runtimeRef.current,
@@ -1284,7 +1317,14 @@ function AppContentView({
     setPw("");
     setPwError("");
     setDetail(i);
-    if (!i.password || unlocks.includes(i.id)) onRead(i.id);
+    if (!i.password || unlocks.includes(i.id)) {
+      onRead(i.id);
+      if (app.id === "photos") {
+        const photos = [...(work.data.photos || []), ...(state.messages.photos || [])].filter(photo => visible(photo, state));
+        const oldest = [...photos].sort((a, b) => (a.meta.capturedAt || a.time).localeCompare(b.meta.capturedAt || b.time))[0];
+        if (oldest?.id === i.id) onEvent("bonusPhoto", "oldest");
+      }
+    }
   };
   const chats = [...new Set(shown.map((i) => i.title))];
   const back = () => {
@@ -1605,6 +1645,8 @@ function AppContentView({
         <>
           <NativeSettings
             onRestart={archive ? onRestart : undefined}
+            onEvent={onEvent}
+            airplane={Boolean(state.ui?.settings?.airplane)}
             appearance={String(
               state.ui?.settings?.appearance || work.phone.theme,
             )}

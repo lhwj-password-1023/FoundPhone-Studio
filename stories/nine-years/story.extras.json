@@ -325,8 +325,7 @@
           "views": "615",
           "tags": "#下班的天",
           "historyOnly": "false",
-          "liked": "false",
-          "resource": "album-4"
+          "liked": "false"
         }
       },
       {
@@ -374,8 +373,7 @@
           "tags": "#鼓声",
           "historyOnly": "false",
           "liked": "true"
-        },
-        "media": "./story-images/reference-4.jpeg"
+        }
       },
       {
         "id": "x-post-5",
@@ -420,8 +418,7 @@
           "views": "1107",
           "tags": "#排练的小事",
           "historyOnly": "false",
-          "liked": "false",
-          "resource": "album-2"
+          "liked": "false"
         }
       },
       {
@@ -468,8 +465,7 @@
           "tags": "#耳机",
           "historyOnly": "false",
           "liked": "true"
-        },
-        "media": "./story-images/reference-7.jpeg"
+        }
       },
       {
         "id": "x-post-9",
@@ -515,8 +511,7 @@
           "tags": "#夜路",
           "historyOnly": "false",
           "liked": "false"
-        },
-        "media": "./story-images/reference-8.jpeg"
+        }
       },
       {
         "id": "x-post-11",
@@ -585,10 +580,8 @@
           "views": "1968",
           "tags": "#酒店窗帘",
           "historyOnly": "false",
-          "liked": "false",
-          "resource": "album-9"
-        },
-        "media": "./story-images/reference-10.jpeg"
+          "liked": "false"
+        }
       },
       {
         "id": "x-post-14",
@@ -610,8 +603,7 @@
           "views": "2091",
           "tags": "#排练片刻",
           "historyOnly": "false",
-          "liked": "false",
-          "resource": "album-0"
+          "liked": "false"
         }
       },
       {
@@ -658,8 +650,7 @@
           "tags": "#记分纸",
           "historyOnly": "false",
           "liked": "false"
-        },
-        "media": "./story-images/reference-12.jpeg"
+        }
       },
       {
         "id": "x-post-17",
@@ -706,8 +697,7 @@
           "tags": "#借伞",
           "historyOnly": "false",
           "liked": "false"
-        },
-        "media": "./story-images/reference-13.jpeg"
+        }
       },
       {
         "id": "x-post-19",
@@ -897,7 +887,6 @@
           "tags": "#彩排封面",
           "historyOnly": "false",
           "liked": "false",
-          "resource": "album-2",
           "videoCover": "true"
         }
       },
@@ -1302,6 +1291,330 @@
           "userId": "x-user-puppy",
           "handle": "puppy_0922x",
           "historyOnly": "false"
+        }
+      },
+      {
+        "id": "x-user-bin",
+        "title": "徐彰彬",
+        "sender": "徐彰彬",
+        "body": "健身、吃饭、录音。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_bin_studio",
+          "self": "false",
+          "fiction": "true",
+          "fullName": "徐彰彬"
+        }
+      },
+      {
+        "id": "x-user-hyunjin",
+        "title": "黄铉辰",
+        "sender": "黄铉辰",
+        "body": "画画和天气。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_hyunjin_canvas",
+          "self": "false",
+          "fiction": "true",
+          "fullName": "黄铉辰"
+        }
+      },
+      {
+        "id": "x-user-han",
+        "title": "韩知城",
+        "sender": "韩知城",
+        "body": "耳机又找不到了。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_han_notes",
+          "self": "false",
+          "fiction": "true",
+          "fullName": "韩知城"
+        }
+      },
+      {
+        "id": "x-user-felix",
+        "title": "李龙馥",
+        "sender": "李龙馥",
+        "body": "饼干烤好啦。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_felix_bakes",
+          "self": "false",
+          "fiction": "true",
+          "fullName": "李龙馥"
+        }
+      },
+      {
+        "id": "x-user-in",
+        "title": "梁精寅",
+        "sender": "梁精寅",
+        "body": "今天穿哪双鞋。",
+        "folder": "用户",
+        "time": "2026-01-01 10:00",
+        "read": true,
+        "meta": {
+          "handle": "mock_in_daily",
+          "self": "false",
+          "fiction": "true",
+          "fullName": "梁精寅"
+        }
+      },
+      {
+        "id": "x-member-extra-0",
+        "title": "训练",
+        "body": "今天把最后一组做完了。现在去吃饭。",
+        "sender": "徐彰彬",
+        "folder": "动态",
+        "time": "2026-11-20 19:03",
+        "read": false,
+        "meta": {
+          "userId": "x-user-bin",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-1",
+        "title": "画笔",
+        "body": "找不到昨天用的那支笔，原来夹在本子里。",
+        "sender": "黄铉辰",
+        "folder": "动态",
+        "time": "2026-11-20 17:42",
+        "read": false,
+        "meta": {
+          "userId": "x-user-hyunjin",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-2",
+        "title": "耳机",
+        "body": "耳机戴着，找了十分钟耳机。",
+        "sender": "韩知城",
+        "folder": "动态",
+        "time": "2026-11-20 15:16",
+        "read": false,
+        "meta": {
+          "userId": "x-user-han",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-3",
+        "title": "烤箱",
+        "body": "饼干出炉了，先放凉再分给大家 🍪",
+        "sender": "李龙馥",
+        "folder": "动态",
+        "time": "2026-11-20 13:05",
+        "read": false,
+        "meta": {
+          "userId": "x-user-felix",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-4",
+        "title": "鞋子",
+        "body": "今天在两双鞋之间犹豫了很久。",
+        "sender": "梁精寅",
+        "folder": "动态",
+        "time": "2026-11-20 10:48",
+        "read": false,
+        "meta": {
+          "userId": "x-user-in",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-5",
+        "title": "工作台",
+        "body": "这一版先存档。明天再听，耳朵也要休息。",
+        "sender": "灿哥",
+        "folder": "动态",
+        "time": "2026-11-19 23:32",
+        "read": false,
+        "meta": {
+          "userId": "x-user-chan",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-6",
+        "title": "晚饭",
+        "body": "练完之后那碗饭格外好吃。",
+        "sender": "徐彰彬",
+        "folder": "动态",
+        "time": "2026-11-19 18:21",
+        "read": false,
+        "meta": {
+          "userId": "x-user-bin",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-7",
+        "title": "画纸",
+        "body": "刚把一张画画完。窗边的光刚好。",
+        "sender": "黄铉辰",
+        "folder": "动态",
+        "time": "2026-11-19 16:10",
+        "read": false,
+        "meta": {
+          "userId": "x-user-hyunjin",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-8",
+        "title": "午饭",
+        "body": "说好只吃一点，结果又点了两份。",
+        "sender": "韩知城",
+        "folder": "动态",
+        "time": "2026-11-19 12:16",
+        "read": false,
+        "meta": {
+          "userId": "x-user-han",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-9",
+        "title": "天气",
+        "body": "晚上降温了，出门记得带件外套。",
+        "sender": "李龙馥",
+        "folder": "动态",
+        "time": "2026-11-18 21:28",
+        "read": false,
+        "meta": {
+          "userId": "x-user-felix",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-10",
+        "title": "咖啡店",
+        "body": "店里的甜点不错，下次想试试别的。",
+        "sender": "梁精寅",
+        "folder": "动态",
+        "time": "2026-11-18 15:12",
+        "read": false,
+        "meta": {
+          "userId": "x-user-in",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-member-extra-11",
+        "title": "猫窝",
+        "body": "买了新猫窝，猫选择了纸箱。",
+        "sender": "旻浩哥",
+        "folder": "动态",
+        "time": "2026-09-20 18:02",
+        "read": false,
+        "meta": {
+          "userId": "x-user-lee",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-bonus-coffee",
+        "title": "咖啡",
+        "body": "今天的咖啡比闹钟可靠。",
+        "sender": "金昇玟",
+        "folder": "动态",
+        "time": "2026-11-20 08:45",
+        "read": false,
+        "meta": {
+          "userId": "x-user-self",
+          "fiction": "true",
+          "resource": "album-10"
+        },
+        "kind": "image"
+      },
+      {
+        "id": "x-fan-extra-0",
+        "title": "日常",
+        "body": "上班路上又把旧歌单听了一遍。",
+        "sender": "窗边听歌",
+        "folder": "动态",
+        "time": "2026-11-20 20:01",
+        "read": false,
+        "meta": {
+          "userId": "x-user-stay",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-fan-extra-1",
+        "title": "日常",
+        "body": "好想看新专辑消息啊。",
+        "sender": "耳机线打结",
+        "folder": "动态",
+        "time": "2026-11-20 12:25",
+        "read": false,
+        "meta": {
+          "userId": "x-user-musicfan",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-fan-extra-2",
+        "title": "日常",
+        "body": "随机播放到那首歌，还是会跟着唱。",
+        "sender": "窗边听歌",
+        "folder": "动态",
+        "time": "2026-11-19 22:40",
+        "read": false,
+        "meta": {
+          "userId": "x-user-stay",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-fan-extra-3",
+        "title": "日常",
+        "body": "最近好像没看到旻浩的消息。先等正式消息吧。",
+        "sender": "耳机线打结",
+        "folder": "动态",
+        "time": "2026-11-19 17:12",
+        "read": false,
+        "meta": {
+          "userId": "x-user-musicfan",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-fan-extra-4",
+        "title": "日常",
+        "body": "好想再去一次演唱会。",
+        "sender": "窗边听歌",
+        "folder": "动态",
+        "time": "2026-11-18 19:34",
+        "read": false,
+        "meta": {
+          "userId": "x-user-stay",
+          "fiction": "true"
+        }
+      },
+      {
+        "id": "x-fan-extra-5",
+        "title": "日常",
+        "body": "今天的应援手幅终于收好了。",
+        "sender": "耳机线打结",
+        "folder": "动态",
+        "time": "2026-10-30 20:22",
+        "read": false,
+        "meta": {
+          "userId": "x-user-musicfan",
+          "fiction": "true"
         }
       }
     ],

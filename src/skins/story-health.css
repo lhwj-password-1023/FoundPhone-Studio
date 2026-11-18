@@ -1,0 +1,27 @@
+.story-health { display:flex; flex-direction:column; height:100%; background:#f5f5fa; color:#202027; font-family:-apple-system,BlinkMacSystemFont,"Microsoft YaHei",sans-serif; }
+.story-health header { display:flex; align-items:center; gap:12px; padding:12px; background:white; }
+.story-health header button { border:0; background:none; color:#ed405d; }
+.story-health header strong { flex:1; font-size:17px; }
+.story-health header span,.health-fiction { color:#85858e; font-size:11px; }
+.story-health main { overflow:auto; padding:12px 16px 30px; }
+.story-health h1 { font-size:30px; margin:8px 0 3px; }
+.story-health h2 { font-size:18px; margin:22px 0 10px; }
+.health-date { display:flex; align-items:center; justify-content:space-between; margin:18px 0; font-size:12px; }
+.health-date input { border:0; background:white; padding:8px; border-radius:8px; color:#333; }
+.health-feature,.health-mini button,.health-reading,.health-bars,.health-history { border:0; border-radius:13px; background:white; }
+.health-feature { display:flex; width:100%; text-align:left; gap:14px; padding:18px; color:#7058cb; }
+.health-feature span { display:grid; gap:5px; }
+.health-feature big { color:#222; font-size:22px; font-weight:700; }
+.health-feature small { color:#777; }
+.health-mini { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:8px; }
+.health-mini button { display:grid; justify-items:start; gap:5px; padding:10px; min-height:88px; font-size:10px; color:#e65a29; }
+.health-mini strong { color:#222; font-size:14px; }
+.health-bars { display:flex; gap:8px; align-items:end; height:130px; padding:10px; }
+.health-bars button { height:100%; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:end; border:0; background:none; }
+.health-bars i { width:100%; background:#8b79d9; border-radius:4px; }
+.health-bars small { font-size:9px; color:#888; }
+.health-reading { padding:18px; display:grid; gap:8px; }
+.health-reading strong { font-size:26px; color:#725fd1; }
+.health-reading span { color:#777; }
+.health-history { max-height:260px; overflow:auto; }
+.health-history button { display:flex; justify-content:space-between; width:100%; padding:10px; border:0; border-bottom:1px solid #eee; background:none; }

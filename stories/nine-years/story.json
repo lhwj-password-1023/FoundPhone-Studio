@@ -59,7 +59,7 @@
     },
     {
       "id": "spotify",
-      "name": "音乐流",
+      "name": "Spotify",
       "installed": true,
       "visible": true,
       "folder": "",
@@ -70,10 +70,8 @@
     "notes",
     "calendar",
     "contacts",
-    "files",
     "clock",
     "reminders",
-    "mail",
     "settings",
     {
       "id": "appstore",
@@ -2250,6 +2248,14 @@
         "body": "相机电池。\n充电头。\n那本没看完的书。",
         "time": "2025-10-21 08:21",
         "read": true
+      },
+      {
+        "id": "score",
+        "title": "副歌换气记号",
+        "body": "第二句提前半拍吸气。",
+        "time": "2026-11-17 14:50",
+        "read": true,
+        "folder": "在我的 iPhone 上"
       }
     ],
     "find": [
@@ -2394,15 +2400,6 @@
         "read": true
       }
     ],
-    "files": [
-      {
-        "id": "score",
-        "title": "副歌换气记号",
-        "body": "第二句提前半拍吸气。",
-        "time": "2026-11-17 14:50",
-        "read": true
-      }
-    ],
     "phone": [
       {
         "id": "call-mom2026-11-18",
@@ -2485,6 +2482,20 @@
         "meta": {
           "transcript": "金昇玟：第二遍，先放慢。\n金昇玟：嗯……刚才这里抢了。\n金昇玟：明天从这个字开始。",
           "duration": "7"
+        }
+      },
+      {
+        "id": "bonus-as-we-are-recording",
+        "title": "排练后留的声音",
+        "body": "一次练习后的试唱记录。",
+        "sender": "金昇玟",
+        "folder": "录音",
+        "kind": "audio",
+        "time": "2026-11-18 20:10",
+        "read": false,
+        "meta": {
+          "duration": "58",
+          "transcript": "先听一下。\n今天的声音有点哑。\n这一句再来一次。\n嗯，就这样。"
         }
       }
     ],
